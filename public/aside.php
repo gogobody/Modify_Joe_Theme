@@ -67,10 +67,8 @@
                             ->limit('4')
                         );
                         $mostactive = '';
-                        $avatar_path = 'https://cdn.v2ex.com/gravatar/';
                         $viphonor = Helper::options()->themeUrl('assets/img/authen.svg','Typecho-Joe-Theme');
                         foreach ($counts as $count) {
-                            $avatar = $avatar_path . md5(strtolower($count['mail'])) . '.jpg';
                             $imgUrl = ParseAvatar($count['mail'],1);
                             if ($count['authorId'] == '0') {
                                 $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img src="' . $imgUrl . '"></div></div><div class="item-main"><div>' . $count['author'] . '';

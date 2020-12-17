@@ -18,7 +18,6 @@
                 let below = $(".row.below")
                 let post_title = $("#post_top_title")
                 let navOffw = header.width();
-                let navOffh = header.height() * 4;
                 if (navOffw > 750) {
                     $(window).scroll(function() {
                         let scrollPos = $(window).scrollTop(); //得到滚动的距离

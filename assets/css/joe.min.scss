@@ -1967,7 +1967,39 @@ table {
     border-radius: 2px;
     color: var(--classD);
 }
-
+.autlv {
+    font-size: 10px;
+    color: #fff;
+    display: inline-block;
+    vertical-align: text-top;
+    font-weight: normal;
+    border-radius: 2px;
+    line-height: 1.4;
+    padding: 0 4px;
+    margin-left: 5px;
+    letter-spacing: 0px;
+}
+.aut-0 {
+    background: #d1d5dc;
+}
+.aut-1 {
+    background: #448EF6;
+}
+.aut-2 {
+    background: #f6b044;
+}
+.aut-3 {
+    background: #c444f6;
+}
+.aut-4 {
+    background: #f69644;
+}
+.aut-5 {
+    background-image: -webkit-linear-gradient(0deg, #3ca5f6 0%, #a86af9 100%);
+}
+.aut-6 {
+    background: #f64444;
+}
 .j-aside {
     transition: width 0.35s;
     user-select: none;
@@ -2490,39 +2522,7 @@ table {
         .vs {
             border-radius: 100%;
         }
-        .autlv {
-            font-size: 10px;
-            color: #fff;
-            display: inline-block;
-            vertical-align: text-top;
-            font-weight: normal;
-            border-radius: 2px;
-            line-height: 1.4;
-            padding: 0 4px;
-            margin-left: 5px;
-            letter-spacing: 0px;
-        }
-        .aut-0 {
-            background: #d1d5dc;
-        }
-        .aut-1 {
-            background: #448EF6;
-        }
-        .aut-2 {
-            background: #f6b044;
-        }
-        .aut-3 {
-            background: #c444f6;
-        }
-        .aut-4 {
-            background: #f69644;
-        }
-        .aut-5 {
-            background-image: -webkit-linear-gradient(0deg, #3ca5f6 0%, #a86af9 100%);
-        }
-        .aut-6 {
-            background: #f64444;
-        }
+
         ul{
             list-style: none;
             line-height: 2.5;
@@ -5686,5 +5686,22 @@ pre code {
         iframe {
             transform: scale3d(1,1,1);
         }
+    }
+}
+
+/**
+author page
+ */
+.j-author{
+    .author-header-meta{
+        text-align: center;
+        margin: 50px 0;
+
+        .avatar { border-radius: 100%; margin-top: -10px; margin-bottom: 10px; position: relative; }
+
+        .name { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+
+        .desc { color: var(--routine); font-size: 14px; margin-bottom: 10px; }
+
     }
 }

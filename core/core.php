@@ -1292,6 +1292,61 @@ function allpostnum($id){
         return '文章 '.$postnum.' 篇';
     }
 }
+
+/**输出作者人气*/
+function allviewnum($id){
+    $db = Typecho_Db::get();
+    $postnum=$db->fetchRow($db->select(array('Sum(views)'=>'allviewnum'))->from ('table.contents')->where ('table.contents.authorId=?',$id)->where('table.contents.type=?', 'post'));
+    $postnum = $postnum['allviewnum'];
+    if($postnum=='0')
+    {
+        return '暂无访问';
+    }
+    elseif ($postnum>=10000) {
+        return ' 1万+访问';
+    }
+    elseif ($postnum<10000 && $postnum>5000) {
+        return ' 5K+访问';
+    }
+    else{
+        return ' '.$postnum.' °c 访问';
+    }
+
+}
+
+/**
+ * 文章访问量等级
+ */
+function listdeng($archive){
+    $db = Typecho_Db::get();
+    $cid = $archive->cid;
+    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
+        $db->query('ALTER TABLE `'.$db->getPrefix().'contents` ADD `views` INT(10) DEFAULT 0;');
+    }
+    $exist = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid))['views'];
+    if($exist<200){
+        /** echo '<span class="badge arc_v1"></span>';**/
+    }elseif ($exist<500 && $exist>200) {
+        //echo '<span class="badge arc_v2">新秀</span>';
+    }elseif ($exist<1000 && $exist>=500) {
+        echo '<span class="badge arc_v3">推荐</span>';
+    }elseif ($exist<5000 && $exist>=1000) {
+        echo '<span class="badge arc_v4">热文</span>';
+    }elseif ($exist<10000 && $exist>=5000) {
+        echo '<span class="badge arc_v5">头条</span>';
+    }elseif ($exist<30000 && $exist>=10000) {
+        echo '<span class="badge arc_v6">火爆</span>';
+    }elseif ($exist>=30000) {
+        echo '<span class="badge arc_v7">神贴</span>';
+    }
+}
+
+// 会员页判断是否会员id
+function userok($id){
+    $db = Typecho_Db::get();
+    $userinfo=$db->fetchRow($db->select()->from ('table.users')->where ('table.users.uid=?',$id));
+    return $userinfo;
+}
 ?>
 
 
