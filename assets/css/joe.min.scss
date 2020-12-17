@@ -2018,12 +2018,35 @@ table {
         }
         h3 {
             border-bottom: 1px solid var(--classC);
-            font-size: 15px;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: bold;
             height: 45px;
             line-height: 45px;
             padding: 0 15px;
             color: var(--main);
+            position: relative;
+
+            i{
+                font-size: 19px;
+                color: var(--main);
+                display: inline-block;
+                width: 1.3em;
+            }
+            span {
+                display: inline-block;
+                font-weight: normal;
+            }
+        }
+        h3:before{
+            display: block;
+            content: "";
+            position: absolute;
+            top: 54%;
+            left: 50%;
+            right: 0;
+            z-index: 1;
+            border-top: 1px solid #54b5db;
+            width: 10px;
         }
         .empty {
             padding: 15px;
@@ -2517,7 +2540,6 @@ table {
     }
     .aside-hunter-authors{
         background: var(--background);
-        padding: 14px;
 
         .vs {
             border-radius: 100%;
@@ -2526,6 +2548,7 @@ table {
         ul{
             list-style: none;
             line-height: 2.5;
+            padding: 14px;
         }
         .item{
             border-bottom: 1px dashed #eee;

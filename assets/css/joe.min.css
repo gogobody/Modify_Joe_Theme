@@ -1954,12 +1954,34 @@ table {
 }
 .j-aside .aside h3 {
   border-bottom: 1px solid var(--classC);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
   height: 45px;
   line-height: 45px;
   padding: 0 15px;
   color: var(--main);
+  position: relative;
+}
+.j-aside .aside h3 i {
+  font-size: 19px;
+  color: var(--main);
+  display: inline-block;
+  width: 1.3em;
+}
+.j-aside .aside h3 span {
+  display: inline-block;
+  font-weight: normal;
+}
+.j-aside .aside h3:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  right: 0;
+  z-index: 1;
+  border-top: 1px solid #54b5db;
+  width: 10px;
 }
 .j-aside .aside .empty {
   padding: 15px;
@@ -2422,7 +2444,6 @@ table {
 }
 .j-aside .aside-hunter-authors {
   background: var(--background);
-  padding: 14px;
 }
 .j-aside .aside-hunter-authors .vs {
   border-radius: 100%;
@@ -2430,6 +2451,7 @@ table {
 .j-aside .aside-hunter-authors ul {
   list-style: none;
   line-height: 2.5;
+  padding: 14px;
 }
 .j-aside .aside-hunter-authors .item {
   border-bottom: 1px dashed #eee;

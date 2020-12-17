@@ -6,9 +6,9 @@
             <div class="user">
                 <img src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" />
                 <?php if ($this->options->JAuthorLink) : ?>
-                    <a href="<?php $this->options->JAuthorLink(); ?>"><?php $this->author->screenName(); ?></a>
+                    <a href="<?php $this->options->JAuthorLink(); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
                 <?php else : ?>
-                    <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author->screenName(); ?></a>
+                    <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
                 <?php endif; ?>
                 <!-- 座右铭 -->
                 <?php if ($this->options->JMotto) : ?>
@@ -46,8 +46,7 @@
     <!--互动读者-->
     <?php if ($this->options->JactiveUsers and $this->is('index')): ?>
         <section class="aside aside-hunter-authors">
-            <h3 class="aside-title"><i class="icon iconfont icon-wodeguanzhu"></i>
-                <span><?php _e('互动读者'); ?></span></h3>
+            <h3><i class="icon iconfont icon-wodeguanzhu"></i><span>互动读者</span></h3>
             <div class="hunter-cont">
                 <ul class="hunter-authors">
                     <?php $i = exicache('pagemember');
@@ -185,7 +184,7 @@
     <!-- 热门文章 -->
     <?php if ($this->options->JAsideHotNumber !== 'off') : ?>
         <div class="aside aside-hot">
-            <h3>热门文章</h3>
+            <h3><i class="icon iconfont icon-taolunqu"></i><span>热门文章</span></h3>
             <?php $this->widget('Widget_Post_hot@asidehot@hot', 'pageSize=' . $this->options->JAsideHotNumber)->to($hot); ?>
             <?php if ($hot->have()) : ?>
                 <ul>
@@ -217,7 +216,7 @@
         $rankingStr = explode("$", $ranking);
         ?>
         <div class="aside aside-ranking">
-            <h3><?php echo $rankingStr[0] ?></h3>
+            <h3><i class="icon iconfont icon-paihangbang"></i><span><?php echo $rankingStr[0] ?></span></h3>
             <ul class="list">
                 <?php
                 $result = GetRequest("https://the.top/v1/" . $rankingStr[1] . "/1/20", "get");
@@ -244,7 +243,7 @@
     <!-- 最新回复 -->
     <?php if ($this->options->JAsideReplyStatus !== 'off') : ?>
         <div class="aside aside-reply">
-            <h3>最新回复</h3>
+            <h3><i class="icon iconfont icon-yuyin"></i><span>最新回复</span></h3>
             <?php $this->widget('Widget_Comments_Recent@ok88', 'ignoreAuthor=true&pageSize=5')->to($comments); ?>
             <?php if ($comments->have()) : ?>
                 <ol class="list" id="asideReply">
@@ -284,7 +283,7 @@
     <!-- 云标签 -->
     <?php if ($this->options->J3DTagStatus === 'on') : ?>
         <div class="aside aside-cloud">
-            <h3>标签云</h3>
+            <h3><i class="icon iconfont icon-huatifuhao"></i><span>标签云</span></h3>
             <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 50))->to($tags); ?>
             <?php if ($tags->have()) : ?>
                 <div class="cloud" id="cloud"></div>

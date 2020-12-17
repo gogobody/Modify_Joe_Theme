@@ -96,6 +96,7 @@
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.min.css?v=' . JoeVersion()); ?>" />
     <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=' . JoeVersion()); ?>" />
 <?php endif; ?>
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/iconfont/iconfont.min.css?v=' . JoeVersion()); ?>" />
 
 <!-- joe 弹窗提示 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.toast/joe.toast.min.css" />

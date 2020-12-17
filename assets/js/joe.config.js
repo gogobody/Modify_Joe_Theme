@@ -13,6 +13,7 @@
         init() {
             /*顶部自动隐藏*/
             $(document).ready(function() {
+                if(screen.width < 768) return
                 let header = $("header.j-header")
                 let above_nav = $(".row.above .above-nav")
                 let below = $(".row.below")
