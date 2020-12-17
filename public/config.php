@@ -99,7 +99,7 @@
         <script src="<?php $this->options->themeUrl('assets/js/jfloor.min.js'); ?>"></script>
     <?php endif; ?>
     <script src="<?php $this->options->themeUrl('assets/js/OwO.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('assets/js/joe.config.js?v=' . JoeVersion()); ?>"></script>
+    <script src="<?php $this->options->themeUrl('assets/js/joe.config.min.js?v=' . JoeVersion()); ?>"></script>
 <?php endif; ?>
 
 <!-- 背景 -->

@@ -11,6 +11,30 @@
         }
 
         init() {
+            /*顶部自动隐藏*/
+            $(document).ready(function() {
+                let header = $("header.j-header")
+                let above_nav = $(".row.above .above-nav")
+                let below = $(".row.below")
+                let post_title = $("#post_top_title")
+                let navOffw = header.width();
+                let navOffh = header.height() * 4;
+                if (navOffw > 750) {
+                    $(window).scroll(function() {
+                        let scrollPos = $(window).scrollTop(); //得到滚动的距离
+                        if (scrollPos > 400 && scrollPos < 500) return // 防止nav出现触发再次scroll
+                        if (scrollPos >= 450) { //比较判断是否fixed
+                            below.slideUp()
+                            post_title.removeClass("post_no");
+                            above_nav.addClass("post_no")
+                        } else {
+                            below.slideDown()
+                            post_title.addClass("post_no");
+                            above_nav.removeClass("post_no")
+                        }
+                    })
+                }
+            })
             /* 解决移动端 hover 问题*/
             $(document).on('touchstart', e => {});
             /* 初始化页面加载 */

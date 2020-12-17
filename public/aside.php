@@ -1,48 +1,5 @@
 <div class="j-aside">
-    <?php if ($this->is('index')): ?>
-        <section class="aside aside-hunter-authors">
-            <h3 class="aside-title"><i class="icon iconfont icon-wodeguanzhu"></i>
-                <span><?php _e('互动读者'); ?></span></h3>
-            <div class="hunter-cont">
-                <ul class="hunter-authors">
-                    <?php $i = exicache('pagemember');
-                    if (($this->options->txtopcas == '1') && $i): ?>
-                        <?php fosmember(); ?>
-                    <?php else: ?>
-                        <?php
-                        $period = time() - 2592000; // 单位: 秒, 时间范围: 30天
-                        $counts = Typecho_Db::get()->fetchAll(Typecho_Db::get()
-                            ->select('COUNT(author) AS cnt', 'author', 'max(authorId) authorId', 'max(mail) mail')
-                            ->from('table.comments')
-                            ->where('created > ?', $period)
-                            ->where('status = ?', 'approved')
-                            ->where('type = ?', 'comment')
-                            ->group('author')
-                            ->order('cnt', Typecho_Db::SORT_DESC)
-                            ->limit('4')
-                        );
-                        $mostactive = '';
-                        $avatar_path = 'https://cdn.v2ex.com/gravatar/';
-                        $viphonor = Helper::options()->themeUrl('assets/img/authen.svg','Typecho-Joe-Theme');
-                        foreach ($counts as $count) {
-                            $avatar = $avatar_path . md5(strtolower($count['mail'])) . '.jpg';
-                            $imgUrl = ParseAvatar($count['mail'],1);
-                            if ($count['authorId'] == '0') {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img src="' . $imgUrl . '"></div></div><div class="item-main"><div>' . $count['author'] . '';
-                            } else {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img src="' . $imgUrl . '"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户"></div></a></div><div class="item-main">' . $count['author'] . '';
-                            }
-                            echo '' . $c_url . '';
-                            autvip($count['mail']);
-                            $allpostnum = allpostnum($count['authorId']);
-                            echo ' <h4>评论 ' . $count['cnt'] . ' 次 | <i>'.$allpostnum.'</i>';
-                            echo ' </h4></div></div></li>';
-                        } ?>
-                    <?php endif; ?>
-                </ul>
-            </div>
-        </section>
-    <?php endif; ?>
+
 
     <?php if ($this->options->JAuthorStatus !== 'off') : ?>
         <div class="aside aside-user">
@@ -86,7 +43,51 @@
             <?php endif; ?>
         </div>
     <?php endif; ?>
-
+    <!--互动读者-->
+    <?php if ($this->options->JactiveUsers and $this->is('index')): ?>
+        <section class="aside aside-hunter-authors">
+            <h3 class="aside-title"><i class="icon iconfont icon-wodeguanzhu"></i>
+                <span><?php _e('互动读者'); ?></span></h3>
+            <div class="hunter-cont">
+                <ul class="hunter-authors">
+                    <?php $i = exicache('pagemember');
+                    if (($this->options->txtopcas == '1') && $i): ?>
+                        <?php fosmember(); ?>
+                    <?php else: ?>
+                        <?php
+                        $period = time() - 2592000; // 单位: 秒, 时间范围: 30天
+                        $counts = Typecho_Db::get()->fetchAll(Typecho_Db::get()
+                            ->select('COUNT(author) AS cnt', 'author', 'max(authorId) authorId', 'max(mail) mail')
+                            ->from('table.comments')
+                            ->where('created > ?', $period)
+                            ->where('status = ?', 'approved')
+                            ->where('type = ?', 'comment')
+                            ->group('author')
+                            ->order('cnt', Typecho_Db::SORT_DESC)
+                            ->limit('4')
+                        );
+                        $mostactive = '';
+                        $avatar_path = 'https://cdn.v2ex.com/gravatar/';
+                        $viphonor = Helper::options()->themeUrl('assets/img/authen.svg','Typecho-Joe-Theme');
+                        foreach ($counts as $count) {
+                            $avatar = $avatar_path . md5(strtolower($count['mail'])) . '.jpg';
+                            $imgUrl = ParseAvatar($count['mail'],1);
+                            if ($count['authorId'] == '0') {
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img src="' . $imgUrl . '"></div></div><div class="item-main"><div>' . $count['author'] . '';
+                            } else {
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img src="' . $imgUrl . '"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户"></div></a></div><div class="item-main">' . $count['author'] . '';
+                            }
+                            echo '' . $c_url . '';
+                            autvip($count['mail']);
+                            $allpostnum = allpostnum($count['authorId']);
+                            echo ' <h4>评论 ' . $count['cnt'] . ' 次 | <i>'.$allpostnum.'</i>';
+                            echo ' </h4></div></div></li>';
+                        } ?>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </section>
+    <?php endif; ?>
     <!-- 广告1 -->
     <?php if ($this->options->JADContent1) : ?>
         <?php

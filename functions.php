@@ -892,6 +892,17 @@ function themeConfig($form)
     $JAsideHotNumber->setAttribute('class', 'j-setting-content j-setting-aside');
     $form->addInput($JAsideHotNumber->multiMode());
 
+    $JactiveUsers = new Typecho_Widget_Helper_Form_Element_Radio(
+  'JactiveUsers',
+        array(
+                1 => '开启',
+                0 => '关闭',
+        ),0,'是否开启互动读者','介绍：显示评论相关用户'
+
+    );
+    $JactiveUsers->setAttribute('class', 'j-setting-content j-setting-aside');
+    $form->addInput($JactiveUsers);
+
     $JAuthorStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JAuthorStatus',
         array(

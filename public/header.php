@@ -16,53 +16,58 @@
                     <span></span>
                     <span></span>
                 </div>
-                <!-- 网站 logo -->
-                <h1 class="logo j-hover-music" title="<?php $this->options->title(); ?>">
-                    <?php $this->options->title(); ?>
-                    <a href="<?php $this->options->siteUrl(); ?>">
-                        <?php if ($this->options->JLogo) : ?>
-                            <img src="<?php $this->options->JLogo() ?>" />
-                        <?php else : ?>
-                            <img src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png" />
-                        <?php endif; ?>
-                    </a>
-                </h1>
-                <!-- 链接 -->
-                <nav class="nav j-nav">
-                    <a class="link <?php if ($this->is('index')) : ?>active<?php endif; ?>" href="<?php $this->options->siteUrl(); ?>">首页</a>
-                    <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+                <!-- post title -->
+                <?php if ($this->is('post')): ?>
+                    <div class="top-bar-title post_no" id="post_top_title"><?php $this->title(); ?></div>
+                <?php endif; ?>
+                <div class="above-nav">
+                    <!-- 网站 logo -->
+                    <h1 class="logo j-hover-music" title="<?php $this->options->title(); ?>">
+                        <?php $this->options->title(); ?>
+                        <a href="<?php $this->options->siteUrl(); ?>">
+                            <?php if ($this->options->JLogo) : ?>
+                                <img src="<?php $this->options->JLogo() ?>" />
+                            <?php else : ?>
+                                <img src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png" />
+                            <?php endif; ?>
+                        </a>
+                    </h1>
+                    <!-- 链接 -->
+                    <nav class="nav j-nav">
+                        <a class="link <?php if ($this->is('index')) : ?>active<?php endif; ?>" href="<?php $this->options->siteUrl(); ?>">首页</a>
+                        <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
 
-                    <!-- 循环4个之前的 -->
-                    <?php $i = 0; ?>
-                    <?php while ($pages->next()) : ?>
-                        <?php $i++; ?>
-                        <?php if ($i <= $this->options->JNavMaxNum) : ?>
-                            <a class="link <?php if ($this->is('page', $pages->slug)) : ?>active<?php endif; ?>" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
-                        <?php endif; ?>
-                    <?php endwhile; ?>
+                        <!-- 循环4个之前的 -->
+                        <?php $i = 0; ?>
+                        <?php while ($pages->next()) : ?>
+                            <?php $i++; ?>
+                            <?php if ($i <= $this->options->JNavMaxNum) : ?>
+                                <a class="link <?php if ($this->is('page', $pages->slug)) : ?>active<?php endif; ?>" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
 
-                    <!-- 超过4个则显示更多 -->
-                    <?php if ($i > $this->options->JNavMaxNum) : ?>
-                        <div class="link drops">
-                            <div class="j-drop">
-                                <span>更多</span>
-                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M825.728 390.144L521.056 702.336 217.152 390.144c-16.576-16.576-43.744-16.576-60.32 0s-16.576 43.744 0 60.32L483.36 778.496c10.56 9.056 23.392 19.616 36.96 17.344 13.568 3.008 27.904-6.784 38.464-17.344L886.08 450.464a42.816 42.816 0 0 0 0-60.32 42.784 42.784 0 0 0-60.352 0z"></path>
-                                </svg>
+                        <!-- 超过4个则显示更多 -->
+                        <?php if ($i > $this->options->JNavMaxNum) : ?>
+                            <div class="link drops">
+                                <div class="j-drop">
+                                    <span>更多</span>
+                                    <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M825.728 390.144L521.056 702.336 217.152 390.144c-16.576-16.576-43.744-16.576-60.32 0s-16.576 43.744 0 60.32L483.36 778.496c10.56 9.056 23.392 19.616 36.96 17.344 13.568 3.008 27.904-6.784 38.464-17.344L886.08 450.464a42.816 42.816 0 0 0 0-60.32 42.784 42.784 0 0 0-60.352 0z"></path>
+                                    </svg>
+                                </div>
+                                <nav class="j-dropdown">
+                                    <?php $current = 0 ?>
+                                    <?php while ($pages->next()) : ?>
+                                        <?php $current++; ?>
+                                        <?php if ($current > $this->options->JNavMaxNum) : ?>
+                                            <a class="<?php if ($this->is('page', $pages->slug)) : ?>active<?php endif; ?>" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
+                                        <?php endif; ?>
+                                    <?php endwhile; ?>
+                                </nav>
                             </div>
-                            <nav class="j-dropdown">
-                                <?php $current = 0 ?>
-                                <?php while ($pages->next()) : ?>
-                                    <?php $current++; ?>
-                                    <?php if ($current > $this->options->JNavMaxNum) : ?>
-                                        <a class="<?php if ($this->is('page', $pages->slug)) : ?>active<?php endif; ?>" href="<?php $pages->permalink(); ?>"><?php $pages->title(); ?></a>
-                                    <?php endif; ?>
-                                <?php endwhile; ?>
-                            </nav>
-                        </div>
-                    <?php endif; ?>
-                </nav>
-
+                        <?php endif; ?>
+                    </nav>
+                </div>
                 <!-- 搜索 -->
                 <form class="search j-search" method="get" action="<?php $this->options->siteUrl(); ?>">
                     <input maxlength="20" name="s" autocomplete="off" <?php if ($this->is('search')) : ?>value="<?php $this->archiveTitle(' &raquo; ', '', ''); ?>" <?php endif; ?> type="text" placeholder="请输入关键字..." />
@@ -87,7 +92,6 @@
 
         <section class="row below">
             <section class="container">
-
                 <!-- 分类 -->
                 <nav class="nav">
                     <?php $this->widget('Widget_Metas_Category_List')->to($categorys); ?>

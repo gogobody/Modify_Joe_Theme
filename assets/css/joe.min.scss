@@ -395,6 +395,19 @@ table {
         .container {
             display: flex;
             align-items: center;
+            .above-nav {
+                display: flex;
+                width: 100%;
+            }
+            .top-bar-title {
+                font-size: 16px;
+                line-height: 50px;
+                font-weight: 600;
+                animation: hideIndex 0.6s;
+                -moz-animation: hideIndex 0.6s;
+                -webkit-animation: hideIndex 0.6s;
+                -o-animation: hideIndex 0.6s;
+            }
             .logo {
                 position: relative;
                 display: flex;
@@ -816,7 +829,14 @@ table {
         }
     }
 }
+.post_no {
+    display: none!important;
+}
+@keyframes hideIndex{
 
+    0%{ opacity: 0; transform: translate(0, 30px) }
+    100%{opacity: 1; transform: translate(0, 0) }
+}
 .j-header-fluid {
     position: sticky;
     top: 0;
