@@ -1413,6 +1413,11 @@
                 $('.j-sidebar-xs').removeClass('active');
                 $('body').css('overflow', '');
             });
+            $('.j-sidebar-xs .item.category ul li a').unbind().bind('click',function (ev) {
+                let c = $(this);
+                c.parent().siblings(".active").toggleClass("active")
+                if(c.next().is("ul") && c.parent().toggleClass("active") && ev.preventDefault()) return false;
+            })
         }
 
         /* 初始化动画 */

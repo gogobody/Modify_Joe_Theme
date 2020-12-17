@@ -4963,7 +4963,7 @@ pre code {
   border-color: #6fa3ef transparent transparent;
 }
 .j-sidebar-xs .content .item .card ul li {
-  display: flex;
+  display: block;
   align-items: center;
   line-height: 40px;
   border-bottom: 1px solid var(--classB);
@@ -4986,6 +4986,32 @@ pre code {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.j-sidebar-xs .content .item.category ul.category-nav li ul {
+  display: none;
+  padding-left: 2.5em;
+  opacity: 0;
+  height: 0;
+  overflow: auto;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.j-sidebar-xs .content .item.category ul.category-nav li a span {
+  float: right;
+}
+.j-sidebar-xs .content .item.category ul.category-nav li a .text-down {
+  display: none;
+}
+.j-sidebar-xs .content .item.category ul.category-nav li.active ul {
+  display: block;
+  opacity: 1;
+  height: auto;
+}
+.j-sidebar-xs .content .item.category ul.category-nav li.active a .text-right {
+  display: none;
+}
+.j-sidebar-xs .content .item.category ul.category-nav li.active a .text-down {
+  display: block;
 }
 .j-sidebar-xs .content .user {
   text-align: center;

@@ -46,7 +46,7 @@
     <!--互动读者-->
     <?php if ($this->options->JactiveUsers and $this->is('index')): ?>
         <section class="aside aside-hunter-authors">
-            <h3><i class="icon iconfont icon-wodeguanzhu"></i><span>互动读者</span></h3>
+            <h3><i class="icon iconfont icon-follow"></i><span>互动读者</span></h3>
             <div class="hunter-cont">
                 <ul class="hunter-authors">
                     <?php $i = exicache('pagemember');
@@ -184,7 +184,7 @@
     <!-- 热门文章 -->
     <?php if ($this->options->JAsideHotNumber !== 'off') : ?>
         <div class="aside aside-hot">
-            <h3><i class="icon iconfont icon-taolunqu"></i><span>热门文章</span></h3>
+            <h3><i class="icon iconfont icon-comment"></i><span>热门文章</span></h3>
             <?php $this->widget('Widget_Post_hot@asidehot@hot', 'pageSize=' . $this->options->JAsideHotNumber)->to($hot); ?>
             <?php if ($hot->have()) : ?>
                 <ul>
@@ -283,7 +283,7 @@
     <!-- 云标签 -->
     <?php if ($this->options->J3DTagStatus === 'on') : ?>
         <div class="aside aside-cloud">
-            <h3><i class="icon iconfont icon-huatifuhao"></i><span>标签云</span></h3>
+            <h3><i class="icon iconfont icon-Tag"></i><span>标签云</span></h3>
             <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 50))->to($tags); ?>
             <?php if ($tags->have()) : ?>
                 <div class="cloud" id="cloud"></div>
