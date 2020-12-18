@@ -461,7 +461,7 @@
                             <ul>
                                 <?php foreach ($children as $mid):?>
                                 <?php $child = $categorys->getCategory($mid); ?>
-                                <li <?php if($this->is('category', $mid)): ?> class="active"<?php endif; ?>>
+                                <li <?php if($this->is('category', $child['slug'])): ?> class="active"<?php endif; ?>>
                                     <a href="<?php echo $child['permalink'] ?>" title="<?php echo $child['name']; ?>"><?php echo $child['name']; ?></a>
                                 </li>
                                 <?php endforeach; ?>

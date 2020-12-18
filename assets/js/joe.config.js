@@ -11,32 +11,11 @@
         }
 
         init() {
-            /*顶部自动隐藏*/
-            $(document).ready(function() {
-                if(screen.width < 768) return
-                let header = $("header.j-header")
-                let above_nav = $(".row.above .above-nav")
-                let below = $(".row.below")
-                let post_title = $("#post_top_title")
-                let navOffw = header.width();
-                if (navOffw > 750) {
-                    $(window).scroll(function() {
-                        let scrollPos = $(window).scrollTop(); //得到滚动的距离
-                        if (scrollPos > 400 && scrollPos < 500) return // 防止nav出现触发再次scroll
-                        if (scrollPos >= 450) { //比较判断是否fixed
-                            below.slideUp()
-                            post_title.removeClass("post_no");
-                            above_nav.addClass("post_no")
-                        } else {
-                            below.slideDown()
-                            post_title.addClass("post_no");
-                            above_nav.removeClass("post_no")
-                        }
-                    })
-                }
-            })
+
             /* 解决移动端 hover 问题*/
             $(document).on('touchstart', e => {});
+            /* 顶部自动隐藏 */
+            this.init_head_title();
             /* 初始化页面加载 */
             this.init_page_loading();
             /* 初始化页面的hash值跳转 */
@@ -1413,6 +1392,7 @@
                 $('.j-sidebar-xs').removeClass('active');
                 $('body').css('overflow', '');
             });
+
             $('.j-sidebar-xs .item.category ul li a').unbind().bind('click',function (ev) {
                 let c = $(this);
                 c.parent().siblings(".active").toggleClass("active")
@@ -1853,6 +1833,33 @@
         /* 初始化图片懒加载 */
         init_lazy_load() {
             new LazyLoad('.lazyload');
+        }
+
+        /*顶部自动隐藏*/
+        init_head_title() {
+            $(document).ready(function() {
+                if(screen.width < 768) return
+                let header = $("header.j-header")
+                let above_nav = $(".row.above .above-nav")
+                let below = $(".row.below")
+                let navOffw = header.width()
+                let post_title = $("#post_top_title")
+                if (post_title.length > 0 && navOffw > 750) {
+                    $(window).scroll(function() {
+                        let scrollPos = $(window).scrollTop(); //得到滚动的距离
+                        if (scrollPos > 400 && scrollPos < 500) return // 防止nav出现触发再次scroll
+                        if (scrollPos >= 450) { //比较判断是否fixed
+                            below.slideUp()
+                            post_title.removeClass("post_no");
+                            above_nav.addClass("post_no")
+                        } else {
+                            below.slideDown()
+                            post_title.addClass("post_no");
+                            above_nav.removeClass("post_no")
+                        }
+                    })
+                }
+            })
         }
     }
     if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
