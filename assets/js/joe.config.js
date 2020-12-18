@@ -8,8 +8,11 @@
             this.video_page = 0;
             this.video_canLoad = true;
             this.init();
-        }
 
+        }
+        pjax_complete(){
+            this.init()
+        }
         init() {
 
             /* 解决移动端 hover 问题*/
@@ -159,7 +162,6 @@
                     return url + '?' + replaceText;
                 }
             }
-            return url + '\n' + arg + '\n' + arg_val;
         }
 
         /* 初始化页面加载 */
@@ -621,7 +623,7 @@
                 logo: 'OωO表情',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('OwO-textarea')[0],
-                api: '/usr/themes/Typecho-Joe-Theme/OwO.json',
+                api: window.JOE_CONFIG + '/usr/themes/Typecho-Joe-Theme/OwO.json',
                 position: 'down',
                 width: '100%',
                 maxHeight: '250px'
@@ -842,22 +844,23 @@
 
         /* 初始化百度收录 */
         init_baidu_collect() {
+            let baidu = $('#baiduIncluded')
             $.ajax({
                 url: window.JOE_CONFIG.THEME_URL + '/baiduRecord.php?url=' + encodeURI(window.location.href),
                 method: 'get',
                 success(res) {
                     if (!res.success) {
-                        $('#baiduIncluded').html('查询失败');
-                        $('#baiduIncluded').css('color', '#f56c6c');
+                        baidu.html('查询失败');
+                        baidu.css('color', '#f56c6c');
                     } else if (res.data.baidu === '未收录') {
                         if (window.JOE_CONFIG.DOCUMENT_BAIDU_TOKEN === '') {
-                            $('#baiduIncluded').html(`<a target="_blank" href="https://ziyuan.baidu.com/linksubmit/url?sitename=${encodeURI(window.location.href)}">未收录，去提交</a>`);
+                            baidu.html(`<a target="_blank" href="https://ziyuan.baidu.com/linksubmit/url?sitename=${encodeURI(window.location.href)}">未收录，去提交</a>`);
                         } else {
-                            $('#baiduIncluded').html('<span>未收录，点击推送</span>');
+                            baidu.html('<span>未收录，点击推送</span>');
                         }
                     } else {
-                        $('#baiduIncluded').html('百度已收录');
-                        $('#baiduIncluded').css('color', '#3bca72');
+                        baidu.html('百度已收录');
+                        baidu.css('color', '#3bca72');
                     }
                 }
             });
@@ -878,18 +881,18 @@
                             'over quota': '今日提交已上限'
                         };
                         if (res.success) {
-                            $('#baiduIncluded').css('color', '#3bca72');
-                            $('#baiduIncluded').html('推送成功！');
+                            baidu.css('color', '#3bca72');
+                            baidu.html('推送成功！');
                         } else {
-                            $('#baiduIncluded').css('color', '#e6a23c');
+                            baidu.css('color', '#e6a23c');
                             if (res.error === 401) {
-                                $('#baiduIncluded').html('Token错误！');
+                                baidu.html('Token错误！');
                             } else if (res.error === 400) {
-                                $('#baiduIncluded').html(obj[res.message] || '未知错误');
+                                baidu.html(obj[res.message] || '未知错误');
                             } else if (res.error === 404) {
-                                $('#baiduIncluded').html('地址错误！');
+                                baidu.html('地址错误！');
                             } else {
-                                $('#baiduIncluded').html('服务异常！');
+                                baidu.html('服务异常！');
                             }
                         }
                     }
@@ -983,8 +986,9 @@
 
         /* 初始化归档下拉 */
         init_file_toggle() {
-            $('.j-file .panel').first().next().slideToggle(0);
-            $('.j-file .panel').on('click', function () {
+            let jf_panel = $('.j-file .panel')
+            jf_panel.first().next().slideToggle(0);
+            jf_panel.on('click', function () {
                 let next = $(this).next();
                 next.slideToggle(200);
                 $('.j-file .panel-body').not(next).slideUp();
@@ -1021,24 +1025,26 @@
 
         /* 初始化侧边栏相关 */
         init_aside_config() {
-            let asideWidth = $('.j-aside').width();
+            let j_aside = $('.j-aside')
+            let j_header = $('.j-header')
+            let asideWidth = j_aside.width();
             if (asideWidth > 0) {
                 $('.j-stretch').addClass('active');
-                $('.j-aside').css('width', asideWidth);
+                j_aside.css('width', asideWidth);
             }
             $('.j-aside .aside')
                 .last()
-                .css('top', $('.j-header').height() + 20);
-            $('.j-floor .contain').css('top', $('.j-header').height() + 20);
-            $('.j-stretch .contain').css('top', $('.j-header').height() + 20);
+                .css('top', j_header.height() + 20);
+            $('.j-floor .contain').css('top', j_header.height() + 20);
+            $('.j-stretch .contain').css('top', j_header.height() + 20);
             $('.j-stretch .contain').on('click', function () {
                 /* 设置侧边栏宽度 */
-                if ($('.j-aside').width() === 0) {
-                    $('.j-aside').css('width', asideWidth);
-                    $('.j-aside').css('overflow', '');
+                if (j_aside.width() === 0) {
+                    j_aside.css('width', asideWidth);
+                    j_aside.css('overflow', '');
                 } else {
-                    $('.j-aside').css('width', 0);
-                    $('.j-aside').css('overflow', 'hidden');
+                    j_aside.css('width', 0);
+                    j_aside.css('overflow', 'hidden');
                 }
                 $("#commentType button[data-type='text']").click();
             });
@@ -1112,15 +1118,16 @@
             $('#commentType button').on('click', function () {
                 $('#commentType button').removeClass('active');
                 $(this).addClass('active');
+                let c_canvas = $('#commentTypeContent .canvas')
                 if ($(this).attr('data-type') === 'canvas') {
                     $('#draw').prop('width', $('#commentTypeContent').width());
                     $('#commentTypeContent textarea').hide();
-                    $('#commentTypeContent .canvas').show();
-                    $('#commentTypeContent .canvas').attr('data-type', 'canvas');
+                    c_canvas.show();
+                    c_canvas.attr('data-type', 'canvas');
                 } else {
                     $('#commentTypeContent textarea').show();
-                    $('#commentTypeContent .canvas').hide();
-                    $('#commentTypeContent .canvas').attr('data-type', 'text');
+                    c_canvas.hide();
+                    c_canvas.attr('data-type', 'text');
                 }
             });
             $('.comment-list .meta a').on('click', function () {
@@ -1357,8 +1364,9 @@
             $('.search-toggle-xs').on('click', function () {
                 $('.j-slide').removeClass('active');
                 $('.j-sidebar-xs').removeClass('active');
-                $('.j-search-down-xs').toggleClass('active');
-                if ($('.j-search-down-xs').hasClass('active')) {
+                let js_down_xs = $('.j-search-down-xs')
+                js_down_xs.toggleClass('active');
+                if (js_down_xs.hasClass('active')) {
                     $('body').css('overflow', 'hidden');
                     $('.j-header').css('box-shadow', 'none');
                 } else {
@@ -1609,12 +1617,13 @@
 						`);
                     }
                     /* 如果没填写解析，则直接中断 */
-                    if (!$('#j-video-player iframe').attr('data-src') || $('#j-video-player iframe').attr('data-src') === '') return;
+                    let jv_player = $('#j-video-player iframe')
+                    if (!jv_player.attr('data-src') || jv_player.attr('data-src') === '') return;
                     /* 点击切换播放源 */
                     $('.video-list-play .list-item li').on('click', function () {
                         $('.video-list-play .list-item li').removeClass('active');
                         $(this).addClass('active');
-                        $('#j-video-player iframe').attr('src', $('#j-video-player iframe').attr('data-src') + $(this).attr('data-link'));
+                        jv_player.attr('src', jv_player.attr('data-src') + $(this).attr('data-link'));
                         sessionStorage.setItem('playUrl', $(this).attr('data-link'));
                     });
                     /* 判断是否至少有一项 */
@@ -1630,13 +1639,13 @@
                             }
                         });
                         if (flag === true) {
-                            $('#j-video-player iframe').attr('src', $('#j-video-player iframe').attr('data-src') + sessionStorage.getItem('playUrl'));
+                            jv_player.attr('src', jv_player.attr('data-src') + sessionStorage.getItem('playUrl'));
                         } else {
-                            $('#j-video-player iframe').attr('src', $('#j-video-player iframe').attr('data-src') + firstLi.attr('data-link'));
+                            jv_player.attr('src', jv_player.attr('data-src') + firstLi.attr('data-link'));
                             firstLi.addClass('active');
                         }
                     } else {
-                        $('#j-video-player iframe').attr('src', $('#j-video-player iframe').attr('data-src') + firstLi.attr('data-link'));
+                        jv_player.attr('src', jv_player.attr('data-src') + firstLi.attr('data-link'));
                         firstLi.addClass('active');
                     }
                     $('#j-video-player-title').html('正在播放：' + item.vod_name);
@@ -1668,8 +1677,9 @@
 
         /* 初始化侧边栏一言 */
         init_aside_motto() {
+            let j_motto = $('.j-aside-motto')
             if (window.JOE_CONFIG.DOCUMENT_ASIDE_MOTTO === 'on') {
-                $('.j-aside-motto').show();
+                j_motto.show();
             } else {
                 function getMotto() {
                     $.ajax({
@@ -1677,12 +1687,12 @@
                         method: 'get',
                         dataType: 'text',
                         success: res => {
-                            $('.j-aside-motto').html(res);
-                            $('.j-aside-motto').show();
+                            j_motto.html(res);
+                            j_motto.show();
                         },
                         error: err => {
-                            $('.j-aside-motto').html('人生之路，难免坎坷，但我执着');
-                            $('.j-aside-motto').show();
+                            j_motto.html('人生之路，难免坎坷，但我执着');
+                            j_motto.show();
                         }
                     });
                 }
@@ -1721,9 +1731,9 @@
         /* 初始化动态页面回复 */
         init_dynamic_reply() {
             let _this = this;
-
+            let j_d_reply = $('.j-dynamic-reply')
             /* 页面点击关闭所有回复 */
-            $(document).on('click', () => $('.j-dynamic-reply').hide());
+            $(document).on('click', () => j_d_reply.hide());
 
             /* 点击评论按钮显示隐藏评论区域 */
             $('.j-comment-reply').on('click', function (e) {
@@ -1732,9 +1742,9 @@
             });
 
             /* 阻止事件传播 */
-            $('.j-dynamic-reply').on('click', e => e.stopPropagation());
+            j_d_reply.on('click', e => e.stopPropagation());
 
-            $('.j-dynamic-reply').on('submit', function (e) {
+            j_d_reply.on('submit', function (e) {
                 e.preventDefault();
                 if ($(this).find("input[name='author']").val().trim() === '') {
                     return $.toast({

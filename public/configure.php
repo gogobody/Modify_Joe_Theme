@@ -1,6 +1,7 @@
 <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <script>
     window.JOE_CONFIG = {
+        INDEX:'<?php echo $this->options->index ?>',
         THEME_URL: '<?php echo THEME_URL ?>',
         /* 网站切换标题 */
         DOCUMENT_TITLE: '<?php $this->options->JDocumentTitle ? $this->options->JDocumentTitle() : null ?>',

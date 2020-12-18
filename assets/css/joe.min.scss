@@ -28,6 +28,18 @@ $z-index-9: 999;
     color: #90949C;
     margin: 10px 0;
 }
+.tepasspost{
+    .tepass_content{
+        img{
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+    }
+}
 /* end */
 input[type=text],
 input[type=url],
@@ -1844,6 +1856,7 @@ table {
                         margin-top: auto;
                         align-items: center;
                         user-select: none;
+                        flex-wrap: wrap;
                         .item {
                             display: flex;
                             align-items: center;

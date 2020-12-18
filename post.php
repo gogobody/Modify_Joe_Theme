@@ -122,8 +122,6 @@ if (isset($_POST['agree'])) {
                         </div>
                     <?php endif ?>
 
-
-
                     <!-- 标签 -->
                     <?php if ($this->options->JTagStatus === 'on') : ?>
                         <?php $this->need('component/post.tag.php'); ?>

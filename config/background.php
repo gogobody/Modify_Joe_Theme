@@ -21,7 +21,7 @@
         <!-- 没填写则显示默认的灰色 -->
         <style>
             body {
-                background: #f5f5f5;
+                background: #f1f5f8;
             }
         </style>
     <?php endif; ?>
