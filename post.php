@@ -93,6 +93,11 @@ if (isset($_POST['agree'])) {
                                 ?>
                             </div>
                         <?php endif ?>
+                        <?php $all = Typecho_Plugin::export();?>
+                        <?php if (array_key_exists('TePass', $all['activated'])) : ?>
+                        <?php echo TePass_Plugin::getTePass(); ?>
+                        <?php echo TePass_Plugin::getReward(); ?>
+                        <?php endif; ?>
                     <?php else : ?>
                         <!-- 为独立页面时，直接输出 -->
                         <?php if ($this->fields->video) : ?>
