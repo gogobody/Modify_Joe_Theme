@@ -632,7 +632,6 @@
                 $('.OwO').removeClass('OwO-open');
             });
         }
-
         /* 初始化回复可见按钮 */
         init_replay_see() {
             $('.need-reply span').on('click', function () {
@@ -643,7 +642,6 @@
                 });
             });
         }
-
         /* 初始化画板功能 */
         init_draw() {
             if ($('#draw').length === 0) return;

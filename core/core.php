@@ -1354,6 +1354,48 @@ function userok($id){
 function getUserPermalink($uid){
     return Helper::options()->index.'/author/'.$uid;
 }
+
+
+// 生成地图
+function getxml(){
+
+    $doc = new \DOMDocument('1.0','utf-8');//引入类并且规定版本编码
+    $urlset = $doc->createElement("urlset");//创建节点
+
+    $db = Typecho_Db::get();
+    $result = $db->fetchAll($db->select()->from('table.contents')
+        ->where('status = ?','publish')
+        ->where('type = ?', 'post')
+        ->where('created <= unix_timestamp(now())', 'post') //添加这一句避免未达到时间的文章提前曝光
+        ->limit(100)
+        ->order('created', Typecho_Db::SORT_DESC)
+    );
+    if($result){
+        foreach($result as $val){
+            $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($val);
+            $permalink = $val['permalink'];
+            $created = date('Y-m-d', $val['created']);
+
+            /*循环输出节点*/
+            $url = $doc->createElement("url");//创建节点
+            $loc = $doc->createElement("loc");//创建节点
+            $lastmod = $doc->createElement("lastmod");//创建节点
+            $urlset->appendChild($url);//
+            $url->appendChild($loc);//讲loc放到url下
+            $url->appendChild($lastmod );
+            $content = $doc -> createTextNode($permalink);//设置标签内容
+            $contime = $doc -> createTextNode($created);//设置标签内容
+            $loc  -> appendChild($content);//将标签内容赋给标签
+            $lastmod  -> appendChild($contime);//将标签内容赋给标签
+
+        }}
+
+    $doc->appendChild($urlset);//创建顶级节点
+    $doc->save("./../sitemap.xml");//保存代码
+    echo "<script>alert('地图生成')</script>";
+}
+
+
 ?>
 
 

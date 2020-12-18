@@ -25,7 +25,7 @@
                 <?php else : ?>
                     <a href="//ae.js.cn">JOE</a>
                     <a target="_blank" href="<?php $this->options->feedUrl(); ?>">RSS</a>
-                    <a target="_blank" href="<?php echo $this->options->index . "/sitemap" ?>">MAP</a>
+                    <a target="_blank" href="<?php echo $this->options->index . "/sitemap.xml" ?>">MAP</a>
                 <?php endif; ?>
             </section>
         </section>

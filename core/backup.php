@@ -32,5 +32,11 @@
             </script>
         <?php }?>
     <?php }?>
+    <?php if($_POST["type"]=="生成地图"):
+        getxml();
+        echo '<div class="tongzhi">更新成功，请等待自动刷新，如果等不到请点击';
+        ?>
+        <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div><script language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 1000);</script>
+        <?php endif;?>
 <?php }?>
-<?php echo'<form class="j-backup" action="?'.$name.'bf" method="post"><input type="submit" name="type" value="备份模板" /><input type="submit" name="type" value="还原备份" /><input type="submit" name="type" value="删除备份" /></form>';?>
+<?php echo'<form class="j-backup" action="?'.$name.'bf" method="post"><input type="submit" name="type" value="生成地图" /><input type="submit" name="type" value="备份模板" /><input type="submit" name="type" value="还原备份" /><input type="submit" name="type" value="删除备份" /></form>';?>
