@@ -1347,6 +1347,13 @@ function userok($id){
     $userinfo=$db->fetchRow($db->select()->from ('table.users')->where ('table.users.uid=?',$id));
     return $userinfo;
 }
+
+/**
+ * getUserPermalink
+ */
+function getUserPermalink($uid){
+    return Helper::options()->index.'/author/'.$uid;
+}
 ?>
 
 

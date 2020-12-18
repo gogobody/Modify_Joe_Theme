@@ -434,7 +434,6 @@
                 </ul>
             </div>
         </div>
-        <?php $this->widget('Widget_Metas_Category_List')->to($categorys); ?>
         <?php if ($categorys->have()) : ?>
             <div class="item category">
                 <div class="card">

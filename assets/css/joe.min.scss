@@ -3048,6 +3048,7 @@ table {
                         .item {
                             display: flex;
                             align-items: center;
+                            flex-wrap: wrap;
                             .line {
                                 color: var(--seat);
                                 margin: 0 7px;
@@ -5173,37 +5174,40 @@ pre code {
             }
         }
         .item.category{
-            ul.category-nav li ul{
+        ul.category-nav li ul{
+            display: none;
+            padding-left: 2.5em;
+            opacity: 0;
+            height: 0;
+            overflow: auto;
+            -webkit-transition: all .2s ease-in-out 0s;
+            transition: all .2s ease-in-out 0s;
+            li:last-child{
+                border-bottom: none;
+            }
+        }
+        ul.category-nav li a {
+            span{
+                float: right;
+            }
+            .text-down{
                 display: none;
-                padding-left: 2.5em;
-                opacity: 0;
-                height: 0;
-                overflow: auto;
-                -webkit-transition: all .2s ease-in-out 0s;
-                transition: all .2s ease-in-out 0s;
             }
-            ul.category-nav li a {
-                span{
-                    float: right;
-                }
-                .text-down{
-                    display: none;
-                }
-            }
+        }
 
-            ul.category-nav li.active {
-                ul {
-                    display: block;
-                    opacity: 1;
-                    height: auto;
-                }
-                a .text-right{
-                    display: none;
-                }
-                a .text-down{
-                    display: block;
-                }
+        ul.category-nav li.active {
+            ul {
+                display: block;
+                opacity: 1;
+                height: auto;
             }
+            a .text-right{
+                display: none;
+            }
+            a .text-down{
+                display: block;
+            }
+        }
         }
         .user {
             text-align: center;
