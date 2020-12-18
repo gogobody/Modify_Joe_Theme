@@ -250,7 +250,7 @@
                     <?php while ($comments->next()) : ?>
                         <li>
                             <div class="user">
-                                <a href="<?php $authorlink=getUserPermalink($comments->authorId); _e($authorlink);?>"><img src="<?php ParseAvatar($comments->mail); ?>"></a>
+                                <a href="<?php if ($comments->authorId > 0 ) $authorlink=getUserPermalink($comments->authorId);else $authorlink='#'; _e($authorlink);?>"><img src="<?php ParseAvatar($comments->mail); ?>"></a>
                                 <div class="info">
                                     <div class="name"><a href="<?php _e($authorlink);?>"><?php $comments->author(false); ?></a></div>
                                     <span><?php $comments->date('Y-m-d'); ?></span>
