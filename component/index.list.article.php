@@ -10,8 +10,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
                     <span class="separ_v"><?php echo allviewnum($this->author->uid); ?></span>
                 </section>
             </div>
-            <section class="title" title="<?php $this->title() ?>">
-                <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
+            <section class="title" title="<?php $this->title() ?>"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
             </section>
             <a class="summary" href="<?php $this->permalink() ?>"><?php $this->excerpt(500) ?></a>
         </section>
@@ -151,7 +150,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
         </a>
         <section class="entry-box">
             <section class="title" title="<?php $this->title() ?>">
-                <a href="<?php $this->permalink() ?>"><?php $this->title() ?></a>
+                <a href="<?php $this->permalink() ?>"><?php listdeng($this); ?><?php $this->title() ?></a>
             </section>
             <a class="summary" href="<?php $this->permalink() ?>"><?php $this->excerpt(500) ?></a>
             <div class="meta">

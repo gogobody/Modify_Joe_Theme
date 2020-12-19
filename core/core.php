@@ -1392,9 +1392,9 @@ function listdeng($archive){
     }
     $exist = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid))['views'];
     if($exist<200){
-        /** echo '<span class="badge arc_v1"></span>';**/
+//        echo '<span class="badge arc_v1">测试</span>';
     }elseif ($exist<500 && $exist>200) {
-        //echo '<span class="badge arc_v2">新秀</span>';
+        echo '<span class="badge arc_v2">新秀</span>';
     }elseif ($exist<1000 && $exist>=500) {
         echo '<span class="badge arc_v3">推荐</span>';
     }elseif ($exist<5000 && $exist>=1000) {

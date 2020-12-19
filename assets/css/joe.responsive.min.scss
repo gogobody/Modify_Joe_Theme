@@ -19,12 +19,7 @@
         transform: translate3d(0, 0, 0);
     }
 }
-.lr-padding{
-    padding: 0 10px;
-}
-.tlr-header{
-    padding: 10px 10px 0;
-}
+
 @media (max-width: 450px) {
     .j-index {
         .main {
@@ -67,6 +62,13 @@
     }
 }
 @media (max-width: 768px) {
+    .lr-padding{
+        padding: 0 10px;
+    }
+    .tlr-header{
+        padding: 10px 10px 0;
+    }
+
     .j-search-down-xs {
         display: block;
     }
@@ -875,7 +877,6 @@
                 overflow: hidden;
                 .swiper-container {
                     width: 100%;
-                    margin-top: 20px;
                 }
                 .recommend {
                     width: 100%;

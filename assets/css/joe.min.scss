@@ -1845,6 +1845,8 @@ table {
                             text-overflow: ellipsis;
                             font-size: 18px;
                             line-height: 24px;
+                            display: flex;
+                            align-items: center;
                             &:hover {
                                 color: var(--theme);
                             }
@@ -1998,7 +2000,6 @@ table {
                         margin: 5px 10px 5px 0;
                         a {
                             font-size: 20px;
-                            display: block;
                         }
                     }
                 }
@@ -2021,7 +2022,6 @@ table {
                         margin: 5px 10px 5px 0;
                         a {
                             font-size: 18px;
-                            display: block;
                         }
                     }
                     img{
@@ -2061,7 +2061,6 @@ table {
                         margin: 5px 10px 5px 0;
                         a {
                             font-size: 18px;
-                            display: block;
                         }
                     }
                     img{
@@ -2157,6 +2156,9 @@ table {
     border-radius: 2px;
     color: var(--classD);
 }
+/**
+等级相关s
+ */
 .autlv {
     font-size: 10px;
     color: #fff;
@@ -2190,6 +2192,23 @@ table {
 .aut-6 {
     background: #f64444;
 }
+/**
+等级相关e
+ */
+.arc_v1 { background: #d1d5dc; color: #fff; }
+
+.arc_v2 { background: #54b5db; color: #fff; }
+
+.arc_v3 { background: #f6b044; color: #fff; }
+
+.arc_v4 { background: #c444f6; color: #fff; }
+
+.arc_v5 { background: #f64444; color: #fff; }
+
+.arc_v6 { color: #fff; background-image: -webkit-linear-gradient(0deg, #3ca5f6 0%, #a86af9 100%); }
+
+.arc_v7 { background: #000; color: #fff; }
+
 .j-aside {
     transition: width 0.35s;
     user-select: none;
