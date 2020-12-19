@@ -570,14 +570,8 @@
                     justify-content: center;
                     .info {
                         height: auto;
-                        img {
-                            display: none;
-                        }
                         .meta {
                             height: auto;
-                            .author {
-                                display: none;
-                            }
                         }
                     }
                     .time {
@@ -778,8 +772,7 @@
                     flex-wrap: wrap;
                     border-bottom: none;
                     .head-item {
-                        flex: unset;
-                        width: 100%;
+                        flex: 1;
                         border-bottom: 1px solid var(--classB);
                         &:nth-child(2) {
                             &::before,
@@ -791,8 +784,7 @@
                 }
                 .content {
                     textarea {
-                        background: none;
-                        height: 140px;
+                        height: auto;
                     }
                 }
             }

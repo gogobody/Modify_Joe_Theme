@@ -3071,7 +3071,7 @@ table {
                 text-shadow: var(--text_shadow);
                 text-align: center;
                 margin-bottom: 20px;
-                opacity: 0;
+                //opacity: 0; 不开打字机
             }
             .conting {
                 display: flex;
@@ -3082,6 +3082,7 @@ table {
                     display: flex;
                     align-items: center;
                     height: 42px;
+                    width: 100%;
                     img {
                         width: 35px;
                         height: 35px;
@@ -3101,9 +3102,11 @@ table {
                         .author {
                             a {
                                 font-weight: 500;
-                                color: var(--theme);
                                 &:hover {
                                     text-decoration: underline;
+                                }
+                                .autlv {
+                                    line-height: 14px;
                                 }
                             }
                         }
@@ -4298,7 +4301,7 @@ pre code {
                     transition: all 0.45s;
                     font-size: 14px;
                     color: var(--routine);
-
+                    line-height: 1.8;
                     &:focus {
                         background-position-y: 180px;
                     }

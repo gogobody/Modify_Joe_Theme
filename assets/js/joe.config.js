@@ -623,7 +623,7 @@
                 logo: 'OωO表情',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('OwO-textarea')[0],
-                api: window.JOE_CONFIG + '/usr/themes/Typecho-Joe-Theme/OwO.json',
+                api: window.JOE_CONFIG.THEME_URL + '/OwO.json',
                 position: 'down',
                 width: '100%',
                 maxHeight: '250px'

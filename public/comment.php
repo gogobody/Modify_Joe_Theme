@@ -71,7 +71,7 @@ function threadedComments($comments, $options)
                             <input id="comment-mail" type="text" value="<?php $this->remember('mail'); ?>" autocomplete="off" name="mail" placeholder="邮箱：请输入邮箱（必填）" />
                         </div>
                     <?php endif; ?>
-                    <div class="head-item">
+                    <div class="head-item d-none d-sm-block">
                         <input id="comment-url" type="text" value="<?php $this->remember('url'); ?>" autocomplete="off" name="url" placeholder="网址：请输入网址（选填）" />
                     </div>
                 </div>
