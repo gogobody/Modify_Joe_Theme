@@ -1,4 +1,4 @@
-@import "//at.alicdn.com/t/font_2277499_utvu1i7v8vo.css";
+@import "//at.alicdn.com/t/font_2277499_n6ll4sx2xan.css";
 
 $z-index-1: 111;
 $z-index-2: 222;
@@ -41,6 +41,12 @@ $z-index-9: 999;
     }
 }
 /* end */
+
+/* iconfont */
+.iconfont{
+    font-size: 14px;
+}
+/**/
 input[type=text],
 input[type=url],
 input[type=email],
@@ -326,7 +332,15 @@ table {
         }
     }
 }
-
+.drops{
+    &:hover{
+        .j-dropdown{
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) perspective(600px) rotateX(0);
+        }
+    }
+}
 .j-drop {
     display: flex;
     align-items: center;
@@ -678,6 +692,9 @@ table {
                     }
                     &.active {
                         color: var(--theme);
+                    }
+                    a{
+                        margin-right: 0;
                     }
                     .j-drop {
                         a {
@@ -1419,7 +1436,7 @@ table {
     padding-top: 20px;
     padding-bottom: 20px;
     .main {
-        padding: 0 20px;
+        padding: 20px;
         background: var(--background);
         box-shadow: var(--box-shadow);
         border-radius: var(--radius-pc);
@@ -1431,20 +1448,19 @@ table {
             color: var(--main);
             user-select: none;
             border-bottom: 1px solid var(--classC);
+            font-size: 19px;
+            text-transform: uppercase;
+            padding-bottom: 15px;
             svg {
                 width: 20px;
                 height: 20px;
                 min-width: 20px;
                 min-height: 20px;
-                margin-right: 5px;
+                margin-right: 8px;
             }
             section {
                 display: flex;
                 align-items: center;
-                .active {
-                    color: var(--theme);
-                    margin: 0 5px;
-                }
             }
         }
         .index-title {
@@ -1582,7 +1598,6 @@ table {
         .index-banner {
             width: 100%;
             display: flex;
-            padding-top: 20px;
             .swiper-container {
                 width: 0;
                 min-width: 0;
@@ -5213,10 +5228,12 @@ pre code {
                         }
                         a {
                             color: #606266;
-                            flex: 1;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            position: relative;
+                            width: 100%;
+                            display: block;
                         }
                     }
                 }

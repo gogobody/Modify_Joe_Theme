@@ -5,10 +5,6 @@
         <line x1="17.5" y1="15" x2="9" y2="15"></line>
     </svg>
     <section>
-        <span>搜索到</span>
-        <span class="active"><?php echo $this->getTotal(); ?></span>
-        <span>篇与</span>
-        <span class="active ellipsis"><?php echo $this->_keywords; ?></span>
-        <span>的结果</span>
+        <span class="ellipsis"><?php echo $this->_keywords; ?></span>
     </section>
 </section>
