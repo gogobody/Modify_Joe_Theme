@@ -7,7 +7,8 @@ beaufify Joe Theme version 4.6.1 modify by gogobody
 > Modify Joe Theme 是一款基于 joe v4.6.1 修改自用的版本。
 
 **主题地址：[Github][2]**  
-**预览：[即刻学术][3]**
+**预览：[即刻学术][3]**  
+**下载：[下载][4]**
 
 交流群：QQ 1044509220
 
@@ -30,3 +31,4 @@ beaufify Joe Theme version 4.6.1 modify by gogobody
 
 [2]: https://github.com/gogobody/Modify_Joe_Theme
 [3]: https://geekscholar.net/
+[4]: https://github.com/gogobody/Modify_Joe_Theme/archive/main.zip
