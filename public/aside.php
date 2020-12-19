@@ -209,6 +209,34 @@
         </div>
     <?php endif; ?>
 
+    <!-- 最新回复 -->
+    <?php if ($this->options->JAsideReplyStatus !== 'off') : ?>
+        <div class="aside aside-reply">
+            <h3><i class="icon iconfont icon-yuyin"></i><span>最新回复</span></h3>
+            <?php $this->widget('Widget_Comments_Recent@ok88', 'ignoreAuthor=true&pageSize=5')->to($comments); ?>
+            <?php if ($comments->have()) : ?>
+                <ol class="list" id="asideReply">
+                    <?php while ($comments->next()) : ?>
+                        <li>
+                            <div class="user">
+                                <a href="<?php if ($comments->authorId > 0 ) $authorlink=getUserPermalink($comments->authorId);else $authorlink='#'; _e($authorlink);?>"><img src="<?php ParseAvatar($comments->mail); ?>"></a>
+                                <div class="info">
+                                    <div class="name"><a href="<?php _e($authorlink);?>"><?php $comments->author(false); ?></a></div>
+                                    <span><?php $comments->date('Y-m-d'); ?></span>
+                                </div>
+                            </div>
+                            <div class="reply">
+                                <a title="<?php $comments->excerpt(); ?>" href="<?php $comments->permalink(); ?>"><?php echo ParseReply($comments->content); ?></a>
+                            </div>
+                        </li>
+                    <?php endwhile; ?>
+                </ol>
+            <?php else : ?>
+                <p class="empty">暂无回复</p>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
     <!-- 微博热搜 -->
     <?php if ($this->options->JRanking !== 'off') : ?>
         <?php
@@ -236,35 +264,6 @@
                 }
                 ?>
             </ul>
-        </div>
-    <?php endif; ?>
-
-
-    <!-- 最新回复 -->
-    <?php if ($this->options->JAsideReplyStatus !== 'off') : ?>
-        <div class="aside aside-reply">
-            <h3><i class="icon iconfont icon-yuyin"></i><span>最新回复</span></h3>
-            <?php $this->widget('Widget_Comments_Recent@ok88', 'ignoreAuthor=true&pageSize=5')->to($comments); ?>
-            <?php if ($comments->have()) : ?>
-                <ol class="list" id="asideReply">
-                    <?php while ($comments->next()) : ?>
-                        <li>
-                            <div class="user">
-                                <a href="<?php if ($comments->authorId > 0 ) $authorlink=getUserPermalink($comments->authorId);else $authorlink='#'; _e($authorlink);?>"><img src="<?php ParseAvatar($comments->mail); ?>"></a>
-                                <div class="info">
-                                    <div class="name"><a href="<?php _e($authorlink);?>"><?php $comments->author(false); ?></a></div>
-                                    <span><?php $comments->date('Y-m-d'); ?></span>
-                                </div>
-                            </div>
-                            <div class="reply">
-                                <a title="<?php $comments->excerpt(); ?>" href="<?php $comments->permalink(); ?>"><?php echo ParseReply($comments->content); ?></a>
-                            </div>
-                        </li>
-                    <?php endwhile; ?>
-                </ol>
-            <?php else : ?>
-                <p class="empty">暂无回复</p>
-            <?php endif; ?>
         </div>
     <?php endif; ?>
 

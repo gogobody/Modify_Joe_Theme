@@ -592,9 +592,65 @@ function GetRandomThumbnail($widget)
     echo $img;
 }
 
+/** 输出文章缩略图 */
+function showThumbnail($widget,$imgnum){ //获取两个参数，文章的ID和需要显示的图片数量
+    $attach = $widget->attachments(1)->attachment;
+    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
+    $patternMD = '/\!\[.*?\]\((http(s)?:\/\/.*?(jpg|png))/i';
+    $patternMDfoot = '/\[.*?\]:\s*(http(s)?:\/\/.*?(jpg|png))/i';
+
+    $imgs = [];
+    //如果文章内有插图，则调用插图
+    if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
+        for ($i = 0; $i < $imgnum; $i++) {
+            array_push($imgs,$thumbUrl[1][$i]);
+        }
+    }
+    //如果是内联式markdown格式的图片
+    else if (preg_match_all($patternMD, $widget->content, $thumbUrl)) {
+        for ($i = 0; $i < $imgnum; $i++) {
+            array_push($imgs,$thumbUrl[1][$i]);
+        }
+    }
+    //如果是脚注式markdown格式的图片
+    else if (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) {
+        for ($i = 0; $i < $imgnum; $i++) {
+            array_push($imgs,$thumbUrl[1][$i]);
+        }
+    }
+    //没有就调用第一个图片附件
+    else if ($attach && $attach->isImage) {
+        array_push($imgs,$attach->url);
+    }
+    return $imgs;
+}
+
+/** 列表衍射文章 */
+function cosmore($str){
+    if ( strpos( $str, '[post')!== false) {//提高效率，避免每篇文章都要解析
+        preg_match_all("/\[post\](.*?)\[\/post\]/sm",$str,$strcid);
+        echo '<span class="lirekan"><i class="icon iconfont icon-chuangzuo1"></i> 扩展看点 </span><ul class="lire">';
+        for($i=0;$i<count($strcid[1]);$i++){
+            $scid =  $strcid[1][$i];
+            $db = Typecho_Db::get();
+            $result = $db->fetchAll($db->select()->from('table.contents')->where('cid = ?', $scid));
+            if($result){
+                foreach($result as $val){
+                    $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($val);
+                    $post_title = htmlspecialchars($val['title']);
+                    $permalink = $val['permalink'];
+                    $post_views = number_format($val['views']);
+                    $created = date('m-d', $val['created']);
+                    $strhtml = '<li><a href="'.$permalink.'"><i class="icon iconfont icon-icon-test29"></i> '.$post_title.'</a><div class="liretime">'.$created.'</div></li>';
+                    echo $strhtml;
+                } } }
+        echo  '</ul>';
+    }
+}
+
 
 /* 获取浏览量 */
-function GetPostViews($archive)
+function GetPostViews($archive,$ret=0)
 {
     $db = Typecho_Db::get();
     $cid = $archive->cid;
@@ -612,6 +668,7 @@ function GetPostViews($archive)
             Typecho_Cookie::set('contents_views', $cookie);
         }
     }
+    if ($ret) return number_format($exist);
     echo number_format($exist);
 }
 
@@ -803,6 +860,16 @@ function themeFields($layout)
          不填写时：如果文章内有图片则取文章图片，否则取模板自带的随机缩略图'
     );
     $layout->addItem($thumb);
+
+    //单图/大图/三图显示
+    $thumbStyle = new Typecho_Widget_Helper_Form_Element_Radio('thumbStyle',
+        array('singleThumb' => _t('单图'),
+            'bigThumb' => _t('大图'),
+            'MultiThumb' => _t('三图'),
+            'shuos' => _t('说说'),
+        ),
+        'singleThumb', _t('单图/大图/三图显示/说说'), _t('默认<strong>单图</strong>，注意三图确保发布的文章必须有三张以上的图片附件'));
+    $layout->addItem($thumbStyle);
 
     $desc = new Typecho_Widget_Helper_Form_Element_Text(
         'desc',
@@ -1341,6 +1408,17 @@ function listdeng($archive){
     }
 }
 
+/**
+ * 判断时间区间
+ *
+ * 使用方法  if(timeZone($this->date->timeStamp)) echo 'ok';
+ */
+function timeZone($from){
+    $now = new Typecho_Date(Typecho_Date::gmtTime());
+    return $now->timeStamp - $from < 24*60*60 ? true : false;
+}
+
+
 // 会员页判断是否会员id
 function userok($id){
     $db = Typecho_Db::get();
@@ -1355,6 +1433,90 @@ function getUserPermalink($uid){
     return Helper::options()->index.'/author/'.$uid;
 }
 
+/**
+ * 是否开启加速更换CDN域名功能
+ */
+function stcdn($i) {
+    $cdnopen = Helper::options()->cdnopen;
+    $cdnurla = Helper::options()->cdnurla;
+    $cdnurlb = Helper::options()->cdnurlb;
+    if ($cdnopen == '0'){
+        $i = $i;
+        return $i;
+    }else {
+        $i = str_replace($cdnurla,$cdnurlb,$i);
+        return $i;
+    }
+}
+
+/** 输出文章ico样式 */
+function imgNums($content){
+    $output = preg_match_all('#<img(.*?) src="([^"]*/)?(([^"/]*)\.[^"]*)"(.*?)>#', $content,$s);
+    $cnt = count( $s[1] );
+    if(intval($cnt)==0){ //文章
+        $c = '<i class="icon iconfont icon-paihangbang"></i>'; //输出
+        return $c;
+    } else { //小图
+        $c = '<i class="icon iconfont icon-tupian"></i>'; //输出
+        return $c;
+    }
+}
+
+/**
+ * 时间友好化
+ *
+ * @access public
+ * @param mixed
+ * @return
+ */
+function formatTime($time){
+    $text = '';
+    $time = intval($time);
+    $ctime = time();
+    $t = $ctime - $time; //时间差
+    if ($t < 0) {
+        return date('Y-m-d', $time);
+    }
+    $y = date('Y', $ctime) - date('Y', $time);//是否跨年
+    switch ($t) {
+        case $t == 0:
+            $text = '刚刚';
+            break;
+        case $t < 60://一分钟内
+            $text = $t . '秒前';
+            break;
+        case $t < 3600://一小时内
+            $text = floor($t / 60) . '分钟前';
+            break;
+        case $t < 86400://一天内
+            $text = floor($t / 3600) . '小时前'; // 一天内
+            break;
+        case $t < 2592000://30天内
+            if($time > strtotime(date('Ymd',strtotime("-1 day")))) {
+                $text = '昨天';
+            } elseif($time > strtotime(date('Ymd',strtotime("-2 days")))) {
+                $text = '前天';
+            } else {
+                $text = floor($t / 86400) . '天前';
+            }
+            break;
+        case $t < 31536000 && $y == 0://一年内 不跨年
+            $m = date('m', $ctime) - date('m', $time) -1;
+            if($m == 0) {
+                $text = floor($t / 86400) . '天前';
+            } else {
+                $text = $m . '个月前';
+            }
+            break;
+        case $t < 31536000 && $y > 0://一年内 跨年
+            $text = (11 - date('m', $time) + date('m', $ctime)) . '个月前';
+            break;
+        default:
+            $text = (date('Y', $ctime) - date('Y', $time)) . '年前';
+            break;
+    }
+    return $text;
+}
 
 // 生成地图
 function getxml(){

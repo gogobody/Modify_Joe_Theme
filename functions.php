@@ -566,6 +566,11 @@ function themeConfig($form)
     $JBaiDuPushToken->setAttribute('class', 'j-setting-content j-setting-post');
     $form->addInput($JBaiDuPushToken);
 
+    //开启扩展看点
+    $Joncosmore = new Typecho_Widget_Helper_Form_Element_Select('Joncosmore',array('0'=>'关闭','1'=>'开启'),'0','是否开启列表扩展看点推荐（推荐为文章中的相关推荐文章）');
+    $Joncosmore->setAttribute('class', 'j-setting-content j-setting-post');
+    $form->addInput($Joncosmore);
+
     $JBreadStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JBreadStatus',
         array('off' => '关闭（默认）', 'on' => '开启'),
