@@ -844,7 +844,7 @@
         init_baidu_collect() {
             let baidu = $('#baiduIncluded')
             $.ajax({
-                url: window.JOE_CONFIG.THEME_URL + '/baiduRecord.php?url=' + encodeURI(window.location.href),
+                url: window.JOE_CONFIG.THEME_URL + '/baibaiduRecord.php?url=' + encodeURI(window.location.href),
                 method: 'get',
                 success(res) {
                     if (!res.success) {
@@ -854,7 +854,7 @@
                         if (window.JOE_CONFIG.DOCUMENT_BAIDU_TOKEN === '') {
                             baidu.html(`<a target="_blank" href="https://ziyuan.baidu.com/linksubmit/url?sitename=${encodeURI(window.location.href)}">未收录，去提交</a>`);
                         } else {
-                            baidu.html('<span>未收录，点击推送</span>');
+                            baidu.html('<span>点击推送</span>');
                         }
                     } else {
                         baidu.html('百度已收录');
@@ -1845,27 +1845,52 @@
 
         /*顶部自动隐藏*/
         init_head_title() {
+            let header = $("header.j-header")
+            let above_nav = $(".row.above .above-nav")
+            let below = $(".row.below")
+            let post_title = $("#post_top_title")
+            let canSlideDown = true
+            let canSlideUp = true
+            let showNav = function(){
+                post_title.addClass("post_no")
+                above_nav.removeClass("post_no")
+                below.slideDown("fast",function (){
+                    canSlideDown = true
+                })
+            }
+            let hideNav = function(){
+                post_title.removeClass("post_no");
+                above_nav.addClass("post_no")
+                below.slideUp("normal",function () {
+                    canSlideUp = true
+                })
+            }
+
             $(document).ready(function() {
                 if(screen.width < 768) return
-                let header = $("header.j-header")
-                let above_nav = $(".row.above .above-nav")
-                let below = $(".row.below")
                 let navOffw = header.width()
-                let post_title = $("#post_top_title")
+                let lastScrollPos = 0
                 if (post_title.length > 0 && navOffw > 750) {
                     $(window).scroll(function() {
                         let scrollPos = $(window).scrollTop(); //得到滚动的距离
                         if (scrollPos > 400 && scrollPos < 500) return // 防止nav出现触发再次scroll
                         if (scrollPos >= 450) { //比较判断是否fixed
-                            below.slideUp()
-                            post_title.removeClass("post_no");
-                            above_nav.addClass("post_no")
+                            if (lastScrollPos > scrollPos && canSlideUp){ //向上滚动举例超过100
+                                canSlideDown = false
+                                showNav()
+                            }
+                            else{
+                                if (canSlideDown){
+                                    canSlideUp = false
+                                    hideNav()
+                                }
+                            }
                         } else {
-                            below.slideDown()
-                            post_title.addClass("post_no");
-                            above_nav.removeClass("post_no")
+                            showNav()
                         }
+                        lastScrollPos = scrollPos
                     })
+
                 }
             })
         }
