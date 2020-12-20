@@ -1523,6 +1523,7 @@ function getxml(){
 
     $doc = new \DOMDocument('1.0','utf-8');//引入类并且规定版本编码
     $urlset = $doc->createElement("urlset");//创建节点
+    $urlset->setAttribute('xmlns',"http://www.sitemaps.org/schemas/sitemap/0.9");
 
     $db = Typecho_Db::get();
     $result = $db->fetchAll($db->select()->from('table.contents')
