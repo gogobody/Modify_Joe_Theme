@@ -184,7 +184,7 @@ if (isset($_POST['agree'])) {
                                             $this->widget('Widget_Archive@hotss' . $count['cid'], 'pageSize=1&type=post', 'cid=' . $count['cid'])->to($jis);
                                             $views = $count['views'];
                                             $created = date('m-d', $jis->created);
-                                            $img_url = stcdn(GetRandomThumbnail($ji,1));
+                                            $img_url = stcdn(GetRandomThumbnail($jis,1));
                                             if ($jis->fields->video) {
                                                 $stico = '<i class="icon iconfont icon-bofang"></i>';
                                             } else {
@@ -199,14 +199,13 @@ if (isset($_POST['agree'])) {
                                     </ul>
                                 </div>
                             </div>
-                            <!--30天热门-->
+                            <!--用户访客-->
                             <div id="div-4" class="mod-column column-nav">
                                 <div class="mod-column-head">
                                     <div class="mod-column-title">用户访客</div>
                                 </div>
                                 <div class="mod-column-body">
                                     <ul class="mod-list row">
-
                                         <?php
                                         $period = time() - 999592000; // 時段: 30 天, 單位: 秒
                                         $counts = Typecho_Db::get()->fetchAll(Typecho_Db::get()
@@ -231,7 +230,7 @@ if (isset($_POST['agree'])) {
                                                                 <div class="product-content">
                                                                     <div class="product-title">' . $count['author'] . '</div>';
                                             } else {
-                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-3"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" target="_blank" >
+                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-3"><a href="'. getUserPermalink($count['authorId']) . '" target="_blank" >
                                                                 <div class="product-image">
                                                                     <img class="lazyload" data-original="' . $avatar_url . '" src="' . $default_avatar . '">
                                                                 </div>
