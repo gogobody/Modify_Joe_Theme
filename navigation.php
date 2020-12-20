@@ -98,6 +98,7 @@ if (isset($_POST['agree'])) {
                                                 ->limit('12')
                                             );
                                             foreach ($counts as $count) {
+                                                $ji = null;
                                                 $this->widget('Widget_Archive@hots' . $count['cid'], 'pageSize=1&type=post', 'cid=' . $count['cid'])->to($ji);
 
                                                 $likes = $count['agree'];
@@ -109,7 +110,7 @@ if (isset($_POST['agree'])) {
                                                 } else {
                                                     $stico = imgNums($ji->content);
                                                 }
-                                                $html = $html . '<li class="mod-list-item col-md-3 col-xs-6 col-sm-3"><div class="feaimg"><a href="' . $ji->permalink . '"><img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-original="'.$img_url.'"></a><div class="kan-icon">' . $stico . '</div></div><div class="meta"><div class="modnews-title"><a href="' . $ji->permalink . '">' . $ji->title . '</a></div><div class="info"> <img src="' . $avatar_url . '" class="avatar"><span class="scname">' . $ji->author->screenName . '</span><span class="info_r">' . $likes . '人点赞</span></div></div></li>';
+                                                $html = $html . '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><div class="feaimg"><a href="' . $ji->permalink . '"><img class="lazyload" src="'.GetLazyLoad().'" data-original="'.$img_url.'"></a><div class="kan-icon">' . $stico . '</div></div><div class="meta"><div class="modnews-title"><a href="' . $ji->permalink . '">' . $ji->title . '</a></div><div class="info"> <img src="' . $avatar_url . '" class="avatar"><span class="scname">' . $ji->author->screenName . '</span><span class="info_r">' . $likes . '人点赞</span></div></div></li>';
                                             }
                                             echo $html;
                                             ?>
@@ -150,7 +151,7 @@ if (isset($_POST['agree'])) {
                                             } else {
                                                 $stico = imgNums($ji->content);
                                             }
-                                            $html = $html . '<li class="mod-list-item col-md-3 col-xs-6 col-sm-3"><div class="feaimg"><a href="' . $ji->permalink . '"><img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-original="'.$img_url.'"></a><div class="kan-icon">' . $stico . '</div></div><div class="meta"><div class="modnews-title"><a href="' . $ji->permalink . '">' . $ji->title . '</a></div><div class="info"><img src="' . $avatar_url . '" class="avatar"><span class="scname">' . $ji->author->screenName . '</span><span class="info_r">' . $created . ' </span></div></div></li>';
+                                            $html = $html . '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><div class="feaimg"><a href="' . $ji->permalink . '"><img class="lazyload" src="'.GetLazyLoad().'" data-original="'.$img_url.'"></a><div class="kan-icon">' . $stico . '</div></div><div class="meta"><div class="modnews-title"><a href="' . $ji->permalink . '">' . $ji->title . '</a></div><div class="info"><img src="' . $avatar_url . '" class="avatar"><span class="scname">' . $ji->author->screenName . '</span><span class="info_r">' . $created . ' </span></div></div></li>';
                                         }
                                         echo $html;
                                         ?>
@@ -181,6 +182,7 @@ if (isset($_POST['agree'])) {
                                             ->limit('12')
                                         );
                                         foreach ($counts as $count) {
+                                            $jis = null;
                                             $this->widget('Widget_Archive@hotss' . $count['cid'], 'pageSize=1&type=post', 'cid=' . $count['cid'])->to($jis);
                                             $views = $count['views'];
                                             $created = date('m-d', $jis->created);
@@ -191,7 +193,7 @@ if (isset($_POST['agree'])) {
                                                 $stico = imgNums($jis->content);
                                             }
                                             $avatar_url = ParseAvatar($jis->author->mail, 1);
-                                            $htmls = $htmls . '<li class="mod-list-item col-md-3 col-xs-6 col-sm-3"><div class="feaimg"><a href="' . $jis->permalink . '"><img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-original="'.$img_url.'"></a><div class="kan-icon">' . $stico . '</div></div><div class="meta"><div class="modnews-title"><a href="' . $jis->permalink . '">' . $jis->title . '</a></div><div class="info"> <img src="' . $avatar_url . '" class="avatar"><span class="scname">' . $jis->author->screenName . '</span><span class="info_r">' . $views . ' 阅读</span></div></div></li>';
+                                            $htmls = $htmls . '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><div class="feaimg"><a href="' . $jis->permalink . '"><img class="lazyload" src="'.GetLazyLoad().'" data-original="'.$img_url.'"></a><div class="kan-icon">' . $stico . '</div></div><div class="meta"><div class="modnews-title"><a href="' . $jis->permalink . '">' . $jis->title . '</a></div><div class="info"> <img src="' . $avatar_url . '" class="avatar"><span class="scname">' . $jis->author->screenName . '</span><span class="info_r">' . $views . ' 阅读</span></div></div></li>';
                                         }
                                         echo $htmls;
                                         ?>
@@ -223,14 +225,14 @@ if (isset($_POST['agree'])) {
                                         foreach ($counts as $count) {
                                             $avatar_url = ParseAvatar($count['mail'], 1);
                                             if ($count['authorId'] == '0') {
-                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-3"><a href="' . $this->options->siteUrl . '" target="_blank" >
+                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><a href="' . $this->options->siteUrl . '" target="_blank" >
                                                                 <div class="product-image">
                                                                     <img class="lazyload" data-original="' . $avatar_url . '" src="' . $default_avatar . '">
                                                                 </div>
                                                                 <div class="product-content">
                                                                     <div class="product-title">' . $count['author'] . '</div>';
                                             } else {
-                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-3"><a href="'. getUserPermalink($count['authorId']) . '" target="_blank" >
+                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><a href="'. getUserPermalink($count['authorId']) . '" target="_blank" >
                                                                 <div class="product-image">
                                                                     <img class="lazyload" data-original="' . $avatar_url . '" src="' . $default_avatar . '">
                                                                 </div>

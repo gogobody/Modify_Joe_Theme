@@ -920,6 +920,11 @@
             padding-top: 20px;
         }
     }
+    .j-navigation{
+        .nav-sidebar{
+            display: none;
+        }
+    }
 }
 @media (max-width: 450px) {
     .j-index {
