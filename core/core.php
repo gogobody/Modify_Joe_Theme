@@ -568,7 +568,7 @@ class Widget_Post_hot extends Widget_Abstract_Contents
 }
 
 /* 随机图片 */
-function GetRandomThumbnail($widget)
+function GetRandomThumbnail($widget, $ret = 0)
 {
     $random = 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/random/' . rand(1, 25) . '.webp';
     if (Helper::options()->Jmos) {
@@ -589,9 +589,9 @@ function GetRandomThumbnail($widget)
     } elseif (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) {
         $img = $thumbUrl[1][0];
     }
-    echo $img;
+    if ($ret) return $img;
+    else echo $img;
 }
-
 /** 输出文章缩略图 */
 function showThumbnail($widget,$imgnum){ //获取两个参数，文章的ID和需要显示的图片数量
     $attach = $widget->attachments(1)->attachment;

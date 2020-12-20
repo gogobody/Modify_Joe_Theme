@@ -1304,11 +1304,12 @@
                         message: '请输入正确的邮箱！'
                     });
                 }
+                let commen_con = $('#comment-content')
                 if ($('#commentTypeContent .canvas').attr('data-type') === 'canvas') {
                     let url = $('#draw')[0].toDataURL('image/webp', 0.1);
-                    $('#comment-content').val('{!{' + url + '}!} ');
+                    commen_con.val('{!{' + url + '}!} ');
                 }
-                if ($('#comment-content').val().trim() === '') {
+                if (commen_con.val().trim() === '') {
                     return $.toast({
                         type: 'warning',
                         message: '请输入评论内容！'

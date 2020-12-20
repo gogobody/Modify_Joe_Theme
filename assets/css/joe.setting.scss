@@ -5,6 +5,7 @@
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
+
 html, body {
     scroll-behavior: smooth;
 }
@@ -12,7 +13,6 @@ html, body {
 li {
     list-style: none;
 }
-
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
