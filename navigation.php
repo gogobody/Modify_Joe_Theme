@@ -289,7 +289,7 @@ if (isset($_POST['agree'])) {
 
 <!-- 配置文件 -->
 <?php $this->need('public/config.php'); ?>
-<script>$(document).ready(function(){Joe.init_navigation()})</script>
+<script>$(document).ready(function(){window.JoeInstance.init_navi()})</script>
 </body>
 
 
