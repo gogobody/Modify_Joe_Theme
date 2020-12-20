@@ -145,6 +145,7 @@
             this.init_video_album();
             /* 初始化图片懒加载 */
             this.init_lazy_load();
+
         }
 
         /* 格式化url参数 */
@@ -1894,6 +1895,17 @@
 
                 }
             })
+        }
+
+        /* 初始化导航 */
+        init_navigation(){
+            $('#siteNav li.nav-list-item').on('click', function (e) {
+                e.preventDefault();
+                window.scroll({
+                    top: $($(this).children('a').attr('data-href')).offset().top - ($('.j-header').height() + 20),
+                    behavior: 'smooth'
+                });
+            });
         }
     }
     if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

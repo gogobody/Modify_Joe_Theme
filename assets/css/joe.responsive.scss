@@ -283,6 +283,31 @@
             right: 20px;
         }
     }
+    .j-navigation{
+        .nav-main{
+            .big-mod-column-body{
+                .mod-list{
+                    .mod-list-item{
+                        .meta{
+                            .info{
+                                line-height: 15px;
+                                img{
+                                    display: none;
+                                }
+                                .scname{
+                                    line-height: 15px;
+                                }
+                                .info_r{
+                                    top: 0;
+                                    line-height: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 @media (max-width: 768px) {
     .lr-padding{

@@ -44,7 +44,7 @@ if (isset($_POST['agree'])) {
                     <div class="nav-sidebar">
                         <nav class="nav">
                             <span class="nav-title">站点导航</span>
-                            <ul class="nav-list">
+                            <ul class="nav-list" id="siteNav">
                                 <li class="nav-list-item active"><a href="#div-1" class="nav-item active">
                                             <i class="icon iconfont icon-zan"></i> 最多点赞</a></li>
                                 <li class="nav-list-item"><a href="#div-2" class="nav-item"><i
@@ -289,6 +289,7 @@ if (isset($_POST['agree'])) {
 
 <!-- 配置文件 -->
 <?php $this->need('public/config.php'); ?>
+<script>$(document).ready(function(){Joe.init_navigation()})</script>
 </body>
 
 
