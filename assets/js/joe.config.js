@@ -1854,6 +1854,7 @@
         /*顶部自动隐藏*/
         init_head_title() {
             let header = $("header.j-header")
+            let row_above = $(".row.above")
             let above_nav = $(".row.above .above-nav")
             let below = $(".row.below")
             let post_title = $("#post_top_title")
@@ -1875,31 +1876,65 @@
             }
 
             $(document).ready(function() {
-                if(screen.width < 768) return
-                let navOffw = header.width()
                 let lastScrollPos = 0
-                if (post_title.length > 0 && navOffw > 750) {
+                if(screen.width < 768) {
                     $(window).scroll(function() {
                         let scrollPos = $(window).scrollTop(); //得到滚动的距离
-                        if (scrollPos > 400 && scrollPos < 500) return // 防止nav出现触发再次scroll
+                        if (scrollPos > 395 && scrollPos < 505) return // 防止nav出现触发再次scroll
+                        console.log(scrollPos)
                         if (scrollPos >= 450) { //比较判断是否fixed
-                            if (lastScrollPos > scrollPos && canSlideUp){ //向上滚动举例超过100
+                            if (lastScrollPos > scrollPos && canSlideUp){
                                 canSlideDown = false
-                                showNav()
+                                row_above.slideDown("fast",function (){
+                                    setTimeout(function () {
+                                        canSlideDown = true
+                                    },300)
+                                })
                             }
                             else{
                                 if (canSlideDown){
                                     canSlideUp = false
-                                    hideNav()
+                                    row_above.slideUp("normal",function () {
+                                        setTimeout(function () {
+                                            canSlideUp = true
+                                        },300)
+                                    })
                                 }
                             }
                         } else {
-                            showNav()
+                            row_above.slideDown("fast",function (){
+                                setTimeout(function () {
+                                    canSlideDown = true
+                                },300)
+                            })
                         }
                         lastScrollPos = scrollPos
                     })
-
+                }else {
+                    let navOffw = header.width()
+                    if (post_title.length > 0 && navOffw > 750) {
+                        $(window).scroll(function() {
+                            let scrollPos = $(window).scrollTop(); //得到滚动的距离
+                            if (scrollPos > 400 && scrollPos < 500) return // 防止nav出现触发再次scroll
+                            if (scrollPos >= 450) { //比较判断是否fixed
+                                if (lastScrollPos > scrollPos && canSlideUp){ //向上滚动举例超过100
+                                    canSlideDown = false
+                                    showNav()
+                                }
+                                else{
+                                    if (canSlideDown){
+                                        canSlideUp = false
+                                        hideNav()
+                                    }
+                                }
+                            } else {
+                                showNav()
+                            }
+                            lastScrollPos = scrollPos
+                        })
+                    }
                 }
+
             })
         }
 
