@@ -1,4 +1,6 @@
 <?php
+require_once 'utils.php';
+
 define("THEME_URL", str_replace('//usr', '/usr', str_replace(Helper::options()->siteUrl, Helper::options()->rootUrl . '/', Helper::options()->themeUrl)));
 $str1 = explode('/themes/', (THEME_URL . '/'));
 $str2 = explode('/', $str1[1]);
@@ -124,7 +126,7 @@ function ParseCode($text)
 }
 
 /* 解析到CDN */
-function Load2Cdn($obj,$way = "origin")
+function Load2Cdn($obj,$way = "origin") // $way = "origin" 使用原生 markdown 解析
 {
     if ($way == "origin") {
         $content = $obj->content;
@@ -135,7 +137,7 @@ function Load2Cdn($obj,$way = "origin")
     $options = Helper::options();
     //镜像处理文章中的图片，并自动处理大小和格式，
     if ($options->JPic2cdn != ""){
-        $cdnArray = explode("|", $options->JPic2cdn);
+        $cdnArray = explode("||", $options->JPic2cdn);
         $localUrl = str_replace("/", "\/", $options->rootUrl);//本地加速域名
         $cdnUrl = trim($cdnArray[0], " \t\n\r\0\x0B\2F");//cdn自定义域名
         $width = 0;
@@ -444,6 +446,7 @@ function themeInit($archive)
     if ($archive->is('single')) {
         $archive->content = ParseReply($archive->content);
         $archive->content = CreateCatalog($archive->content);
+        $archive->content = Load2Cdn($archive);
         $archive->content = ParseCode($archive->content);
     }
     if ($archive->request->isPost() && $archive->request->likeup) {

@@ -28,7 +28,7 @@ class Utils{
         if ($options->JPic2cdn!=""){//开启了镜像存储的功能
 
             if ($cdnType == null){//如果参数中没有cdnType，这里会进行获取cdn类型
-                $cdnArray = explode("|",$options->JPic2cdn);
+                $cdnArray = explode("||",$options->JPic2cdn);
                 $cdnType = trim($cdnArray[1]);
             }
 
