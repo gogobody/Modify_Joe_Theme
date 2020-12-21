@@ -2,6 +2,8 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once("core/core.php");
+require_once 'core/Widget/Widget_Contents_Post_Recent_User.php';
+
 function themeConfig($form)
 {
     $db = Typecho_Db::get();
@@ -33,6 +35,7 @@ function themeConfig($form)
                     <li data-current="j-setting-aside">侧栏设置</li>
                     <li data-current="j-setting-color">色彩圆角</li>
                     <li data-current="j-setting-index">首页设置</li>
+                    <li data-current="j-setting-speed">速度优化</li>
                     <li data-current="j-setting-other">其他设置</li>
                 </ul>
                 <?php require_once("core/backup.php"); ?>
@@ -1559,6 +1562,52 @@ function themeConfig($form)
     $JMobiset = new Typecho_Widget_Helper_Form_Element_Select('JMobiset',array(0=>'不开启',1=>'开启'),0,'<h2>移动设置 Info</h2><hr>移动底部菜单设置','移动端页脚底部菜单');
     $JMobiset->setAttribute('class', 'j-setting-content j-setting-index');
     $form->addInput($JMobiset);
+
+    /**
+     * 速度优化
+     */
+    $JPic2cdn = new Typecho_Widget_Helper_Form_Element_Text(
+            'JPic2cdn',NULL,'','本地图片云存储(镜像)加速',
+            '通过各大服务商的镜像存储功能，将博客的本地图片（即在本服务器上的图片）自动替换为对应镜像空间的图片地址，而在第一次访问的时候，会自动将本地服务器图片上传到镜像空间（需要在服务商进行配置 加速域名）。<br>
+                而通常访问云服务器的速度要比本服务器速度要快（因为云服务器具有cdn特性）。<br>
+                填写内容格式为 自定义域名 | CDN 类型<br>
+                举例： https://assets.ihewro.com | UPYUN 在服务商的镜像空间配置加速域名为 https://www.ihewro.com<br>
+                支持以下服务商：<br>
+                七牛云「QINIU」<br>
+                又拍云「UPYUN」<br>
+                阿里云「ALIOSS」<br>
+                腾讯云「QCLOUD」<br>
+                tinypng「TINYPNG」<br>
+                '
+    );
+    $JPic2cdn->setAttribute('class', 'j-setting-content j-setting-speed');
+    $form->addInput($JPic2cdn);
+
+    $JLocalAssets2cdn = new Typecho_Widget_Helper_Form_Element_Text(
+        'JLocalAssets2cdn',NULL,'','将本地静态资源上传到你的cdn上',
+        '使用该项设置前，你必须有自己搭建的cdn服务器（不是指当前服务器）<br>
+                主题目录下的/assets/目录下有 css、js、fonts、img四个静态资源文件夹。<br>
+                你需要把asset目录上传到你的cdn服务器上，比如CDN服务器的 handsome目录里，地址即为 https://cdn.ihewro.com/handsome/assets/<br>
+                在当前框中就填入该地址，主题就会引用你搭建的cdn上面的资源，而不再引用当前服务器上的资源<br>
+                <strong>「本地图片云存储(镜像)加速」配置了，这个则不需要再配置了。如果上面的没配置，配置该选项也有一定的加速效果<strong><br>'
+    );
+    $JLocalAssets2cdn->setAttribute('class', 'j-setting-content j-setting-speed');
+    $form->addInput($JLocalAssets2cdn);
+
+    $JCloudOptions = new Typecho_Widget_Helper_Form_Element_Checkbox(
+            'JCloudOptions',
+            array(
+                0 => '为博客中的图片自动转换合适的大小和格式，并自动对图片进行无损压缩'
+            ),NULL,'云存储选项',"<span style='color: red'>使用该项配置前，需要先配置 <code>本地图片云存储(镜像)加速</code> </span></br>* 
+                    我们使用的图片大小尺寸很多时候是大于所需要的尺寸（div的尺寸），造成图片加载缓慢，启动第一项配置会自动使用云存储服务商提供的图片处理对图片进行处理，以便加载更小的体积。具体细节请看 <a href=\"https://handsome.ihewro.com/#/functions\">详细使用文档</a>");
+    $JCloudOptions->setAttribute('class', 'j-setting-content j-setting-speed');
+    $form->addInput($JCloudOptions);
+
+
+    //文章图片自定义大小
+    $JImagePostSuffix = new Typecho_Widget_Helper_Form_Element_Text("JImagePostSuffix",null,"","云存储文章图片处理后缀","<p style='color: red'>使用该项配置前，需要先配置 <code>本地图片云存储(镜像)加速</code> </p> <strong style='color: red'> 不明白该项是什么，请务必清空！！该项仅对文章中的图片生效</strong> <p>如果你的使用了镜像存储的话，一般服务商都支持对图片进行大小、质量的处理。比如又拍云对图片的宽度缩小的参数是 <code>/fw/width</code>,此时你在该设置框里面填写的就是 <code>/fw/300</code>，其中300是你希望的图片的宽度，支持多个参数组合，如 <code>/fw/300/fh/200</code></p>");
+    $JImagePostSuffix->setAttribute('class', 'j-setting-content j-setting-speed');
+    $form->addInput($JImagePostSuffix);
 
     /* 其他设置 */
 

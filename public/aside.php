@@ -1,34 +1,31 @@
+<?php
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
+
+?>
+
 <div class="j-aside">
-
-
     <?php if ($this->options->JAuthorStatus !== 'off') : ?>
+        <?php if ($this->is('index')): ?>
+        <?php /* 登录了 */ if ($this->user->hasLogin()): ?>
         <div class="aside aside-user">
             <div class="user">
-                <img src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" />
-                <?php if ($this->options->JAuthorLink) : ?>
-                    <a href="<?php $this->options->JAuthorLink(); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
-                <?php else : ?>
-                    <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
-                <?php endif; ?>
+                <img src="<?php ParseAvatar($this->user->mail); ?>"/>
+                <a href="<?php echo getUserPermalink($this->user->uid); ?>"><?php $this->user->screenName();autvip($this->user->mail); ?></a>
                 <!-- 座右铭 -->
-                <?php if ($this->options->JMotto) : ?>
-                    <div class="p j-aside-motto"><?php GetRandomMotto(); ?></div>
-                <?php else : ?>
-                    <div class="p j-aside-motto"></div>
-                <?php endif; ?>
+                <div class="p j-aside-motto"></div>
             </div>
-            <?php Typecho_Widget::widget('Widget_Stat')->to($quantity); ?>
             <div class="webinfo">
                 <div class="item" title="累计文章数">
-                    <span class="num"><?php echo number_format($quantity->publishedPostsNum); ?></span>
+                    <span class="num"><?php echo allpostnum($this->user->uid, 1); ?></span>
                     <span>文章数</span>
                 </div>
                 <div class="item" title="累计评论数">
-                    <span class="num"><?php echo number_format($quantity->publishedCommentsNum); ?></span>
+                    <span class="num"><?php echo commentnum($this->user->uid); ?></span>
                     <span>评论量</span>
                 </div>
             </div>
-            <?php $this->widget('Widget_Contents_Post_Recent@aside565', 'pageSize=' . $this->options->JAuthorStatus)->to($hot); ?>
+            <?php $this->widget('Widget_Contents_Post_Recent_User@aside565', 'pageSize=' . $this->options->JAuthorStatus . '&uid=' . $this->user->uid)->to($hot);?>
             <?php if ($hot->have()) : ?>
                 <ul class="articles">
                     <?php while ($hot->next()) : ?>
@@ -42,6 +39,81 @@
                 </ul>
             <?php endif; ?>
         </div>
+        <?php else:?>
+            <div class="aside aside-user">
+                <div class="user">
+                    <img src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" />
+                    <?php if ($this->options->JAuthorLink) : ?>
+                        <a href="<?php $this->options->JAuthorLink(); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
+                    <?php else : ?>
+                        <a href="<?php echo getUserPermalink($this->author->uid); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
+                    <?php endif; ?>
+                    <!-- 座右铭 -->
+                    <?php if ($this->options->JMotto) : ?>
+                        <div class="p j-aside-motto"><?php GetRandomMotto(); ?></div>
+                    <?php else : ?>
+                        <div class="p j-aside-motto"></div>
+                    <?php endif; ?>
+                </div>
+                <?php Typecho_Widget::widget('Widget_Stat')->to($quantity); ?>
+                <div class="webinfo">
+                    <div class="item" title="累计文章数">
+                        <span class="num"><?php echo number_format($quantity->publishedPostsNum); ?></span>
+                        <span>文章数</span>
+                    </div>
+                    <div class="item" title="累计评论数">
+                        <span class="num"><?php echo number_format($quantity->publishedCommentsNum); ?></span>
+                        <span>评论量</span>
+                    </div>
+                </div>
+                <?php $this->widget('Widget_Contents_Post_Recent@aside565', 'pageSize=' . $this->options->JAuthorStatus)->to($hot); ?>
+                <?php if ($hot->have()) : ?>
+                    <ul class="articles">
+                        <?php while ($hot->next()) : ?>
+                            <li title="<?php $hot->title(); ?>">
+                                <a href="<?php $hot->permalink(); ?>"><?php $hot->title(); ?></a>
+                                <svg t="1599802830077" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M448.12 320.331a30.118 30.118 0 0 1-42.616-42.586L552.568 130.68a213.685 213.685 0 0 1 302.2 0l38.552 38.551a213.685 213.685 0 0 1 0 302.2L746.255 618.497a30.118 30.118 0 0 1-42.586-42.616l147.034-147.035a153.45 153.45 0 0 0 0-217.028l-38.55-38.55a153.45 153.45 0 0 0-216.998 0L448.12 320.33zM575.88 703.67a30.118 30.118 0 0 1 42.616 42.586L471.432 893.32a213.685 213.685 0 0 1-302.2 0l-38.552-38.551a213.685 213.685 0 0 1 0-302.2l147.065-147.065a30.118 30.118 0 0 1 42.586 42.616L173.297 595.125a153.45 153.45 0 0 0 0 217.027l38.55 38.551a153.45 153.45 0 0 0 216.998 0L575.88 703.64z m-234.256-63.88L639.79 341.624a30.118 30.118 0 0 1 42.587 42.587L384.21 682.376a30.118 30.118 0 0 1-42.587-42.587z" p-id="7351"></path>
+                                </svg>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <?php else:?>
+            <div class="aside aside-user">
+                <div class="user">
+                    <img src="<?php ParseAvatar($this->author->mail); ?>"/>
+                    <a href="<?php echo getUserPermalink($this->author->uid); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
+                    <!-- 座右铭 -->
+                    <div class="p j-aside-motto"></div>
+                </div>
+                <div class="webinfo">
+                    <div class="item" title="累计文章数">
+                        <span class="num"><?php echo allpostnum($this->author->uid, 1); ?></span>
+                        <span>文章数</span>
+                    </div>
+                    <div class="item" title="累计评论数">
+                        <span class="num"><?php echo commentnum($this->author->uid); ?></span>
+                        <span>评论量</span>
+                    </div>
+                </div>
+                <?php $this->widget('Widget_Contents_Post_Recent_User@aside565', 'pageSize=' . $this->options->JAuthorStatus . '&uid=' . $this->author->uid)->to($hot);?>
+                <?php if ($hot->have()) : ?>
+                    <ul class="articles">
+                        <?php while ($hot->next()) : ?>
+                            <li title="<?php $hot->title(); ?>">
+                                <a href="<?php $hot->permalink(); ?>"><?php $hot->title(); ?></a>
+                                <svg t="1599802830077" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M448.12 320.331a30.118 30.118 0 0 1-42.616-42.586L552.568 130.68a213.685 213.685 0 0 1 302.2 0l38.552 38.551a213.685 213.685 0 0 1 0 302.2L746.255 618.497a30.118 30.118 0 0 1-42.586-42.616l147.034-147.035a153.45 153.45 0 0 0 0-217.028l-38.55-38.55a153.45 153.45 0 0 0-216.998 0L448.12 320.33zM575.88 703.67a30.118 30.118 0 0 1 42.616 42.586L471.432 893.32a213.685 213.685 0 0 1-302.2 0l-38.552-38.551a213.685 213.685 0 0 1 0-302.2l147.065-147.065a30.118 30.118 0 0 1 42.586 42.616L173.297 595.125a153.45 153.45 0 0 0 0 217.027l38.55 38.551a153.45 153.45 0 0 0 216.998 0L575.88 703.64z m-234.256-63.88L639.79 341.624a30.118 30.118 0 0 1 42.587 42.587L384.21 682.376a30.118 30.118 0 0 1-42.587-42.587z" p-id="7351"></path>
+                                </svg>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        <?php endif;?>
     <?php endif; ?>
     <!--互动读者-->
     <?php if ($this->options->JactiveUsers and $this->is('index')): ?>

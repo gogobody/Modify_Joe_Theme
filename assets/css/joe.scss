@@ -6022,7 +6022,12 @@ author page
 
         .avatar { border-radius: 100%; margin-top: -10px; margin-bottom: 10px; position: relative; }
 
-        .name { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+        .name {
+            font-size: 18px; font-weight: 600; margin-bottom: 10px;
+            .autlv{
+                vertical-align: middle;
+            }
+        }
 
         .desc { color: var(--routine); font-size: 14px; margin-bottom: 10px; }
 

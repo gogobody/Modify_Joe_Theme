@@ -123,6 +123,44 @@ function ParseCode($text)
     return $text;
 }
 
+/* 解析到CDN */
+function Load2Cdn($obj,$way = "origin")
+{
+    if ($way == "origin") {
+        $content = $obj->content;
+    } else {
+        $content = $obj->content;
+    }
+
+    $options = Helper::options();
+    //镜像处理文章中的图片，并自动处理大小和格式，
+    if ($options->JPic2cdn != ""){
+        $cdnArray = explode("|", $options->JPic2cdn);
+        $localUrl = str_replace("/", "\/", $options->rootUrl);//本地加速域名
+        $cdnUrl = trim($cdnArray[0], " \t\n\r\0\x0B\2F");//cdn自定义域名
+        $width = 0;
+        $suffix = Utils::getImageAddOn($options, true, trim($cdnArray[1]), $width, 0, "post");//图片云处理后缀
+        $content = preg_replace_callback('/(<img\s[^>]*?src=")' . $localUrl . '([^>]*?)"([^>]*?)alt="([^>]*?)"([^>]*?>)/',
+            function ($matches) use ($cdnUrl, $suffix) {
+                $alt = $matches[4];
+                //判断是否需要加云处理后缀的
+                if (strpos($matches[4], " ':ignore'") !== false) {
+                    //alt文本去掉信息元素
+                    $alt = str_replace(" ':ignore'", "", $alt);
+                    return $matches[1] . $cdnUrl
+                        . $matches[2] . "\"" . $matches[3] . 'alt="' . $alt . '"' . $matches[5];
+                } else {
+                    return $matches[1] . $cdnUrl
+                        . $matches[2] . $suffix . "\"" . $matches[3] . 'alt="' . $alt . '"' . $matches[5];
+                }
+                //todo 判断参数决定显示的图片大小
+
+
+            }, $content);
+    }
+    return trim($content);
+}
+
 function Short_Lazyload($text)
 {
     $text = preg_replace_callback('/<img src=\"(.*?)\".*?>/ism', function ($text) {
@@ -1347,10 +1385,11 @@ function autvip($i){
 }
 
 /**输出作者文章总数，可以指定*/
-function allpostnum($id){
+function allpostnum($id, $ret = 0){
     $db = Typecho_Db::get();
     $postnum=$db->fetchRow($db->select(array('COUNT(authorId)'=>'allpostnum'))->from ('table.contents')->where ('table.contents.authorId=?',$id)->where('table.contents.type=?', 'post'));
     $postnum = $postnum['allpostnum'];
+    if ($ret) return $postnum;
     if($postnum=='0')
     {
         return '暂无文章';
@@ -1381,6 +1420,14 @@ function allviewnum($id){
 
 }
 
+
+/**输出作者评论总数，可以指定*/
+function commentnum($id){
+    $db = Typecho_Db::get();
+    $commentnum=$db->fetchRow($db->select(array('COUNT(authorId)'=>'commentnum'))->from ('table.comments')->where ('table.comments.authorId=?',$id)->where('table.comments.type=?', 'comment'));
+    $commentnum = $commentnum['commentnum'];
+    return $commentnum;
+}
 /**
  * 文章访问量等级
  */
