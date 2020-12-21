@@ -8,7 +8,7 @@ $all = Typecho_Plugin::export();
 $loginUrl = $this->options->loginUrl;
 
 if (array_key_exists('TePass', $all['activated'])){
-    if ($this->user->hasLogin()) $loginUrl = $this->options->index.'admin/extending.php?panel=TePass/theme/ucenter/profile.php';
+    if ($this->user->hasLogin()) $loginUrl = $this->options->index.'/admin/extending.php?panel=TePass/theme/ucenter/profile.php';
     else $loginUrl = $this->options->index.'/tepass/signin';
 }
 ?>
