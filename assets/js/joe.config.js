@@ -845,7 +845,7 @@
         init_baidu_collect() {
             let baidu = $('#baiduIncluded')
             $.ajax({
-                url: window.JOE_CONFIG.THEME_URL + '/baibaiduRecord.php?url=' + encodeURI(window.location.href),
+                url: window.JOE_CONFIG.THEME_URL + '/baiduRecord.php?url=' + encodeURI(window.location.href),
                 method: 'get',
                 success(res) {
                     if (!res.success) {
