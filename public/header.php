@@ -49,6 +49,7 @@
                         <?php if ($this->options->JOpenContrib):?>
                         <a class="link" style="color: #f64444" href="/contribute.html"><i style="margin-right: 3px" class="icon iconfont icon-chaoji"></i>成为投稿者</a>
                         <?php endif;?>
+
                         <!-- 超过4个则显示更多 -->
                         <?php if ($i > $this->options->JNavMaxNum) : ?>
                             <div class="link drops">
@@ -499,6 +500,11 @@
                                 </svg><?php $pages->title(); ?></a>
                         </li>
                     <?php endwhile; ?>
+                    <?php if ($this->options->JOpenContrib):?>
+                    <li>
+                        <a class="link" style="color: #f64444" href="/contribute.html"><i style="margin-right: 3px" class="icon iconfont icon-chaoji"></i>成为投稿者</a>
+                    </li>
+                    <?php endif;?>
                 </ul>
             </div>
         </div>
