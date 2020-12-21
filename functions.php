@@ -1570,8 +1570,8 @@ function themeConfig($form)
             'JPic2cdn',NULL,'','本地图片云存储(镜像)加速',
             '通过各大服务商的镜像存储功能，将博客的本地图片（即在本服务器上的图片）自动替换为对应镜像空间的图片地址，而在第一次访问的时候，会自动将本地服务器图片上传到镜像空间（需要在服务商进行配置 加速域名）。<br>
                 而通常访问云服务器的速度要比本服务器速度要快（因为云服务器具有cdn特性）。<br>
-                填写内容格式为 自定义域名 | CDN 类型<br>
-                举例： https://assets.ihewro.com | UPYUN 在服务商的镜像空间配置加速域名为 https://www.ihewro.com<br>
+                填写内容格式为 自定义域名 || CDN 类型<br>
+                举例： https://assets.geekscholar.net | UPYUN 在服务商的镜像空间配置加速域名为 https://www.geekscholar.net<br>
                 支持以下服务商：<br>
                 七牛云「QINIU」<br>
                 又拍云「UPYUN」<br>
@@ -1586,8 +1586,8 @@ function themeConfig($form)
     $JLocalAssets2cdn = new Typecho_Widget_Helper_Form_Element_Text(
         'JLocalAssets2cdn',NULL,'','将本地静态资源上传到你的cdn上',
         '使用该项设置前，你必须有自己搭建的cdn服务器（不是指当前服务器）<br>
-                主题目录下的/assets/目录下有 css、js、fonts、img四个静态资源文件夹。<br>
-                你需要把asset目录上传到你的cdn服务器上，比如CDN服务器的 handsome目录里，地址即为 https://cdn.ihewro.com/handsome/assets/<br>
+                主题目录下的/assets/目录下有几个静态资源文件夹。<br>
+                你需要把asset目录上传到你的cdn服务器上，比如CDN服务器的 handsome目录里，地址即为 https://cdn.geekscholar.net/Typecho-Joe-Theme/assets/<br>
                 在当前框中就填入该地址，主题就会引用你搭建的cdn上面的资源，而不再引用当前服务器上的资源<br>
                 <strong>「本地图片云存储(镜像)加速」配置了，这个则不需要再配置了。如果上面的没配置，配置该选项也有一定的加速效果<strong><br>'
     );
@@ -1599,7 +1599,7 @@ function themeConfig($form)
             array(
                 0 => '为博客中的图片自动转换合适的大小和格式，并自动对图片进行无损压缩'
             ),NULL,'云存储选项',"<span style='color: red'>使用该项配置前，需要先配置 <code>本地图片云存储(镜像)加速</code> </span></br>* 
-                    我们使用的图片大小尺寸很多时候是大于所需要的尺寸（div的尺寸），造成图片加载缓慢，启动第一项配置会自动使用云存储服务商提供的图片处理对图片进行处理，以便加载更小的体积。具体细节请看 <a href=\"https://handsome.ihewro.com/#/functions\">详细使用文档</a>");
+                    我们使用的图片大小尺寸很多时候是大于所需要的尺寸（div的尺寸），造成图片加载缓慢，启动第一项配置会自动使用云存储服务商提供的图片处理对图片进行处理，以便加载更小的体积。");
     $JCloudOptions->setAttribute('class', 'j-setting-content j-setting-speed');
     $form->addInput($JCloudOptions);
 
