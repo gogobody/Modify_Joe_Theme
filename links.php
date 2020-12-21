@@ -29,7 +29,7 @@ if (isset($_POST['agree'])) {
 <body>
     <?php $this->options->JCustomBodyStart() ?>
 
-    <section id="joe">
+    <section id="joe" <?php if ($this->options->JMobiset) _e('class="setmobi"');?>>
         <!-- 头部 -->
         <?php $this->need('public/header.php'); ?>
 

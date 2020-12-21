@@ -7,7 +7,7 @@ define("THEME_NAME", $str2[0]);
 /* 获取模板版本号 */
 function JoeVersion()
 {
-    return "4.6.1";
+    return "4.6.2";
 }
 
 /* 获取懒加载图片 */
@@ -1557,6 +1557,7 @@ function getxml(){
     $doc->save("./../sitemap.xml");//保存代码
     echo "<script>alert('地图生成')</script>";
 }
+
 
 
 ?>

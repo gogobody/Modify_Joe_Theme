@@ -1,4 +1,4 @@
-@import "//at.alicdn.com/t/font_2277499_yqicrvsxcl.css";
+@import "//at.alicdn.com/t/font_2277499_9zow3fqpo7.css";
 
 $z-index-1: 111;
 $z-index-2: 222;
@@ -3494,20 +3494,56 @@ table {
                 word-break: break-all;
             }
             .hljs {
-                white-space: pre-wrap;
                 max-width: 100%;
                 max-height: 550px;
                 overflow: auto;
                 -webkit-overflow-scrolling: touch;
-                padding: 10px 15px;
-                line-height: 2;
-                border-radius: calc(var(--radius-pc) / 2);
-                margin: 20px 0;
+                padding: 10px 15px 10px 50px;
+                line-height: 1.5;
+                border-radius: 0 0 4px 4px;
                 font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
                 &::-webkit-scrollbar-track {
                     border-radius: 0;
                     background: var(--background);
                 }
+                ol {
+                    color: unset;
+                    margin: unset;
+                    padding: unset;
+                    border-left: 1px solid #ccc;
+                    li {
+                        margin-bottom: unset;
+                        line-height: unset;
+                        padding-left: 15px;
+                    }
+                }
+            }
+            .hljs-pre {
+                position: relative;
+                padding-top: 30px;
+                margin: 20px 0;
+            }
+            .hljs-pre::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 30px;
+                background: #2b2b2b;
+                border-radius: 4px 4px 0 0;
+            }
+            .hljs-pre::before {
+                content: '';
+                position: absolute;
+                top: 9px;
+                left: 10px;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #fc625d;
+                box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+                z-index: 1;
             }
             .need-reply {
                 border: 1px dashed var(--success);
@@ -6217,6 +6253,64 @@ author page
                 }
             }
         }
+    }
+
+}
+
+/* navigation-tab */
+.navigation-tab{
+    height: 60px;
+    width: 100%;
+    line-height: 1;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px -5px rgba(158, 158, 158, 0.22);
+    overflow: hidden;
+    border: 10px solid #fff;
+    display: none;
+    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 40;
+    .navigation-tab-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 25%;
+        flex-shrink: 0;
+        line-height: 1;
+        cursor: pointer;
+        transition: 0.3s;
+        position: relative;
+        z-index: 2;
+
+        &.active {
+            width: 25%;
+        }
+        .navigation-tab__icon {
+            display: block;
+            color: #4298e7;
+            transition-duration: 0.3s;
+            line-height: 1;
+            svg{
+                width: 24px;
+                height: 24px;
+                fill:#4298e7;
+            }
+            i{
+                font-size: 24px;
+            }
+        }
+    }
+    .navigation-tab-overlay {
+        border-radius: 20px;
+        background-color: #e4f2ff;
+        height: 100%;
+        width: 25%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: 0.3s;
     }
 
 }

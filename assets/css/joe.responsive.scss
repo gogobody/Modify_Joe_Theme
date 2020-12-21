@@ -723,11 +723,12 @@
                     margin: 15px 0;
                 }
 
+                .hljs-pre {
+                    margin: 15px 0;
+                    font-size: 13px;
+                }
                 .hljs {
                     max-height: 350px;
-                    padding: 10px;
-                    border-radius: calc(var(--radius-wap) / 2);
-                    margin: 15px 0;
                 }
 
                 .reply-content {
@@ -950,6 +951,17 @@
             display: none;
         }
     }
+    /* mobinav */
+    #joe.setmobi{
+        padding-bottom: 60px;
+    }
+    #backToTop{
+        display: none;
+    }
+    .navigation-tab {
+        display: flex !important;
+    }
+
 }
 @media (max-width: 450px) {
     .j-index {

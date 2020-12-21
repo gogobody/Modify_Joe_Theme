@@ -145,7 +145,8 @@
             this.init_video_album();
             /* 初始化图片懒加载 */
             this.init_lazy_load();
-
+            /* 初始化底部 mobinav */
+            this.init_mobinav()
         }
 
         /* 格式化url参数 */
@@ -838,6 +839,11 @@
                 $(element).attr('data-fancybox', 'gallery');
                 $(element).attr('href', $(this).attr('data-original') || $(this).attr('src'));
                 $(this).wrap(element);
+            });
+            let code_hljs = $('code.hljs')
+            code_hljs.parent().addClass('hljs-pre');
+            code_hljs.each(function () {
+                $(this).html('<ol><li>' + $(this).html().replace(/\n/g, '\n</li><li>') + '\n</li></ol>');
             });
         }
 
@@ -1909,6 +1915,26 @@
                 });
             });
         }
+        /* 初始化底部 mobinav */
+        init_mobinav(){
+            $(".navigation-tab-item").bind('click',function() {
+                $(".navigation-tab-item").removeClass("active");
+                $(this).addClass("active");
+                $(".navigation-tab-overlay").css({
+                    left: 25 * $(this).prevAll().length + "%"
+                })
+            })
+            $("#mob_goTop").click(function () {
+                $("#backToTop").click()
+            })
+            let load_mobi = $('#load_mobinav')
+            if (load_mobi.hasClass('active')){
+                $(".navigation-tab-overlay").css({
+                    left: 25 * load_mobi.prevAll().length + "%"
+                })
+            }
+        }
+
     }
     if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         module.exports = Joe;
@@ -1916,5 +1942,6 @@
         window.Joe = Joe;
     }
 })();
-
 window.JoeInstance = new Joe({});
+
+

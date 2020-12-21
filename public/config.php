@@ -1,3 +1,5 @@
+<?php $this->need('component/footer.navmobi.php'); ?>
+
 <!-- 音乐播放器 -->
 <?php if ($this->options->JPlayer && !isMobile()) : ?>
     <meting-js id="<?php $this->options->JPlayer(); ?>" lrc-type="1" server="netease" storage-name="meting" theme="#ebebeb" autoplay type="playlist" fixed="true" list-olded="true"></meting-js>

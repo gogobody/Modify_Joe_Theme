@@ -1555,6 +1555,10 @@ function themeConfig($form)
     );
     $JIndexRecommend->setAttribute('class', 'j-setting-content j-setting-index');
     $form->addInput($JIndexRecommend);
+    // 手机底部导航栏样式
+    $JMobiset = new Typecho_Widget_Helper_Form_Element_Select('JMobiset',array(0=>'不开启',1=>'开启'),0,'<h2>移动设置 Info</h2><hr>移动底部菜单设置','移动端页脚底部菜单');
+    $JMobiset->setAttribute('class', 'j-setting-content j-setting-index');
+    $form->addInput($JMobiset);
 
     /* 其他设置 */
     $JFriends = new Typecho_Widget_Helper_Form_Element_Textarea(
