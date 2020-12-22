@@ -99,7 +99,7 @@
 					const cursorPos = this.area.selectionEnd
 					let areaValue = this.area.value
 					//this.area.value = areaValue.slice(0, cursorPos) + target.innerHTML + areaValue.slice(cursorPos);
-					if (target.dataset.id == 'not-given') {
+					if (target.dataset.id === 'not-given') {
 						this.area.value = areaValue.slice(0, cursorPos) + target.innerHTML + areaValue.slice(cursorPos)
 					} else {
 						this.area.value = areaValue.slice(0, cursorPos) + target.dataset.id + areaValue.slice(cursorPos)
