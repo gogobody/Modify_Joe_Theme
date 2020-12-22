@@ -443,7 +443,9 @@ function themeInit($archive)
     Helper::options()->commentsRequireURL = false;
     /* 强奸用户强制开启评论回复 */
     Helper::options()->commentsThreaded = true;
-
+    if ($archive->is('index')){
+        $archive->parameter->pageSize = 6;
+    }
     if ($archive->is('single')) {
         $archive->content = ParseReply($archive->content);
         $archive->content = CreateCatalog($archive->content);
