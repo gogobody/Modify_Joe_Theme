@@ -211,6 +211,14 @@ textarea:focus {
         visibility: visible;
     }
 }
+.post_no {
+    display: none!important;
+}
+@keyframes hideIndex{
+
+    0%{ opacity: 0; transform: translate(0, 30px) }
+    100%{opacity: 1; transform: translate(0, 0) }
+}
 
 ::-webkit-scrollbar {
     width: 7px;
@@ -463,6 +471,10 @@ table {
             .above-nav {
                 display: flex;
                 width: 100%;
+                animation: hideIndex 0.6s;
+                -moz-animation: hideIndex 0.6s;
+                -webkit-animation: hideIndex 0.6s;
+                -o-animation: hideIndex 0.6s;
             }
             .top-bar-title {
                 font-size: 16px;
@@ -898,14 +910,7 @@ table {
         }
     }
 }
-.post_no {
-    display: none!important;
-}
-@keyframes hideIndex{
 
-    0%{ opacity: 0; transform: translate(0, 30px) }
-    100%{opacity: 1; transform: translate(0, 0) }
-}
 .j-header-fluid {
     position: sticky;
     top: 0;
@@ -1849,7 +1854,6 @@ table {
                             text-overflow: ellipsis;
                             font-size: 18px;
                             line-height: 24px;
-                            display: flex;
                             align-items: center;
                             &:hover {
                                 color: var(--theme);

@@ -150,7 +150,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
         </a>
         <section class="entry-box">
             <section class="title" title="<?php $this->title() ?>">
-                <a href="<?php $this->permalink() ?>"><?php listdeng($this); ?><?php $this->title() ?></a>
+                <a href="<?php $this->permalink() ?>"><?php listdeng($this); ?><?php if (timeZone($this->date->timeStamp)) echo '<span class="badge arc_v2">最新</span>'; ?><?php $this->title() ?></a>
             </section>
             <a class="summary" href="<?php $this->permalink() ?>"><?php $this->excerpt(500) ?></a>
             <div class="meta">

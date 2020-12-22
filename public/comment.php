@@ -103,7 +103,7 @@ function threadedComments($comments, $options)
                     <div class="OwO"></div>
                     <div class="right">
                         <?php $comments->cancelReply("<span data-parent='" . $this->respondId . "'>取消</span>"); ?>
-                        <button type="submit">发表评论</button>
+                        <button type="submit" class="comment-btn">发表评论</button>
                     </div>
                 </div>
             </form>

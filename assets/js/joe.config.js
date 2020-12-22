@@ -1324,6 +1324,8 @@
                 }
                 if ($(this).attr('data-disabled')) return;
                 $(this).attr('data-disabled', true);
+                let c_btn = $(".comment-btn")
+                c_btn.text('评论中..')
                 $.ajax({
                     url: $(this).attr('action'),
                     type: 'post',
@@ -1352,6 +1354,7 @@
                                 window.location.href = url;
                             }, _this.options.reloadTime);
                         }
+                        c_btn.text('发表评论')
                     }
                 });
             });

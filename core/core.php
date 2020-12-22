@@ -667,30 +667,6 @@ function showThumbnail($widget,$imgnum){ //获取两个参数，文章的ID和�
     return $imgs;
 }
 
-/** 列表衍射文章 */
-function cosmore($str){
-    if ( strpos( $str, '[post')!== false) {//提高效率，避免每篇文章都要解析
-        preg_match_all("/\[post\](.*?)\[\/post\]/sm",$str,$strcid);
-        echo '<span class="lirekan"><i class="icon iconfont icon-chuangzuo1"></i> 扩展看点 </span><ul class="lire">';
-        for($i=0;$i<count($strcid[1]);$i++){
-            $scid =  $strcid[1][$i];
-            $db = Typecho_Db::get();
-            $result = $db->fetchAll($db->select()->from('table.contents')->where('cid = ?', $scid));
-            if($result){
-                foreach($result as $val){
-                    $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($val);
-                    $post_title = htmlspecialchars($val['title']);
-                    $permalink = $val['permalink'];
-                    $post_views = number_format($val['views']);
-                    $created = date('m-d', $val['created']);
-                    $strhtml = '<li><a href="'.$permalink.'"><i class="icon iconfont icon-icon-test29"></i> '.$post_title.'</a><div class="liretime">'.$created.'</div></li>';
-                    echo $strhtml;
-                } } }
-        echo  '</ul>';
-    }
-}
-
-
 /* 获取浏览量 */
 function GetPostViews($archive,$ret=0)
 {
