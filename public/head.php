@@ -7,7 +7,7 @@
     <meta itemprop="image" content="<?php echo GetQQSharePic($this); ?>" />
 <?php endif; ?>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
-
+<?php echo Utils::exportDNSPrefetch(); ?>
 <!-- IE浏览器跳出 -->
 <script>
     /* 判断是否是ie浏览器 */

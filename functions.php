@@ -1604,6 +1604,13 @@ function themeConfig($form)
     $JImagePostSuffix->setAttribute('class', 'j-setting-content j-setting-speed');
     $form->addInput($JImagePostSuffix);
 
+    //dns 预加载
+    $JDnsPrefetch = new Typecho_Widget_Helper_Form_Element_Textarea('JDnsPrefetch', NULL, NULL, 'DNS Prefetch', 'DNS 预读取是一种使浏览器主动执行 DNS 解析已达到优化加载速度的功能。<br>你可以在这里设置需要预读取的域名，<bold>每行一个，仅填写域名即可。</bold><br>如：img.example.com');
+    $JDnsPrefetch->setAttribute('class', 'j-setting-content j-setting-speed');
+    $form->addInput($JDnsPrefetch);
+
+
+
     /* 其他设置 */
 
     $JOpenContrib = new Typecho_Widget_Helper_Form_Element_Select(

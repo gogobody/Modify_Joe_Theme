@@ -892,7 +892,7 @@
                         };
                         if (res.success) {
                             baidu.css('color', '#3bca72');
-                            baidu.html('推送成功！');
+                            baidu.html('推送成功');
                         } else {
                             baidu.css('color', '#e6a23c');
                             if (res.error === 401) {

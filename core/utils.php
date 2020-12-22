@@ -93,4 +93,27 @@ class Utils{
         return $addOn;
     }
 
+    /**
+     * 输出DNS预加载信息
+     * @return string
+     */
+    public static function exportDNSPrefetch()
+    {
+        $defaultDomain = array();
+        $options = Helper::options();
+        $customDomain = $options->JDnsPrefetch;
+        if (!empty($customDomain)) {
+            $customDomain = mb_split("\n", $customDomain);
+            $defaultDomain = array_merge($defaultDomain, $customDomain);
+            $defaultDomain = array_unique($defaultDomain);
+        }
+        $html = "<meta http-equiv=\"x-dns-prefetch-control\" content=\"on\">\n";
+        foreach ($defaultDomain as $domain) {
+            $domain = trim($domain, " \t\n\r\0\x0B/");
+            if (!empty($domain)) {
+                $html .= "<link rel=\"dns-prefetch\" href=\"//{$domain}\" />\n";
+            }
+        }
+        return $html;
+    }
 }
