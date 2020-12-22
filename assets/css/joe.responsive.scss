@@ -94,6 +94,15 @@
                 }
             }
         }
+        .wallpaper-api {
+            .wallpaper-list {
+                .list {
+                    .item {
+                        width: 33.333333%;
+                    }
+                }
+            }
+        }
     }
     .j-photos {
         a {
@@ -220,6 +229,15 @@
                 .list {
                     li {
                         width: 25%;
+                    }
+                }
+            }
+        }
+        .wallpaper-api {
+            .wallpaper-list {
+                .list {
+                    .item {
+                        width: 50%;
                     }
                 }
             }

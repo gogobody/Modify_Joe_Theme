@@ -11,7 +11,7 @@
     *
  -->
 
-<h2 style="font-size: 30px;margin-bottom: 20px; text-align:center">本页面仅供学习使用！！！</h2>
+<h2 style="font-size: 50px;margin-bottom: 20px; text-align:center; color: #ff0000">本页面仅供学习使用！！！</h2>
 
 <div class="video-api">
     <?php if (isset($_GET['vod_id'])) : ?>

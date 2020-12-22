@@ -16,7 +16,7 @@ if (strlen(trim($options->LocalResourceSrc)) > 0){//主题静态资源的绝对�
 /* 获取模板版本号 */
 function JoeVersion()
 {
-    return "4.6.3";
+    return "4.6.4";
 }
 
 /* 获取懒加载图片 */

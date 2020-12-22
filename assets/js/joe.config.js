@@ -7,6 +7,9 @@
             this.options = options;
             this.video_page = 0;
             this.video_canLoad = true;
+            this.wallpaper_page = 0;
+            this.wallpaper_cid = '';
+
             this.init();
             this.init_navi = this.init_navigation
         }
@@ -143,6 +146,8 @@
             this.init_dynamic_reply();
             /* 初始化视频册 */
             this.init_video_album();
+            /* 初始化壁纸页 */
+            this.init_wallpaper();
             /* 初始化图片懒加载 */
             this.init_lazy_load();
             /* 初始化底部 mobinav */
@@ -1838,15 +1843,80 @@
                     });
                 }
                 $(item).on('click', function () {
-                    $("body").css("overflow", "hidden")
+                    $('body').css('overflow', 'hidden');
                     $('.j-video-preview').addClass('active');
                     $('.j-video-preview iframe').attr('src', window.JOE_CONFIG.THEME_URL + '/player.php?url=' + src);
                 });
             });
-            $(".j-video-preview .close").on("click", function() {
-                $("body").css("overflow", "")
+            $(".j-video-preview .close").on('click', function() {
+                $('body').css('overflow', '')
                 $('.j-video-preview').removeClass('active');
             })
+        }
+        /* 初始化壁纸分类 */
+        init_wallpaper() {
+            if ($('#wallpaper-type').length === 0) return;
+            $.ajax({
+                url: window.JOE_CONFIG.THEME_URL + '/wallpaperApi.php?cid=360tags',
+                method: 'get',
+                dataType: 'json',
+                success: res => {
+                    if (res.errno !== '0')
+                        return $.toast({
+                            type: 'warning',
+                            message: '接口异常，请联系开发者！'
+                        });
+                    $('.j-wallpaper-load-1').hide();
+                    let str = '<li data-cid="360new" class="active">最新壁纸</li>';
+                    res.data.forEach(_ => {
+                        str += `<li data-cid="${_.id}">${_.name}</li>`;
+                    });
+                    $('#wallpaper-type').html(str);
+                    $('#wallpaper-type li').first().click();
+                }
+            });
+            let _this = this;
+            $(document).on('click', '#wallpaper-type li', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+                _this.wallpaper_page = 0;
+                _this.wallpaper_cid = $(this).attr('data-cid');
+                $('#wallpaper-list').html('');
+                _this.init_wallpaper_list();
+            });
+            $('#wallpaper-load').on('click', function () {
+                _this.wallpaper_page += 1;
+                _this.init_wallpaper_list();
+            });
+        }
+
+        init_wallpaper_list() {
+            let _this = this;
+            $('.j-wallpaper-load-2').show();
+            $.ajax({
+                url: window.JOE_CONFIG.THEME_URL + '/wallpaperApi.php',
+                data: {
+                    cid: _this.wallpaper_cid,
+                    start: _this.wallpaper_page * 20,
+                    count: 20
+                },
+                method: 'get',
+                dataType: 'json',
+                success: res => {
+                    $('.j-wallpaper-load-2').hide();
+                    if (res.total !== 0) {
+                        res.data.forEach(_ => {
+                            $('#wallpaper-list').append(`
+                                <a class="item" data-fancybox="gallery" href="${_.url}">
+                                    <img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" data-original="${_.img_1024_768}" />
+                                </a>
+                            `);
+                        });
+                        _this.init_lazy_load();
+                    } else {
+                        $('#wallpaper-load').remove();
+                    }
+                }
+            });
         }
 
         /* 初始化图片懒加载 */

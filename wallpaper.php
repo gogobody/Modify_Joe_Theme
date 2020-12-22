@@ -1,16 +1,22 @@
 <?php
+/*
+ * @Descripttion:
+ * @Author: 帅气的杜恒欧巴
+ * @Date: 2020-12-22 13:30:55
+ * @LastEditTime: 2020-12-22 13:32:22
+ */
 
 /**
- * 视频
- * 
- * @package custom 
- * 
+ * 壁纸
+ *
+ * @package custom
+ *
  **/
 
 ?>
 <?php $this->need('public/prevent.php'); ?>
 <?php $this->need('public/defend.php'); ?>
-<!-- 
+<!--
     *
     * 写字楼里写字间，写字间里程序员；
     * 程序人员写程序，又拿程序换酒钱。
@@ -30,24 +36,24 @@
 </head>
 
 <body>
-    <?php $this->options->JCustomBodyStart() ?>
+<?php $this->options->JCustomBodyStart() ?>
 
-    <section id="joe" <?php if ($this->options->JMobiset) _e('class="setmobi"');?>>
-        <!-- 头部 -->
-        <?php $this->need('public/header.php'); ?>
+<section id="joe">
+    <!-- 头部 -->
+    <?php $this->need('public/header.php'); ?>
 
-        <!-- 主体 -->
-        <section class="container j-post">
-            <section class="j-adaption">
-                <?php $this->need('component/video.api.php'); ?>
-            </section>
+    <!-- 主体 -->
+    <section class="container j-post">
+        <section class="j-adaption">
+            <?php $this->need('component/wallpaper.api.php'); ?>
         </section>
-
-        <!-- 尾部 -->
-        <?php $this->need('public/footer.php'); ?>
     </section>
-    <!-- 配置文件 -->
-    <?php $this->need('public/config.php'); ?>
+
+    <!-- 尾部 -->
+    <?php $this->need('public/footer.php'); ?>
+</section>
+<!-- 配置文件 -->
+<?php $this->need('public/config.php'); ?>
 </body>
 
 </html>
