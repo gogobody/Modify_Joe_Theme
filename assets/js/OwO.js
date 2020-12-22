@@ -49,7 +49,10 @@
 				var type = this.odata[this.packages[i]].type
 				let opackage = this.odata[this.packages[i]].container
 				for (let i = 0; i < opackage.length; i++) {
-					if (type == 'image') {
+					if (type === 'image') {
+						opackage[i].icon.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture,offset,input_str) {
+							return input_str.replace(capture,window.JOE_CONFIG.STATIC_PATH+capture)
+						});
 						html += `
                     <li class="OwO-item" data-id="${opackage[i].data}" title="${opackage[i].text}">${opackage[i].icon}</li>`
 					} else {

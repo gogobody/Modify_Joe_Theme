@@ -92,9 +92,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/css/joe.min.css?v=<?php echo JoeVersion() ?>" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/css/joe.responsive.min.css?v=<?php echo JoeVersion() ?>" />
 <?php else : ?>
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/OwO.min.css'); ?>" />
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.min.css?v=' . JoeVersion()); ?>" />
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css?v=' . JoeVersion()); ?>" />
+    <link rel="stylesheet" href="<?php echo STATIC_PATH. 'assets/css/OwO.min.css' ?>" />
+    <link rel="stylesheet" href="<?php echo STATIC_PATH.'assets/css/joe.min.css?v=' . JoeVersion(); ?>" />
+    <link rel="stylesheet" href="<?php echo STATIC_PATH.'assets/css/joe.responsive.min.css?v=' . JoeVersion(); ?>" />
 <?php endif; ?>
 
 <!-- joe 弹窗提示 -->

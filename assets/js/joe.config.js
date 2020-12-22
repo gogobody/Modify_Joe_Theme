@@ -625,7 +625,7 @@
                 logo: 'OωO表情',
                 container: document.getElementsByClassName('OwO')[0],
                 target: document.getElementsByClassName('OwO-textarea')[0],
-                api: window.JOE_CONFIG.THEME_URL + '/OwO.json',
+                api: window.JOE_CONFIG.STATIC_PATH + '/OwO.json',
                 position: 'down',
                 width: '100%',
                 maxHeight: '250px'
@@ -1881,7 +1881,6 @@
                     $(window).scroll(function() {
                         let scrollPos = $(window).scrollTop(); //得到滚动的距离
                         if (scrollPos > 395 && scrollPos < 505) return // 防止nav出现触发再次scroll
-                        console.log(scrollPos)
                         if (scrollPos >= 450) { //比较判断是否fixed
                             if (lastScrollPos > scrollPos && canSlideUp){
                                 canSlideDown = false

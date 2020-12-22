@@ -90,18 +90,18 @@
 <?php else : ?>
     <!-- 弹幕 -->
     <?php if ($this->options->JBarragerStatus === 'on') : ?>
-        <script src="<?php $this->options->themeUrl('library/joe.barrager/joe.barrager.min.js'); ?>"></script>
+        <script src="<?php echo STATIC_PATH.'library/joe.barrager/joe.barrager.min.js'; ?>"></script>
     <?php endif; ?>
     <!-- 3dtag -->
     <?php if ($this->options->J3DTagStatus === 'on') : ?>
-        <script src="<?php $this->options->themeUrl('library/3DTag/3DTag.min.js'); ?>"></script>
+        <script src="<?php echo STATIC_PATH.'library/3DTag/3DTag.min.js'; ?>"></script>
     <?php endif; ?>
     <!-- 目录树 -->
     <?php if ($this->options->JDirectoryStatus === 'on'  && !isMobile()) : ?>
-        <script src="<?php $this->options->themeUrl('assets/js/jfloor.min.js'); ?>"></script>
+        <script src="<?php echo STATIC_PATH.'assets/js/jfloor.min.js'; ?>"></script>
     <?php endif; ?>
-    <script src="<?php $this->options->themeUrl('assets/js/OwO.min.js'); ?>"></script>
-    <script src="<?php $this->options->themeUrl('assets/js/joe.config.min.js?v=' . JoeVersion()); ?>"></script>
+    <script src="<?php echo STATIC_PATH.'assets/js/OwO.min.js'; ?>"></script>
+    <script src="<?php echo STATIC_PATH.'assets/js/joe.config.min.js?v=' . JoeVersion(); ?>"></script>
 <?php endif; ?>
 
 <!-- 背景 -->
