@@ -21,7 +21,7 @@
         <!-- 没填写则显示默认的灰色 -->
         <style>
             body {
-                background: #f1f5f8;
+                background: var(--background);
             }
         </style>
     <?php endif; ?>
@@ -54,7 +54,7 @@
         <?php else : ?>
             <style>
                 body {
-                    background: #f1f5f8;
+                    background: var(--background);
                 }
             </style>
         <?php endif; ?>

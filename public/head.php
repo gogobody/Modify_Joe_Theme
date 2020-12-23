@@ -120,7 +120,7 @@
         --radius-wap: <?php echo $this->options->JRadiusWap ?>;
         --text-shadow: <?php echo $this->options->JTextShadow ? $this->options->JTextShadow : '0 1px 2px rgba(0, 0, 0, 0.25)' ?>;
         --box-shadow: <?php echo $this->options->JBoxShadow ? $this->options->JBoxShadow : '0px 0px 20px -5px rgba(158, 158, 158, 0.22)' ?>;
-        --background: <?php echo $this->options->JCardBackground ? $this->options->JCardBackground : '#fff' ?>;
+        --background: <?php echo $this->options->JCardBackground ? $this->options->JCardBackground : '#f1f5f8' ?>;
         --swiper-theme-color: #fff !important;
     }
 

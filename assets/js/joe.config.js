@@ -22,6 +22,8 @@
             $(document).on('touchstart', e => {});
             /* 顶部自动隐藏 */
             this.init_head_title();
+            /* 暗夜模式 */
+            this.init_prefer_color_scheme();
             /* 初始化页面加载 */
             this.init_page_loading();
             /* 初始化页面的hash值跳转 */
@@ -1923,7 +1925,67 @@
         init_lazy_load() {
             new LazyLoad('.lazyload');
         }
-
+        /* 暗夜模式 */
+        init_prefer_color_scheme(){
+            // 切换按钮
+            function set_mode_toggle(e) {
+                let t = !0, mode = "dark";
+                "true" === e.getAttribute("aria-checked") && (t = !1 , mode = "light")
+                    e.setAttribute("aria-checked", String(t))
+                    change_mode(mode);
+            }
+            // 改变模式 并设置 cookie
+            function change_mode(e) {
+                const t = document.querySelector("html[data-color-mode]");
+                if (e === "dark") document.cookie = "night=1;path=/";
+                else document.cookie = "night=0;path=/"
+                t && t.setAttribute("data-color-mode", e)
+            }
+            // 获取当前模式
+            function get_user_scheme_mode() {
+                const e = document.querySelector("html[data-color-mode]");
+                if (!e)
+                    return;
+                const t = e.getAttribute("data-color-mode");
+                return "auto" === t ? function() {
+                    if (get_sys_scheme_mode("dark"))
+                        return "dark";
+                    if (get_sys_scheme_mode("light"))
+                        return "light";
+                }() : t
+            }
+            // 获取系统模式 先判断 cookie 在获取系统的
+            function get_sys_scheme_mode(e) {
+                let night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+                if (night){
+                    if(night === '0'){
+                        return false
+                    }else if(night === '1'){
+                        return true
+                    }
+                }else
+                return window.matchMedia && window.matchMedia(`(prefers-color-scheme: ${e})`).matches
+            }
+            !async function() {
+                const e = document.querySelector(".js-promo-color-modes-toggle");
+                if (e && "auto" === function() {
+                    const e = document.querySelector("html[data-color-mode]");
+                    if (!e)
+                        return;
+                    return e.getAttribute("data-color-mode")
+                }()) {
+                    "dark" === get_user_scheme_mode() && e.setAttribute("aria-checked", "true")
+                }
+            }()
+            !async function() {
+                document.querySelector(".js-color-mode-settings") && window.history.replaceState({}, document.title, document.URL.split("?")[0])
+            }()
+            // 添加点击事件
+            let toggle_btn = document.getElementsByClassName("js-promo-color-modes-toggle")
+            toggle_btn[0]? toggle_btn[0].addEventListener('click',function (e) {
+                set_mode_toggle(e.currentTarget)
+            },false):false
+        }
         /*顶部自动隐藏*/
         init_head_title() {
             let header = $("header.j-header")

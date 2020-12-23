@@ -14,7 +14,7 @@
 <?php $this->need('public/prevent.php'); ?>
 <?php $this->need('public/defend.php'); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-mode="<?php if($_COOKIE['night']=='1')echo 'dark';else echo 'light'; ?>">
 
 <head>
     <?php $this->need('public/head.php'); ?>
