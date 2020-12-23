@@ -81,8 +81,17 @@ $z-index-9: 999;
     --color-scale-gray-6: #30363d;
 }
 
-[data-color-mode=dark] .j-dropdown{
-    background: var(--classD)!important;
+[data-color-mode=dark] {
+    .j-dropdown{
+        background: var(--classD)!important;
+    }
+    .j-sidebar-xs{
+        .content{
+            .item{
+                border-bottom: 1px solid var(--classC);
+            }
+        }
+    }
 }
 // style end
 /* tepass */
@@ -6737,10 +6746,10 @@ author page
     height: 60px;
     width: 100%;
     line-height: 1;
-    background-color: #fff;
-    box-shadow: 0px 0px 20px -5px rgba(158, 158, 158, 0.22);
+    background-color: var(--color-bg-canvas);
+    box-shadow: 0 0 20px -5px rgba(158, 158, 158, 0.22);
     overflow: hidden;
-    border: 10px solid #fff;
+    border: 10px solid var(--color-bg-canvas);
     display: none;
     flex-shrink: 0;
     position: fixed;
