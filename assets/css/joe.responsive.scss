@@ -128,6 +128,16 @@
             padding: 10px;
         }
     }
+    .profile-color-modes{
+        padding-right: 0;
+        margin-left: 5px;
+        &>svg{
+            display: none;
+        }
+        .profile-color-modes-toggle{
+            position: static;
+        }
+    }
 }
 @media (max-width: 992px) {
     .j-index {
@@ -328,13 +338,23 @@
     }
 }
 @media (max-width: 768px) {
+
     .lr-padding{
         padding: 0 10px;
     }
     .tlr-header{
         padding: 10px 10px 0;
     }
-
+    .profile-color-modes{
+        padding-right: 32px;
+        margin-left: 0;
+        &>svg{
+            display: block;
+        }
+        .profile-color-modes-toggle{
+            position: absolute;
+        }
+    }
     .j-search-down-xs {
         display: block;
     }
