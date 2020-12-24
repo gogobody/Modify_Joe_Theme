@@ -348,24 +348,6 @@ function themeConfig($form)
     $JLive2D->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JLive2D->multiMode());
 
-    $JPageLoading = new Typecho_Widget_Helper_Form_Element_Select(
-        'JPageLoading',
-        array(
-            'off' => '关闭（默认）',
-            'spinner1' => '形状1',
-            'spinner2' => '形状2',
-            'spinner3' => '形状3',
-            'spinner4' => '形状4',
-            'spinner5' => '形状5',
-            'spinner6' => '形状6',
-            'spinner7' => '形状7',
-        ),
-        'off',
-        '是否开启页面刷新首次进入加载',
-        '介绍：开启后当您刷新页面或首次进入页面时，将显示全屏加载'
-    );
-    $JPageLoading->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JPageLoading->multiMode());
 
     $JBackTopStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JBackTopStatus',
@@ -1662,18 +1644,6 @@ function themeConfig($form)
     $JAnalysis->setAttribute('class', 'j-setting-content j-setting-other');
     $form->addInput($JAnalysis);
 
-    $JDplayerAPI = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JDplayerAPI',
-        NULL,
-        NULL,
-        'dplayer的弹幕库API（非必填）',
-        '介绍：如果填写正确的API，则播放器会加载弹幕功能，反之 <br />
-         例如：https://dplayer.alone88.cn/ <br />
-         注意: 如果您填的自定义API，提示加载失败，尝试在API最后面加上 / 符号
-        '
-    );
-    $JDplayerAPI->setAttribute('class', 'j-setting-content j-setting-other');
-    $form->addInput($JDplayerAPI);
 
     $JShieldNames = new Typecho_Widget_Helper_Form_Element_Text(
         'JShieldNames',

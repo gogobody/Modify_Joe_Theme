@@ -12,8 +12,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery.qrcode@1.0.3/jquery.qrcode.min.js"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/hls.js@0.14.16/dist/hls.min.js"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/dplayer@1.26.0/dist/DPlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/draggabilly@2.3.0/dist/draggabilly.pkgd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
@@ -70,45 +68,82 @@
 <?php if ($this->options->JFishStatus !== "off") : ?>
     <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/fish.min.js"></script>
 <?php endif; ?>
-
-<?php if ($this->options->JCDN === 'on') : ?>
     <!-- 弹幕 -->
-    <?php if ($this->options->JBarragerStatus === 'on') : ?>
-        <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/library/joe.barrager/joe.barrager.min.js"></script>
-    <?php endif; ?>
-    <!-- 3dtag -->
-    <?php if ($this->options->J3DTagStatus === 'on') : ?>
-        <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/library/3DTag/3DTag.min.js"></script>
-    <?php endif; ?>
-    <!-- 目录树 -->
-    <?php if ($this->options->JDirectoryStatus === 'on'  && !isMobile()) : ?>
-        <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/js/jfloor.min.js"></script>
-    <?php endif; ?>
+<?php if ($this->options->JBarragerStatus === 'on') : ?>
+    <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.barrager/joe.barrager.min.js"></script>
+<?php endif; ?>
+<!-- 3dtag -->
+<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js"></script>
+<!-- 目录树 -->
+<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/jfloor.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/OwO.min.js"></script>
+<script src="<?php $this->options->themeUrl('assets/js/joe.config.js?v=' . JoeVersion()); ?>"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/js/OwO.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/js/joe.config.js?v=<?php echo JoeVersion() ?>"></script>
+    <!-- 背景 -->
+    <!-- 移动端 -->
+<?php if (isMobile()) : ?>
+    <!-- 填写了背景图，则显示背景图 -->
+    <?php if ($this->options->JDocumentWAPBG) : ?>
+        <style>
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url(<?php $this->options->JDocumentWAPBG() ?>);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center 0;
+                z-index: -999;
+            }
+        </style>
+    <?php else : ?>
+        <!-- 没填写则显示默认的灰色 -->
+        <style>
+            body {
+                background: #f5f5f5;
+            }
+        </style>
+    <?php endif; ?>
 <?php else : ?>
-    <!-- 弹幕 -->
-    <?php if ($this->options->JBarragerStatus === 'on') : ?>
-        <script src="<?php echo STATIC_PATH.'library/joe.barrager/joe.barrager.min.js'; ?>"></script>
+    <!-- 如果开启了动态背景，则显示动态背景 -->
+    <?php if ($this->options->JDocumentCanvasBG !== 'off') : ?>
+        <script src="<?php $this->options->themeUrl('assets/background/' . $this->options->JDocumentCanvasBG); ?>"></script>
+    <?php else : ?>
+        <!-- 如果填写了背景图，则优先显示背景图 -->
+        <?php if ($this->options->JDocumentPCBG) : ?>
+            <style>
+                body::before {
+                    content: '';
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url(<?php $this->options->JDocumentPCBG() ?>);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center 0;
+                    z-index: -999;
+                }
+            </style>
+        <?php else : ?>
+            <!-- 没填写则显示默认的灰色 -->
+            <style>
+                body {
+                    background: #f5f5f5;
+                }
+            </style>
+        <?php endif; ?>
     <?php endif; ?>
-    <!-- 3dtag -->
-    <?php if ($this->options->J3DTagStatus === 'on') : ?>
-        <script src="<?php echo STATIC_PATH.'library/3DTag/3DTag.min.js'; ?>"></script>
-    <?php endif; ?>
-    <!-- 目录树 -->
-    <?php if ($this->options->JDirectoryStatus === 'on'  && !isMobile()) : ?>
-        <script src="<?php echo STATIC_PATH.'assets/js/jfloor.min.js'; ?>"></script>
-    <?php endif; ?>
-    <script src="<?php echo STATIC_PATH.'assets/js/OwO.min.js'; ?>"></script>
-    <script src="<?php echo STATIC_PATH.'assets/js/joe.config.min.js?v=' . JoeVersion(); ?>"></script>
 <?php endif; ?>
 
-<!-- 背景 -->
-<?php $this->need('config/background.php'); ?>
-
-<!-- 鼠标点击特效 -->
-<?php $this->need('config/cursor.effect.php'); ?>
+    <!-- 鼠标点击特效 -->
+<?php if ($this->options->JCursorEffects !== 'off') : ?>
+    <script src="<?php $this->options->themeUrl('assets/cursor/' . $this->options->JCursorEffects); ?>"></script>
+<?php endif; ?>
 
 <script>
     <?php

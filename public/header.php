@@ -25,11 +25,7 @@
                     <h1 class="logo j-hover-music" title="<?php $this->options->title(); ?>">
                         <?php $this->options->title(); ?>
                         <a href="<?php $this->options->siteUrl(); ?>">
-                            <?php if ($this->options->JLogo) : ?>
-                                <img src="<?php $this->options->JLogo() ?>" />
-                            <?php else : ?>
-                                <img src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png" />
-                            <?php endif; ?>
+                            <img src="<?php echo $this->options->JLogo ? $this->options->JLogo : 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png' ?>" alt="logo">
                         </a>
                     </h1>
                     <!-- 链接 -->
@@ -342,11 +338,7 @@
         <h1 class="logo j-hover-music" title="<?php $this->options->title(); ?>">
             <?php $this->options->title(); ?>
             <a href="<?php $this->options->siteUrl(); ?>">
-                <?php if ($this->options->JLogo) : ?>
-                    <img src="<?php $this->options->JLogo() ?>" />
-                <?php else : ?>
-                    <img src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png" />
-                <?php endif; ?>
+                <img src="<?php echo $this->options->JLogo ? $this->options->JLogo : 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png' ?>" alt="logo">
             </a>
         </h1>
 

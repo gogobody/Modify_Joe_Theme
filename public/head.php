@@ -61,43 +61,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap-grid.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
-
-<!-- 颜色选择器 -->
-<?php if ($this->options->JGlobalThemeStatus === 'on') : ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-colpick@3.1.0/css/colpick.min.css" />
-<?php endif; ?>
-
-<!-- 代码高亮 -->
-<?php if ($this->options->JCodeColor !== 'off') : ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/<?php $this->options->JCodeColor() ?>.min.css">
-<?php endif; ?>
-
-<!-- 页面加载 -->
-<?php if ($this->options->JPageLoading !== "off") : ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fakeloader@1.0.0/fakeLoader.min.css" />
-<?php endif; ?>
-
-<!-- 播放器 -->
-<?php if ($this->options->JPlayer) : ?>
-    <link href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" rel="stylesheet" />
-<?php endif; ?>
-
-<!-- 轮播图 -->
-<?php if ($this->options->JIndexCarousel) : ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@5.4.5/css/swiper.min.css">
-<?php endif; ?>
-
-<?php if ($this->options->JCDN === 'on') : ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/css/OwO.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/css/joe.min.css?v=<?php echo JoeVersion() ?>" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@<?php echo JoeVersion() ?>/assets/css/joe.responsive.min.css?v=<?php echo JoeVersion() ?>" />
-<?php else : ?>
-    <link rel="stylesheet" href="<?php echo STATIC_PATH. 'assets/css/OwO.min.css' ?>" />
-    <link rel="stylesheet" href="<?php echo STATIC_PATH.'assets/css/joe.min.css?v=' . JoeVersion(); ?>" />
-    <link rel="stylesheet" href="<?php echo STATIC_PATH.'assets/css/joe.responsive.min.css?v=' . JoeVersion(); ?>" />
-<?php endif; ?>
-
-<!-- joe 弹窗提示 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-colpick@3.1.0/css/colpick.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/<?php echo $this->options->JCodeColor ?>.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@5.4.5/css/swiper.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/css/OwO.min.css" />
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.min.css'); ?>" />
+<link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css'); ?>" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.toast/joe.toast.min.css" />
 
 <style>
@@ -127,6 +97,74 @@
     <?php $this->options->JCustomCSS() ?>
 </style>
 
-<?php $this->need('public/configure.php'); ?>
+<?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+<script>
+    window.JOE_CONFIG = {
+        STATIC_PATH: '<?php _e(STATIC_PATH);?>',
+        INDEX:'<?php echo $this->options->index ?>',
+        THEME_URL: '<?php echo THEME_URL ?>',
+        /* 网站切换标题 */
+        DOCUMENT_TITLE: '<?php $this->options->JDocumentTitle ? $this->options->JDocumentTitle() : null ?>',
+        /* 弹幕 */
+        DOCUMENT_BARRAGER: '<?php echo $this->options->JBarragerStatus === 'on' ? 'on' : 'off' ?>',
+        /* 进度条 */
+        DOCUMENT_PROGRESS: '<?php echo $this->options->JProgressStatus === 'on' ? 'on' : 'off' ?>',
+        /* 2d人物 */
+        DOCUMENT_LIVE2D: '<?php $this->options->JLive2D() ?>',
+        /* 鼠标右键 */
+        DOCUMENT_CONTEXTMENU: '<?php echo $this->options->JContextMenuStatus === 'on' ? 'on' : 'off' ?>',
+        /* 主题色状态 */
+        DOCUMENT_THEME_STATUS: '<?php echo $this->options->JGlobalThemeStatus === 'on' ? 'on' : 'off' ?>',
+        /* 主题色 */
+        DOCUMENT_GLOBAL_THEME: '<?php $this->options->JGlobalThemeColor() ?>',
+        /* 鼠标移入音效 */
+        DOCUMENT_HOVER_MUSIC: '<?php echo $this->options->JHoverMusicStatus === 'on' ? 'on' : 'off' ?>',
+        /* 返回顶部 */
+        DOCUMENT_BACK_TOP: '<?php echo $this->options->JBackTopStatus === 'on' ? 'on' : 'off' ?>',
+        /* 统计 */
+        DOCUMENT_CENSUS: {
+            status: '<?php echo $this->options->JCensusStatus === 'on' ? 'on' : 'off' ?>',
+            data: [<?php $stat->publishedPagesNum() ?>, <?php $stat->publishedPostsNum() ?>, <?php $stat->publishedCommentsNum() ?>, <?php $stat->categoriesNum() ?>],
+        },
+        /* 代码高亮 */
+        DOCUMENT_HIGHT_LIGHT: '<?php echo $this->options->JCodeColor !== 'off' ? 'on' : 'off' ?>',
+        /* 代码防偷 */
+        DOCUMENT_CONSOLE: '<?php echo $this->options->JConsoleStatus === 'on' ? 'on' : 'off' ?>',
+        /* 天气 */
+        DOCUMENT_WEATHER_KEY: '<?php $this->options->JWetherKey() ?>',
+        /* 天气显示类型 */
+        DOCUMENT_WEATHER_TYPE: '<?php $this->options->JWetherType() ?>',
+        /* 3d云标签 */
+        DOCUMENT_3D_TAG: '<?php echo $this->options->J3DTagStatus === 'on' ? 'on' : 'off' ?>',
+        /* 点击加载更多 */
+        DOCUMENT_LOAD_MORE: '<?php $this->options->JPageStatus() ?>',
+        /* 页面加载 */
+        DOCUMENT_PAGE_LOADING: '<?php $this->options->JPageLoading() ?>',
+        /* 轮播图 */
+        DOCUMENT_SWIPER: '<?php echo $this->options->JIndexCarousel ? 'on' : 'off' ?>',
+        /* 解析 */
+        DOCUMENT_ANALYSIS: '<?php echo $this->options->JAnalysis ? 'on' : 'off' ?>',
+        /* 弹幕API */
+        DPLAYER_DANMAKU_API: '<?php $this->options->JDplayerAPI() ?>',
+        /* 是否是手机 */
+        IS_MOBILE: '<?php echo isMobile() ? 'on' : 'off' ?>',
+        /* PC端动画 */
+        DOCUMENT_PC_ANIMATION: '<?php $this->options->JPCAnimation() ?>',
+        /* WAP端动画 */
+        DOCUMENT_WAP_ANIMATION: '<?php $this->options->JWapAnimation() ?>',
+        /* 侧边栏自定义一言 */
+        DOCUMENT_ASIDE_MOTTO: '<?php echo $this->options->JMotto ? 'on' : 'off' ?>',
+        /* 自定义一言API */
+        DOCUMENT_MOTTO_API: '<?php echo $this->options->JMottoAPI ? $this->options->JMottoAPI : 'https://api.vvhan.com/api/ian' ?>',
+        /* 百度收录 */
+        DOCUMENT_BAIDU_TOKEN: '<?php echo $this->options->JBaiDuPushToken() ?>',
+        /* 懒加载 */
+        DOCUMENT_LAZY_LOAD: '<?php echo GetLazyLoad() ?>',
+        /* 苹果CMS API */
+        VIDEO_LIST_API: '<?php echo $this->options->JVideoListAPI() ?>',
+        /* 被屏蔽的分类 */
+        VIDEO_LIST_SHIELD: '<?php echo $this->options->JShieldNames() ?>'
+    }
+</script>
 
 <?php $this->options->JCustomHeadEnd() ?>
