@@ -487,7 +487,7 @@
                     display: none;
                 }
                 .notice {
-                    background: var(--background);
+                    background: var(--backgroundA);
                     width: 100%;
                     margin-left: 0;
                     border-radius: 20px;
@@ -499,7 +499,7 @@
             .article {
                 .article-list {
                     position: relative;
-                    background: var(--background);
+                    background: var(--backgroundA);
                     display: block;
                     padding: 0;
                     box-shadow: var(--box-shadow);
@@ -566,7 +566,7 @@
                 .article-list.shuobg{
                     flex-direction: row;
                     display: flex;
-                    background: var(--background);
+                    background: var(--backgroundA);
                     height: 108px;
                     padding: 20px 0;
                     .entry-box{
@@ -607,7 +607,7 @@
                 }
             }
             .search-title {
-                background: var(--background);
+                background: var(--backgroundA);
                 padding: 0 15px;
                 border-radius: var(--radius-wap);
                 margin-bottom: 15px;
@@ -652,7 +652,7 @@
     .j-bread {
         ul {
             box-shadow: var(--box-shadow);
-            background: var(--background);
+            background: var(--backgroundA);
             padding: 10px 15px;
             border-radius: var(--radius-wap);
         }
@@ -712,11 +712,9 @@
                         margin-bottom: 10px;
                     }
                 }
-                .handle {
-                    display: none;
-                }
             }
             .j-fabulous {
+                display: none;
                 margin-top: 15px;
             }
             .banquan {
