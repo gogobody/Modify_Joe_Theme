@@ -20,6 +20,10 @@
     }
 }
 
+#joe.setmobi{
+    padding-top: 106.11px;
+}
+
 @media (max-width: 1600px) {
     #live2d-widget {
         display: none;
@@ -338,7 +342,9 @@
     }
 }
 @media (max-width: 768px) {
-
+    #joe.setmobi{
+        padding-top: 56.11px;
+    }
     .lr-padding{
         padding: 0 10px;
     }
