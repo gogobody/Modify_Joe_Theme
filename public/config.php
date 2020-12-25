@@ -76,7 +76,9 @@
 <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js"></script>
 <!-- 目录树 -->
 <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/jfloor.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/OwO.min.js"></script>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/OwO.min.js"></script>-->
+<script src="<?php $this->options->themeUrl('assets/js/OwO.min.js?v=' . JoeVersion()); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/joe.config.js?v=' . JoeVersion()); ?>"></script>
 
     <!-- 背景 -->

@@ -16,15 +16,14 @@
         pjax_complete(){
             this.init()
         }
-        init() {
 
+        init() {
             /* 解决移动端 hover 问题*/
             $(document).on('touchstart', e => {});
             /* 顶部自动隐藏 */
             this.init_head_title();
             /* 暗夜模式 */
             this.init_prefer_color_scheme();
-
             /* 初始化页面的hash值跳转 */
             this.init_url_hash();
             /* 初始化标题 */

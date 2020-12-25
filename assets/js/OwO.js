@@ -49,15 +49,16 @@
 				var type = this.odata[this.packages[i]].type
 				let opackage = this.odata[this.packages[i]].container
 				for (let i = 0; i < opackage.length; i++) {
+					let icon = opackage[i].icon.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture,offset,input_str) {
+						return input_str.replace(capture,window.JOE_CONFIG.STATIC_PATH+capture)
+					});
+					console.log(icon)
 					if (type === 'image') {
-						let icon = opackage[i].icon.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture,offset,input_str) {
-							return input_str.replace(capture,window.JOE_CONFIG.STATIC_PATH+capture)
-						});
 						html += `
                     <li class="OwO-item" data-id="${opackage[i].data}" title="${opackage[i].text}">${icon}</li>`
 					} else {
 						html += `
-                    <li class="OwO-item" data-id="not-given" title="${opackage[i].text}">${opackage[i].icon}</li>`
+                    <li class="OwO-item" data-id="not-given" title="${opackage[i].text}">${icon}</li>`
 					}
 				}
 
