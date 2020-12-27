@@ -52,7 +52,6 @@
 					let icon = opackage[i].icon.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture,offset,input_str) {
 						return input_str.replace(capture,window.JOE_CONFIG.STATIC_PATH+capture)
 					});
-					console.log(icon)
 					if (type === 'image') {
 						html += `
                     <li class="OwO-item" data-id="${opackage[i].data}" title="${opackage[i].text}">${icon}</li>`

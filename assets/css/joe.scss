@@ -41,13 +41,13 @@ pre code::-webkit-scrollbar {
     background-color: #448ef6
 }
 
-::-webkit-scrollbar-thumb {
-    border-radius: 3.5px;
-    background-color: rgba(50, 50, 50, 0.3);
-    &:hover {
-        background-color: rgba(50, 50, 50, 0.4);
-    }
-}
+//::-webkit-scrollbar-thumb {
+//    border-radius: 3.5px;
+//    background-color: rgba(50, 50, 50, 0.3);
+//    &:hover {
+//        background-color: rgba(50, 50, 50, 0.4);
+//    }
+//}
 
 ::-webkit-scrollbar-track {
     border-radius: 3.5px;
