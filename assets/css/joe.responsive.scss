@@ -107,6 +107,18 @@
                 }
             }
         }
+        .huya-list {
+            .huya-list-item {
+                li {
+                    width: 33.33333333%;
+                }
+            }
+            .huya-list-play{
+                iframe {
+                    height: 460px;
+                }
+            }
+        }
     }
     .j-photos {
         a {
@@ -253,6 +265,18 @@
                     .item {
                         width: 50%;
                     }
+                }
+            }
+        }
+        .huya-list {
+            .huya-list-item {
+                li {
+                    width: 50%;
+                }
+            }
+            .huya-list-play{
+                iframe {
+                    height: 360px;
                 }
             }
         }
@@ -869,6 +893,55 @@
                         height: 180px;
                     }
                 }
+            }
+        }
+        .huya-list {
+            .huya-list-type {
+                border-radius: var(--radius-wap);
+                .list {
+                    ul {
+                        flex-wrap: nowrap;
+                        overflow-x: auto;
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .huya-list-item {
+                li {
+                    > div{
+                        .screenshot {
+                            height: 120px;
+                        }
+                        .desc {
+                            .user {
+                                .right {
+                                    svg {
+                                        display: none;
+                                    }
+                                    .totalCount {
+                                        margin-right: 0;
+                                    }
+                                    .gameFullName {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                        .hover {
+                            height: 120px;
+                        }
+                    }
+                }
+            }
+            .huya-list-play {
+                iframe {
+                    height: 190px;
+                }
+            }
+            .huya-list-pagination {
+                justify-content: center;
             }
         }
     }

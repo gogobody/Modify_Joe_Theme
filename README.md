@@ -3,6 +3,10 @@ beaufify Joe Theme version 4.6.1 modify by gogobody
 
 仿小灯泡自媒体主题美化Joe主题 by gogobody
 
+## 更新！！！
+## 注意：此版本至4.7.0 以后，由于作者为了优化速度，将会使许多选项静态化（写死到代码里）。所以已经不建议使用，样式仅供参考。
+
+
 # Modify Joe Theme
 > Modify Joe Theme 是一款基于 joe v4.6.1 修改自用的版本。
 
