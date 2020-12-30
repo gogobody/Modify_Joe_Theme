@@ -20,6 +20,7 @@
         init() {
             /* 解决移动端 hover 问题*/
             $(document).on('touchstart', e => {});
+            this.reward_init();
             /* 顶部自动隐藏 */
             this.init_head_title();
             /* 暗夜模式 */
@@ -170,7 +171,12 @@
                 }
             }
         }
-
+        /* 打赏btn初始化 */
+        reward_init(){
+            if (document.querySelector("#div_reward")){
+                document.querySelector(".handle .item-reward").style.display="none"
+            }
+        }
         /* 初始化页面的hash值跳转 */
         init_url_hash() {
             let p = new URLSearchParams(location.search);

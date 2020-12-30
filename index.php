@@ -9,7 +9,7 @@
  * @link //ae.js.cn
  *
  **/
-
+//var_dump($this->db->fetchObject($this->db->select()->from('table.contents')->where('cid IN ?',array(378,377))));
 ?>
 <?php $this->need('public/prevent.php'); ?>
 <?php $this->need('public/defend.php'); ?>
