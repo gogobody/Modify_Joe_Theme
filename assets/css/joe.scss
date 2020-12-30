@@ -4726,7 +4726,7 @@ table {
     .huya-list {
         .huya-list-type {
             position: relative;
-            background: var(--background);
+            background: var(--backgroundA);
             border-radius: var(--radius-pc);
             box-shadow: var(--box-shadow);
             padding: 60px 20px 5px;
@@ -4736,7 +4736,7 @@ table {
                 top: 15px;
                 left: -10px;
                 background: var(--theme);
-                color: var(--background);
+                color: var(--backgroundA);
                 font-weight: 500;
                 box-shadow: 2px 5px 10px rgba(49, 58, 70, 0.15);
                 height: 30px;
@@ -4803,7 +4803,7 @@ table {
                             box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
                         }
                         &.active {
-                            color: var(--background);
+                            color: var(--backgroundA);
                             background: var(--theme);
                             box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
                         }
@@ -4930,7 +4930,7 @@ table {
         }
         .huya-list-play {
             position: relative;
-            background: var(--background);
+            background: var(--backgroundA);
             border-radius: var(--radius-pc);
             box-shadow: var(--box-shadow);
             padding: 60px 20px 20px;
@@ -4939,7 +4939,7 @@ table {
                 top: 15px;
                 left: -10px;
                 background: var(--theme);
-                color: var(--background);
+                color: var(--backgroundA);
                 font-weight: 500;
                 box-shadow: 2px 5px 10px rgba(49, 58, 70, 0.15);
                 height: 30px;
@@ -4977,7 +4977,7 @@ table {
                 height: 32px;
                 line-height: 32px;
                 padding: 0 15px;
-                background: var(--background);
+                background: var(--backgroundA);
                 color: var(--main);
                 border-radius: 2px;
                 transition: background 0.35s, color 0.35s;
@@ -4987,10 +4987,10 @@ table {
                 &.active,
                 &:hover {
                     background: var(--theme);
-                    color: var(--background);
+                    color: var(--backgroundA);
                     font-weight: 500;
                     svg {
-                        fill: var(--background);
+                        fill: var(--backgroundA);
                     }
                 }
                 svg {
