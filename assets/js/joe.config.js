@@ -179,7 +179,7 @@
         }
         /* 打赏btn初始化 */
         reward_init(){
-            if (document.querySelector("#div_reward")){
+            if (!document.querySelector("#div_reward")){
                 document.querySelector(".handle .item-reward").style.display="none"
             }
         }
