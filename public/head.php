@@ -103,7 +103,7 @@
         STATIC_PATH: '<?php _e(STATIC_PATH);?>',
         INDEX:'<?php echo $this->options->index ?>',
         THEME_URL: '<?php echo THEME_URL ?>',
-        PIC2CDN:'<?php echo $this->options->JPic2cdn ? $this->options->JPic2cdn: THEME_URL ?>',
+        PIC2CDN:'<?php $cdnArray = explode("||", $this->options->JPic2cdn);$cdnUrl = trim($cdnArray[0], " \t\n\r\0\x0B\2F");echo $cdnUrl ? $cdnUrl: THEME_URL ?>',
         /* 网站切换标题 */
         DOCUMENT_TITLE: '<?php $this->options->JDocumentTitle ? $this->options->JDocumentTitle() : null ?>',
         /* 弹幕 */
