@@ -6190,6 +6190,10 @@ pre code {
                         align-items: center;
                         line-height: 40px;
                         border-bottom: 1px solid var(--classB);
+                        animation: hideIndex 0.6s;
+                        -moz-animation: hideIndex 0.6s;
+                        -webkit-animation: hideIndex 0.6s;
+                        -o-animation: hideIndex 0.6s;
                         &.active {
                             svg {
                                 fill: var(--theme);
@@ -6226,6 +6230,7 @@ pre code {
             overflow: auto;
             -webkit-transition: all .2s ease-in-out 0s;
             transition: all .2s ease-in-out 0s;
+            overflow: hidden;
             li:last-child{
                 border-bottom: none;
             }
