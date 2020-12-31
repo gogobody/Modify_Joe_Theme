@@ -11,7 +11,7 @@ define("THEME_NAME", $str2[0]);
 if (strlen(trim($options->JLocalAssets2cdn)) > 0){//主题静态资源的绝对地址
     @define('STATIC_PATH',$options->JLocalAssets2cdn);
 }else{
-    @define('STATIC_PATH',THEME_URL.'/');
+    @define('STATIC_PATH',THEME_URL);
 }
 
 function GetLocationHref()
