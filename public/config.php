@@ -1,5 +1,6 @@
 <?php $this->need('component/footer.navmobi.php'); ?>
 
+<script src="https://cdn.bootcdn.net/ajax/libs/lazysizes/1.1.3/lazysizes.min.js" async=""></script>
 <!-- 音乐播放器 -->
 <?php if ($this->options->JPlayer && !isMobile()) : ?>
     <meting-js id="<?php $this->options->JPlayer(); ?>" lrc-type="1" server="netease" storage-name="meting" theme="#ebebeb" autoplay type="playlist" fixed="true" list-olded="true"></meting-js>
@@ -55,8 +56,8 @@
 <!-- 平滑滚动 -->
 <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/SmoothScroll/SmoothScroll.min.js"></script>
 
-<!-- 图片懒加载 -->
-<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.lazyload/joe.lazyload.min.js"></script>
+<!--<!-- 图片懒加载 -->-->
+<!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.lazyload/joe.lazyload.min.js"></script>-->
 
 <!-- 弹窗提示 -->
 <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.toast/joe.toast.min.js"></script>
@@ -79,7 +80,7 @@
 
 <!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/OwO.min.js"></script>-->
 <script src="<?php $this->options->themeUrl('assets/js/OwO.min.js?v=' . JoeVersion()); ?>"></script>
-<script src="<?php $this->options->themeUrl('assets/js/joe.config.js?v=' . JoeVersion()); ?>"></script>
+<script src="<?php $this->options->themeUrl('assets/js/joe.config.min.js?v=' . JoeVersion()); ?>"></script>
 
     <!-- 背景 -->
     <!-- 移动端 -->

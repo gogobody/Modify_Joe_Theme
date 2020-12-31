@@ -156,7 +156,7 @@
             /* 初始化虎牙分页 */
             this.init_huya_pagination()
             /* 初始化图片懒加载 */
-            this.init_lazy_load();
+            // this.init_lazy_load();
             /* 初始化底部 mobinav */
             this.init_mobinav()
         }
@@ -180,7 +180,10 @@
         /* 打赏btn初始化 */
         reward_init(){
             if (!document.querySelector("#div_reward")){
-                document.querySelector(".handle .item-reward").style.display="none"
+                let item_reward = document.querySelector(".handle .item-reward")
+                if(item_reward!==null){
+                    item_reward.style.display="none"
+                }
             }
         }
         /* 初始化页面的hash值跳转 */
@@ -553,7 +556,7 @@
                         } else {
                             $('.j-loadmore').remove();
                         }
-                        _this.init_lazy_load();
+                        // _this.init_lazy_load();
                     }
                 });
             });
@@ -813,7 +816,7 @@
             $('#markdown img:not(img.owo)').each(function () {
                 let element = document.createElement('a');
                 $(element).attr('data-fancybox', 'gallery');
-                $(element).attr('href', $(this).attr('data-original') || $(this).attr('src'));
+                $(element).attr('href', $(this).attr('data-src') || $(this).attr('src'));
                 $(this).wrap(element);
             });
             let code_hljs = $('code.hljs')
@@ -1479,14 +1482,14 @@
                         $('#j-video-list').append(`
                                 <li>
                                     <a href="${window.location.href + '?vod_id=' + _.vod_id}">
-                                        <img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" data-original="${_.vod_pic}">
+                                        <img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" data-src="${_.vod_pic}">
                                         <h2>${_.vod_name}</h2>
                                         ${_.vod_year && _.vod_year != 0 ? '<i>' + _.vod_year + '</i>' : ''}
                                     </a>
                                 </li>
                             `);
                     });
-                    _this.init_lazy_load();
+                    // _this.init_lazy_load();
                     _this.video_canLoad = true;
                 }
             });
@@ -1548,7 +1551,7 @@
                     /* 详情 */
                     $('#j-video-info').html(`
 						<div class="image">
-							<img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" alt="${item.vod_name}" data-original="${item.vod_pic}" title="${item.vod_name}">
+							<img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" alt="${item.vod_name}" data-src="${item.vod_pic}" title="${item.vod_name}">
 							${item.vod_year && item.vod_year !== 0 ? '<i>' + item.vod_year + '</i>' : ''}
 						</div>
 						<dl>
@@ -1571,7 +1574,7 @@
 							</dd>
 						</dl>
 					`);
-                    this.init_lazy_load();
+                    // this.init_lazy_load();
 
                     /* 播放源 */
                     let playFromArr = item.vod_play_from.split('$$$');
@@ -1881,11 +1884,11 @@
                         res.data.forEach(_ => {
                             $('#wallpaper-list').append(`
                                 <a class="item" data-fancybox="gallery" href="${_.url}">
-                                    <img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" data-original="${_.img_1024_768}" />
+                                    <img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" data-src="${_.img_1024_768}" />
                                 </a>
                             `);
                         });
-                        _this.init_lazy_load();
+                        // _this.init_lazy_load();
                     } else {
                         $('#wallpaper-load').remove();
                     }
@@ -1922,10 +1925,10 @@
                 window.location.href = href
             })
         }
-        /* 初始化图片懒加载 */
-        init_lazy_load() {
-            new LazyLoad('.lazyload');
-        }
+        // /* 初始化图片懒加载 */
+        // init_lazy_load() {
+        //     new LazyLoad('.lazyload');
+        // }
         /* 暗夜模式 */
         init_prefer_color_scheme(){
             // 切换按钮

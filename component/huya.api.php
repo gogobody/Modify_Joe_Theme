@@ -90,7 +90,7 @@
                         <?php if (!empty($res['data']['datas'][$i]['recommendTagName'])) : ?>
                             <span class="recommendTagName"><?php echo $res['data']['datas'][$i]['recommendTagName'] ?></span>
                         <?php endif; ?>
-                        <img class="screenshot lazyload" src="<?php echo GetLazyLoad() ?>" data-original='<?php echo $res['data']['datas'][$i]['screenshot']; ?>'>
+                        <img class="screenshot lazyload" src="<?php echo GetLazyLoad() ?>" data-src='<?php echo $res['data']['datas'][$i]['screenshot']; ?>'>
                         <div class="desc">
                             <p class="introduction"><?php echo $res['data']['datas'][$i]['introduction'] ?></p>
                             <div class="user">

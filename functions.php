@@ -792,7 +792,7 @@ function themeConfig($form)
         '介绍：如果不写，则代表不显示这个广告，填写时请务必填写正确！<br />
          格式：广告图片 || 跳转链接 （中间使用两个竖杠分隔）<br />
          例如：http://ae.js.cn/usr/themes/Typecho-Joe-Theme/assets/img/random/3.webp || http://ae.js.cn <br />
-         注意：如果您只想显示图片不想跳转，可填写：广告图片 || javascript:void(0)'
+         注意：如果您只想显示图片不想跳转，可填写：广告文字||广告图片 || javascript:void(0)'
     );
     $JADContent1->setAttribute('class', 'j-setting-content j-setting-aside');
     $form->addInput($JADContent1);
@@ -805,7 +805,7 @@ function themeConfig($form)
         '介绍：如果不写，则代表不显示这个广告，填写时请务必填写正确！<br />
          格式：广告图片 || 跳转链接 （中间使用两个竖杠分隔）<br />
          例如：http://ae.js.cn/usr/themes/Typecho-Joe-Theme/assets/img/random/3.webp || http://ae.js.cn <br />
-         注意：如果您只想显示图片不想跳转，可填写：广告图片 || javascript:void(0)'
+         注意：如果您只想显示图片不想跳转，可填写：广告文字||广告图片 || javascript:void(0)'
     );
     $JADContent2->setAttribute('class', 'j-setting-content j-setting-aside');
     $form->addInput($JADContent2);

@@ -163,9 +163,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         $adContent1 = $this->options->JADContent1;
         $adContent1Counts = explode("||", $adContent1);
         ?>
-        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent1Counts[1] ?>">
-            <img src="<?php echo $adContent1Counts[0] ?>">
+    <div class="aside Ad">
+        <h3><i class="icon iconfont icon-ad"></i><span><?php echo $adContent1Counts[0] ?></span></h3>
+        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent1Counts[2] ?>">
+            <img src="<?php echo $adContent1Counts[1] ?>">
         </a>
+    </div>
     <?php endif; ?>
 
     <!-- 自定义 -->
@@ -178,7 +181,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <!-- ip信息 -->
     <?php if ($this->options->JAsideVisitor) : ?>
         <div class="aside aside-visitor">
-            <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-original="<?php $this->options->JAsideVisitor() ?>" alt="IP信息">
+            <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php $this->options->JAsideVisitor() ?>" alt="IP信息">
         </div>
     <?php endif; ?>
 
@@ -264,7 +267,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php while ($hot->next()) : ?>
                         <li>
                             <a href="<?php $hot->permalink(); ?>" title="<?php $hot->title(); ?>">
-                                <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-original="<?php GetRandomThumbnail($hot); ?>">
+                                <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($hot); ?>">
                                 <div class="info">
                                     <p><?php $hot->title(); ?></p>
                                     <span><?php GetPostViews($hot); ?> 阅读 - <?php $hot->date('m/d'); ?></span>
@@ -345,10 +348,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         $adContent2 = $this->options->JADContent2;
         $adContent2Counts = explode("||", $adContent2);
         ?>
-        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent2Counts[1] ?>" title="广告">
-            <img src="<?php echo $adContent2Counts[0] ?>">
+    <div class="aside Ad">
+        <h3><i class="icon iconfont icon-ad"></i><span><?php echo $adContent1Counts[0] ?></span></h3>
+        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent2Counts[2] ?>" title="广告">
+            <img src="<?php echo $adContent2Counts[1] ?>">
             <div class="j-ad">广告</div>
         </a>
+    </div>
     <?php endif; ?>
 
     <!-- 云标签 -->

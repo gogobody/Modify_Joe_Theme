@@ -191,7 +191,7 @@ function Load2Cdn($content,$way = "origin") // $way = "origin" 使用原生 mark
 function Short_Lazyload($text)
 {
     $text = preg_replace_callback('/<img src=\"(.*?)\".*?>/ism', function ($text) {
-        return '<img class="lazyload" data-original="' . $text[1] . '" src="' . GetLazyLoad() . '" />';
+        return '<img class="lazyload" data-src="' . $text[1] . '" src="' . GetLazyLoad() . '" />';
     }, $text);
     return $text;
 }
