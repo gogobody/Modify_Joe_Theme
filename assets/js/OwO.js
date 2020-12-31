@@ -50,7 +50,7 @@
 				let opackage = this.odata[this.packages[i]].container
 				for (let i = 0; i < opackage.length; i++) {
 					let icon = opackage[i].icon.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/gi, function (match, capture,offset,input_str) {
-						return input_str.replace(capture,window.JOE_CONFIG.STATIC_PATH+capture)
+						return input_str.replace(capture,window.JOE_CONFIG.PIC2CDN+capture)
 					});
 					if (type === 'image') {
 						html += `

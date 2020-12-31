@@ -1,4 +1,5 @@
 <?php
+global $options;
 $options = Typecho_Widget::widget('Widget_Options');
 require_once 'utils.php';
 
@@ -7,8 +8,8 @@ $str1 = explode('/themes/', (THEME_URL . '/'));
 $str2 = explode('/', $str1[1]);
 define("THEME_NAME", $str2[0]);
 
-if (strlen(trim($options->LocalResourceSrc)) > 0){//主题静态资源的绝对地址
-    @define('STATIC_PATH',$options->LocalResourceSrc);
+if (strlen(trim($options->JLocalAssets2cdn)) > 0){//主题静态资源的绝对地址
+    @define('STATIC_PATH',$options->JLocalAssets2cdn);
 }else{
     @define('STATIC_PATH',THEME_URL.'/');
 }
@@ -159,7 +160,7 @@ function ParseCode($text)
 /* 解析到CDN */
 function Load2Cdn($content,$way = "origin") // $way = "origin" 使用原生 markdown 解析
 {
-    $options = Helper::options();
+    global $options;
     //镜像处理文章中的图片，并自动处理大小和格式，
     if ($options->JPic2cdn != ""){
         $cdnArray = explode("||", $options->JPic2cdn);
@@ -508,7 +509,8 @@ function GetRequest($curl, $method = 'post', $data = null, $https = true)
 /* 解析头像 */
 function ParseAvatar($mail, $re = 0, $id = 0)
 {
-    $a = Typecho_Widget::widget('Widget_Options')->JGravatars;
+    global $options;
+    $a = $options->JGravatars;
     $b = 'https://' . $a . '/';
     $c = strtolower($mail);
     $d = md5($c);
@@ -516,7 +518,7 @@ function ParseAvatar($mail, $re = 0, $id = 0)
     if (strstr($c, "qq.com") && is_numeric($f) && strlen($f) < 11 && strlen($f) > 4) {
         $g = '//thirdqq.qlogo.cn/g?b=qq&nk=' . $f . '&s=100';
         if ($id > 0) {
-            $g = Helper::options()->rootUrl . '?id=' . $id . '" data-type="qqtx';
+            $g = $options->rootUrl . '?id=' . $id . '" data-type="qqtx';
         }
     } else {
         $g = $b . $d . '?d=mm';
