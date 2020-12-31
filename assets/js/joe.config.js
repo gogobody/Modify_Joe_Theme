@@ -214,22 +214,23 @@
         /* 初始化弹幕 */
         init_document_barrager() {
             if (window.JOE_CONFIG.DOCUMENT_BARRAGER === 'off') return;
+            let barrager = $('#barrager')
             if (localStorage.getItem('barragerStatus') === 'on') {
-                $('#barrager').attr('checked', true);
+                barrager.attr('checked', true);
                 $('.j-barrager').css({
                     opacity: 1,
                     visibility: 'visible'
                 });
             } else {
-                $('#barrager').attr('checked', false);
+                barrager.attr('checked', false);
                 $('.j-barrager').css({
                     opacity: 0,
                     visibility: 'hidden'
                 });
             }
-            $('#barrager').on('change', function () {
+            barrager.on('change', function () {
                 localStorage.setItem('barragerStatus', $(this).prop('checked') ? 'on' : 'off');
-                if ($('#barrager').prop('checked')) {
+                if (barrager.prop('checked')) {
                     $('.j-barrager').css({
                         opacity: 1,
                         visibility: 'visible'
@@ -289,6 +290,7 @@
         /* 初始化主题色 */
         init_document_theme() {
             if (window.JOE_CONFIG.DOCUMENT_THEME_STATUS === 'on') {
+                let colorPick = $('#colorPick')
                 if (!window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME) {
                     $('body').css('--theme', localStorage.getItem('--theme') || '#4e7cf2');
                 } else {
@@ -304,7 +306,7 @@
                         color = window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME;
                     }
                 }
-                $('#colorPick').colpick({
+                colorPick.colpick({
                     flat: true,
                     layout: 'hex',
                     submit: false,
@@ -317,13 +319,13 @@
                 });
                 $('#openColorPick').on('click', function (e) {
                     e.stopPropagation();
-                    $('#colorPick').toggleClass('active');
+                    colorPick.toggleClass('active');
                 });
-                $('#colorPick').on('click', function (e) {
+                colorPick.on('click', function (e) {
                     e.stopPropagation();
                 });
                 $(document).on('click', function (e) {
-                    $('#colorPick').removeClass('active');
+                    colorPick.removeClass('active');
                 });
             } else {
                 if (window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME === '') {
@@ -372,7 +374,7 @@
 
         /* 初始化代码防偷 */
         init_document_console() {
-            if (window.JOE_CONFIG.DOCUMENT_CONSOLE == 'off') return;
+            if (window.JOE_CONFIG.DOCUMENT_CONSOLE === 'off') return;
             function endebug(off, code) {
                 if (!off) {
                     !(function (e) {
@@ -422,9 +424,9 @@
                         jdetects.create(function (e) {
                             var a = 0;
                             var n = setInterval(function () {
-                                if ('on' == e) {
+                                if ('on' === e) {
                                     setTimeout(function () {
-                                        if (a == 0) {
+                                        if (a === 0) {
                                             a = 1;
                                             setTimeout(code);
                                         }
@@ -495,9 +497,10 @@
         init_load_more() {
             if (window.JOE_CONFIG.DOCUMENT_LOAD_MORE !== 'ajax') return;
             let _this = this;
-            $('.j-loadmore a').attr('data-href', $('.j-loadmore a').attr('href'));
-            $('.j-loadmore a').removeAttr('href');
-            $('.j-loadmore a').on('click', function () {
+            let jloadmore_a = $('.j-loadmore a')
+            jloadmore_a.attr('data-href', jloadmore_a.attr('href'));
+            jloadmore_a.removeAttr('href');
+            jloadmore_a.on('click', function () {
                 if ($(this).attr('disabled')) return;
                 $(this).html('loading...');
                 $(this).attr('disabled', true);
@@ -550,13 +553,15 @@
         /* 初始化解析 */
         init_document_analysis() {
             if ($('#j-video').length === 0) return;
-            $('#j-dplayer').attr('src', $('#j-dplayer').attr('data-src') + $('#j-video .episodes ul li').first().attr('data-url'));
-            $('#j-video .episodes ul li').first().addClass('active');
+            let j_dplayer = $('#j-dplayer')
+            let jv_li = $('#j-video .episodes ul li')
+            j_dplayer.attr('src', j_dplayer.attr('data-src') + jv_li.first().attr('data-url'));
+            jv_li.first().addClass('active');
             $('#j-video .player-box .title span').html('正在播放：' + $('#j-video .episodes ul li span').first().html());
-            $('#j-video .episodes ul li').on('click', function () {
-                $('#j-video .episodes ul li').removeClass('active');
+            jv_li.on('click', function () {
+                jv_li.removeClass('active');
                 $(this).addClass('active');
-                $('#j-dplayer').attr('src', $('#j-dplayer').attr('data-src') + $(this).attr('data-url'));
+                j_dplayer.attr('src', j_dplayer.attr('data-src') + $(this).attr('data-url'));
                 $('#j-video .player-box .title span').html('正在播放：' + $(this).find('span').html());
             });
         }
@@ -657,8 +662,9 @@
 
         /* 初始化文章生成二维码 */
         init_share_code() {
-            if ($('#j-share-code').length === 0) return;
-            $('#j-share-code').qrcode({
+            let sharecode = $('#j-share-code')
+            if (sharecode.length === 0) return;
+            sharecode.qrcode({
                 render: 'canvas',
                 width: 90,
                 height: 90,
@@ -671,23 +677,25 @@
 
         /* 初始化复制按钮 */
         init_copy() {
+            let c_input = $('#copyInput')
             $('.j-copy').on('click', function (e) {
                 e.preventDefault();
                 $('body').append(`<input id="copyInput" value="${$(this).attr('data-copy')}"/>`);
-                $('#copyInput').select();
+                c_input.select();
                 document.execCommand('copy');
                 $.toast({
                     type: 'success',
                     message: '已复制到剪切板中~'
                 });
-                $('#copyInput').remove();
+                c_input.remove();
             });
         }
 
         /* 初始化朗读功能 */
         init_synth() {
-            if (!window.speechSynthesis) return $('#read').remove();
-            $('#read').on('click', function () {
+            let v_read = $('#read')
+            if (!window.speechSynthesis) return v_read.remove();
+            v_read.on('click', function () {
                 const synth = window.speechSynthesis;
                 const msg = new SpeechSynthesisUtterance();
                 if ($(this).find('span').html() === '朗读') {
@@ -720,7 +728,7 @@
                         parent = comment.parentNode,
                         response = this.dom($('.j-comment').attr('data-respondid')),
                         input = this.dom('comment-parent'),
-                        form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                        form = 'form' === response.tagName ? response : response.getElementsByTagName('form')[0],
                         textarea = response.getElementsByTagName('textarea')[0];
                     if (null == input) {
                         input = this.create('input', {
@@ -986,8 +994,9 @@
                 .last()
                 .css('top', j_header.height() + 20);
             $('.j-floor .contain').css('top', j_header.height() + 20);
-            $('.j-stretch .contain').css('top', j_header.height() + 20);
-            $('.j-stretch .contain').on('click', function () {
+            let j_stretch_c = $('.j-stretch .contain')
+            j_stretch_c.css('top', j_header.height() + 20);
+            j_stretch_c.on('click', function () {
                 /* 设置侧边栏宽度 */
                 if (j_aside.width() === 0) {
                     j_aside.css('width', asideWidth);
@@ -1148,22 +1157,23 @@
         /* 初始化密码访问验证 */
         init_protect_verify() {
             let _this = this;
-            $('#j-protected').on('submit', e => {
+            let j_protec = $('#j-protected')
+            j_protec.on('submit', e => {
                 e.preventDefault();
-                if ($('#j-protected').find('.pass').val() === '') {
+                if (j_protec.find('.pass').val() === '') {
                     return $.toast({
                         type: 'info',
                         message: '请输入访问密码！'
                     });
                 }
-                let url = $('#j-protected').attr('action');
+                let url = j_protec.attr('action');
                 $.ajax({
                     url: url,
                     method: 'post',
                     datatype: 'text',
                     data: {
-                        protectPassword: $('#j-protected').find('.pass').val(),
-                        cid: $('#j-protected').find('.cid').val()
+                        protectPassword: j_protec.find('.pass').val(),
+                        cid: j_protec.find('.cid').val()
                     },
                     success: res => {
                         let arr = [],
@@ -1449,7 +1459,7 @@
                                     <a href="${window.location.href + '?vod_id=' + _.vod_id}">
                                         <img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" data-src="${_.vod_pic}">
                                         <h2>${_.vod_name}</h2>
-                                        ${_.vod_year && _.vod_year != 0 ? '<i>' + _.vod_year + '</i>' : ''}
+                                        ${_.vod_year && _.vod_year !== 0 ? '<i>' + _.vod_year + '</i>' : ''}
                                     </a>
                                 </li>
                             `);

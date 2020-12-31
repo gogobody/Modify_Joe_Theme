@@ -51,7 +51,7 @@
 <!-- 平滑滚动 -->
 <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/SmoothScroll/SmoothScroll.min.js"></script>
 
-<!--<!-- 图片懒加载 -->-->
+<!-- 图片懒加载 -->
 <!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.lazyload/joe.lazyload.min.js"></script>-->
 
 <!-- 弹窗提示 -->
