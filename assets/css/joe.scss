@@ -369,7 +369,10 @@ body {
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
     font-size: 14px;
-    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    //font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    font-family: PingFang SC, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -886,11 +889,18 @@ table {
                 .j-dropdown {
                     top: 55px;
                     padding: 20px 15px;
-                    #census {
-                        width: 300px;
-                        height: 200px;
-                        rect.highcharts-background{
-                            fill: var(--backgroundA);
+                    .stats{
+                        text-align: left;
+                        width: 200px;
+                        height: auto;
+                        ul {
+                            li {
+                                line-height: 24px;
+                                letter-spacing: 1px;
+                                display: block;
+                                font-size: 12px;
+                                color: #666;
+                            }
                         }
                     }
                 }
@@ -1166,10 +1176,6 @@ table {
                 &.census {
                     padding: 20px 15px 0;
                     max-width: none;
-                    #census {
-                        width: 300px;
-                        height: 200px;
-                    }
                 }
             }
         }

@@ -43,8 +43,6 @@
             this.init_hover_music();
             /* 初始化返回顶部 */
             this.init_back_top();
-            /* 初始化统计 */
-            this.init_document_census();
             /* 初始化代码高亮 */
             this.init_high_light();
             /* 初始化代码防偷 */
@@ -365,39 +363,6 @@
             });
         }
 
-        /* 初始化统计 */
-        init_document_census() {
-            if (window.JOE_CONFIG.DOCUMENT_CENSUS.status === 'off') return;
-            Highcharts.chart('census', {
-                title: {
-                    text: null
-                },
-                subtitle: {
-                    text: null
-                },
-                xAxis: {
-                    text: null,
-                    categories: ['页面', '文章', '评论', '分类']
-                },
-                yAxis: {
-                    title: {
-                        text: null
-                    }
-                },
-                credits: {
-                    enabled: false
-                },
-                series: [
-                    {
-                        name: '数量',
-                        type: 'column',
-                        colorByPoint: true,
-                        data: window.JOE_CONFIG.DOCUMENT_CENSUS.data,
-                        showInLegend: false
-                    }
-                ]
-            });
-        }
 
         /* 初始化代码高亮 */
         init_high_light() {

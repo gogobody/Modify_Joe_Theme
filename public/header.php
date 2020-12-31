@@ -252,7 +252,19 @@
                             <span>统计</span>
                         </section>
                         <nav class="j-dropdown">
-                            <section id="census"></section>
+<!--                            <section id="census"></section>-->
+                            <div class="stats">
+                                <ul>
+                                    <?php if ($this->options->JSitedate): ?>
+                                        <li><?php _e('建站日期：'); ?><?php $this->options->JSitedate(); ?></li>
+                                    <?php endif; ?>
+                                    <?php global $stat; ?>
+                                    <li><?php _e('文章总数：'); ?><?php $stat->publishedPostsNum() ?><?php _e(' 篇'); ?></li>
+                                    <li><?php _e('评论总数：'); ?><?php $stat->publishedCommentsNum() ?><?php _e(' 条'); ?></li>
+                                    <li><?php _e('分类总数：'); ?><?php $stat->categoriesNum() ?><?php _e(' 个'); ?></li>
+                                    <li><?php _e('最后更新：'); ?><?php get_last_update(); ?></li>
+                                </ul>
+                            </div>
                         </nav>
                     </section>
                 <?php endif; ?>
@@ -445,7 +457,18 @@
                             </svg>
                         </section>
                         <nav class="j-dropdown census">
-                            <section id="census"></section>
+                            <div class="stats">
+                                <ul>
+                                    <?php if ($this->options->JSitedate): ?>
+                                        <li><?php _e('建站日期：'); ?><?php $this->options->JSitedate(); ?></li>
+                                    <?php endif; ?>
+                                    <?php global $stat; ?>
+                                    <li><?php _e('文章总数：'); ?><?php $stat->publishedPostsNum() ?><?php _e(' 篇'); ?></li>
+                                    <li><?php _e('评论总数：'); ?><?php $stat->publishedCommentsNum() ?><?php _e(' 条'); ?></li>
+                                    <li><?php _e('分类总数：'); ?><?php $stat->categoriesNum() ?><?php _e(' 个'); ?></li>
+                                    <li><?php _e('最后更新：'); ?><?php get_last_update(); ?></li>
+                                </ul>
+                            </div>
                         </nav>
                     </section>
                 <?php endif; ?>

@@ -97,7 +97,7 @@
     <?php $this->options->JCustomCSS() ?>
 </style>
 
-<?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+<?php global $stat;Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
 <script>
     window.JOE_CONFIG = {
         STATIC_PATH: '<?php _e(STATIC_PATH);?>',

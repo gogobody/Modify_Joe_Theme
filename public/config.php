@@ -28,11 +28,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-colpick@3.1.0/js/colpick.min.js"></script>
 <?php endif; ?>
 
-<!-- 柱状图 -->
-<?php if ($this->options->JCensusStatus === 'on') : ?>
-    <script src="https://cdn.jsdelivr.net/npm/highcharts@8.2.2/highcharts.min.js"></script>
-<?php endif; ?>
-
 <!-- 代码高亮 -->
 <?php if ($this->options->JCodeColor !== 'off') : ?>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>

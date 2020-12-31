@@ -55,14 +55,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <div class="p j-aside-motto"></div>
                     <?php endif; ?>
                 </div>
-                <?php Typecho_Widget::widget('Widget_Stat')->to($quantity); ?>
+                <?php global $stat; ?>
                 <div class="webinfo">
                     <div class="item" title="累计文章数">
-                        <span class="num"><?php echo number_format($quantity->publishedPostsNum); ?></span>
+                        <span class="num"><?php echo number_format($stat->publishedPostsNum); ?></span>
                         <span>文章数</span>
                     </div>
                     <div class="item" title="累计评论数">
-                        <span class="num"><?php echo number_format($quantity->publishedCommentsNum); ?></span>
+                        <span class="num"><?php echo number_format($stat->publishedCommentsNum); ?></span>
                         <span>评论量</span>
                     </div>
                 </div>

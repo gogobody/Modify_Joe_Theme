@@ -146,6 +146,10 @@ function themeConfig($form)
     $JCensusStatus->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JCensusStatus->multiMode());
 
+    $JSitedate = new Typecho_Widget_Helper_Form_Element_Text('JSitedate', NULL, NULL, _t('网站建站日期'), _t('不填则不显示网站统计，在这里填入你的网站建站日期， 例如：2017-05-20'));
+    $JSitedate->setAttribute('class', 'j-setting-content j-setting-global');
+    $form->addInput($JSitedate);
+
     $JNavigation = new Typecho_Widget_Helper_Form_Element_Text(
             'JNavigation',null,"","/自定义页面导航名称.html","介绍：添加自定义页面，模板选择导航，在这里填入 /导航页面名称.html。
                         <br>格式：比如我的导航名字 navi， 这里填入 /navi.html 。或者您想跳转到其他网站，这里也可以填完整的网站 url"

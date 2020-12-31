@@ -49,7 +49,7 @@ function GetLazyLoad()
     if (Helper::options()->JLazyLoad) {
         return Helper::options()->JLazyLoad;
     } else {
-        return "https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/lazyload.jpg";
+        return "https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.7.0/assets/img/lazyload-min.gif";
     }
 }
 
@@ -1795,7 +1795,20 @@ function getxml(){
     echo "<script>alert('地图生成')</script>";
 }
 
-
+//博客最后更新时间
+function get_last_update(){
+    $num   = '1'; //取最近的一笔就好了
+    $now = time();
+    $db     = Typecho_Db::get();
+    $prefix = $db->getPrefix();
+    $create = $db->fetchRow($db->select('created')->from('table.contents')->limit($num)->order('created',Typecho_Db::SORT_DESC));
+    $update = $db->fetchRow($db->select('modified')->from('table.contents')->limit($num)->order('modified',Typecho_Db::SORT_DESC));
+    if($create>=$update){  //发表时间和更新时间取最近的
+        echo Typecho_I18n::dateWord($create['created'], $now); //转换为更通俗易懂的格式
+    }else{
+        echo Typecho_I18n::dateWord($update['modified'], $now);
+    }
+}
 
 
 ?>
