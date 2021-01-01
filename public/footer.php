@@ -4,7 +4,6 @@
 <?php endif; ?>
 
 <section class="container-fluid j-footer">
-    <section class="row">
         <section class="container">
             <section class="banquan">
                 <?php if ($this->options->JBanQuan) : ?>
@@ -29,7 +28,6 @@
                 <?php endif; ?>
             </section>
         </section>
-    </section>
 </section>
 
 <!-- 鱼群跳跃 -->

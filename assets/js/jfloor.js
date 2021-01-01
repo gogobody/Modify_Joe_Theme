@@ -39,6 +39,7 @@
                 item.pathStart = tocPath.getTotalLength() || 0;
                 path.push('L', x, y + height);
             }
+            // console.log(i,x,y,pathIndent,path)
             pathIndent = x;
             tocPath.setAttribute('d', path.join(' '));
             item.pathEnd = tocPath.getTotalLength();

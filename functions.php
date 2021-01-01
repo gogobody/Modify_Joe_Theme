@@ -532,7 +532,6 @@ function themeConfig($form)
             'background4.min.js' => '效果4',
             'background5.min.js' => '效果5',
             'background6.min.js' => '效果6',
-            'background7.min.js' => '效果7',
         ),
         'off',
         '是否开启动态背景图（仅限PC）',
@@ -1103,138 +1102,138 @@ function themeConfig($form)
     );
     $JCardBackground->setAttribute('class', 'j-setting-content j-setting-color');
     $form->addInput($JCardBackground);
+//
+//    $JClassA = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JClassA',
+//        NULL,
+//        NULL,
+//        '一级色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局一级色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JClassA->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JClassA);
+//
+//    $JClassB = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JClassB',
+//        NULL,
+//        NULL,
+//        '二级色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局二级色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JClassB->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JClassB);
+//
+//    $JClassC = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JClassC',
+//        NULL,
+//        NULL,
+//        '三级色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局三级色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JClassC->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JClassC);
+//
+//    $JClassD = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JClassD',
+//        NULL,
+//        NULL,
+//        '四级色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局四级色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JClassD->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JClassD);
 
-    $JClassA = new Typecho_Widget_Helper_Form_Element_Text(
-        'JClassA',
-        NULL,
-        NULL,
-        '一级色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局一级色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JClassA->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JClassA);
+//    $JMainColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JMainColor',
+//        NULL,
+//        NULL,
+//        '主要文字色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局主要文字色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JMainColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JMainColor);
 
-    $JClassB = new Typecho_Widget_Helper_Form_Element_Text(
-        'JClassB',
-        NULL,
-        NULL,
-        '二级色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局二级色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JClassB->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JClassB);
+//    $JRoutineColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JRoutineColor',
+//        NULL,
+//        NULL,
+//        '常规文字色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局常规文字色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JRoutineColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JRoutineColor);
+//
+//    $JMinorColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JMinorColor',
+//        NULL,
+//        NULL,
+//        '次要文字色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局次要文字色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JMinorColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JMinorColor);
+//
+//    $JSeatColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JSeatColor',
+//        NULL,
+//        NULL,
+//        '占位文字色彩（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局占位文字色彩。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JSeatColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JSeatColor);
 
-    $JClassC = new Typecho_Widget_Helper_Form_Element_Text(
-        'JClassC',
-        NULL,
-        NULL,
-        '三级色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局三级色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JClassC->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JClassC);
-
-    $JClassD = new Typecho_Widget_Helper_Form_Element_Text(
-        'JClassD',
-        NULL,
-        NULL,
-        '四级色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局四级色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JClassD->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JClassD);
-
-    $JMainColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JMainColor',
-        NULL,
-        NULL,
-        '主要文字色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局主要文字色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JMainColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JMainColor);
-
-    $JRoutineColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JRoutineColor',
-        NULL,
-        NULL,
-        '常规文字色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局常规文字色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JRoutineColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JRoutineColor);
-
-    $JMinorColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JMinorColor',
-        NULL,
-        NULL,
-        '次要文字色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局次要文字色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JMinorColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JMinorColor);
-
-    $JSeatColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JSeatColor',
-        NULL,
-        NULL,
-        '占位文字色彩（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局占位文字色彩。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JSeatColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JSeatColor);
-
-    $JSuccessColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JSuccessColor',
-        NULL,
-        NULL,
-        '成功色（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局成功色。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JSuccessColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JSuccessColor);
-
-    $JWarningColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JWarningColor',
-        NULL,
-        NULL,
-        '警告色（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局警告色。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JWarningColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JWarningColor);
-
-    $JDangerColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JDangerColor',
-        NULL,
-        NULL,
-        '危险色（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局危险色。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JDangerColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JDangerColor);
-
-    $JInfoColor = new Typecho_Widget_Helper_Form_Element_Text(
-        'JInfoColor',
-        NULL,
-        NULL,
-        '信息色（非必填，不会写请勿填写！）',
-        '介绍：用于修改全局信息色。<br />
-         格式：严格的色彩格式，例如：#ff6800'
-    );
-    $JInfoColor->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JInfoColor);
+//    $JSuccessColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JSuccessColor',
+//        NULL,
+//        NULL,
+//        '成功色（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局成功色。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JSuccessColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JSuccessColor);
+//
+//    $JWarningColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JWarningColor',
+//        NULL,
+//        NULL,
+//        '警告色（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局警告色。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JWarningColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JWarningColor);
+//
+//    $JDangerColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JDangerColor',
+//        NULL,
+//        NULL,
+//        '危险色（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局危险色。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JDangerColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JDangerColor);
+//
+//    $JInfoColor = new Typecho_Widget_Helper_Form_Element_Text(
+//        'JInfoColor',
+//        NULL,
+//        NULL,
+//        '信息色（非必填，不会写请勿填写！）',
+//        '介绍：用于修改全局信息色。<br />
+//         格式：严格的色彩格式，例如：#ff6800'
+//    );
+//    $JInfoColor->setAttribute('class', 'j-setting-content j-setting-color');
+//    $form->addInput($JInfoColor);
 
     $JRadiusPC = new Typecho_Widget_Helper_Form_Element_Select(
         'JRadiusPC',

@@ -1,16 +1,3 @@
-<?php
-
-/**
- * 
- * “ Eternity is not a distance but a decision - Joe ” <br /> “ 环境要求：PHP 5.4 ~ 7.2 ”
- * 
- * @package Joe
- * @author Joe
- * @link //ae.js.cn
- *
- **/
-//var_dump($this->db->fetchObject($this->db->select()->from('table.contents')->where('cid IN ?',array(378,377))));
-?>
 <?php $this->need('public/prevent.php'); ?>
 <?php $this->need('public/defend.php'); ?>
 <!DOCTYPE html>

@@ -9,7 +9,7 @@
 
 <?php if ($this->options->JHeaderStyle === 'default') : ?>
     <header class="container-fluid j-header j-header-default">
-        <section class="row above">
+        <section class="above">
             <section class="container">
                 <div class="j-slide slide">
                     <span></span>
@@ -198,7 +198,7 @@
             </section>
         </section>
 
-        <section class="row below">
+        <section class="below">
             <section class="container">
                 <!-- 分类 -->
                 <nav class="nav">

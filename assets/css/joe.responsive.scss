@@ -49,9 +49,6 @@
                 display: block;
                 padding-top: 0;
                 overflow: hidden;
-                .swiper-container {
-                    width: 100%;
-                }
                 .recommend {
                     width: 100%;
                     margin-left: 0;
@@ -468,20 +465,6 @@
             box-shadow: none;
             border-radius: 0;
             .index-banner {
-                .swiper-container {
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                    height: 180px;
-                    min-height: 180px;
-                    max-height: 180px;
-                    border-radius: var(--radius-wap);
-                    .swiper-slide {
-                        height: 180px;
-                        min-height: 180px;
-                        max-height: 180px;
-                        border-radius: var(--radius-wap);
-                    }
-                }
                 .recommend {
                     padding-top: 0;
                     margin-bottom: 15px;
@@ -536,6 +519,7 @@
                     border-radius: var(--radius-wap);
                     overflow: hidden;
                     margin-bottom: 15px;
+                    border-bottom: none;
                     .picture-box {
                         display: block;
                         width: 100%;

@@ -41,16 +41,18 @@ function fileget2($url, $timeout = 5)
 /* 获取模板版本号 */
 function JoeVersion()
 {
-    return "4.7.0";
+    return "4.7.2";
 }
 
 /* 获取懒加载图片 */
 function GetLazyLoad()
 {
-    if (Helper::options()->JLazyLoad) {
-        return Helper::options()->JLazyLoad;
+    global $options;
+    if ($options->JLazyLoad) {
+        return $options->JLazyLoad;
     } else {
-        return "https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.7.0/assets/img/lazyload-min.gif";
+//        return "https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.7.0/assets/img/lazyload-min.gif";
+        return $options->themeUrl."/assets/img/loading.svg";
     }
 }
 
