@@ -9,9 +9,6 @@
 
 ?>
 
-<?php $this->need('public/prevent.php'); ?>
-<?php $this->need('public/defend.php'); ?>
-
 <?php
 if (isset($_POST['agree'])) {
     if ($_POST['agree'] == $this->cid) {
@@ -20,21 +17,7 @@ if (isset($_POST['agree'])) {
     exit('error');
 }
 ?>
-<!DOCTYPE html>
-<html lang="en" data-color-mode="<?php if($_COOKIE['night']=='1')echo 'dark';else echo 'light'; ?>">
-
-<head>
-    <?php $this->need('public/head.php'); ?>
-</head>
-
-<body>
-<?php $this->options->JCustomBodyStart() ?>
-
-<section id="joe" <?php if ($this->options->JMobiset) _e('class="setmobi"');?>>
-    <!-- 头部 -->
-    <?php $this->need('public/header.php'); ?>
-
-
+<?php $this->need('common/common.header.php'); ?>
     <!-- 主体 -->
     <section class="container j-index j-navigation">
         <section class="j-adaption">
@@ -282,15 +265,5 @@ if (isset($_POST['agree'])) {
 <!--            --><?php //$this->need('public/comment.php'); ?>
         </section>
     </section>
-    <!-- 尾部 -->
-    <?php $this->need('public/footer.php'); ?>
-</section>
 
-
-<!-- 配置文件 -->
-<?php $this->need('public/config.php'); ?>
-<script>$(document).ready(function(){window.JoeInstance.init_navi()})</script>
-</body>
-
-
-</html>
+<?php $this->need('common/common.footer.php'); ?>

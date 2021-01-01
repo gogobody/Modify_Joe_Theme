@@ -16,10 +16,7 @@
                     <span></span>
                     <span></span>
                 </div>
-                <!-- post title -->
-                <?php if ($this->is('post')): ?>
-                    <div class="top-bar-title post_no" id="post_top_title"><?php $this->title(); ?></div>
-                <?php endif; ?>
+                <div class="top-bar-title post_no" id="post_top_title"><?php if ($this->is('post')): ?><span><?php $this->title(); ?></span><?php endif; ?></div>
                 <div class="above-nav">
                     <!-- 网站 logo -->
                     <h1 class="logo j-hover-music" title="<?php $this->options->title(); ?>">

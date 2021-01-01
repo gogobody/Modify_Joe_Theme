@@ -1,6 +1,6 @@
 <?php $this->need('component/footer.navmobi.php'); ?>
-
-<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0-beta1/lazysizes.min.js" async=""></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0-beta1/lazysizes.min.js" async="async"></script>
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
 <!-- 音乐播放器 -->
 <?php if ($this->options->JPlayer && !isMobile()) : ?>
     <meting-js id="<?php $this->options->JPlayer(); ?>" lrc-type="1" server="netease" storage-name="meting" theme="#ebebeb" autoplay type="playlist" fixed="true" list-olded="true"></meting-js>
@@ -65,10 +65,9 @@
 <!-- 目录树 -->
 <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/jfloor.min.js"></script>
 
-<!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/OwO.min.js"></script>-->
 <script src="<?php $this->options->themeUrl('assets/js/OwO.min.js?v=' . JoeVersion()); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/joe.config.min.js?v=' . JoeVersion()); ?>"></script>
-
+<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     <!-- 背景 -->
     <!-- 移动端 -->
 <?php if (isMobile()) : ?>
@@ -151,6 +150,22 @@
     } ?>
     /* 自定义JS */
     <?php $this->options->JCustomScript() ?>
+
+    const pjax = new Pjax({
+        element:'a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], a[no-pjax],form)',
+        selectors: ["#post_top_title","#pjax-container"],
+
+    });
+    function pjax_send(){
+        NProgress.start()
+    }
+    function pjax_init(){
+        window.JoeInstance.pjax_complete()
+        NProgress.done()
+    }
+    document.addEventListener('pjax:send', pjax_send)
+    document.addEventListener("pjax:complete", pjax_init)
 </script>
 
 <?php $this->options->JCustomBodyEnd() ?>
+

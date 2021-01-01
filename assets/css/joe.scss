@@ -20,7 +20,53 @@ $z-index-9: 999;
     opacity: 1;
     transition: opacity 300ms;
 }
+/**
+pjax
+ */
+.js-Pjax-remove {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    z-index: -1!important;
+}
 
+/* CSS animations */
+.Animated {
+    animation-fill-mode: both;
+    animation-duration: 1s;
+    z-index: 5;
+}
+
+.Animated--reverse { animation-direction: reverse }
+
+.Animate--fast { animation-duration: .5s }
+.Animate--noDelay { animation-delay: 0s !important;  }
+
+.Animate--fadeIn { animation-name: fadeIn }
+.Animate--fadeOut { animation-name: fadeOut }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/**
+pjax end
+ */
 /*浏览区域滚动条*/
 
 pre code::-webkit-scrollbar {
@@ -49,8 +95,9 @@ pre code::-webkit-scrollbar {
 }
 
 /* 暗夜模式 */
-// style
 :root,[data-color-mode=light] {
+    color-scheme: light;
+
     --backgroundA:#fff;
     --WhiteDark:#fff;
     --WhiteDarkRe:#000;
@@ -63,6 +110,7 @@ pre code::-webkit-scrollbar {
 }
 
 [data-color-mode=dark] {
+    color-scheme: dark;
     --background: #191919!important;
     --backgroundA:#212121!important;
     --WhiteDark:#000;
@@ -84,6 +132,9 @@ pre code::-webkit-scrollbar {
 }
 
 [data-color-mode=dark] {
+    color:#c9d1d9;
+    background-color: var(--color-bg-canvas);
+
     .j-dropdown{
         background: var(--classD)!important;
         a{
@@ -1858,20 +1909,7 @@ table {
 }
 
 /* 暗黑模式 */
-//[data-color-mode] {
-//    color: var(--color-text-primary);
-//    background-color: var(--color-bg-canvas)
-//}
-//
-//:root,[data-color-mode=light] {
-//    color-scheme: light
-//}
-//
-//[data-color-mode=dark] {
-//    color-scheme: dark
-//}
-//
-//// style end
+
 //:root,[data-color-mode=light] {
 //    --color-profile-color-modes-toggle-track-border:var(--color-scale-gray-3)}
 //
@@ -2626,7 +2664,7 @@ table {
                             align-items: center;
                             font-size: 13px;
                             color: var(--minor);
-                            line-height: 20px;
+                            line-height: 25px;
                             &:nth-child(2) {
                                 p {
                                     max-width: 150px;
@@ -7279,6 +7317,7 @@ author page
                 font-size: 18px;
                 line-height: 28px;
                 margin: 0;
+                color: var(--main);
             }
         }
         .big-mod-column-body{
@@ -7291,11 +7330,12 @@ author page
                         height: 98px;
                         border-radius: var(--radius-pc);
                         overflow: hidden;
+                        position: relative;
                         .kan-icon{
                             position: absolute;
-                            top: 4px;
+                            top: 6px;
                             color: #fff;
-                            left: 20px;
+                            left: 6px;
                             i{
                                 font-size: 18px;
                             }
@@ -7331,7 +7371,7 @@ author page
                             display: block;
                         }
                         .info{
-                            border-top: 1px solid #eee;
+                            border-top: 1px solid var(--classB);
                             font-size: 12px;
                             padding-top: 10px;
                             margin-top: 10px;

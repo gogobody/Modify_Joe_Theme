@@ -206,21 +206,24 @@ class Lb {
             this.wallpaper_cid = '';
 
             this.init();
-            this.init_navi = this.init_navigation
         }
         pjax_complete(){
+            $(window).unbind('scroll')
+            this.reinit_head_title()
+            this.init_prefer_color_scheme()
             this.init()
         }
 
         init() {
             /* 解决移动端 hover 问题*/
             $(document).on('touchstart', e => {});
-
             this.reward_init();
             /* 顶部自动隐藏 */
             this.init_head_title();
             /* 暗夜模式 */
             this.init_prefer_color_scheme();
+            /* 初始化 navigation 页面 */
+            this.init_navigation();
             /* 初始化页面的hash值跳转 */
             this.init_url_hash();
             /* 初始化标题 */
@@ -241,6 +244,8 @@ class Lb {
             this.init_back_top();
             /* 初始化代码高亮 */
             this.init_high_light();
+            /* 初始化文章内容 */
+            this.init_markdown();
             /* 初始化代码防偷 */
             this.init_document_console();
             /* 初始化天气 */
@@ -271,8 +276,7 @@ class Lb {
             this.init_synth();
             /* 初始化typecho评论 */
             this.init_typecho_comment();
-            /* 初始化文章内容 */
-            this.init_markdown();
+
             /* 初始化百度收录 */
             this.init_baidu_collect();
             /* 初始化打字机效果 */
@@ -350,11 +354,21 @@ class Lb {
             /* 初始化虎牙分页 */
             this.init_huya_pagination()
             /* 初始化图片懒加载 */
-            // this.init_lazy_load();
             /* 初始化底部 mobinav */
             this.init_mobinav()
         }
 
+        /**
+         * reInit func
+         */
+        reinit_head_title(){
+            let above_nav = $(".above .above-nav")
+            let below = $(".below")
+            let post_title = $("#post_top_title")
+            below.show()
+            post_title.addClass("post_no")
+            above_nav.removeClass("post_no")
+        }
         /* 格式化url参数 */
         changeURLArg(url, arg, arg_val) {
             var pattern = arg + '=([^&]*)';
@@ -565,6 +579,7 @@ class Lb {
         /* 初始化代码高亮 */
         init_high_light() {
             if (window.JOE_CONFIG.DOCUMENT_HIGHT_LIGHT === 'off') return;
+            hljs.initHighlighting.called = false;
             hljs.initHighlighting();
         }
 
@@ -2159,6 +2174,9 @@ class Lb {
         }
         /*顶部自动隐藏*/
         init_head_title() {
+            if (!document.querySelector("#post_top_title span")){
+                return
+            }
             let header = $("header.j-header")
             let row_above = $(".above")
             let above_nav = $(".above .above-nav")

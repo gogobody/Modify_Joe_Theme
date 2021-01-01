@@ -19,20 +19,7 @@ if (empty($this->uid)) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en" data-color-mode="<?php if($_COOKIE['night']=='1')echo 'dark';else echo 'light'; ?>">
-
-<head>
-    <?php $this->need('public/head.php'); ?>
-</head>
-
-<body>
-<?php $this->options->JCustomBodyStart() ?>
-
-<section id="joe" <?php if ($this->options->JMobiset) _e('class="setmobi"');?>>
-
-    <!-- 头部 -->
-    <?php $this->need('public/header.php'); ?>
+<?php $this->need('common/common.header.php'); ?>
     <!-- 主体 -->
     <section class="container j-index j-author">
         <section class="j-adaption">
@@ -69,12 +56,4 @@ if (empty($this->uid)) {
             <?php $this->need('public/pagination.php'); ?>
         </section>
     </section>
-    <!-- 尾部 -->
-    <?php $this->need('public/footer.php'); ?>
-</section>
-
-<!-- 配置文件 -->
-<?php $this->need('public/config.php'); ?>
-</body>
-
-</html>
+<?php $this->need('common/common.footer.php'); ?>

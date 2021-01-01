@@ -151,6 +151,19 @@
             position: static;
         }
     }
+    .j-navigation{
+        .nav-main{
+            .big-mod-column-body{
+                .mod-list{
+                    .mod-list-item{
+                        .feaimg{
+                            height: 124px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 @media (max-width: 992px) {
     .j-index {

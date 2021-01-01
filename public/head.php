@@ -69,7 +69,7 @@
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.min.css'); ?>" />
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css'); ?>" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.toast/joe.toast.min.css" />
-
+<link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
 
 <style>
     :root {

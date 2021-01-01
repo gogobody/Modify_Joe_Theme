@@ -29,6 +29,8 @@ beaufify Joe Theme version 4.6.1 modify by gogobody
 - 美化文章页面，美化手机评论样式
 - 添加多图模式
 - 添加了文章等级输出
+- 更新到 4.7.2
+- 2021/1/1 替换lazyload为lazysizes，采用纯js pjax https://github.com/MoOx/pjax
 
 
 ## 如果对您有用，不胜荣幸！
