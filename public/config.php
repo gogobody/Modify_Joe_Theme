@@ -154,7 +154,7 @@
 
     const pjax = new Pjax({
         element:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank"]):not([no-pjax]):not(form)',
-        selectors: ["#joe_config","#post_top_title","#pjax-container"],
+        selectors: ["head title","head meta[name='description']","head meta[name='keywords']","head link[rel='alternate']","#joe_config","#post_top_title","#pjax-container"],
 
     });
     function pjax_send(){

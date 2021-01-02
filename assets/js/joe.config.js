@@ -207,6 +207,7 @@ class Lb {
             this.global_item = {
                 above_nav : $(".above .above-nav"),
                 below : $(".below"),
+                color_mode_toggle_btn : $(".js-promo-color-modes-toggle"),
             };
             this.global_var = {};
             this.init();
@@ -383,7 +384,7 @@ class Lb {
          */
         reinit_head_title(){
             let post_title = $("#post_top_title")
-            this.global_item.below.show()
+            this.global_item.below.stop().show()
             post_title.addClass("post_no")
             this.global_item.above_nav.removeClass("post_no")
         }
@@ -545,14 +546,14 @@ class Lb {
                         localStorage.setItem('--theme', '#' + b);
                     }
                 });
-                $('#openColorPick').on('click', function (e) {
+                $('#openColorPick').unbind('click').bind('click', function (e) {
                     e.stopPropagation();
                     colorPick.toggleClass('active');
                 });
-                colorPick.on('click', function (e) {
+                colorPick.unbind('click').bind('click', function (e) {
                     e.stopPropagation();
                 });
-                $(document).on('click', function (e) {
+                $(document).unbind('click').bind('click', function (e) {
                     colorPick.removeClass('active');
                 });
             } else {
@@ -585,7 +586,7 @@ class Lb {
             };
             isShowBackTop();
             $(window).on('scroll', () => isShowBackTop());
-            $('#backToTop').on('click', () => {
+            $('#backToTop').unbind('click').bind('click', () => {
                 window.scroll({
                     top: 0,
                     behavior: 'smooth'
@@ -729,7 +730,7 @@ class Lb {
             let jloadmore_a = $('.j-loadmore a')
             jloadmore_a.attr('data-href', jloadmore_a.attr('href'));
             jloadmore_a.removeAttr('href');
-            jloadmore_a.on('click', function () {
+            jloadmore_a.unbind('click').bind('click', function () {
                 if ($(this).attr('disabled')) return;
                 $(this).html('loading...');
                 $(this).attr('disabled', true);
@@ -783,7 +784,7 @@ class Lb {
             j_dplayer.attr('src', j_dplayer.attr('data-src') + jv_li.first().attr('data-url'));
             jv_li.first().addClass('active');
             $('#j-video .player-box .title span').html('正在播放：' + $('#j-video .episodes ul li span').first().html());
-            jv_li.on('click', function () {
+            jv_li.unbind('click').bind('click', function () {
                 jv_li.removeClass('active');
                 $(this).addClass('active');
                 j_dplayer.attr('src', j_dplayer.attr('data-src') + $(this).attr('data-url'));
@@ -803,13 +804,13 @@ class Lb {
                 width: '100%',
                 maxHeight: '250px'
             });
-            $(document).on('click', function () {
+            $(document).unbind('click').bind('click', function () {
                 $('.OwO').removeClass('OwO-open');
             });
         }
         /* 初始化回复可见按钮 */
         init_replay_see() {
-            $('.need-reply span').on('click', function () {
+            $('.need-reply span').unbind('click').bind('click', function () {
                 let id = $(this).attr('data-href');
                 window.scrollTo({
                     top: $('#' + id).offset().top - ($('.j-header').height() + 20),
@@ -826,18 +827,18 @@ class Lb {
                 penSize: 5,
                 color: '303133'
             });
-            $('#commentTypeContent .undo').on('click', function () {
+            $('#commentTypeContent .undo').unbind('click').bind('click', function () {
                 window.sketchpad.undo();
             });
-            $('#commentTypeContent .animate').on('click', function () {
+            $('#commentTypeContent .animate').unbind('click').bind('click', function () {
                 window.sketchpad.animate(10);
             });
-            $('#commentTypeContent .canvas ul li').on('click', function () {
+            $('#commentTypeContent .canvas ul li').unbind('click').bind('click', function () {
                 window.sketchpad.penSize = $(this).attr('data-line');
                 $('#commentTypeContent .canvas ul li').removeClass('active');
                 $(this).addClass('active');
             });
-            $('#commentTypeContent .canvas ol li').on('click', function () {
+            $('#commentTypeContent .canvas ol li').unbind('click').bind('click', function () {
                 window.sketchpad.color = $(this).attr('data-color');
                 $('#commentTypeContent .canvas ol li').removeClass('active');
                 $(this).addClass('active');
@@ -846,11 +847,11 @@ class Lb {
 
         /* 初始化赞赏按钮 */
         init_admire() {
-            $('#j-admire').on('click', function () {
+            $('#j-admire').unbind('click').bind('click', function () {
                 $('.j-admire-modal').addClass('active');
                 $('body').css('overflow', 'hidden');
             });
-            $('.j-admire-modal .close').on('click', function () {
+            $('.j-admire-modal .close').unbind('click').bind('click', function () {
                 $('.j-admire-modal').removeClass('active');
                 $('body').css('overflow', '');
             });
@@ -858,7 +859,7 @@ class Lb {
 
         /* 初始化点赞按钮 */
         init_thumbs_up() {
-            $('#j-thumbs-up').on('click', function () {
+            $('#j-thumbs-up').unbind('click').bind('click', function () {
                 if ($(this).attr('disabled')) {
                     return $.toast({
                         type: 'warning',
@@ -903,7 +904,7 @@ class Lb {
         /* 初始化复制按钮 */
         init_copy() {
             let c_input = $('#copyInput')
-            $('.j-copy').on('click', function (e) {
+            $('.j-copy').unbind('click').bind('click', function (e) {
                 e.preventDefault();
                 $('body').append(`<input id="copyInput" value="${$(this).attr('data-copy')}"/>`);
                 c_input.select();
@@ -920,7 +921,7 @@ class Lb {
         init_synth() {
             let v_read = $('#read')
             if (!window.speechSynthesis) return v_read.remove();
-            v_read.on('click', function () {
+            v_read.unbind('click').bind('click', function () {
                 const synth = window.speechSynthesis;
                 const msg = new SpeechSynthesisUtterance();
                 if ($(this).find('span').html() === '朗读') {
@@ -1046,7 +1047,7 @@ class Lb {
                     }
                 }
             });
-            $(document).on('click', '#baiduIncluded span', function () {
+            $("#baiduIncluded span").unbind('click').bind('click',function () {
                 $.ajax({
                     url: window.JOE_CONFIG.THEME_URL + '/baiduPush.php?urls=' + encodeURI(window.location.href),
                     method: 'get',
@@ -1079,7 +1080,7 @@ class Lb {
                         }
                     }
                 });
-            });
+            })
         }
 
         /* 初始化打字机效果 */
@@ -1170,7 +1171,7 @@ class Lb {
         init_file_toggle() {
             let jf_panel = $('.j-file .panel')
             jf_panel.first().next().slideToggle(0);
-            jf_panel.on('click', function () {
+            jf_panel.unbind('click').bind('click', function () {
                 let next = $(this).next();
                 next.slideToggle(200);
                 $('.j-file .panel-body').not(next).slideUp();
@@ -1180,7 +1181,7 @@ class Lb {
         /* 初始化目录树点击事件 */
         init_floor_click() {
             if (window.JOE_CONFIG.IS_MOBILE === 'on') return;
-            $('.j-floor a').on('click', function (e) {
+            $('.j-floor a').unbind('click').bind('click', function (e) {
                 e.preventDefault();
                 window.scroll({
                     top: $($(this).attr('data-href')).offset().top - ($('.j-header').height() + 20),
@@ -1191,7 +1192,7 @@ class Lb {
 
         /* 初始化下拉框按钮 */
         init_drop_down() {
-            $('.j-drop').on('click', function (e) {
+            $('.j-drop').unbind('click').bind('click', function (e) {
                 e.stopPropagation();
                 if ($(this).siblings('.j-dropdown').hasClass('active')) {
                     $(this).siblings('.j-dropdown').removeClass('active');
@@ -1200,8 +1201,8 @@ class Lb {
                     $(this).siblings('.j-dropdown').addClass('active');
                 }
             });
-            $(document).on('click', e => $('.j-dropdown').removeClass('active'));
-            $('.j-dropdown[stop-propagation]').on('click', function (e) {
+            $(document).unbind('click').bind('click', e => $('.j-dropdown').removeClass('active'));
+            $('.j-dropdown[stop-propagation]').unbind('click').bind('click', function (e) {
                 e.stopPropagation();
             });
         }
@@ -1221,7 +1222,7 @@ class Lb {
             $('.j-floor .contain').css('top', j_header.height() + 20);
             let j_stretch_c = $('.j-stretch .contain')
             j_stretch_c.css('top', j_header.height() + 20);
-            j_stretch_c.on('click', function () {
+            j_stretch_c.unbind('click').bind('click', function () {
                 /* 设置侧边栏宽度 */
                 if (j_aside.width() === 0) {
                     j_aside.css('width', asideWidth);
@@ -1354,7 +1355,7 @@ class Lb {
 
         /* 初始化移动端搜索按钮点击事件 */
         init_wap_search_click() {
-            $('.j-search-toggle').on('click', function () {
+            $('.j-search-toggle').unbind('click').bind('click', function () {
                 $(this).toggleClass('active');
                 if ($(this).hasClass('active')) {
                     $('.j-nav').hide();
@@ -1552,7 +1553,7 @@ class Lb {
 
         /* 初始化移动端搜索点击事件 */
         init_wap_search() {
-            $('.search-toggle-xs').on('click', function () {
+            $('.search-toggle-xs').unbind('click').bind('click', function () {
                 $('.j-slide').removeClass('active');
                 $('.j-sidebar-xs').removeClass('active');
                 let js_down_xs = $('.j-search-down-xs')
@@ -1565,7 +1566,7 @@ class Lb {
                     $('.j-header').css('box-shadow', '');
                 }
             });
-            $('.j-search-down-xs .mask').on('click', function () {
+            $('.j-search-down-xs .mask').unbind('click').bind('click', function () {
                 $('.j-search-down-xs').removeClass('active');
                 $('body').css('overflow', '');
                 $('.j-header').css('box-shadow', '');
@@ -1655,12 +1656,12 @@ class Lb {
                 }
             });
             let _this = this;
-            $(document).on('click', '#j-video-type li', function () {
+            $('#j-video-type li').unbind('click').bind('click',function () {
                 $(this).addClass('active').siblings().removeClass('active');
                 _this.video_page = 0;
                 $('#j-video-list').html('');
                 _this.init_video_list($(this).attr('data-id'));
-            });
+            })
         }
 
         /* 加载视频列表 */
@@ -1705,7 +1706,7 @@ class Lb {
         /* 初始化视频搜索 */
         init_video_search() {
             let _this = this;
-            $('#j-video-search button').on('click', function () {
+            $('#j-video-search button').unbind('click').bind('click', function () {
                 if ($('#j-video-search input').val().trim() === '') {
                     return $.toast({
                         type: 'info',
@@ -1818,7 +1819,7 @@ class Lb {
                     let jv_player = $('#j-video-player iframe')
                     if (!jv_player.attr('data-src') || jv_player.attr('data-src') === '') return;
                     /* 点击切换播放源 */
-                    $('.video-list-play .list-item li').on('click', function () {
+                    $('.video-list-play .list-item li').unbind('click').bind('click', function () {
                         $('.video-list-play .list-item li').removeClass('active');
                         $(this).addClass('active');
                         jv_player.attr('src', jv_player.attr('data-src') + $(this).attr('data-link'));
@@ -1853,7 +1854,7 @@ class Lb {
 
         /* 初始化tabs */
         init_j_tabs() {
-            $('.j-tabs .nav span').on('click', function () {
+            $('.j-tabs .nav span').unbind('click').bind('click', function () {
                 let panel = $(this).attr('data-panel');
                 $(this).addClass('active').siblings().removeClass('active');
                 $(this).parents('.j-tabs').find('.content div').hide();
@@ -1866,7 +1867,7 @@ class Lb {
 
         /* 初始化collapse */
         init_j_collapse() {
-            $('.j-collapse .collapse-head').on('click', function () {
+            $('.j-collapse .collapse-head').unbind('click').bind('click', function () {
                 let next = $(this).next();
                 next.slideToggle(200);
                 $('.j-collapse .collapse-body').not(next).slideUp();
@@ -1901,7 +1902,7 @@ class Lb {
 
         /* 初始化评论点赞 */
         init_comment_like() {
-            $('.j-comment-like').on('click', function () {
+            $('.j-comment-like').unbind('click').bind('click', function () {
                 if ($(this).hasClass('active'))
                     return $.toast({
                         type: 'warning',
@@ -1934,13 +1935,13 @@ class Lb {
             $(document).on('click', () => j_d_reply.hide());
 
             /* 点击评论按钮显示隐藏评论区域 */
-            $('.j-comment-reply').on('click', function (e) {
+            $('.j-comment-reply').unbind('click').bind('click', function (e) {
                 e.stopPropagation();
                 $(this).parents('li').find('.j-dynamic-reply').toggle();
             });
 
             /* 阻止事件传播 */
-            j_d_reply.on('click', e => e.stopPropagation());
+            j_d_reply.unbind('click').bind('click', e => e.stopPropagation());
 
             j_d_reply.on('submit', function (e) {
                 e.preventDefault();
@@ -2026,13 +2027,13 @@ class Lb {
                         $(item).css('background-image', 'url(' + res + ')');
                     });
                 }
-                $(item).on('click', function () {
+                $(item).unbind('click').bind('click', function () {
                     $('body').css('overflow', 'hidden');
                     $('.j-video-preview').addClass('active');
                     $('.j-video-preview iframe').attr('src', window.JOE_CONFIG.THEME_URL + '/player.php?url=' + src);
                 });
             });
-            $(".j-video-preview .close").on('click', function() {
+            $(".j-video-preview .close").unbind('click').bind('click', function() {
                 $('body').css('overflow', '')
                 $('.j-video-preview').removeClass('active');
             })
@@ -2067,7 +2068,7 @@ class Lb {
                 $('#wallpaper-list').html('');
                 _this.init_wallpaper_list();
             });
-            $('#wallpaper-load').on('click', function () {
+            $('#wallpaper-load').unbind('click').bind('click', function () {
                 _this.wallpaper_page += 1;
                 _this.init_wallpaper_list();
             });
@@ -2106,7 +2107,7 @@ class Lb {
         init_huya_type() {
             if ($('.huya-list-type').length === 0) return;
             let _this = this;
-            $('.huya-list-type .list ul li').on('click', function () {
+            $('.huya-list-type .list ul li').unbind('click').bind('click', function () {
                 window.location.href = _this.changeURLArg(window.location.href, 'vid', $(this).attr('data-vid'));
             });
         }
@@ -2115,7 +2116,7 @@ class Lb {
         init_huya_skip() {
             if ($('.huya-list-go-play').length === 0) return;
             let _this = this;
-            $('.huya-list-go-play').on('click', function () {
+            $('.huya-list-go-play').unbind('click').bind('click', function () {
                 let href = _this.changeURLArg(window.location.href, 'play', $(this).attr('data-href'));
                 href = _this.changeURLArg(href, 'title', $(this).attr('data-title'));
                 window.open(href);
@@ -2143,7 +2144,7 @@ class Lb {
                 let t = !0, mode = "dark";
                 "true" === e.getAttribute("aria-checked") && (t = !1 , mode = "light")
                     e.setAttribute("aria-checked", String(t))
-                    change_mode(mode);
+                change_mode(mode);
             }
             // 改变模式 并设置 cookie
             function change_mode(e) {
@@ -2192,10 +2193,12 @@ class Lb {
                 document.querySelector(".js-color-mode-settings") && window.history.replaceState({}, document.title, document.URL.split("?")[0])
             }()
             // 添加点击事件
-            let toggle_btn = document.getElementsByClassName("js-promo-color-modes-toggle")
-            toggle_btn[0]? toggle_btn[0].addEventListener('click',function (e) {
-                set_mode_toggle(e.currentTarget)
-            },false):false
+
+            if(this.global_item.color_mode_toggle_btn){
+                this.global_item.color_mode_toggle_btn.unbind('click').bind('click',function (event) {
+                    set_mode_toggle(event.currentTarget)
+                });
+            }
         }
         /*顶部自动隐藏*/
         init_head_title() {
@@ -2288,7 +2291,7 @@ class Lb {
 
         /* 初始化导航 */
         init_navigation(){
-            $('#siteNav li.nav-list-item').on('click', function (e) {
+            $('#siteNav li.nav-list-item').unbind('click').bind('click', function (e) {
                 e.preventDefault();
                 $(this).siblings().removeClass('active')
                 $(this).addClass('active')
