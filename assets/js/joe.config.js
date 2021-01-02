@@ -204,26 +204,29 @@ class Lb {
             this.video_canLoad = true;
             this.wallpaper_page = 0;
             this.wallpaper_cid = '';
-
+            this.global_item = {
+                above_nav : $(".above .above-nav"),
+                below : $(".below"),
+            };
+            this.global_var = {};
             this.init();
         }
         pjax_complete(){
             $(window).unbind('scroll')
             this.reinit_head_title()
-            this.init_prefer_color_scheme()
-            this.init()
-        }
+            this.global_init()
+            if (window.JOE_CONFIG.ARCHIVE === "post"){
+                this.post_init()
+            }else {
+                this.page_init()
+            }
 
-        init() {
+        }
+        global_init(){
             /* 解决移动端 hover 问题*/
             $(document).on('touchstart', e => {});
-            this.reward_init();
-            /* 顶部自动隐藏 */
-            this.init_head_title();
             /* 暗夜模式 */
             this.init_prefer_color_scheme();
-            /* 初始化 navigation 页面 */
-            this.init_navigation();
             /* 初始化页面的hash值跳转 */
             this.init_url_hash();
             /* 初始化标题 */
@@ -232,6 +235,7 @@ class Lb {
             this.init_document_barrager();
             /* 初始化进度条 */
             this.init_document_progress();
+
             /* 初始化live2d */
             this.init_document_live2d();
             /* 鼠标右键 */
@@ -242,10 +246,6 @@ class Lb {
             this.init_hover_music();
             /* 初始化返回顶部 */
             this.init_back_top();
-            /* 初始化代码高亮 */
-            this.init_high_light();
-            /* 初始化文章内容 */
-            this.init_markdown();
             /* 初始化代码防偷 */
             this.init_document_console();
             /* 初始化天气 */
@@ -256,6 +256,48 @@ class Lb {
             this.init_load_more();
             /* 初始化轮播图 */
             this.init_document_swiper();
+            /* 初始化侧边栏人生倒计时 */
+            this.init_life_time();
+            /* 初始化侧边栏评论 */
+            this.init_aside_reply();
+            /* 初始化下拉框按钮 */
+            this.init_drop_down();
+            /* 初始化侧边栏相关 */
+            this.init_aside_config();
+            /* 初始化登录注册验证 */
+            this.init_sign_verify();
+            /* 初始化分页的hash值 */
+            this.init_pagination_hash();
+            /* 初始化移动端搜索按钮点击事件 */
+            this.init_wap_search_click();
+            /* 初始化搜索框验证 */
+            this.init_search_verify();
+            /* 初始化移动端搜索标签云 */
+            this.init_wap_cloud();
+            /* 初始化移动端搜索按钮点击事件 */
+            this.init_wap_search();
+            /* 初始化移动端侧边栏点击事件 */
+            this.init_wap_sidebar();
+            /* 初始化动画 */
+            this.init_wow();
+            /* 初始化tabs */
+            this.init_j_tabs();
+            /* 初始化collapse */
+            this.init_j_collapse();
+            /* 初始化侧边栏一言 */
+            this.init_aside_motto();
+            /* 初始化底部 mobinav */
+            this.init_mobinav()
+        }
+        post_init(){
+            /* 打赏btn初始化 */
+            this.reward_init();
+            /* 顶部自动隐藏 */
+            this.init_head_title();
+            /* 初始化代码高亮 */
+            this.init_high_light();
+            /* 初始化文章内容 */
+            this.init_markdown();
             /* 初始化解析 */
             this.init_document_analysis();
             /* 初始化owo标签 */
@@ -276,52 +318,37 @@ class Lb {
             this.init_synth();
             /* 初始化typecho评论 */
             this.init_typecho_comment();
-
             /* 初始化百度收录 */
             this.init_baidu_collect();
             /* 初始化打字机效果 */
             this.init_typing();
-            /* 初始化侧边栏人生倒计时 */
-            this.init_life_time();
-            /* 初始化侧边栏评论 */
-            this.init_aside_reply();
-            /* 初始化归档下拉 */
-            this.init_file_toggle();
             /* 初始化目录树点击事件 */
             this.init_floor_click();
-            /* 初始化下拉框按钮 */
-            this.init_drop_down();
-            /* 初始化侧边栏相关 */
-            this.init_aside_config();
-            /* 初始化登录注册验证 */
-            this.init_sign_verify();
-            /* 初始化分页的hash值 */
-            this.init_pagination_hash();
             /* 初始化回复列表内容 */
             this.init_replay_content();
             /* 初始化评论 */
             this.init_comment();
-            /* 初始化留言板 */
-            this.init_leaving();
-            /* 初始化移动端搜索按钮点击事件 */
-            this.init_wap_search_click();
-            /* 初始化搜索框验证 */
-            this.init_search_verify();
             /* 初始化密码访问验证 */
             this.init_protect_verify();
-            /* 初始化微语发布 */
-            this.init_dynamic_verify();
             /* 初始化评论提交 */
             this.init_comment_submit();
-            /* 初始化移动端搜索标签云 */
-            this.init_wap_cloud();
-            /* 初始化移动端搜索按钮点击事件 */
-            this.init_wap_search();
-            /* 初始化移动端侧边栏点击事件 */
-            this.init_wap_sidebar();
-            /* 初始化动画 */
-            this.init_wow();
-
+            /* 初始化评论点赞 */
+            this.init_comment_like();
+            /* 初始化动态回复 */
+            this.init_dynamic_reply();
+            /* 初始化视频册 */
+            this.init_video_album();
+        }
+        page_init(){
+            this.post_init()
+            /* 初始化 navigation 页面 */
+            this.init_navigation();
+            /* 初始化归档下拉 */
+            this.init_file_toggle();
+            /* 初始化留言板 */
+            this.init_leaving();
+            /* 初始化微语发布 */
+            this.init_dynamic_verify();
             /* 初始化视频分类列表 */
             this.init_video_list_type();
             /* 初始化视频列表 */
@@ -332,19 +359,6 @@ class Lb {
             this.init_load_more_video();
             /* 初始化加载详情 */
             this.init_video_detail();
-
-            /* 初始化tabs */
-            this.init_j_tabs();
-            /* 初始化collapse */
-            this.init_j_collapse();
-            /* 初始化侧边栏一言 */
-            this.init_aside_motto();
-            /* 初始化评论点赞 */
-            this.init_comment_like();
-            /* 初始化动态回复 */
-            this.init_dynamic_reply();
-            /* 初始化视频册 */
-            this.init_video_album();
             /* 初始化壁纸页 */
             this.init_wallpaper();
             /* 初始化虎牙页 */
@@ -353,21 +367,25 @@ class Lb {
             this.init_huya_skip();
             /* 初始化虎牙分页 */
             this.init_huya_pagination()
+        }
+        init() {
             /* 初始化图片懒加载 */
-            /* 初始化底部 mobinav */
-            this.init_mobinav()
+            this.global_init()
+            if (window.JOE_CONFIG.ARCHIVE === "post"){
+                this.post_init()
+            }else {
+                this.page_init()
+            }
         }
 
         /**
          * reInit func
          */
         reinit_head_title(){
-            let above_nav = $(".above .above-nav")
-            let below = $(".below")
             let post_title = $("#post_top_title")
-            below.show()
+            this.global_item.below.show()
             post_title.addClass("post_no")
-            above_nav.removeClass("post_no")
+            this.global_item.above_nav.removeClass("post_no")
         }
         /* 格式化url参数 */
         changeURLArg(url, arg, arg_val) {
@@ -1281,7 +1299,7 @@ class Lb {
 
         /* 初始化评论 */
         init_comment() {
-            $('#commentType button').on('click', function () {
+            $('#commentType button').unbind('click').bind('click', function () {
                 $('#commentType button').removeClass('active');
                 $(this).addClass('active');
                 let c_canvas = $('#commentTypeContent .canvas')
@@ -1296,10 +1314,10 @@ class Lb {
                     c_canvas.attr('data-type', 'text');
                 }
             });
-            $('.comment-list .meta a').on('click', function () {
+            $('.comment-list .meta a').unbind('click').bind('click', function () {
                 $('#draw').prop('width', $('#commentTypeContent').width());
             });
-            $('#cancel-comment-reply-link').on('click', function () {
+            $('#cancel-comment-reply-link').unbind('click').bind('click', function () {
                 $('#draw').prop('width', $('#commentTypeContent').width());
             });
         }
@@ -1556,7 +1574,7 @@ class Lb {
 
         /* 初始化移动端侧边栏点击事件 */
         init_wap_sidebar() {
-            $('.j-slide').on('click', function (e) {
+            $('.j-slide').unbind('click').bind('click', function (e) {
                 $('.j-search-down-xs').removeClass('active');
                 $('body').css('overflow', '');
                 $('.j-header').css('box-shadow', '');
@@ -1568,16 +1586,23 @@ class Lb {
                     $('body').css('overflow', '');
                 }
             });
-            $('.j-sidebar-xs .mask').on('click', function () {
+            $('.j-sidebar-xs .mask').unbind('click').bind('click', function () {
                 $('.j-slide').removeClass('active');
                 $('.j-sidebar-xs').removeClass('active');
                 $('body').css('overflow', '');
             });
 
-            $('.j-sidebar-xs .item.category ul li a').unbind().bind('click',function (ev) {
+            $('.j-sidebar-xs .item ul li a').unbind('click').bind('click',function (ev) {
                 let c = $(this);
                 c.parent().siblings(".active").toggleClass("active")
-                if(c.next().is("ul") && c.parent().toggleClass("active") && ev.preventDefault()) return false;
+                if(c.next().is("ul")){
+                    if (c.parent().toggleClass("active") && ev.preventDefault())
+                    return false;
+                }else {
+                    $('.j-slide').removeClass('active');
+                    $('.j-sidebar-xs').removeClass('active');
+                    $('body').css('overflow', '');
+                }
             })
         }
 

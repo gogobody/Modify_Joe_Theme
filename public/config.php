@@ -1,5 +1,6 @@
 <?php $this->need('component/footer.navmobi.php'); ?>
-<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0-beta1/lazysizes.min.js" async="async"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0-beta1/lazysizes.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
 <!-- 音乐播放器 -->
 <?php if ($this->options->JPlayer && !isMobile()) : ?>
@@ -152,8 +153,8 @@
     <?php $this->options->JCustomScript() ?>
 
     const pjax = new Pjax({
-        element:'a[href^="<?php Helper::options()->siteUrl()?>"]:not(a[target="_blank"], a[no-pjax],form)',
-        selectors: ["#post_top_title","#pjax-container"],
+        element:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank"]):not([no-pjax]):not(form)',
+        selectors: ["#joe_config","#post_top_title","#pjax-container"],
 
     });
     function pjax_send(){

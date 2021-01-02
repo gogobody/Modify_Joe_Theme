@@ -99,7 +99,7 @@
 </style>
 
 <?php global $stat;Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
-<script>
+<script id="joe_config">
     window.JOE_CONFIG = {
         ARCHIVE:'<?php _e($this->getArchiveType()) ?>',
         STATIC_PATH: '<?php _e(STATIC_PATH);?>',

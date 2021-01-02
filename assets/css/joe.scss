@@ -102,6 +102,7 @@ pre code::-webkit-scrollbar {
     --WhiteDark:#fff;
     --WhiteDarkRe:#000;
     --box-shadow-weight: 4px 0 25px 0 #e5ecf2;
+    --color-text-primary: #24292e;
     --color-bg-canvas: #fff;
 
     --toggle-thuumb-bg:#2f363d;
@@ -126,6 +127,8 @@ pre code::-webkit-scrollbar {
     --routine:var(--minor) !important;
     --classD: #000!important;
 
+    --color-text-primary: #c9d1d9;
+    --color-bg-canvas: #0d1117;
     --toggle-thuumb-bg:#6e40c9;
     --toggle-track-border:#3c1e70;
     --toggle-track-bg:#271052;
@@ -2252,6 +2255,7 @@ table {
         .banquan-links {
             display: flex;
             align-items: center;
+            flex-wrap:wrap;
             a {
                 margin-left: 20px;
                 line-height: 19px;
