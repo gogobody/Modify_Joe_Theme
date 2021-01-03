@@ -1436,7 +1436,7 @@ class Lb {
                                 message: '密码正确，即将刷新本页！'
                             });
                             setTimeout(function () {
-                                window.location.href = url;
+                                pjax.loadUrl(url)
                             }, _this.options.reloadTime);
                         }
                     }
@@ -1449,6 +1449,7 @@ class Lb {
             let _this = this;
             $('#j-dynamic-form').on('submit', function (e) {
                 e.preventDefault();
+                let btn = $("#j-dynamic-form .form-foot button")
                 if ($('#j-dynamic-form-text').val().trim() === '') {
                     return $.toast({
                         type: 'info',
@@ -1457,6 +1458,7 @@ class Lb {
                 }
                 if ($(this).attr('data-disabled')) return;
                 $(this).attr('data-disabled', true);
+                btn.text("发表中...")
                 $.ajax({
                     url: $(this).attr('action'),
                     type: 'post',
@@ -1479,12 +1481,16 @@ class Lb {
                             url = _this.changeURLArg(url, 'jscroll', 'comments');
                             $.toast({
                                 type: 'success',
-                                message: '发表成功，即将刷新本页！'
+                                message: '发表成功！'
                             });
                             setTimeout(function () {
-                                window.location.href = url;
+                                pjax.loadUrl(url)
                             }, _this.options.reloadTime);
                         }
+                        btn.text("立即发表")
+                    },
+                    error:res =>{
+                        btn.text("立即发表")
                     }
                 });
             });
@@ -1549,7 +1555,7 @@ class Lb {
                                 message: '发送成功，即将刷新本页！'
                             });
                             setTimeout(function () {
-                                window.location.href = url;
+                                pjax.loadUrl(url)
                             }, _this.options.reloadTime);
                         }
                         c_btn.text('发表评论')
@@ -2005,7 +2011,7 @@ class Lb {
                                 message: '发送成功，即将刷新本页！'
                             });
                             setTimeout(function () {
-                                window.location.href = url;
+                                pjax.loadUrl(url)
                             }, _this.options.reloadTime);
                         }
                     }

@@ -24,7 +24,6 @@ $z-index-9: 999;
 pjax
  */
 .js-Pjax-remove {
-    position: absolute;
     left: 50%;
     opacity: 0;
     z-index: -1!important;
@@ -705,6 +704,9 @@ table {
     border-spacing: 0;
 }
 
+.height-auto{
+    height: auto!important;
+}
 
 /*** 大图轮播 ***/
 .lb-box {
@@ -2221,6 +2223,8 @@ table {
 .j-footer {
     border-top: 1px solid var(--classB);
     color: var(--minor);
+    padding-top: 30px;
+    background: var(--backgroundA);
     .container {
         display: flex;
         align-items: center;
@@ -2257,6 +2261,119 @@ table {
                 line-height: 19px;
                 &:first-child {
                     margin-left: 0;
+                }
+            }
+        }
+    }
+    .news-foot {
+        .container{
+            padding: 0 auto;
+            height: auto;
+            .part-news-foot{
+                border-bottom: 1px solid var(--classB);
+            }
+        }
+        .section-title {
+            font-size: 16px;
+            color: #262626;
+            line-height: 28px;
+            padding-bottom: 15px;
+            position: relative;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .section-content {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            .item {
+                width: 20%;
+                padding: 0 12px;
+                * {
+                    transition: all .3s;
+                }
+                a{
+                    .item-thumb {
+                        border-radius: 5px;
+                        overflow: hidden;
+                        .thumb {
+                            display: block;
+                            width: 100%;
+                            height: 0;
+                            padding-top: 75%;
+                            position: relative;
+                            overflow: hidden;
+                            transition: all .2s;
+                            img{
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                top: 0;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+                    .item-main {
+                        border: 0 solid #f3f3f3;
+                        border-radius: 0 0 3px 3px;
+                        padding: 10px 0;
+                        background: var(--backgroundA);
+                        h3 {
+                            font-size: 14px;
+                            color: var(--main);
+                            font-weight: bold;
+                            margin-bottom: 9px;
+                            line-height: 20px;
+                            height: 20px;
+                            overflow: hidden;
+                        }
+                        p {
+                            font-size: 12px;
+                            line-height: 1.5;
+                            color: #888;
+                            margin-bottom: 20px;
+                            height: 3em;
+                            overflow: hidden;
+                        }
+                    }
+                    &:hover{
+                        transform: translate(0, -5px);
+                        text-decoration: none;
+                        h3{
+                            color: rgb(84, 181, 219);
+                        }
+                    }
+                }
+
+            }
+            a {
+                display: block;
+                color: #555;
+                line-height: 20px;
+            }
+        }
+    }
+    .site-info{
+        .container{
+            height: auto;
+            padding: 0 auto;
+        }
+        .footer-left{
+            border-bottom: 1px solid var(--classB);
+            .footer-l-top {
+                padding-top: 24px;
+                padding-bottom: 24px;
+                a {
+                    display: inline-block;
+                    color: var(--main);
+                    margin-right: 20px;
+                    font-size: 14px;
+                    padding: 0;
+                    line-height: 30px;
                 }
             }
         }

@@ -1622,8 +1622,35 @@ function themeConfig($form)
         '介绍：开启后顶部将会显示一个投稿按钮，默认跳转到contribute.html，请创建独立页面并修改链接名为 contribute'
     );
 
-    $JOpenContrib->setAttribute('class', 'j-setting-content j-setting-other');
-    $form->addInput($JOpenContrib);
+    $JFootRecommend = new Typecho_Widget_Helper_Form_Element_Select(
+        'JFootRecommend',
+        array(0 => '关闭（默认）', 1 => '开启'),
+        0,
+        '是否开启底部栏目推荐',
+        '介绍：开启底部将会显示栏目推荐页面'
+    );
+    $JFootRecommend->setAttribute('class', 'j-setting-content j-setting-other');
+    $form->addInput($JFootRecommend);
+
+    $JFootRecommendMid = new Typecho_Widget_Helper_Form_Element_Text(
+        'JFootRecommendMid',
+        NULL,
+        '',
+        '栏目推荐 分类 mid ',
+        '介绍：默认显示分类最新文章'
+    );
+    $JFootRecommendMid->setAttribute('class', 'j-setting-content j-setting-other');
+    $form->addInput($JFootRecommendMid);
+
+    $JFooternavs = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JFooternavs',
+        NULL,
+        '',
+        '栏目推荐底部链接 ',
+        '介绍：格式 链接完整格式 &lt;a href=""  target="_blank"&gt;我是链接&lt;/a&gt; '
+    );
+    $JFooternavs->setAttribute('class', 'j-setting-content j-setting-other');
+    $form->addInput($JFooternavs);
 
     $JFriends = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JFriends',

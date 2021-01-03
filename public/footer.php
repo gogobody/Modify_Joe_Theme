@@ -4,30 +4,42 @@
 <?php endif; ?>
 
 <section class="container-fluid j-footer">
-        <section class="container">
-            <section class="banquan">
-                <?php if ($this->options->JBanQuan) : ?>
-                    <span class="info"><?php $this->options->JBanQuan() ?></span>
-                <?php else : ?>
-                    <span class="info">2019 - 2020 © Reach - <a href="//ae.js.cn">Joe</a></span>
-                <?php endif; ?>
-                <?php if ($this->options->JCountTime === 'on') : ?>
-                    <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M872 64c13.2544 0 24 10.7456 24 24 0 13.2544-10.7456 24-24 24h-104v177.456c0 67.0672-36.4912 128.8224-95.2368 161.1744l-111.0816 61.1744 111.328 61.536C731.6176 605.7328 768 667.4112 768 734.376V912h104c13.2544 0 24 10.7456 24 24 0 13.2544-10.7456 24-24 24H152c-13.2544 0-24-10.7456-24-24 0-13.2544 10.7456-24 24-24h104V734.544c0-67.0672 36.4912-128.8224 95.2368-161.1744l111.08-61.176-111.328-61.5328C292.3824 418.2656 256 356.5872 256 289.6224V112H152c-13.2544 0-24-10.7456-24-24 0-13.2544 10.7456-24 24-24h720zM512.4 539.4112l-138.0064 76.0032A136 136 0 0 0 304 734.544V912h416V734.3776a136 136 0 0 0-70.2096-119.0272l-137.3904-75.9392zM720 112H304v177.6224a136 136 0 0 0 70.2096 119.0272l137.3904 75.9392 138.0064-76.0032A136 136 0 0 0 720 289.456V112z" fill="#979797" p-id="2750"></path>
-                    </svg>
-                    <span class="time"><?php echo timerStop(); ?></span>
-                <?php endif; ?>
-            </section>
-            <section class="banquan-links">
-                <?php if ($this->options->JBanQuanLinks) : ?>
-                    <?php $this->options->JBanQuanLinks() ?>
-                <?php else : ?>
-                    <a href="//ae.js.cn">JOE</a>
-                    <a target="_blank" href="<?php $this->options->feedUrl(); ?>">RSS</a>
-                    <a target="_blank" href="<?php echo $this->options->index . "/sitemap.xml" ?>">MAP</a>
-                <?php endif; ?>
-            </section>
+    <?php if ( $this->options->JFootRecommend && !$this->is('author') ): ?>
+        <?php $this->need('component/footer.recommend.php'); ?>
+    <?php endif; ?>
+    <section class="site-info clearfix">
+        <div class="container">
+            <div class="footer-left">
+                <div class="footer-l-top">
+                    <?php $this->options->JFooternavs(); ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <section class="banquan">
+            <?php if ($this->options->JBanQuan) : ?>
+                <span class="info"><?php $this->options->JBanQuan() ?></span>
+            <?php else : ?>
+                <span class="info">2019 - 2020 © Reach - <a href="//ae.js.cn">Joe</a></span>
+            <?php endif; ?>
+            <?php if ($this->options->JCountTime === 'on') : ?>
+                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M872 64c13.2544 0 24 10.7456 24 24 0 13.2544-10.7456 24-24 24h-104v177.456c0 67.0672-36.4912 128.8224-95.2368 161.1744l-111.0816 61.1744 111.328 61.536C731.6176 605.7328 768 667.4112 768 734.376V912h104c13.2544 0 24 10.7456 24 24 0 13.2544-10.7456 24-24 24H152c-13.2544 0-24-10.7456-24-24 0-13.2544 10.7456-24 24-24h104V734.544c0-67.0672 36.4912-128.8224 95.2368-161.1744l111.08-61.176-111.328-61.5328C292.3824 418.2656 256 356.5872 256 289.6224V112H152c-13.2544 0-24-10.7456-24-24 0-13.2544 10.7456-24 24-24h720zM512.4 539.4112l-138.0064 76.0032A136 136 0 0 0 304 734.544V912h416V734.3776a136 136 0 0 0-70.2096-119.0272l-137.3904-75.9392zM720 112H304v177.6224a136 136 0 0 0 70.2096 119.0272l137.3904 75.9392 138.0064-76.0032A136 136 0 0 0 720 289.456V112z" fill="#979797" p-id="2750"></path>
+                </svg>
+                <span class="time"><?php echo timerStop(); ?></span>
+            <?php endif; ?>
         </section>
+        <section class="banquan-links">
+            <?php if ($this->options->JBanQuanLinks) : ?>
+                <?php $this->options->JBanQuanLinks() ?>
+            <?php else : ?>
+                <a href="//ae.js.cn">JOE</a>
+                <a target="_blank" href="<?php $this->options->feedUrl(); ?>">RSS</a>
+                <a target="_blank" href="<?php echo $this->options->index . "/sitemap.xml" ?>">MAP</a>
+            <?php endif; ?>
+        </section>
+    </section>
 </section>
 
 <!-- 鱼群跳跃 -->

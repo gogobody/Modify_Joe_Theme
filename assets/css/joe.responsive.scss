@@ -664,6 +664,38 @@
                 justify-content: center;
             }
         }
+        .news-foot {
+            .section-content{
+                .item{
+                    width: 50%;
+                    padding: 0 7px;
+                    margin-bottom: 0;
+                    transition: all .3s;
+                    a{
+                        .item-main{
+                            p{
+                                margin-bottom: 8px;
+                            }
+                        }
+                    }
+                }
+                .item:last-child {
+                    display: none;
+                }
+            }
+        }
+        .site-info{
+            .footer-left{
+                .footer-l-top{
+                    text-align: center;
+                    padding: 14px 0;
+                    a{
+                        font-size: 12px !important;
+                        margin-right: 20px !important;
+                    }
+                }
+            }
+        }
     }
     .j-actions {
         bottom: 150px;
