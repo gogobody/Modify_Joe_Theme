@@ -208,24 +208,31 @@ class Lb {
                 above_nav : $(".above .above-nav"),
                 below : $(".below"),
                 color_mode_toggle_btn : $(".js-promo-color-modes-toggle"),
+                j_nav_link : $("nav.nav.j-nav a.link")
             };
             this.global_var = {};
             this.init();
         }
         pjax_complete(){
+            /* 解除全局绑定事件 */
             $(window).unbind('scroll')
-            this.reinit_head_title()
+            $(document).unbind('click')
+            /* 重新初始化必要事件 */
             this.global_init()
             if (window.JOE_CONFIG.ARCHIVE === "post"){
                 this.post_init()
             }else {
                 this.page_init()
             }
-
+            this.reinit_head_title() // 恢复title
+            jQuery('[data-fancybox="gallery"]').fancybox(); // 重载fancybox
         }
         global_init(){
             /* 解决移动端 hover 问题*/
             $(document).on('touchstart', e => {});
+            /* 关闭FancyBox的hash模式 */
+            $.fancybox.defaults.hash = false;
+            this.init_header();
             /* 暗夜模式 */
             this.init_prefer_color_scheme();
             /* 初始化页面的hash值跳转 */
@@ -384,9 +391,9 @@ class Lb {
          */
         reinit_head_title(){
             let post_title = $("#post_top_title")
-            this.global_item.below.stop().show()
             post_title.addClass("post_no")
             this.global_item.above_nav.removeClass("post_no")
+            this.global_item.below.stop().show()
         }
         /* 格式化url参数 */
         changeURLArg(url, arg, arg_val) {
@@ -403,6 +410,13 @@ class Lb {
                     return url + '?' + replaceText;
                 }
             }
+        }
+        init_header(){
+            this.global_item.j_nav_link.unbind('click').bind('click',function (e) {
+                $(this).siblings().removeClass('active')
+                $(this).addClass('active')
+            })
+
         }
         /* 打赏btn初始化 */
         reward_init(){
@@ -553,7 +567,7 @@ class Lb {
                 colorPick.unbind('click').bind('click', function (e) {
                     e.stopPropagation();
                 });
-                $(document).unbind('click').bind('click', function (e) {
+                $(document).bind('click', function (e) {
                     colorPick.removeClass('active');
                 });
             } else {
@@ -804,7 +818,8 @@ class Lb {
                 width: '100%',
                 maxHeight: '250px'
             });
-            $(document).unbind('click').bind('click', function () {
+
+            $(document).bind('click', function () {
                 $('.OwO').removeClass('OwO-open');
             });
         }
@@ -1201,7 +1216,7 @@ class Lb {
                     $(this).siblings('.j-dropdown').addClass('active');
                 }
             });
-            $(document).unbind('click').bind('click', e => $('.j-dropdown').removeClass('active'));
+            $(document).bind('click', e => $('.j-dropdown').removeClass('active'));
             $('.j-dropdown[stop-propagation]').unbind('click').bind('click', function (e) {
                 e.stopPropagation();
             });
@@ -2237,26 +2252,20 @@ class Lb {
                             if (lastScrollPos > scrollPos && canSlideUp){
                                 canSlideDown = false
                                 row_above.slideDown("fast",function (){
-                                    setTimeout(function () {
-                                        canSlideDown = true
-                                    },300)
+                                    canSlideDown = true
                                 })
                             }
                             else{
                                 if (canSlideDown){
                                     canSlideUp = false
                                     row_above.slideUp("normal",function () {
-                                        setTimeout(function () {
-                                            canSlideUp = true
-                                        },300)
+                                        canSlideUp = true
                                     })
                                 }
                             }
                         } else {
                             row_above.slideDown("fast",function (){
-                                setTimeout(function () {
-                                    canSlideDown = true
-                                },300)
+                                canSlideDown = true
                             })
                         }
                         lastScrollPos = scrollPos
