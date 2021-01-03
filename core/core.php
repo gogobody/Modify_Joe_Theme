@@ -471,7 +471,7 @@ function themeInit($archive)
     /* 强奸用户强制开启评论回复 */
     Helper::options()->commentsThreaded = true;
     if ($archive->is('index')){
-        $archive->parameter->pageSize = 6;
+        $archive->parameter->pageSize = 9;
     }
     if ($archive->is('single')) {
         $archive->content = ParseReply($archive->content);

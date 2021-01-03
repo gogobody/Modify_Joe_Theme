@@ -1,7 +1,6 @@
 <meta charset="utf-8" />
 <meta name="renderer" content="webkit" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="author" content="Joe, QQ群：966245514" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <?php if ($this->fields->sharePic || $this->options->JQQSharePic) : ?>
     <meta itemprop="image" content="<?php echo GetQQSharePic($this); ?>" />

@@ -63,8 +63,8 @@
 <?php endif; ?>
 <!-- 3dtag -->
 <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js"></script>
-<!-- 目录树 -->
-<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/jfloor.min.js"></script>
+<!-- 目录树(合并到了主函数) -->
+<!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/jfloor.min.js"></script>-->
 
 <script src="<?php $this->options->themeUrl('assets/js/OwO.min.js?v=' . JoeVersion()); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/joe.config.min.js?v=' . JoeVersion()); ?>"></script>
@@ -154,13 +154,13 @@
 
     const pjax = new Pjax({
         element:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank"]):not([no-pjax]):not(form):not([data-fancybox])',
-        selectors: ["head title","head meta[name='description']","head meta[name='keywords']","head link[rel='alternate']","#joe_config","#post_top_title","#pjax-container"],
-
+        selectors: ["head title","head meta[name='description']","head link[rel='alternate']","#joe_config","#post_top_title","#pjax-container"],
     });
     function pjax_send(){
         NProgress.start()
     }
     function pjax_init(){
+        jQuery('[data-fancybox="gallery"]').fancybox();
         window.JoeInstance.pjax_complete()
         NProgress.done()
     }
