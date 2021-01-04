@@ -1621,6 +1621,8 @@ function themeConfig($form)
         '是否开启顶部投稿显示',
         '介绍：开启后顶部将会显示一个投稿按钮，默认跳转到contribute.html，请创建独立页面并修改链接名为 contribute'
     );
+    $JOpenContrib->setAttribute('class', 'j-setting-content j-setting-other');
+    $form->addInput($JOpenContrib);
 
     $JFootRecommend = new Typecho_Widget_Helper_Form_Element_Select(
         'JFootRecommend',
