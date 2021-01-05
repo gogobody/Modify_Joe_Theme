@@ -600,7 +600,7 @@
                         }
                         .summary {
                             color: #bbb;
-                            -webkit-line-clamp: 3;
+                            -webkit-line-clamp: 2;
                             max-height: 68px;
                             margin-bottom: 15px;
                         }
@@ -612,6 +612,7 @@
                         }
                     }
                 }
+
                 .article-list.default{
                     .entry-box{
                         .summary{
@@ -1192,6 +1193,9 @@
                                     word-break: break-all;
                                 }
                             }
+                            .summary{
+                                display: -webkit-box;
+                            }
                         }
                         .picture-box{
                             width: 126px;
@@ -1204,6 +1208,13 @@
                             }
                             .xs-title{
                                 display: none;
+                            }
+                        }
+                    }
+                    .article-list.sticky{
+                        .entry-box{
+                            .title{
+                                padding-right: 16px;
                             }
                         }
                     }
@@ -1375,6 +1386,13 @@
                                         border-radius: var(--radius-wap);
                                     }
                                 }
+                            }
+                        }
+                    }
+                    .article-list.sticky{
+                        .entry-box{
+                            .title{
+                                padding-right: 0;
                             }
                         }
                     }
