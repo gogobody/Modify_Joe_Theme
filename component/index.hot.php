@@ -6,8 +6,7 @@
             <ul class="hot">
                 <?php while ($hot->next()) : ?>
                     <li>
-                        <a href="<?php $hot->permalink(); ?>" title="<?php $hot->title(); ?>">
-                            <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($hot); ?>">
+                        <a class="lazyload" href="<?php $hot->permalink(); ?>" title="<?php $hot->title(); ?>" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php GetRandomThumbnail($hot); ?>">
                             <p><?php $hot->title(); ?></p>
                             <span><?php getPostViews($hot); ?> ℃</span>
                         </a>

@@ -1,6 +1,6 @@
 <?php if ($this->have()) : ?>
     <?php while ($this->next()) : ?>
-        <?php $this->need('component/index.list.article.php'); ?>
+        <?php $this->need('component/index.list.blog.php'); ?>
     <?php endwhile; ?>
 <?php else : ?>
     <section class="empty-result">

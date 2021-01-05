@@ -7,7 +7,7 @@
     for ($i = 0; $i < $stickyNum; $i++) {
     ?>
         <?php $this->widget('Widget_Archive@sticky' . $i, 'pageSize=1&type=single', 'cid=' . $stickyCounts[$i])->to($item); ?>
-        <article class="article-list sticky <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
+        <article class="article-list sticky default <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
             <a class="picture-box" href="<?php $item->permalink() ?>" title="<?php $item->title() ?>">
                 <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($item); ?>">
                 <span><?php $item->date('Y-m-d'); ?></span>

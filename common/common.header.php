@@ -7,10 +7,10 @@
         <?php $this->need('public/head.php'); ?>
     </head>
 
-<body>
+<body class="<?php if ($this->options->JContentMode == 'blog') _e('blog'); else _e('content');?>">
 <?php $this->options->JCustomBodyStart() ?>
 
-<section id="joe" <?php if ($this->options->JMobiset) _e('class="setmobi"');?>>
+<section id="joe" class="<?php if ($this->options->JMobiset) _e('setmobi');?>">
 
     <!-- 头部 -->
     <?php $this->need('public/header.php'); ?>

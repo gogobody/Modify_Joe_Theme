@@ -51,8 +51,8 @@ function GetLazyLoad()
     if ($options->JLazyLoad) {
         return $options->JLazyLoad;
     } else {
-//        return "https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.7.0/assets/img/lazyload-min.gif";
-        return $options->themeUrl."/assets/img/loading.svg";
+        return "https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.7.0/assets/img/lazyload-min.gif";
+//        return $options->themeUrl."/assets/img/loading.svg";
     }
 }
 

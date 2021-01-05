@@ -244,7 +244,8 @@ class Lb {
             this.init_document_barrager();
             /* 初始化进度条 */
             this.init_document_progress();
-
+            /* 初始化懒加载 */
+            this.init_lazy_load();
             /* 初始化live2d */
             this.init_document_live2d();
             /* 鼠标右键 */
@@ -2157,10 +2158,16 @@ class Lb {
                 window.location.href = href
             })
         }
-        // /* 初始化图片懒加载 */
-        // init_lazy_load() {
-        //     new LazyLoad('.lazyload');
-        // }
+        /* 初始化图片懒加载 */
+        init_lazy_load() {
+            //add simple support for background images:
+            document.addEventListener('lazybeforeunveil', function(e){
+                let bg = e.target.getAttribute('data-bg');
+                if(bg){
+                    e.target.style.backgroundImage = 'url(' + bg + ')';
+                }
+            });
+        }
         /* 暗夜模式 */
         init_prefer_color_scheme(){
             // 切换按钮

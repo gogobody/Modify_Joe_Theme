@@ -1,5 +1,18 @@
 <div class="index-title">
-    <h2>最新文章</h2>
+    <div class="titles">
+        <h2 class="active"><a href="<?php _e($this->options->index);?>">最新文章</a></h2>
+        <?php
+            $titles = $this->options->JIndexTitles;
+            if ($titles){
+                $title_arr = explode('\r\n',$titles);
+                foreach ($title_arr as $title){
+                    $arr = explode('||',trim($title));
+                    echo '<h2 class="active"><a href="'.$arr[1].'">'.$arr[0].'</a></h2>';
+                }
+            }
+        ?>
+
+    </div>
     <?php if ($this->options->JIndexNotice) : ?>
         <?php
         $notice = $this->options->JIndexNotice;

@@ -29,7 +29,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
             <header class="tlr-header header">
                 <span class="title">
                     <a href="<?php $this->permalink(); ?>"><?php listdeng($this); ?><?php if (timeZone($this->date->timeStamp)) echo '<span class="badge arc_v2">最新</span>'; ?>
-                        <?php $this->sticky();$this->title() ?>
+                        <?php $this->title() ?>
                     </a>
                 </span>
             </header>
@@ -87,7 +87,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
             <header class="header tlr-header">
                 <span class="title">
                     <a href="<?php $this->permalink(); ?>"><?php listdeng($this); ?><?php if (timeZone($this->date->timeStamp)) echo '<span class="badge arc_v2">最新</span>'; ?>
-                        <?php $this->sticky();$this->title() ?>
+                        <?php $this->title() ?>
                     </a>
                 </span>
             </header>
@@ -136,7 +136,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
     </article>
 <?php else: ?>
     <!--默认图文模式s-->
-    <article class="article-list <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
+    <article class="article-list default <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
         <a class="picture-box" href="<?php $this->permalink() ?>" title="<?php $this->title() ?>">
             <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($this); ?>">
             <span><?php $this->date('Y-m-d'); ?></span>

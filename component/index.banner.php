@@ -16,8 +16,8 @@
                         $title = explode("||", $string_arr[$i])[2];
                     ?>
                     <div class="lb-item <?php if($i == 0) _e('active');?>">
-                        <a href="<?php echo $url ?>" target="_blank">
-                            <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php echo $img ?>" alt="picture loss">
+                        <a class="lazyload" href="<?php echo $url ?>" target="_blank" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php echo $img ?>">
+                            <i class="mask"></i>
                             <div>
                                 <h3><?php echo $title ?></h3>
                             </div>
@@ -47,8 +47,8 @@
                 <?php for ($i = 0; $i < $number; $i++) {
                 ?>
                     <?php $this->widget('Widget_Archive@recommend' . $i, 'pageSize=1&type=post', 'cid=' . $recommendCounts[$i])->to($item); ?>
-                    <a title="<?php $item->title(); ?>" href="<?php $item->permalink() ?>">
-                        <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($item) ?>">
+                    <a class="lazyload" title="<?php $item->title(); ?>" href="<?php $item->permalink() ?>" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php GetRandomThumbnail($item) ?>">
+                        <i class="mask"></i>
                         <div class="desc">
                             <span class="type">推荐</span>
                             <p><?php $item->title(); ?></p>
