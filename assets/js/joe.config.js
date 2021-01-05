@@ -1256,7 +1256,7 @@ class Lb {
 
         /* 初始化登录注册验证 */
         init_sign_verify() {
-            $('#loginForm').on('submit', function (e) {
+            $('#loginForm').off('submit').on('submit', function (e) {
                 if ($('#loginForm .username').val().trim() === '') {
                     e.preventDefault();
                     return $.toast({
@@ -1272,7 +1272,7 @@ class Lb {
                     });
                 }
             });
-            $('#registerForm').on('submit', function (e) {
+            $('#registerForm').off('submit').on('submit', function (e) {
                 if ($('#registerForm .username').val().trim() === '') {
                     e.preventDefault();
                     return $.toast({
@@ -1388,7 +1388,7 @@ class Lb {
 
         /* 初始化搜索框验证 */
         init_search_verify() {
-            $('.j-search').on('submit', function (e) {
+            $('.j-search').off('submit').on('submit', function (e) {
                 if ($('.j-search input').val().trim() === '') {
                     e.preventDefault();
                     return $.toast({
@@ -1403,7 +1403,7 @@ class Lb {
         init_protect_verify() {
             let _this = this;
             let j_protec = $('#j-protected')
-            j_protec.on('submit', e => {
+            j_protec.off('submit').on('submit', e => {
                 e.preventDefault();
                 if (j_protec.find('.pass').val() === '') {
                     return $.toast({
@@ -1451,7 +1451,7 @@ class Lb {
         /* 初始化微语发布 */
         init_dynamic_verify() {
             let _this = this;
-            $('#j-dynamic-form').on('submit', function (e) {
+            $('#j-dynamic-form').off('submit').on('submit', function (e) {
                 e.preventDefault();
                 let btn = $("#j-dynamic-form .form-foot button")
                 if ($('#j-dynamic-form-text').val().trim() === '') {
@@ -1503,7 +1503,7 @@ class Lb {
         /* 初始化评论提交 */
         init_comment_submit() {
             let _this = this;
-            $('#comment-form').on('submit', function (e) {
+            $('#comment-form').off('submit').on('submit', function (e) {
                 e.preventDefault();
                 if ($('#comment-nick').val().trim() === '') {
                     return $.toast({
@@ -1533,6 +1533,7 @@ class Lb {
                 $(this).find("button[type='submit']").html('请等待...')
                 let c_btn = $(".comment-btn")
                 c_btn.text('评论中..')
+                console.log($(this).attr('action'))
                 $.ajax({
                     url: $(this).attr('action'),
                     type: 'post',
@@ -1565,6 +1566,7 @@ class Lb {
                         c_btn.text('发表评论')
                     }
                 });
+
             });
         }
 
@@ -1968,7 +1970,7 @@ class Lb {
             /* 阻止事件传播 */
             j_d_reply.unbind('click').bind('click', e => e.stopPropagation());
 
-            j_d_reply.on('submit', function (e) {
+            j_d_reply.off('submit').on('submit', function (e) {
                 e.preventDefault();
                 if ($(this).find("input[name='author']").val().trim() === '') {
                     return $.toast({

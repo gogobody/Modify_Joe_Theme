@@ -1056,6 +1056,7 @@ table {
                 font-size: 16px;
                 line-height: 50px;
                 font-weight: 600;
+                width: 100%;
                 animation: hideIndex 0.6s;
                 -moz-animation: hideIndex 0.6s;
                 -webkit-animation: hideIndex 0.6s;
@@ -2511,6 +2512,12 @@ table {
                             font-size: 18px;
                             line-height: 24px;
                             align-items: center;
+                            display: flex;
+                            .text{
+                                min-width: 0;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
                             &:hover {
                                 color: var(--theme);
                             }

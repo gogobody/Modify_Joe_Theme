@@ -54,7 +54,7 @@ function threadedComments($comments, $options)
                 <button data-type="canvas">画图模式</button>
                 <button data-type="text" class="active">文本模式</button>
             </div>
-            <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form">
+            <form no-pjax method="post" action="<?php $this->commentUrl() ?>" id="comment-form">
                 <div class="head">
                     <?php if ($this->user->hasLogin()) : ?>
                         <div class="head-item">

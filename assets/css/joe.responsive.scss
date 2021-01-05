@@ -623,7 +623,7 @@
                     flex-direction: row;
                     display: flex;
                     background: var(--backgroundA);
-                    height: 108px;
+                    height: 110px;
                     padding: 0;
                     .entry-box{
                         padding: 10px 12px;
@@ -1163,19 +1163,24 @@
                         flex-direction: row;
                         display: flex;
                         background: var(--backgroundA);
-                        height: 108px;
+                        height: 110px;
                         .entry-box{
                             padding: 5px 12px;
 
                             .meta{
                                 display: flex;
+                                .item.comment{
+                                    display: none;
+                                }
+                                .item.date{
+                                    display: none;
+                                }
                             }
                             .meta-xs{
                                 display: none;
                             }
                             .title{
                                 a{
-                                    display: block;
                                     overflow: hidden;
                                     text-overflow: ellipsis;
                                     display: -webkit-box;
@@ -1184,6 +1189,7 @@
                                     -webkit-box-orient: vertical;
                                     white-space: normal;
                                     font-size: 16px;
+                                    word-break: break-all;
                                 }
                             }
                         }
@@ -1298,13 +1304,19 @@
                                     margin-right: 5px;
                                     width: auto;
                                     transform: none;
+                                    vertical-align: text-bottom;
                                 }
                             }
                             .meta{
                                 display: flex;
                                 .item{
                                     font-size: 11px;
-                                    line-height: 13px;
+                                    line-height: 14px;
+                                    a{
+                                        img{
+                                            display: none;
+                                        }
+                                    }
                                 }
                             }
                             .meta-xs{

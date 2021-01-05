@@ -56,7 +56,7 @@ function threadedComments($comments, $options)
         <?php } ?>
 
         <?php if (Helper::options()->JDynamicComment === 'on') : ?>
-            <form class="reply j-dynamic-reply">
+            <form no-pjax class="reply j-dynamic-reply">
                 <input type="hidden" name="parent" value="<?php $comments->coid(); ?>">
                 <div class="head">
                     <input autocomplete="off" placeholder="昵称：请输入昵称（必填）" type="text" name="author">

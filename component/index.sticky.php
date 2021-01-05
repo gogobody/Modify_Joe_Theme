@@ -21,33 +21,33 @@
             </a>
             <section class="entry-box">
                 <section class="title" title="<?php $item->title() ?>">
-                    <div class="badge">置顶</div>
-                    <a href="<?php $item->permalink() ?>"><?php $item->title() ?></a>
+                    <a href="<?php $item->permalink() ?>"><span class="badge">置顶</span><span class="text"><?php $item->title() ?></span></a>
                 </section>
                 <a class="summary" href="<?php $item->permalink() ?>"><?php $item->excerpt(500) ?></a>
                 <section class="meta">
                     <?php if (!empty($this->options->JSummaryMeta) && in_array('author', $this->options->JSummaryMeta)) : ?>
-                        <section class="item">
+                        <section class="item author">
                             <a href="<?php $this->author->permalink(); ?>"><img src="<?php ParseAvatar($this->author->mail); ?>" /><?php $item->author(); ?></a>
+
                         </section>
                     <?php endif; ?>
                     <?php if (!empty($this->options->JSummaryMeta) && in_array('cate', $this->options->JSummaryMeta)) : ?>
-                        <section class="item">
+                        <section class="item category">
                             <?php $item->category(',', '%s', '未分类'); ?>
                         </section>
                     <?php endif; ?>
                     <?php if (!empty($this->options->JSummaryMeta) && in_array('time', $this->options->JSummaryMeta)) : ?>
-                        <section class="item">
+                        <section class="item date">
                             <?php $item->date('Y-m-d'); ?>
                         </section>
                     <?php endif; ?>
                     <?php if (!empty($this->options->JSummaryMeta) && in_array('read', $this->options->JSummaryMeta)) : ?>
-                        <section class="item">
+                        <section class="item read">
                             <?php GetPostViews($item) ?> 阅读
                         </section>
                     <?php endif; ?>
                     <?php if (!empty($this->options->JSummaryMeta) && in_array('comment', $this->options->JSummaryMeta)) : ?>
-                        <section class="item">
+                        <section class="item comment">
                             <?php $item->commentsNum('%d'); ?> 评论
                         </section>
                     <?php endif; ?>

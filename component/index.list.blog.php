@@ -113,9 +113,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
                     </section>
                 <?php endif; ?>
                 <?php if (!empty($this->options->JSummaryMeta) && in_array('comment', $this->options->JSummaryMeta)) : ?>
-                    <section class="item">
-                        <?php $this->commentsNum('%d'); ?> 评论
-                    </section>
+                    <section class="item"><?php $this->commentsNum('%d'); ?> 评论</section>
                 <?php endif; ?>
             </section>
             <div class="imgrow">
@@ -150,32 +148,30 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
         </a>
         <section class="entry-box">
             <section class="title" title="<?php $this->title() ?>">
-                <a href="<?php $this->permalink() ?>"><?php listdeng($this); ?><?php if (timeZone($this->date->timeStamp)) echo '<span class="badge arc_v2">最新</span>'; ?><?php $this->title() ?></a>
+                <a href="<?php $this->permalink() ?>"><?php listdeng($this); ?><?php if (timeZone($this->date->timeStamp)) echo '<span class="badge arc_v2">最新</span>'; ?><span class="text"><?php $this->title() ?></span></a>
             </section>
             <a class="summary" href="<?php $this->permalink() ?>"><?php $this->excerpt(500) ?></a>
             <div class="meta">
                 <?php if (!empty($this->options->JSummaryMeta) && in_array('author', $this->options->JSummaryMeta)) : ?>
-                    <section class="item">
+                    <section class="item author">
                         <a href="<?php $this->author->permalink(); ?>"><img src="<?php ParseAvatar($this->author->mail); ?>" /><?php $this->author(); ?></a>
                     </section>
                 <?php endif; ?>
                 <?php if (!empty($this->options->JSummaryMeta) && in_array('time', $this->options->JSummaryMeta)) : ?>
-                    <section class="item">
+                    <section class="item date">
                         <?php $this->date('Y-m-d'); ?>
                     </section>
                 <?php endif; ?>
                 <?php if (!empty($this->options->JSummaryMeta) && in_array('cate', $this->options->JSummaryMeta)) : ?>
-                    <section class="item">
+                    <section class="item category">
                         <p><?php $this->category(',', '%s', '未分类'); ?></p>
                     </section>
                 <?php endif; ?>
-                <section class="item">
+                <section class="item read">
                     <?php $readNum = GetPostViews($this,1);_e($readNum); ?> 阅读
                 </section>
                 <?php if (!empty($this->options->JSummaryMeta) && in_array('comment', $this->options->JSummaryMeta)) : ?>
-                    <section class="item">
-                        <?php $this->commentsNum('%d'); ?> 评论
-                    </section>
+                    <section class="item comment"><?php $this->commentsNum('%d'); ?> 评论</section>
                 <?php endif; ?>
             </div>
             <div class="meta-xs">
