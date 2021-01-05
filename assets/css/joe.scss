@@ -1061,6 +1061,11 @@ table {
                 -moz-animation: hideIndex 0.6s;
                 -webkit-animation: hideIndex 0.6s;
                 -o-animation: hideIndex 0.6s;
+                span{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
             }
             .logo {
                 position: relative;
