@@ -483,6 +483,7 @@ function themeInit($archive)
         commentLike($archive->request->likeup);
         exit;
     }
+
 }
 
 
@@ -918,6 +919,13 @@ function themeFields($layout)
         ),
         'singleThumb', _t('单图/大图/三图显示/说说'), _t('默认<strong>单图</strong>，注意三图确保发布的文章必须有三张以上的图片附件'));
     $layout->addItem($thumbStyle);
+
+    $resourceField = new Typecho_Widget_Helper_Form_Element_Radio('resourceField',
+        array('独家' => _t('独家'),
+            '已测试' => _t('已测试'),
+        ),
+        '', '资源字段', _t('将在资源页显示'));
+    $layout->addItem($resourceField);
 
     $desc = new Typecho_Widget_Helper_Form_Element_Text(
         'desc',
@@ -1814,6 +1822,19 @@ function get_last_update(){
     }
 }
 
+//生成静态链接 example
+function genPermalink($type,$value){
+    //生成静态链接 example
+//        $value = [
+//            "type" => 'tag',
+//            "slug" => 'shihi'
+//        ];
+//        $type = $value['type'];
+//        $tmpSlug = $value['slug'];
+    $value['slug'] = urlencode($value['slug']);
+
+    return Typecho_Router::url($type, $value, Helper::options()->index);
+}
 
 ?>
 

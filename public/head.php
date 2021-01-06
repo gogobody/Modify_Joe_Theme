@@ -101,6 +101,7 @@
 <script id="joe_config">
     window.JOE_CONFIG = {
         ARCHIVE:'<?php _e($this->getArchiveType()) ?>',
+        ARCHIVE_SLUG:'<?php _e($this->getArchiveSlug());?>',
         STATIC_PATH: '<?php _e(STATIC_PATH);?>',
         INDEX:'<?php echo $this->options->index ?>',
         THEME_URL: '<?php echo THEME_URL ?>',

@@ -218,13 +218,8 @@ class Lb {
             $(window).unbind('scroll')
             $(document).unbind('click')
             /* 重新初始化必要事件 */
-            this.global_init()
-            console.log(window.JOE_CONFIG.ARCHIVE)
-            if (window.JOE_CONFIG.ARCHIVE === "post"){
-                this.post_init()
-            }else {
-                this.page_init()
-            }
+            this.init()
+
             this.reinit_head_title() // 恢复title
             jQuery('[data-fancybox="gallery"]').fancybox(); // 重载fancybox
         }
@@ -385,6 +380,8 @@ class Lb {
             this.global_init()
             if (window.JOE_CONFIG.ARCHIVE === "post"){
                 this.post_init()
+            }else if(window.JOE_CONFIG.ARCHIVE === "resources"){
+                this.init_resource_page()
             }else {
                 this.page_init()
             }
@@ -1047,6 +1044,7 @@ class Lb {
         /* 初始化百度收录 */
         init_baidu_collect() {
             let baidu = $('#baiduIncluded')
+            if (baidu.length === 0) return;
             $.ajax({
                 url: window.JOE_CONFIG.THEME_URL + '/baiduRecord.php?url=' + encodeURI(window.location.href),
                 method: 'get',
@@ -1713,10 +1711,16 @@ class Lb {
                 success: res => {
                     if (res.code !== 1) return;
                     $('.j-video-load-2').hide();
+                    let href
+                    if(window.location.href.match("[\?]")){
+                        href = window.location.href + '&vod_id='
+                    }else{
+                        href = window.location.href + '?vod_id='
+                    }
                     res.list.forEach(_ => {
                         $('#j-video-list').append(`
                                 <li>
-                                    <a href="${window.location.href + '?vod_id=' + _.vod_id}">
+                                    <a href="${href + _.vod_id}">
                                         <img class="lazyload" src="${window.JOE_CONFIG.DOCUMENT_LAZY_LOAD}" data-src="${_.vod_pic}">
                                         <h2>${_.vod_name}</h2>
                                         ${_.vod_year && _.vod_year !== 0 ? '<i>' + _.vod_year + '</i>' : ''}
@@ -1748,12 +1752,13 @@ class Lb {
 
         /* 初始化加载更多视频 */
         init_load_more_video() {
-            if ($('#j-video-list').length === 0) return;
+            let jvideo_list = $('#j-video-list')
+            if (jvideo_list.length === 0) return;
             let _this = this;
             $(window).on('scroll', function () {
                 let scrollTop = $(window).scrollTop();
                 let windowHeight = $(window).height();
-                let videoListHeight = $('#j-video-list').offset().top + $('#j-video-list').height();
+                let videoListHeight = jvideo_list.offset().top + jvideo_list.height();
                 if (scrollTop + windowHeight >= videoListHeight) {
                     _this.init_video_list();
                 }
@@ -2123,7 +2128,7 @@ class Lb {
                                 </a>
                             `);
                         });
-                        // _this.init_lazy_load();
+                        _this.init_lazy_load();
                     } else {
                         $('#wallpaper-load').remove();
                     }
@@ -2163,12 +2168,7 @@ class Lb {
         /* 初始化图片懒加载 */
         init_lazy_load() {
             //add simple support for background images:
-            document.addEventListener('lazybeforeunveil', function(e){
-                let bg = e.target.getAttribute('data-bg');
-                if(bg){
-                    e.target.style.backgroundImage = 'url(' + bg + ')';
-                }
-            });
+            jQuery('[data-fancybox="gallery"]').fancybox(); // 重载fancybox
         }
         /* 暗夜模式 */
         init_prefer_color_scheme(){
@@ -2424,6 +2424,62 @@ class Lb {
             }
         }
 
+        /* resources page event init */
+        init_resource_page(){
+            let category,tag,price,order = null;
+            function queryHtml(){
+                $.ajax({
+                    url:'/resources',
+                    method:'get',
+                    data:{
+                        'category':category,
+                        'tag':tag,
+                        'price':price,
+                        'order':order
+                    },
+                    success:function (res) {
+                        let res_content = $(".row.posts-wrapper", res).html()
+                        $(".row.posts-wrapper").html(res_content)
+                    }
+                })
+            }
+            $(".filter-tag.category li a").unbind('click').bind('click',function (e) {
+                e.preventDefault()
+                console.log("aaa")
+
+                category = $(this).data("mid")
+                if($(this).hasClass('on')){
+                    category = null
+                }
+                queryHtml()
+                $(this).toggleClass('on')
+                $(this).parent().siblings('li').find('a').removeClass('on')
+            })
+            $(".filter-tag.tag li a").unbind('click').bind('click',function (e) {
+                e.preventDefault()
+                tag = $(this).data("mid")
+                if($(this).hasClass('on')){
+                    tag = null
+                }
+                queryHtml()
+                $(this).toggleClass('on')
+                $(this).parent().siblings('li').find('a').removeClass('on')
+            })
+            $(".filter-tag.price li a").unbind('click').bind('click',function (e) {
+                e.preventDefault()
+                price = $(this).data("price")
+                queryHtml()
+                $(this).addClass('on')
+                $(this).parent().siblings('li').find('a').removeClass('on')
+            })
+            $(".filter-tag.order li a").unbind('click').bind('click',function (e) {
+                e.preventDefault()
+                order = $(this).data("order")
+                queryHtml()
+                $(this).addClass('on')
+                $(this).parent().siblings('li').find('a').removeClass('on')
+            })
+        }
     }
     if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         module.exports = Joe;

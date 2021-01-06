@@ -1,10 +1,11 @@
 # Modify_Joe_Theme
 beaufify Joe Theme version 4.6.1 modify by gogobody 
 
-仿小灯泡自媒体主题美化Joe主题 by gogobody
+美化Joe主题 by gogobody
 
 ## 更新！！！
-## 注意：此版本至4.7.0 以后，由于作者为了优化速度，将会使许多选项静态化（写死到代码里）。所以已经不建议使用，样式仅供参考。
+## 注意：此版本至4.7.0 以后，由于作者为了优化速度，将会使许多选项静态化（写死到代码里）。所以已经不建议使用，样式仅供参考。开始开发插件，不建议普通用户使用。
+
 
 
 # Modify Joe Theme
@@ -15,6 +16,11 @@ beaufify Joe Theme version 4.6.1 modify by gogobody
 **下载：[下载][4]**
 
 交流群：QQ 1044509220
+
+## 注意：
+
+由于 pjax 和 js 相关联，独立页面名称和 js 也相互联系。
+
 
 ## changlog:
 
@@ -31,6 +37,7 @@ beaufify Joe Theme version 4.6.1 modify by gogobody
 - 添加了文章等级输出
 - 更新到 4.7.2
 - 2021/1/1 替换lazyload为lazysizes，采用纯js pjax https://github.com/MoOx/pjax
+- 2021/1/5 更新 pjax，添加内容模式， 开始开发joe插件
 
 
 ## 如果对您有用，不胜荣幸！

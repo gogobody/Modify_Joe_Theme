@@ -40,6 +40,7 @@
                         <?php endwhile; ?>
 
                         <?php if ($this->options->JOpenContrib):?>
+                        <a class="link" href="<?php _e($this->options->index.'/resources') ?>">资源专区</a>
                         <a class="link" style="color: #f64444" href="/contribute.html"><i style="margin-right: 3px" class="icon iconfont icon-chaoji"></i>成为投稿者</a>
                         <?php endif;?>
 

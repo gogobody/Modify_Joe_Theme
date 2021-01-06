@@ -36,6 +36,7 @@ function themeConfig($form)
                     <li data-current="j-setting-color">色彩圆角</li>
                     <li data-current="j-setting-index">首页设置</li>
                     <li data-current="j-setting-speed">速度优化</li>
+                    <li data-current="j-setting-resources">资源设置</li>
                     <li data-current="j-setting-other">其他设置</li>
                 </ul>
                 <?php require_once("core/backup.php"); ?>
@@ -1628,9 +1629,19 @@ function themeConfig($form)
     $form->addInput($JDnsPrefetch);
 
 
+    /**
+     * 资源设置
+     */
+    $JResourceCatags = new Typecho_Widget_Helper_Form_Element_Textarea(
+            'JResourceCatags',
+        null,
+        '','资源页面展示的分类和tag',
+            '说明：这里展示分类和 tag 的对应关系，<br>格式：<br>分类1的mid||tag1的mid,tag2的mid<br>比如：1||11，13每行一个'
+    );
+    $JResourceCatags->setAttribute('class', 'j-setting-content j-setting-resources');
+    $form->addInput($JResourceCatags);
 
     /* 其他设置 */
-
     $JOpenContrib = new Typecho_Widget_Helper_Form_Element_Select(
         'JOpenContrib',
         array(0 => '关闭（默认）', 1 => '开启'),
@@ -1774,3 +1785,6 @@ function themeConfig($form)
     $JDynamicComment->setAttribute('class', 'j-setting-content j-setting-other');
     $form->addInput($JDynamicComment->multiMode());
 } ?>
+
+
+

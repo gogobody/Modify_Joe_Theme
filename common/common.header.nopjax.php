@@ -13,8 +13,5 @@
 <section id="joe" class="<?php if ($this->options->JMobiset) _e('setmobi');?>">
     <!-- 头部 -->
     <?php $this->need('public/header.php'); ?>
-    <section id="pjax-container">
-    <!-- 面包屑 -->
-    <?php if ($this->options->JBreadStatus === 'on' && $this->is('post')) : ?>
-        <?php $this->need('component/post.bread.php'); ?>
-    <?php endif; ?>
+
+<!--    <section id="pjax-container"> need self add -->
