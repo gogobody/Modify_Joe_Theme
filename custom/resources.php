@@ -113,12 +113,7 @@ if ($resource_category){
                                             <article class="post post-grid">
                                                 <div class="entry-media">
                                                     <div class="placeholder">
-                                                        <a href="<?php echo $this->permalink ?>" target="_blank">
-                                                            <img class="lazyload"
-                                                                 data-src="<?php GetRandomThumbnail($this); ?>"
-                                                                 src="<?php echo GetLazyLoad(); ?>"
-                                                                 alt="<?php $this->title(); ?>">
-                                                        </a>
+                                                        <a class="lazyload" href="<?php echo $this->permalink ?>" target="_blank" style="background-image: url('<?php echo GetLazyLoad(); ?>')" data-bg="<?php GetRandomThumbnail($this); ?>"></a>
                                                         <div class="cao-cover"><img src="<?php $this->options->themeUrl('assets/img/resources/rings.svg'); ?>" width="50" height="50px" alt=""></div>
                                                     </div>
                                                     <div class="entry-format"><i class="icon iconfont icon-huiyuan2"></i></div>
