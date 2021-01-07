@@ -7583,42 +7583,17 @@ author page
     .content-area{
         article{
             &:hover{
-                .cao-cover{
-                    opacity: 1;
-                    transition: .5s;
-                    -moz-transition: .5s;
-                    -webkit-transition: .5s;
-                    -o-transition: .5s;
+                .entry-media{
+                    .cao-cover{
+                        opacity: 1;
+                        transition: .5s;
+                        -moz-transition: .5s;
+                        -webkit-transition: .5s;
+                        -o-transition: .5s;
+                    }
                 }
             }
-            .cao-cover{
-                position: absolute;
-                top: 0;
-                left: 0;
-                text-align: center;
-                width: 100%;
-                background: rgba(0,0,0,.45);
-                height: 100%;
-                color: #fff;
-                text-shadow: 1px 1px 3px #000;
-                font-size: 25px;
-                border-radius: 4px 4px 0 0;
-                pointer-events: none!important;
-                opacity: 0;
-                img{
-                    width: 100%;
-                    height: 50px;
-                    position: absolute;
-                    top: calc(50% - 25px);
-                    margin-top: -25px;
-                    left: 0;
-                    margin-left: -25px;
-                    -webkit-filter: blur(0)!important;
-                    -moz-filter: blur(0)!important;
-                    -ms-filter: blur(0)!important;
-                    filter: blur(0)!important;
-                }
-            }
+
             .entry-media{
                 overflow: hidden;
                 border-radius: 5px;
@@ -7630,6 +7605,15 @@ author page
                     height: 0;
                     overflow: hidden;
                     border-radius: 4px 4px 0 0;
+                    a{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        img{
+                            object-fit: cover;
+                        }
+                    }
                 }
                 img{
                     border-radius: 0;
@@ -7672,6 +7656,34 @@ author page
                         .post-list-meta-views {
                             padding-right: 5px;
                         }
+                    }
+                }
+                .cao-cover{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    text-align: center;
+                    width: 100%;
+                    background: rgba(0,0,0,.45);
+                    height: 100%;
+                    color: #fff;
+                    text-shadow: 1px 1px 3px #000;
+                    font-size: 25px;
+                    border-radius: 4px 4px 0 0;
+                    pointer-events: none!important;
+                    opacity: 0;
+                    img{
+                        width: 50px;
+                        height: 50px;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -25px;
+                        left: 50%;
+                        margin-left: -25px;
+                        -webkit-filter: blur(0) !important;
+                        -moz-filter: blur(0) !important;
+                        -ms-filter: blur(0) !important;
+                        filter: blur(0) !important;
                     }
                 }
             }

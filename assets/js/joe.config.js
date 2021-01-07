@@ -2427,6 +2427,7 @@ class Lb {
         /* resources page event init */
         init_resource_page(){
             let category,tag,price,order = null;
+
             function queryHtml(){
                 $.ajax({
                     url:'/resources',
