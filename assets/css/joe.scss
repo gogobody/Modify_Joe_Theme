@@ -6457,6 +6457,16 @@ pre code {
         .item {
             padding: 20px;
             border-bottom: 1px solid var(--classA);
+            &.recommend {
+                .card {
+                    .title {
+                        background: #f93f3f;
+                        &::after {
+                            border-color: #f93f3f transparent transparent;
+                        }
+                    }
+                }
+            }
             &:last-child {
                 border-bottom: none;
                 .card {

@@ -3,6 +3,26 @@
  * @author Mxsyx (zsimline@163.com)
  * @version 1.0.0
  */
+class JoeUtils{
+    constructor() {
+    }
+    /* URL 添加或者替换参数 */
+    static changeURLArg(url,arg,arg_val){
+        let pattern=arg+'=([^&]*)';
+        let replaceText=arg+'='+arg_val;
+        if(url.match(pattern)){
+            let tmp='/('+ arg+'=)([^&]*)/gi';
+            tmp=url.replace(eval(tmp),replaceText);
+            return tmp;
+        }else{
+            if(url.match('[\?]')){
+                return url+'&'+replaceText;
+            }else{
+                return url+'?'+replaceText;
+            }
+        }
+    }
+}
 
 class Lb {
     constructor(options) {
@@ -1056,7 +1076,38 @@ class Lb {
                         if (window.JOE_CONFIG.DOCUMENT_BAIDU_TOKEN === '') {
                             baidu.html(`<a target="_blank" href="https://ziyuan.baidu.com/linksubmit/url?sitename=${encodeURI(window.location.href)}">未收录，去提交</a>`);
                         } else {
-                            baidu.html('<span>点击推送</span>');
+                            $.ajax({
+                                url: window.JOE_CONFIG.THEME_URL + '/baiduPush.php?urls=' + encodeURI(window.location.href),
+                                method: 'get',
+                                dataType: 'json',
+                                data: {
+                                    token: window.JOE_CONFIG.DOCUMENT_BAIDU_TOKEN,
+                                    domain: window.location.hostname
+                                },
+                                success: res => {
+                                    let obj = {
+                                        'site error': '站点未验证！',
+                                        'empty content': '内容为空！',
+                                        'only 2000 urls are allowed once': '超过限制！',
+                                        'over quota': '今日提交已上限'
+                                    };
+                                    if (res.success) {
+                                        baidu.css('color', '#3bca72');
+                                        baidu.html('推送成功');
+                                    } else {
+                                        baidu.css('color', '#e6a23c');
+                                        if (res.error === 401) {
+                                            baidu.html('Token错误！');
+                                        } else if (res.error === 400) {
+                                            baidu.html(obj[res.message] || '未知错误');
+                                        } else if (res.error === 404) {
+                                            baidu.html('地址错误！');
+                                        } else {
+                                            baidu.html('服务异常！');
+                                        }
+                                    }
+                                }
+                            });
                         }
                     } else {
                         baidu.html('百度已收录');
@@ -1064,40 +1115,6 @@ class Lb {
                     }
                 }
             });
-            $("#baiduIncluded span").unbind('click').bind('click',function () {
-                $.ajax({
-                    url: window.JOE_CONFIG.THEME_URL + '/baiduPush.php?urls=' + encodeURI(window.location.href),
-                    method: 'get',
-                    dataType: 'json',
-                    data: {
-                        token: window.JOE_CONFIG.DOCUMENT_BAIDU_TOKEN,
-                        domain: window.location.hostname
-                    },
-                    success: res => {
-                        let obj = {
-                            'site error': '站点未验证！',
-                            'empty content': '内容为空！',
-                            'only 2000 urls are allowed once': '超过限制！',
-                            'over quota': '今日提交已上限'
-                        };
-                        if (res.success) {
-                            baidu.css('color', '#3bca72');
-                            baidu.html('推送成功');
-                        } else {
-                            baidu.css('color', '#e6a23c');
-                            if (res.error === 401) {
-                                baidu.html('Token错误！');
-                            } else if (res.error === 400) {
-                                baidu.html(obj[res.message] || '未知错误');
-                            } else if (res.error === 404) {
-                                baidu.html('地址错误！');
-                            } else {
-                                baidu.html('服务异常！');
-                            }
-                        }
-                    }
-                });
-            })
         }
 
         /* 初始化打字机效果 */
@@ -2430,7 +2447,7 @@ class Lb {
 
             function queryHtml(){
                 $.ajax({
-                    url:'/resources',
+                    url:window.location.href,
                     method:'get',
                     data:{
                         'category':category,
@@ -2446,14 +2463,13 @@ class Lb {
             }
             $(".filter-tag.category li a").unbind('click').bind('click',function (e) {
                 e.preventDefault()
-                console.log("aaa")
-
                 category = $(this).data("mid")
                 if($(this).hasClass('on')){
                     category = null
                 }
                 queryHtml()
                 $(this).toggleClass('on')
+                $(".term-bar .term-title").text($(this).text())
                 $(this).parent().siblings('li').find('a').removeClass('on')
             })
             $(".filter-tag.tag li a").unbind('click').bind('click',function (e) {
