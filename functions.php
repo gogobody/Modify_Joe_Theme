@@ -1320,6 +1320,14 @@ function themeConfig($form)
     $JContentMode->setAttribute('class', 'j-setting-content j-setting-index');
     $form->addInput($JContentMode);
 
+    $JHotRecommend = new Typecho_Widget_Helper_Form_Element_Textarea(
+            'JHotRecommend',null,
+            'https://ijkxs.com/resources||热门资源'
+            ,'热门推荐','格式：链接||文字。一行一个'
+    );
+    $JHotRecommend->setAttribute('class', 'j-setting-content j-setting-index');
+    $form->addInput($JHotRecommend);
+
     $JIndexTitles = new Typecho_Widget_Helper_Form_Element_Textarea('JIndexTitles',
         null,
         '','中间自定义链接[最新文章旁边]','格式：文字||url,一行一个'
@@ -1641,7 +1649,9 @@ function themeConfig($form)
     $JResourceCatags->setAttribute('class', 'j-setting-content j-setting-resources');
     $form->addInput($JResourceCatags);
 
-    /* 其他设置 */
+    /**
+     * 其他设置
+     */
     $JOpenContrib = new Typecho_Widget_Helper_Form_Element_Select(
         'JOpenContrib',
         array(0 => '关闭（默认）', 1 => '开启'),
