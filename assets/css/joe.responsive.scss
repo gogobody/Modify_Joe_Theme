@@ -408,9 +408,22 @@
         margin-left: 0;
         &>svg{
             display: block;
+            height: 30px;
         }
         .profile-color-modes-toggle{
             position: absolute;
+            top: 8px;
+            .profile-color-modes-toggle-track{
+                width: 33px;
+                height: 17px;
+            }
+            .profile-color-modes-toggle-thumb{
+                width: 21px;
+                height: 21px;
+                svg{
+                    margin: 4px 0 0 3px!important;
+                }
+            }
         }
     }
     .j-search-down-xs {
@@ -578,7 +591,8 @@
                         height: auto;
                         padding: 15px;
                         .title {
-                            margin-bottom: 0;
+                            margin: 10px 0;
+
                             .badge {
                                 position: absolute;
                                 top: 5px;
@@ -1164,7 +1178,7 @@
                         flex-direction: row;
                         display: flex;
                         background: var(--backgroundA);
-                        height: 110px;
+                        height: 10.5em;
                         .entry-box{
                             padding: 5px 12px;
 
@@ -1185,11 +1199,11 @@
                                     overflow: hidden;
                                     text-overflow: ellipsis;
                                     display: -webkit-box;
-                                    -webkit-line-clamp: 2;
-                                    line-clamp: 2;
+                                    -webkit-line-clamp: 1;
+                                    line-clamp: 1;
                                     -webkit-box-orient: vertical;
                                     white-space: normal;
-                                    font-size: 16px;
+                                    font-size: 18px;
                                     word-break: break-all;
                                 }
                             }
@@ -1226,11 +1240,17 @@
 
 }
 @media (max-width: 450px) {
+    .lb-sign{
+        bottom: 3px;
+    }
     .j-index {
         .main {
             .article {
                 .article-list{
                     .entry-box{
+                        .title{
+                            margin: 0;
+                        }
                         .imgrow{
                             .feaimg{
                                 svg{
@@ -1316,6 +1336,7 @@
                                     width: auto;
                                     transform: none;
                                     vertical-align: text-bottom;
+                                    display: inline-block;
                                 }
                             }
                             .meta{
@@ -1349,13 +1370,14 @@
                         }
                     }
                     .article-list.default {
+                        height: 8.5em;
                         .entry-box {
                             padding: 0 12px;
-                            .entry-box{
-                                .title{
-                                    a{
-                                        line-height: 21px;
-                                    }
+                            .title{
+                                a{
+                                    line-height: 21px;
+                                    -webkit-line-clamp: 2;
+                                    line-clamp: 2;
                                 }
                             }
 
@@ -1401,24 +1423,5 @@
 
         }
 
-    }
-    .profile-color-modes{
-        &>svg{
-            height: 30px;
-        }
-        .profile-color-modes-toggle{
-            top: 8px;
-            .profile-color-modes-toggle-track{
-                width: 33px;
-                height: 17px;
-            }
-            .profile-color-modes-toggle-thumb{
-                width: 21px;
-                height: 21px;
-                svg{
-                    margin: 4px 0 0 3px!important;
-                }
-            }
-        }
     }
 }

@@ -154,8 +154,8 @@ if ($resource_category){
                                                                     <i class="fa fa-clock-o"></i><?php echo formatTime($this->created); ?>
                                                                 </time>
                                                             </li>
-                                                            <?php if ($this->fields->JResourceCatags): ?>
-                                                            <div class="jing-theme-tag"><?php _e($this->fields->JResourceCatags); ?></div>
+                                                            <?php if ($this->fields->resourceField): ?>
+                                                            <div class="jing-theme-tag"><?php _e($this->fields->resourceField); ?></div>
                                                             <?php endif; ?>
                                                             <li class="meta-price">
                                                                 <span>

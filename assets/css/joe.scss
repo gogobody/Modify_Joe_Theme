@@ -664,13 +664,16 @@ textarea:focus {
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
+@font-face {
+    font-family: 'Roman-55';
+    src: url('https://cdn.jsdelivr.net/gh/zwying0814/Cuteen@4.1/static/font/NeueHaasGrotTextRound-55Roman.woff2');
+}
 
 body {
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
     font-size: 14px;
-    //font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
-    font-family: PingFang SC, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
+    font-family: 'Roman-55', PingFang SC, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
@@ -2043,7 +2046,7 @@ table {
         }
         .section-title {
             font-size: 16px;
-            color: #262626;
+            color: var(--main);
             line-height: 28px;
             padding-bottom: 15px;
             position: relative;
@@ -2519,6 +2522,7 @@ table {
                             padding: 0 10px;
                             white-space: nowrap;
                             vertical-align: top;
+                            display: inline-block;
                         }
                         a {
                             color: var(--main);
@@ -2529,10 +2533,12 @@ table {
                             line-height: 24px;
                             align-items: center;
                             display: flex;
+                            letter-spacing: 0.06rem;
                             .text{
                                 min-width: 0;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
+                                letter-spacing: 0.06rem;
                             }
                             &:hover {
                                 color: var(--theme);
@@ -2552,6 +2558,7 @@ table {
                         word-break: break-all;
                         line-height: 22px;
                         max-height: 46px;
+                        letter-spacing: 0.06em;
                         &:hover {
                             opacity: 0.8;
                         }
@@ -2758,7 +2765,7 @@ table {
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
-                            display: block;
+                            display: flex;
                         }
                     }
                     img{
@@ -4161,7 +4168,7 @@ table {
             }
             img:not(.owo) {
                 display: block;
-                max-width: 100%;
+                max-width: 80%;
                 height: auto;
                 margin: 0 auto;
                 border-radius: 4px;

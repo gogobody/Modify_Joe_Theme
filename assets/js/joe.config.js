@@ -413,8 +413,8 @@ class Lb {
         reinit_head_title(){
             let post_title = $("#post_top_title")
             post_title.addClass("post_no")
-            this.global_item.above_nav.removeClass("post_no")
-            this.global_item.below.stop().show()
+            this.global_item.above_nav.stop(true).removeClass("post_no")
+            this.global_item.below.stop(true).show()
         }
         /* 格式化url参数 */
         changeURLArg(url, arg, arg_val) {
