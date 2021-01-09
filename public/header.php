@@ -581,13 +581,15 @@
                 <div class="desc j-aside-motto"></div>
             <?php endif; ?>
         </div>
+        <?php
+        $JHotrecommend = $this->options->JHotRecommend;
+        if (isset($JHotrecommend)):
+        ?>
         <div class="item recommend">
             <div class="card">
                 <div class="title">热门推荐</div>
                 <ul>
                     <?php
-                    $JHotrecommend = $this->options->JHotRecommend;
-                    if (isset($JHotrecommend)):
                         $jhotrarr = explode("\r\n",$JHotrecommend);
                         foreach ($jhotrarr as $jhotitem):
                             $jhotrec = explode("||",$jhotitem);
@@ -599,10 +601,11 @@
                         </a>
                     </li>
                     <?php endforeach; ?>
-                    <?php endif; ?>
                 </ul>
             </div>
         </div>
+        <?php endif; ?>
+
         <?php if ($categorys->have()) : ?>
             <div class="item category">
                 <div class="card">
