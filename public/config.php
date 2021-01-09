@@ -1,6 +1,6 @@
 <?php $this->need('component/footer.navmobi.php'); ?>
 <script>document.addEventListener('lazybeforeunveil', function(e){let bg = e.target.getAttribute('data-bg');if(bg){e.target.style.backgroundImage = 'url(' + bg + ')';}});</script>
-<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.0-beta1/lazysizes.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/aFarkas/lazysizes@5.3.0/lazysizes.min.js" async=""></script>
 <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
 <!-- 音乐播放器 -->
 <?php if ($this->options->JPlayer && !isMobile()) : ?>

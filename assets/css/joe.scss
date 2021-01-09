@@ -2037,12 +2037,10 @@ table {
         }
     }
     .news-foot {
+        border-bottom: 1px solid var(--classB);
         .container{
             padding: 0 auto;
             height: auto;
-            .part-news-foot{
-                border-bottom: 1px solid var(--classB);
-            }
         }
         .section-title {
             font-size: 16px;
@@ -2644,7 +2642,6 @@ table {
                     }
                     .imgrow{
                         img{
-                            max-height: 300px;
                             border-radius: calc(var(--radius-pc) / 2);
                         }
                         .feaimg{
@@ -2777,10 +2774,24 @@ table {
                         width: 100%;
                         display: block;
                         margin: 10px 0;
-                        img{
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
+                        .feaimg{
+                            a{
+                                &:after{
+                                    content: '';
+                                    display: block;
+                                    height: 0;
+                                    width: 100%;
+                                    padding-bottom: 38.86%;
+                                }
+                                img{
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    display: block;
+                                }
+                            }
                         }
                     }
                 }
@@ -7482,7 +7493,6 @@ author page
                     background-color: #a4f0ff1f;
                 }
                 &:hover{
-                    border: 1px dashed #ff5c00;
                     background-color: #fff0;
                 }
             }
@@ -7828,7 +7838,6 @@ author page
                             line-height: initial;
                         }
                         .meta-price {
-                            margin-left: 8px;
                             position: relative;
                             display: inline-block;
                             padding: 1px 6px;
@@ -7855,7 +7864,7 @@ author page
             margin-top: -10px;
             display: block;
             padding: 10px;
-            .filter-item span,.filter--content .filter-tab span {
+            .filter-item span,.filter-tab span {
                 width: 100%;
                 display: inline-block;
                 margin-bottom: 10px;
