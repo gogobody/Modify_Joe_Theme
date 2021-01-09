@@ -829,7 +829,7 @@ class Lb {
 
         /* 初始化owo标签 */
         init_owo() {
-            if ($('.OwO').length === 0) return;
+            if ($('#OwO_Container').length === 0) return;
             new OwO({
                 logo: 'OωO表情',
                 container: document.getElementsByClassName('OwO')[0],
@@ -1929,23 +1929,19 @@ class Lb {
             if (window.JOE_CONFIG.DOCUMENT_ASIDE_MOTTO === 'on') {
                 j_motto.show();
             } else {
-                function getMotto() {
-                    $.ajax({
-                        url: window.JOE_CONFIG.DOCUMENT_MOTTO_API,
-                        method: 'get',
-                        dataType: 'text',
-                        success: res => {
-                            j_motto.html(res);
-                            j_motto.show();
-                        },
-                        error: err => {
-                            j_motto.html('人生之路，难免坎坷，但我执着');
-                            j_motto.show();
-                        }
-                    });
-                }
-                getMotto();
-                setInterval(getMotto, 5000);
+                $.ajax({
+                    url: window.JOE_CONFIG.DOCUMENT_MOTTO_API,
+                    method: 'get',
+                    dataType: 'text',
+                    success: res => {
+                        $('.j-aside-motto').html(res)
+                        $('.j-aside-motto').show()
+                    },
+                    error: err => {
+                        $('.j-aside-motto').html('人生之路，难免坎坷，但我执着')
+                        $('.j-aside-motto').show()
+                    }
+                })
             }
         }
 
