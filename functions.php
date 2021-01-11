@@ -1310,16 +1310,6 @@ function themeConfig($form)
     $form->addInput($JBoxShadow);
 
     /* 首页设置 */
-    $JContentMode = new Typecho_Widget_Helper_Form_Element_Radio('JContentMode',
-        array(
-                'blog' => 'blog',
-                'content' => 'content'
-        ),
-        'content','内容显示模式','blog 是博客模式，content是内容模式'
-    );
-    $JContentMode->setAttribute('class', 'j-setting-content j-setting-index');
-    $form->addInput($JContentMode);
-
     $JHotRecommend = new Typecho_Widget_Helper_Form_Element_Textarea(
             'JHotRecommend',null,
             'https://ijkxs.com/resources||热门资源'

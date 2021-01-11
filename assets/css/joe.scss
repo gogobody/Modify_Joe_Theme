@@ -2617,29 +2617,6 @@ table {
                             }
                         }
                     }
-                    .meta-xs {
-                        display: none;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-top: 1px solid var(--classC);
-                        padding-top: 15px;
-                        .item {
-                            display: flex;
-                            align-items: center;
-                            color: #bbb;
-                            font-size: 12px;
-                            svg {
-                                width: 15px;
-                                height: 15px;
-                                fill: #bbb;
-                                margin-right: 5px;
-                                vertical-align: middle;
-                            }
-                            a{
-                                color: #bbb;
-                            }
-                        }
-                    }
                     .imgrow{
                         img{
                             border-radius: calc(var(--radius-pc) / 2);

@@ -225,8 +225,9 @@ class Lb {
             this.wallpaper_page = 0;
             this.wallpaper_cid = '';
             this.global_item = {
+                above: $("header .above"),
                 above_nav : $(".above .above-nav"),
-                below : $(".below"),
+                below : $("header .below"),
                 color_mode_toggle_btn : $(".js-promo-color-modes-toggle"),
                 j_nav_link : $("nav.nav.j-nav a.link")
             };
@@ -413,6 +414,7 @@ class Lb {
         reinit_head_title(){
             let post_title = $("#post_top_title")
             post_title.addClass("post_no")
+            this.global_item.above.stop(true).show()
             this.global_item.above_nav.stop(true).removeClass("post_no")
             this.global_item.below.stop(true).show()
         }

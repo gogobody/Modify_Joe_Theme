@@ -7,7 +7,7 @@
         <?php $this->need('public/head.php'); ?>
     </head>
 
-<body class="<?php if ($this->options->JContentMode == 'blog') _e('blog'); else _e('content');?>">
+<body>
 <?php $this->options->JCustomBodyStart() ?>
 
 <section id="joe" class="<?php if ($this->options->JMobiset) _e('setmobi');?>">

@@ -176,6 +176,13 @@
                         }
                     }
                 }
+                .article-list.default {
+                    .entry-box {
+                        .summary {
+                            display: block;
+                        }
+                    }
+                }
             }
         }
     }
@@ -375,22 +382,6 @@
                 }
             }
         }
-    }
-    body.content{
-        .j-index{
-            .main{
-                .article{
-                    .article-list.default {
-                        .entry-box {
-                            .summary {
-                                display: block;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
     }
 }
 @media (max-width: 768px) {
@@ -619,18 +610,75 @@
                             margin-bottom: 15px;
                         }
                         .meta{
-                            display: none
+                            display: none;
+                            .item {
+                                a{
+                                    img{
+                                        width: 20px;
+                                    }
+                                }
+                            }
                         }
-                        .meta-xs {
-                            display: flex;
+                    }
+                    .picture-box{
+                        div{
+                            display: none;
                         }
                     }
                 }
 
                 .article-list.default{
+                    flex-direction: row;
+                    display: flex;
+                    background: var(--backgroundA);
+                    height: 10.5em;
                     .entry-box{
+                        padding: 5px 12px;
+                        .meta{
+                            display: flex;
+                            .item.comment{
+                                display: none;
+                            }
+                            .item.date{
+                                display: none;
+                            }
+                        }
+                        .title{
+                            a{
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                display: -webkit-box;
+                                -webkit-line-clamp: 1;
+                                line-clamp: 1;
+                                -webkit-box-orient: vertical;
+                                white-space: normal;
+                                font-size: 18px;
+                                word-break: break-all;
+                            }
+                        }
                         .summary{
                             margin-bottom:0;
+                            display: -webkit-box;
+                        }
+                    }
+                    .picture-box{
+                        width: 126px;
+                        height: 100%;
+                        min-height: 80px;
+                        svg{
+                            display: block;
+                            width: 14px;
+                            height: 14px;
+                        }
+                        .xs-title{
+                            display: none;
+                        }
+                    }
+                }
+                .article-list.sticky{
+                    .entry-box{
+                        .title{
+                            padding-right: 16px;
                         }
                     }
                 }
@@ -1152,104 +1200,69 @@
     .navigation-tab {
         display: flex !important;
     }
-    body.content{
-        .j-index{
-            .main{
-                .article{
-                    .article-list{
-                        .entry-box{
-                            .meta{
-                                .item {
-                                    a{
-                                        img{
-                                            width: 20px;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        .picture-box{
-                            div{
-                                display: none;
-                            }
-                        }
-                    }
-                    .article-list.default{
-                        flex-direction: row;
-                        display: flex;
-                        background: var(--backgroundA);
-                        height: 10.5em;
-                        .entry-box{
-                            padding: 5px 12px;
-
-                            .meta{
-                                display: flex;
-                                .item.comment{
-                                    display: none;
-                                }
-                                .item.date{
-                                    display: none;
-                                }
-                            }
-                            .meta-xs{
-                                display: none;
-                            }
-                            .title{
-                                a{
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    display: -webkit-box;
-                                    -webkit-line-clamp: 1;
-                                    line-clamp: 1;
-                                    -webkit-box-orient: vertical;
-                                    white-space: normal;
-                                    font-size: 18px;
-                                    word-break: break-all;
-                                }
-                            }
-                            .summary{
-                                display: -webkit-box;
-                            }
-                        }
-                        .picture-box{
-                            width: 126px;
-                            height: 100%;
-                            min-height: 80px;
-                            svg{
-                                display: block;
-                                width: 14px;
-                                height: 14px;
-                            }
-                            .xs-title{
-                                display: none;
-                            }
-                        }
-                    }
-                    .article-list.sticky{
-                        .entry-box{
-                            .title{
-                                padding-right: 16px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-    }
-
 }
 @media (max-width: 450px) {
     .lb-sign{
         bottom: 3px;
     }
+    .j-loadmore{
+        a{
+            box-shadow: none;
+        }
+    }
     .j-index {
         .main {
+            .index-title {
+                margin-bottom:0;
+                .notice {
+                    padding: 0;
+                }
+
+            }
             .article {
+                .tlr-header{
+                    padding: 0;
+                }
+                .lr-padding{
+                    padding: 0;
+                }
                 .article-list{
+                    box-shadow: none;
+                    margin-bottom: 0;
+                    padding: 15px 0;
+                    border-bottom: 1px solid rgba(0, 0, 0, .05);
+                    display: flex;
                     .entry-box{
+                        overflow: initial;
+                        .summary{
+                            display: none!important;
+                        }
                         .title{
                             margin: 0;
+                            a{
+                                display: block;
+                                font-size: 16px;
+                            }
+                            .badge{
+                                position: initial;
+                                margin-right: 5px;
+                                width: auto;
+                                transform: none;
+                                vertical-align: text-bottom;
+                                display: inline-block;
+                            }
+                        }
+                        .meta{
+                            display: flex;
+                            .item{
+                                font-size: 11px;
+                                line-height: 14px;
+                                a{
+                                    img{
+                                        display: none;
+                                    }
+                                }
+                            }
                         }
                         .imgrow{
                             .feaimg{
@@ -1259,19 +1272,55 @@
                                 }
                             }
                         }
-                        .summary{
 
+                    }
+                    .picture-box{
+                        div{
+                            display: none;
                         }
                     }
                 }
                 .article-list.shuobg {
                     .entry-box {
+                        padding: 6px 12px;
                         .summary {
                             display: none!important;
                         }
-
+                    }
+                    .picture-box{
+                        border-radius: var(--radius-wap);
                     }
 
+                }
+                .article-list.default {
+                    height: 8.5em;
+                    .entry-box {
+                        padding: 0 12px;
+                        .title{
+                            a{
+                                line-height: 21px;
+                                -webkit-line-clamp: 2;
+                                line-clamp: 2;
+                            }
+                        }
+
+                    }
+                    .picture-box{
+                        width: 95px;
+                        border-radius: var(--radius-wap);
+                        height: auto;
+                        min-height: auto;
+                    }
+                }
+                .article-list.bthumb{
+                    .entry-box{
+                        .imgrow{
+                            .feaimg{
+                                border-radius: var(--radius-wap);
+                                overflow: hidden;
+                            }
+                        }
+                    }
                 }
                 .article-list.mthumb{
                     .entry-box{
@@ -1282,146 +1331,32 @@
                                 }
                             }
                         }
-
-                    }
-                }
-
-            }
-
-
-        }
-    }
-    body.content{
-        background: var(--backgroundA)!important;
-        .j-loadmore{
-            a{
-                box-shadow: none;
-            }
-        }
-        .j-index{
-            .main {
-                .index-title {
-                    margin-bottom:0;
-                    .notice {
-                        padding: 0;
-                    }
-
-                }
-                .article{
-                    .tlr-header{
-                        padding: 0;
-                    }
-                    .lr-padding{
-                        padding: 0;
-                    }
-                    .article-list{
-                        box-shadow: none;
-                        margin-bottom: 0;
-                        padding: 15px 0;
-                        border-bottom: 1px solid rgba(0, 0, 0, .05);
-                        display: flex;
-                        .entry-box{
-                            overflow: initial;
-                            .summary{
-                                display: none!important;
-                            }
-                            .title{
-                                a{
-                                    display: block;
-                                    font-size: 16px;
-                                }
-                                .badge{
-                                    position: initial;
-                                    margin-right: 5px;
-                                    width: auto;
-                                    transform: none;
-                                    vertical-align: text-bottom;
-                                    display: inline-block;
-                                }
-                            }
-                            .meta{
-                                display: flex;
-                                .item{
-                                    font-size: 11px;
-                                    line-height: 14px;
-                                    a{
-                                        img{
-                                            display: none;
-                                        }
-                                    }
-                                }
-                            }
-                            .meta-xs{
-                                display: none;
-                            }
-                        }
-                        .picture-box{
-                            div{
-                                display: none;
-                            }
-                        }
-                    }
-                    .article-list.shuobg{
-                        .entry-box{
-                            padding: 0 12px;
-                        }
-                        .picture-box{
-                            border-radius: var(--radius-wap);
-                        }
-                    }
-                    .article-list.default {
-                        height: 8.5em;
-                        .entry-box {
-                            padding: 0 12px;
-                            .title{
-                                a{
-                                    line-height: 21px;
-                                    -webkit-line-clamp: 2;
-                                    line-clamp: 2;
-                                }
-                            }
-
-                        }
-                        .picture-box{
-                            width: 95px;
-                            border-radius: var(--radius-wap);
-                            height: auto;
-                            min-height: auto;
-                        }
-                    }
-                    .article-list.bthumb{
-                        .entry-box{
-                            .imgrow{
-                                .feaimg{
+                        .imgrow{
+                            a{
+                                overflow: hidden;
+                                img{
                                     border-radius: var(--radius-wap);
-                                    overflow: hidden;
                                 }
                             }
                         }
+
                     }
-                    .article-list.mthumb{
-                        .entry-box{
-                            .imgrow{
-                                a{
-                                    overflow: hidden;
-                                    img{
-                                        border-radius: var(--radius-wap);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .article-list.sticky{
-                        .entry-box{
-                            .title{
-                                padding-right: 0;
-                            }
+                }
+                .article-list.sticky{
+                    .entry-box{
+                        .title{
+                            padding-right: 0;
                         }
                     }
                 }
             }
 
+
         }
+    }
+    body{
+        background: var(--backgroundA)!important;
 
     }
+
 }

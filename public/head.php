@@ -38,12 +38,7 @@
 <link rel="shortcut icon" href="<?php echo $this->options->JFavicon ? $this->options->JFavicon : 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/favicon.ico'; ?>" />
 
 <!-- Typecho自有函数 -->
-<?php if ($this->fields->keywords || $this->fields->desc) : ?>
-    <?php $this->header('keywords=' . $this->fields->keywords . '&description=' . $this->fields->desc); ?>
-<?php else : ?>
-    <?php $this->header(); ?>
-<?php endif; ?>
-
+<?php $this->header(); ?>
 <!-- 网站标题 -->
 <title>
     <?php if ($this->_currentPage > 1) echo '第 ' . $this->_currentPage . ' 页 - '; ?>
