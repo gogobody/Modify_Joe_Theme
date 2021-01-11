@@ -36,7 +36,7 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
             <section class="meta lr-padding">
                 <?php if (!empty($this->options->JSummaryMeta) && in_array('author', $this->options->JSummaryMeta)) : ?>
                     <section class="item">
-                        <a href="<?php $this->author->permalink(); ?>"><img src="<?php ParseAvatar($this->author->mail); ?>" /><?php $this->author(); ?></a>
+                        <a href="<?php $this->author->permalink(); ?>"><img src="<?php ParseAvatar($this->author->mail); ?>" width="50" height="50"/><?php $this->author(); ?></a>
                     </section>
                 <?php endif; ?>
                 <?php if (!empty($this->options->JSummaryMeta) && in_array('cate', $this->options->JSummaryMeta)) : ?>

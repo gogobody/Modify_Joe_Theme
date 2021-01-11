@@ -10,7 +10,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php /* 登录了 */ if ($this->user->hasLogin()): ?>
         <div class="aside aside-user">
             <div class="user">
-                <img src="<?php ParseAvatar($this->user->mail); ?>" height="80" width="80"/>
+                <img class="lazyload" src="<?php ParseAvatar($this->user->mail); ?>" height="80" width="80" alt=""/>
                 <a href="<?php echo getUserPermalink($this->user->uid); ?>"><?php $this->user->screenName();autvip($this->user->mail); ?></a>
                 <!-- 座右铭 -->
                 <div class="p j-aside-motto"></div>
@@ -42,7 +42,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php else:?>
             <div class="aside aside-user">
                 <div class="user">
-                    <img src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" width="80" height="80"/>
+                    <img class="lazyload" src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" width="80" height="80"/>
                     <?php if ($this->options->JAuthorLink) : ?>
                         <a href="<?php $this->options->JAuthorLink(); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
                     <?php else : ?>
@@ -84,7 +84,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php else:?>
             <div class="aside aside-user">
                 <div class="user">
-                    <img src="<?php ParseAvatar($this->author->mail); ?>" width="80" height="80"/>
+                    <img class="lazyload" src="<?php ParseAvatar($this->author->mail); ?>" width="80" height="80"/>
                     <a href="<?php echo getUserPermalink($this->author->uid); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
                     <!-- 座右铭 -->
                     <div class="p j-aside-motto"></div>
@@ -142,9 +142,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         foreach ($counts as $count) {
                             $imgUrl = ParseAvatar($count['mail'],1);
                             if ($count['authorId'] == '0') {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img src="' . $imgUrl . '" width="50" height="50"></div></div><div class="item-main"><div>' . $count['author'] . '';
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50"></div></div><div class="item-main"><div>' . $count['author'] . '';
                             } else {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img src="' . $imgUrl . '" width="50" height="50"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户"></div></a></div><div class="item-main">' . $count['author'] . '';
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户"></div></a></div><div class="item-main">' . $count['author'] . '';
                             }
                             echo '' . $c_url . '';
                             autvip($count['mail']);
@@ -166,7 +166,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <div class="aside Ad">
         <h3><i class="icon iconfont icon-ad"></i><span><?php echo $adContent1Counts[0] ?></span></h3>
         <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent1Counts[2] ?>">
-            <img src="<?php echo $adContent1Counts[1] ?>" width="250" height="250">
+            <img class="lazyload" src="<?php echo $adContent1Counts[1] ?>" width="250" height="250">
         </a>
     </div>
     <?php endif; ?>

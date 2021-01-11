@@ -62,13 +62,13 @@
     <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.barrager/joe.barrager.min.js"></script>
 <?php endif; ?>
 <!-- 3dtag -->
-<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js" defer></script>
 <!-- 目录树(合并到了主函数) -->
 <!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/jfloor.min.js"></script>-->
+<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
 
 <script src="<?php $this->options->themeUrl('assets/js/OwO.min.js?v=' . JoeVersion()); ?>"></script>
 <script src="<?php $this->options->themeUrl('assets/js/joe.config.min.js?v=' . JoeVersion()); ?>"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     <!-- 背景 -->
     <!-- 移动端 -->
 <?php if (isMobile()) : ?>

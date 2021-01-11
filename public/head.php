@@ -54,16 +54,17 @@
 </title>
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/zwying0814/Cuteen@4.1/static/font/NeueHaasGrotTextRound-55Roman.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap-grid.min.css" media="all"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" media="all"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css" media="all">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-colpick@3.1.0/css/colpick.min.css" media="all"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/<?php echo $this->options->JCodeColor ?>.min.css" media="all">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/css/OwO.min.css" media="all"/>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.min.css'); ?>" media="all"/>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css'); ?>" media="all"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.toast/joe.toast.min.css" media="all"/>
-<link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet" media="all">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/css/OwO.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.toast/joe.toast.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-colpick@3.1.0/css/colpick.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
+<link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
 
 <style>
     :root {
