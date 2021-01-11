@@ -10,7 +10,7 @@ function threadedComments($comments, $options)
     <li id="li-<?php $comments->theId(); ?>">
         <div class="scrolltop" id="<?php $comments->theId(); ?>">
             <div class="item">
-                <img class="left" src="<?php ParseAvatar($comments->mail); ?>">
+                <img class="left" src="<?php ParseAvatar($comments->mail); ?>" alt="">
                 <div class="right">
                     <div class="name">
                         <span><?php $comments->author(); ?></span>

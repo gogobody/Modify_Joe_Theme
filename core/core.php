@@ -194,7 +194,7 @@ function Load2Cdn($content,$way = "origin") // $way = "origin" 使用原生 mark
 function Short_Lazyload($text)
 {
     $text = preg_replace_callback('/<img src=\"(.*?)\".*?>/ism', function ($text) {
-        return '<img class="lazyload" data-src="' . $text[1] . '" src="' . GetLazyLoad() . '" />';
+        return '<img class="lazyload" data-src="' . $text[1] . '" src="' . GetLazyLoad() . '" alt=""/>';
     }, $text);
     return $text;
 }
@@ -548,12 +548,12 @@ function GetParentReply($parent)
 
 function ParsePaopaoBiaoqingCallback($match)
 {
-    return '<img class="owo" src="' . THEME_URL . '/assets/owo/paopao/' . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+    return '<img class="owo" src="' . THEME_URL . '/assets/owo/paopao/' . str_replace('%', '', urlencode($match[1])) . '_2x.png" width="22" height="22"> alt=""';
 }
 
 function ParseAruBiaoqingCallback($match)
 {
-    return '<img class="owo" src="' . THEME_URL . '/assets/owo/aru/' . str_replace('%', '', urlencode($match[1])) . '_2x.png">';
+    return '<img class="owo" src="' . THEME_URL . '/assets/owo/aru/' . str_replace('%', '', urlencode($match[1])) . '_2x.png" width="22" height="22"> alt=""';
 }
 
 /* 格式化 */
@@ -1555,7 +1555,7 @@ function fosmember(){
             if($i<=5){
                 list($i,$user_name,$user_img,$user_allpostnum,$user_commentnum,$user_allviewnum,$user_tximg1,$user_tximg2,$user_tximg3,$user_txlink1,$user_txlink2,$user_txlink3) = explode("|", $m);
 
-                $html=$html.'<li><div class="item"><div class="hunter-avatar"><a href="'.$siteUrl.'author/'.$i.'"><div class="vatar"><img src="' . $user_img . '"><img class="va_v_honor" src="'.$viphonor.'" title="认证用户"></div></a></div><div class="item-main"><div>' . $user_name . '<h4> ' . $user_allviewnum . '  <i>| '.$user_allpostnum.'</i></h4></div></div></li>  ';
+                $html=$html.'<li><div class="item"><div class="hunter-avatar"><a href="'.$siteUrl.'author/'.$i.'"><div class="vatar"><img src="' . $user_img . '" alt=""><img class="va_v_honor" src="'.$viphonor.'" title="认证用户"></div></a></div><div class="item-main"><div>' . $user_name . '<h4> ' . $user_allviewnum . '  <i>| '.$user_allpostnum.'</i></h4></div></div></li>  ';
             }
         }
         echo $html;

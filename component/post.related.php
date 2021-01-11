@@ -6,7 +6,7 @@
             <?php while ($relatedPosts->next()) : ?>
                 <li>
                     <a href="<?php $relatedPosts->permalink(); ?>">
-                        <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($relatedPosts); ?>">
+                        <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($relatedPosts); ?>" alt="">
                         <span><?php $relatedPosts->title(); ?></span>
                     </a>
                 </li>

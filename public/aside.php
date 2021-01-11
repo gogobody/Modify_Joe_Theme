@@ -42,7 +42,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php else:?>
             <div class="aside aside-user">
                 <div class="user">
-                    <img class="lazyload" src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" width="80" height="80"/>
+                    <img class="lazyload" src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" width="80" height="80" alt=""/>
                     <?php if ($this->options->JAuthorLink) : ?>
                         <a href="<?php $this->options->JAuthorLink(); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
                     <?php else : ?>
@@ -84,7 +84,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php else:?>
             <div class="aside aside-user">
                 <div class="user">
-                    <img class="lazyload" src="<?php ParseAvatar($this->author->mail); ?>" width="80" height="80"/>
+                    <img class="lazyload" src="<?php ParseAvatar($this->author->mail); ?>" width="80" height="80" alt=""/>
                     <a href="<?php echo getUserPermalink($this->author->uid); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
                     <!-- 座右铭 -->
                     <div class="p j-aside-motto"></div>
@@ -142,9 +142,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         foreach ($counts as $count) {
                             $imgUrl = ParseAvatar($count['mail'],1);
                             if ($count['authorId'] == '0') {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50"></div></div><div class="item-main"><div>' . $count['author'] . '';
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50" alt=""></div></div><div class="item-main"><div>' . $count['author'] . '';
                             } else {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户"></div></a></div><div class="item-main">' . $count['author'] . '';
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户" alt=""></div></a></div><div class="item-main">' . $count['author'] . '';
                             }
                             echo '' . $c_url . '';
                             autvip($count['mail']);
@@ -166,7 +166,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <div class="aside Ad">
         <h3><i class="icon iconfont icon-ad"></i><span><?php echo $adContent1Counts[0] ?></span></h3>
         <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent1Counts[2] ?>">
-            <img class="lazyload" src="<?php echo $adContent1Counts[1] ?>" width="250" height="250">
+            <img class="lazyload" src="<?php echo $adContent1Counts[1] ?>" width="250" height="250" alt="">
         </a>
     </div>
     <?php endif; ?>
@@ -267,7 +267,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php while ($hot->next()) : ?>
                         <li>
                             <a href="<?php $hot->permalink(); ?>" title="<?php $hot->title(); ?>">
-                                <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($hot); ?>" width="220" height="130">
+                                <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($hot); ?>" width="220" height="130" alt="">
                                 <div class="info">
                                     <p><?php $hot->title(); ?></p>
                                     <span><?php GetPostViews($hot); ?> 阅读 - <?php $hot->date('m/d'); ?></span>
@@ -294,7 +294,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php while ($comments->next()) : ?>
                         <li>
                             <div class="user">
-                                <a href="<?php if ($comments->authorId > 0 ) $authorlink=getUserPermalink($comments->authorId);else $authorlink='#'; _e($authorlink);?>"><img src="<?php ParseAvatar($comments->mail); ?>" width="50" height="50"></a>
+                                <a href="<?php if ($comments->authorId > 0 ) $authorlink=getUserPermalink($comments->authorId);else $authorlink='#'; _e($authorlink);?>"><img src="<?php ParseAvatar($comments->mail); ?>" width="50" height="50" alt=""></a>
                                 <div class="info">
                                     <div class="name"><a href="<?php _e($authorlink);?>"><?php $comments->author(false); ?></a></div>
                                     <span><?php $comments->date('Y-m-d'); ?></span>
@@ -351,7 +351,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <div class="aside Ad">
         <h3><i class="icon iconfont icon-ad"></i><span><?php echo $adContent1Counts[0] ?></span></h3>
         <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent2Counts[2] ?>" title="广告">
-            <img src="<?php echo $adContent2Counts[1] ?>" width="250" height="250">
+            <img src="<?php echo $adContent2Counts[1] ?>" width="250" height="250" alt="">
             <div class="j-ad">广告</div>
         </a>
     </div>

@@ -10,7 +10,7 @@ function threadedComments($comments, $options)
     <li id="li-<?php $comments->theId(); ?>">
         <div class="comment-parent">
             <div class="title">
-                <img class="avatar" src="<?php ParseAvatar($comments->mail); ?>">
+                <img class="avatar" src="<?php ParseAvatar($comments->mail); ?>" alt="">
                 <div class="desc">
                     <div class="author"><?php $comments->author(); ?></div>
                     <div class="time"><?php $comments->date('Y年m月d日 H:i:s A'); ?></div>

@@ -482,7 +482,7 @@
                 <?php if ($this->user->hasLogin()) : ?>
                     <section class="logged">
                         <section class="j-drop">
-                            <img src="<?php ParseAvatar($this->user->mail); ?>">
+                            <img src="<?php ParseAvatar($this->user->mail); ?>" alt="">
                         </section>
                         <nav class="j-dropdown">
                             <?php if ($this->user->group == 'administrator') : ?>

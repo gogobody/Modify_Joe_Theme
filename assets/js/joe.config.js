@@ -555,10 +555,11 @@ class Lb {
 
         /* 初始化主题色 */
         init_document_theme() {
+            let themeColor = "#4770db"
             if (window.JOE_CONFIG.DOCUMENT_THEME_STATUS === 'on') {
                 let colorPick = $('#colorPick')
                 if (!window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME) {
-                    $('body').css('--theme', localStorage.getItem('--theme') || '#4e7cf2');
+                    $('body').css('--theme', localStorage.getItem('--theme') || themeColor);
                 } else {
                     $('body').css('--theme', localStorage.getItem('--theme') || window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME);
                 }
@@ -567,7 +568,7 @@ class Lb {
                     color = localStorage.getItem('--theme');
                 } else {
                     if (!window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME) {
-                        color = '#4e7cf2';
+                        color = themeColor;
                     } else {
                         color = window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME;
                     }
@@ -595,7 +596,7 @@ class Lb {
                 });
             } else {
                 if (window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME === '') {
-                    $('body').css('--theme', '#4e7cf2');
+                    $('body').css('--theme', themeColor);
                 } else {
                     $('body').css('--theme', window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME);
                 }

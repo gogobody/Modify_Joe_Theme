@@ -26,7 +26,7 @@
                 <img src=" <?php $this->options->JAdmire() ?>" alt="">
             </section>
             <section class="tips">
-                <img src="<?php $this->options->themeUrl('assets/img/tips.png'); ?>">
+                <img src="<?php $this->options->themeUrl('assets/img/tips.png'); ?>" alt="">
                 <p>三合一收款</p>
                 <p>下面三种方式都支持哦</p>
             </section>

@@ -19,7 +19,7 @@
                         <a class="lazyload" href="<?php echo $url ?>" target="_blank" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php echo $img ?>">
                             <i class="mask"></i>
                             <div>
-                                <h3><?php echo $title ?></h3>
+                                <h1><?php echo $title ?></h1>
                             </div>
                         </a>
                     </div>

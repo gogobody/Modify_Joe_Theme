@@ -3,7 +3,7 @@
     <?php if ($this->options->JPostCountingStatus === 'on') : ?>
         <div class="conting">
             <div class="info">
-                <a href="<?php $this->author->permalink(); ?>"><img src="<?php ParseAvatar($this->author->mail); ?>" /></a>
+                <a href="<?php $this->author->permalink(); ?>"><img src="<?php ParseAvatar($this->author->mail); ?>" alt=""/></a>
                 <div class="meta">
                     <div class="author">
                         <a href="<?php $this->author->permalink(); ?>"><?php $this->author();autvip($this->author->mail); ?></a>

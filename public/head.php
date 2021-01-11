@@ -5,7 +5,7 @@
 <?php if ($this->fields->sharePic || $this->options->JQQSharePic) : ?>
     <meta itemprop="image" content="<?php echo GetQQSharePic($this); ?>" />
 <?php endif; ?>
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=6.0, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 <?php echo Utils::exportDNSPrefetch(); ?>
 
 <!-- IE浏览器跳出 -->
@@ -68,6 +68,7 @@
 
 <style>
     :root {
+        --theme:"#4770db",
         --element: #409eff;
         cursor: <?php echo $this->options->JCursorType !== 'off' ? 'url(' . THEME_URL . '\/assets\/cur\/' . $this->options->JCursorType . '), auto' : 'auto' ?>;
         --classA: <?php echo '#dcdfe6' ?>;
@@ -76,7 +77,7 @@
         --classD: <?php echo '#f2f6fc' ?>;
         --main: <?php echo '#303133' ?>;
         --routine: <?php /*常规文字色 */echo '#606266' ?>;
-        --minor: <?php /* 次要文字色 */echo '#909399' ?>;
+        --minor: <?php /* 次要文字色 */echo '#6e7075' ?>;
         --seat: <?php /* 站位文字色 */echo '#c0c4cc' ?>;
         --success: <?php echo '#67c23a' ?>;
         --warning: <?php echo '#e6a23c' ?>;

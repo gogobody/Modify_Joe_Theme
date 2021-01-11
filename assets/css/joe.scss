@@ -783,7 +783,7 @@ table {
         padding: 10px;
     }
 }
-.lb-item > a > div > h3 {
+.lb-item > a > div > h1 {
     width: 100%;
     padding-right: 111px;
     height: 1em;
@@ -791,6 +791,7 @@ table {
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
+    font-size: 1.17em;
 }
 
 

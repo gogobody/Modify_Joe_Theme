@@ -4,7 +4,7 @@
         <?php while ($comments->next()) : ?>
             <li>
                 <div class="head">
-                    <img src="<?php ParseAvatar($comments->mail); ?>" />
+                    <img src="<?php ParseAvatar($comments->mail); ?>" alt=""/>
                     <span><?php $comments->author(); ?></span>
                     <span><?php $comments->date('Y/m/d'); ?></span>
                 </div>
