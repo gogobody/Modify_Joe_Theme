@@ -1,8 +1,10 @@
-/**
- * @desc 一个轮播插件
- * @author Mxsyx (zsimline@163.com)
- * @version 1.0.0
- */
+// 定义 全局 函数
+const query = document.querySelector.bind(document);
+const queryAll = document.querySelectorAll.bind(document);
+const fromId = document.getElementById.bind(document);
+const fromClass = document.getElementsByClassName.bind(document);
+const fromTag = document.getElementsByTagName.bind(document);
+
 class JoeUtils{
     constructor() {
     }
@@ -23,7 +25,11 @@ class JoeUtils{
         }
     }
 }
-
+/**
+ * @desc 一个轮播插件
+ * @author Mxsyx (zsimline@163.com)
+ * @version 1.0.0
+ */
 class Lb {
     constructor(options) {
         this.lbBox = document.getElementById(options.id);
@@ -225,6 +231,7 @@ class Lb {
             this.wallpaper_page = 0;
             this.wallpaper_cid = '';
             this.global_item = {
+                Jheader: query("header.j-header"),
                 above: $("header .above"),
                 above_nav : $(".above .above-nav"),
                 below : $("header .below"),
@@ -2254,7 +2261,7 @@ class Lb {
             if (!document.querySelector("#post_top_title span")){
                 return
             }
-            let header = $("header.j-header")
+            let header = this.global_item.Jheader
             let row_above = $(".above")
             let above_nav = $(".above .above-nav")
             let below = $(".below")
@@ -2305,7 +2312,7 @@ class Lb {
                         lastScrollPos = scrollPos
                     })
                 }else {
-                    let navOffw = header.width()
+                    let navOffw = header.offsetWidth
                     if (post_title.length > 0 && navOffw > 750) {
                         $(window).scroll(function() {
                             let scrollPos = $(window).scrollTop(); //得到滚动的距离

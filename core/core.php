@@ -548,12 +548,12 @@ function GetParentReply($parent)
 
 function ParsePaopaoBiaoqingCallback($match)
 {
-    return '<img class="owo" src="' . THEME_URL . '/assets/owo/paopao/' . str_replace('%', '', urlencode($match[1])) . '_2x.png" width="22" height="22"> alt=""';
+    return '<img class="owo" src="' . THEME_URL . '/assets/owo/paopao/' . str_replace('%', '', urlencode($match[1])) . '_2x.png" width="22" height="22" alt="">';
 }
 
 function ParseAruBiaoqingCallback($match)
 {
-    return '<img class="owo" src="' . THEME_URL . '/assets/owo/aru/' . str_replace('%', '', urlencode($match[1])) . '_2x.png" width="22" height="22"> alt=""';
+    return '<img class="owo" src="' . THEME_URL . '/assets/owo/aru/' . str_replace('%', '', urlencode($match[1])) . '_2x.png" width="22" height="22" alt="">';
 }
 
 /* 格式化 */
