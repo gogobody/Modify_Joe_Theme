@@ -22,7 +22,7 @@
                     <h1 class="logo j-hover-music" title="<?php $this->options->title(); ?>">
                         <?php $this->options->title(); ?>
                         <a href="<?php $this->options->siteUrl(); ?>">
-                            <img src="<?php echo $this->options->JLogo ? $this->options->JLogo : 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png' ?>" alt="logo">
+                            <img src="<?php echo $this->options->JLogo ? $this->options->JLogo : 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png' ?>" width="150" height="100" alt="logo">
                         </a>
                     </h1>
                     <!-- 链接 -->
@@ -367,7 +367,7 @@
         <h1 class="logo j-hover-music" title="<?php $this->options->title(); ?>">
             <?php $this->options->title(); ?>
             <a href="<?php $this->options->siteUrl(); ?>">
-                <img src="<?php echo $this->options->JLogo ? $this->options->JLogo : 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png' ?>" alt="logo">
+                <img src="<?php echo $this->options->JLogo ? $this->options->JLogo : 'https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/img/logo.png' ?>" alt="logo" width="150" height="100">
             </a>
         </h1>
 
@@ -572,15 +572,6 @@
 <div class="j-sidebar-xs">
     <div class="mask"></div>
     <div class="content">
-        <div class="item user d-none d-md-block">
-            <img src="<?php $this->options->JAuthorAvatar ? $this->options->JAuthorAvatar() : ParseAvatar($this->author->mail); ?>" />
-            <p class="name"><?php $this->author->screenName(); ?></p>
-            <?php if ($this->options->JMotto) : ?>
-                <div class="desc j-aside-motto"><?php GetRandomMotto(); ?></div>
-            <?php else : ?>
-                <div class="desc j-aside-motto"></div>
-            <?php endif; ?>
-        </div>
         <?php
         $JHotrecommend = $this->options->JHotRecommend;
         if (isset($JHotrecommend)):

@@ -667,6 +667,7 @@ textarea:focus {
 @font-face {
     font-family: 'Roman-55';
     src: url('https://cdn.jsdelivr.net/gh/zwying0814/Cuteen@4.1/static/font/NeueHaasGrotTextRound-55Roman.woff2');
+    font-display: swap;
 }
 
 body {
@@ -1103,6 +1104,8 @@ table {
                         max-width: 150px;
                         max-height: 50px;
                         object-fit: cover;
+                        height: 100%;
+                        width: auto;
                     }
                 }
             }
@@ -6578,29 +6581,6 @@ pre code {
                 display: block;
             }
         }
-        }
-        .user {
-            text-align: center;
-            border-bottom: 1px solid var(--classA);
-            img {
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
-                padding: 5px;
-                border: 1px solid var(--classB);
-                box-shadow: 0px 5px 15px rgba(56, 94, 209, 0.2);
-                margin-bottom: 15px;
-            }
-            .name {
-                font-size: 16px;
-                color: var(--main);
-                font-weight: 500;
-                margin-bottom: 10px;
-            }
-            .desc {
-                display: none;
-                color: var(--routine);
-            }
         }
     }
     .mask {

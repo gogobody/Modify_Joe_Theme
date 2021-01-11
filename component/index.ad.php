@@ -5,7 +5,7 @@
     ?>
     <div class="index-ad">
         <a target="_blank" href="<?php echo $adCounts[1] ?>" title="广告">
-            <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php echo $adCounts[0] ?>" />
+            <img class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php echo $adCounts[0] ?>" width="640" height="320"/>
             <span class="j-ad">广告</span>
         </a>
     </div>

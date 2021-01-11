@@ -153,9 +153,9 @@ class Lb {
     // 处理各类事件
     handleEvents() {
         // 鼠标移动到轮播盒上时继续轮播
-        this.lbBox.addEventListener('mouseleave', this.start.bind(this));
+        this.lbBox.addEventListener('mouseleave', this.start.bind(this), {passive: true});
         // 鼠标从轮播盒上移开时暂停轮播
-        this.lbBox.addEventListener('mouseover', this.pause.bind(this));
+        this.lbBox.addEventListener('mouseover', this.pause.bind(this), {passive: true});
 
         // 点击左侧控件向右滑动图片
         this.lbCtrlL.addEventListener('click', this.clickCtrl.bind(this));
@@ -175,8 +175,8 @@ class Lb {
 
         // 监听屏幕滑动事件
         if (this.moniterTouchEvent) {
-            this.lbBox.addEventListener('touchstart', this.touchScreen.bind(this));
-            this.lbBox.addEventListener('touchend', this.touchScreen.bind(this));
+            this.lbBox.addEventListener('touchstart', this.touchScreen.bind(this), {passive: true});
+            this.lbBox.addEventListener('touchend', this.touchScreen.bind(this), {passive: true});
         }
     }
 
