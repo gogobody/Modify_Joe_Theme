@@ -1504,6 +1504,7 @@ class Lb {
                                 type: 'warning',
                                 message: str.textContent || ''
                             });
+                            $('#j-dynamic-form-text').val('')
                             $(this).removeAttr('data-disabled');
                         } else {
                             let url = location.href;
@@ -1558,7 +1559,7 @@ class Lb {
                 $(this).find("button[type='submit']").html('请等待...')
                 let c_btn = $(".comment-btn")
                 c_btn.text('评论中..')
-                console.log($(this).attr('action'))
+                // console.log($(this).attr('action'))
                 $.ajax({
                     url: $(this).attr('action'),
                     type: 'post',
@@ -1576,6 +1577,7 @@ class Lb {
                                 message: str.textContent || ''
                             });
                             $(this).removeAttr('data-disabled');
+                            commen_con.val('')
                             $(this).find("button[type='submit']").html('发表评论')
                         } else {
                             let url = location.href;
@@ -1588,6 +1590,16 @@ class Lb {
                                 pjax.loadUrl(url)
                             }, _this.options.reloadTime);
                         }
+                        c_btn.text('发表评论')
+                    },
+                    error:res=>{
+                        console.log($(res))
+                        $.toast({
+                            type: 'warning',
+                            message: '发生未知错误'
+                        });
+                        $(this).removeAttr('data-disabled');
+                        commen_con.val('')
                         c_btn.text('发表评论')
                     }
                 });
@@ -2012,7 +2024,8 @@ class Lb {
                         message: '请输入正确的邮箱！'
                     });
                 }
-                if ($(this).find("textarea[name='text']").val().trim() === '') {
+                let test_area = $(this).find("textarea[name='text']")
+                if (test_area.val().trim() === '') {
                     return $.toast({
                         type: 'warning',
                         message: '请输入回复内容！'
@@ -2036,6 +2049,7 @@ class Lb {
                                 type: 'warning',
                                 message: str.textContent || ''
                             });
+                            test_area.val('')
                             $(this).removeAttr('data-disabled');
                         } else {
                             let url = location.href;
