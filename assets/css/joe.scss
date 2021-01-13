@@ -6711,16 +6711,13 @@ pre code {
     padding: 8px 15px 8px 35px;
     border-radius: 4px;
     position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     transition: opacity 0.2s;
     font-size: 13px;
     margin: 20px 0;
     &::before {
         content: '';
         position: absolute;
-        top: 50%;
+        top: 17px;
         left: 10px;
         transform: translateY(-50%);
         width: 20px;
