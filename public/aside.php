@@ -142,9 +142,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         foreach ($counts as $count) {
                             $imgUrl = ParseAvatar($count['mail'],1);
                             if ($count['authorId'] == '0') {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50" alt=""></div></div><div class="item-main"><div>' . $count['author'] . '';
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="45" height="45" alt=""></div></div><div class="item-main"><div>' . $count['author'] . '';
                             } else {
-                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="50" height="50"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户" alt=""></div></a></div><div class="item-main">' . $count['author'] . '';
+                                $c_url = '<li><div class="item"><div class="hunter-avatar"><a href="' . $this->options->siteUrl . 'index.php/author/' . $count['authorId'] . '" ><div class="vatar"><img class="lazyload" src="' . $imgUrl . '" width="45" height="45"><img class="va_v_honor" src="' . $viphonor . '" title="认证用户" alt=""></div></a></div><div class="item-main">' . $count['author'] . '';
                             }
                             echo '' . $c_url . '';
                             autvip($count['mail']);
