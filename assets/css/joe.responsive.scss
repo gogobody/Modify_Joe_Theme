@@ -1241,7 +1241,6 @@
                             margin: 0;
                             a{
                                 display: block;
-                                font-size: 16px;
                             }
                             .badge{
                                 position: initial;
@@ -1314,6 +1313,11 @@
                 }
                 .article-list.bthumb{
                     .entry-box{
+                        .title{
+                            a{
+                              display: block;
+                            }
+                        }
                         .imgrow{
                             .feaimg{
                                 border-radius: var(--radius-wap);
