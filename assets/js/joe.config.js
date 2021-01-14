@@ -1349,6 +1349,12 @@ class Lb {
                 $(this).addClass('active');
                 let c_canvas = $('#commentTypeContent .canvas')
                 if ($(this).attr('data-type') === 'canvas') {
+                    // 禁止乱画
+                    $.getJSON(window.JOE_CONFIG.THEME_URL+'/assets/json/sketchpad.json',{},function (res) {
+                        window.sketchpad.strokes = res.strokes
+                        window.sketchpad.animate(10)
+                    })
+                    // end
                     $('#draw').prop('width', $('#commentTypeContent').width());
                     $('#commentTypeContent textarea').hide();
                     c_canvas.show();
@@ -1545,8 +1551,12 @@ class Lb {
                 }
                 let commen_con = $('#comment-content')
                 if ($('#commentTypeContent .canvas').attr('data-type') === 'canvas') {
-                    let url = $('#draw')[0].toDataURL('image/webp', 0.1);
-                    commen_con.val('{!{' + url + '}!} ');
+                    return $.toast({
+                        type: 'warning',
+                        message: '管理员禁止画图~'
+                    });
+                    // let url = $('#draw')[0].toDataURL('image/webp', 0.1);
+                    // commen_con.val('{!{' + url + '}!} ');
                 }
                 if (commen_con.val().trim() === '') {
                     return $.toast({

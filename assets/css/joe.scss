@@ -7263,8 +7263,8 @@ author page
                             height: 20px;
                             overflow: hidden;
                             text-overflow: ellipsis;
-                            word-break: keep-all;
                             display: block;
+                            white-space: nowrap;
                         }
                         .info{
                             border-top: 1px solid var(--classB);

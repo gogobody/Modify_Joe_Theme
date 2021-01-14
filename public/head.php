@@ -2,9 +2,7 @@
 <meta name="renderer" content="webkit" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<?php if ($this->fields->sharePic || $this->options->JQQSharePic) : ?>
-    <meta itemprop="image" content="<?php echo GetQQSharePic($this); ?>" />
-<?php endif; ?>
+<meta itemprop="image" content="<?php echo GetQQSharePic($this); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=6.0, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
 <?php echo Utils::exportDNSPrefetch(); ?>
 

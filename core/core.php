@@ -999,8 +999,10 @@ function GetQQSharePic($widget)
 {
     if ($widget->fields->sharePic) {
         return $widget->fields->sharePic;
-    } else {
+    } elseif (Helper::options()->JQQSharePic){
         return Helper::options()->JQQSharePic;
+    }else {
+        return GetRandomThumbnail($widget,1);
     }
 }
 
@@ -1078,6 +1080,7 @@ class plgl
 
         if ($action == "abandon") {
             Typecho_Cookie::set('__typecho_remember_text', $comment['text']);
+
             throw new Typecho_Widget_Exception(_t($msg), 403);
         }
 
