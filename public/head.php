@@ -61,7 +61,7 @@
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.min.css'); ?>" media="all"/>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('assets/css/joe.responsive.min.css'); ?>" media="all"/>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/css/OwO.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.0/assets/css/OwO.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.toast/joe.toast.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-colpick@3.1.0/css/colpick.min.css" media="print" onload="this.media='all'; this.onload=null;"/>
