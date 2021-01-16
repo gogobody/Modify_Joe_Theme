@@ -113,7 +113,7 @@ if ($resource_category){
                                             <article class="post post-grid">
                                                 <div class="entry-media">
                                                     <div class="placeholder">
-                                                        <a class="lazyload" href="<?php echo $this->permalink ?>" target="_blank" style="background-image: url('<?php echo GetLazyLoad(); ?>')" data-bg="<?php GetRandomThumbnail($this); ?>"></a>
+                                                        <a class="lazyload" href="<?php echo $this->permalink ?>" target="_blank" rel="noopener" style="background-image: url('<?php echo GetLazyLoad(); ?>')" data-bg="<?php GetRandomThumbnail($this); ?>"></a>
                                                         <div class="cao-cover"><img src="<?php $this->options->themeUrl('assets/img/resources/rings.svg'); ?>" width="50" height="50px" alt=""></div>
                                                     </div>
                                                     <div class="entry-format"><i class="icon iconfont icon-huiyuan2"></i></div>
@@ -131,20 +131,20 @@ if ($resource_category){
                                                     </div>
                                                 </div>
                                                 <div class="entry-wrapper">
-                                                    <a class="grid_author_avt" href="<?php echo $this->permalink ?>" target="_blank">
+                                                    <a class="grid_author_avt" href="<?php echo $this->permalink ?>" target="_blank" rel="noopener">
                                                         <div class="grid_author_bggo avatar bg-cover" style="background-image: url(<?php $this->options->themeUrl('assets/img/resources/huiyuan.svg')?>);"></div>
                                                     </a>
                                                     <header class="entry-header">
                                                         <div class="entry-meta">
                                                             <span class="meta-category">
                                                             <?php foreach ($this->categories as $category): ?>
-                                                                <a href="<?php echo $category['permalink'] ?>" rel="category" target="_blank"><i class="dot"></i><?php echo $category['name'] ?></a>
+                                                                <a href="<?php echo $category['permalink'] ?>" rel="category" target="_blank" rel="noopener"><i class="dot"></i><?php echo $category['name'] ?></a>
                                                             <?php endforeach;?>
                                                             </span>
                                                         </div>
 
                                                         <h2 class="entry-title">
-                                                            <a href="<?php echo $this->permalink ?>" title="<?php $this->title(); ?>" rel="bookmark" target="_blank"><?php $this->title(); ?></a>
+                                                            <a href="<?php echo $this->permalink ?>" title="<?php $this->title(); ?>" rel="bookmark" target="_blank" rel="noopener"><?php $this->title(); ?></a>
                                                         </h2>
                                                     </header>
                                                     <div class="entry-footer">

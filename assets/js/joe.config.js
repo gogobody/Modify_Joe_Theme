@@ -1086,7 +1086,7 @@ class Lb {
                         baidu.css('color', '#f56c6c');
                     } else if (res.data.baidu === '未收录') {
                         if (window.JOE_CONFIG.DOCUMENT_BAIDU_TOKEN === '') {
-                            baidu.html(`<a target="_blank" href="https://ziyuan.baidu.com/linksubmit/url?sitename=${encodeURI(window.location.href)}">未收录，去提交</a>`);
+                            baidu.html(`<a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/linksubmit/url?sitename=${encodeURI(window.location.href)}">未收录，去提交</a>`);
                         } else {
                             $.ajax({
                                 url: window.JOE_CONFIG.THEME_URL + '/baiduPush.php?urls=' + encodeURI(window.location.href),

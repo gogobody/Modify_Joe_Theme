@@ -208,14 +208,14 @@ if (isset($_POST['agree'])) {
                                         foreach ($counts as $count) {
                                             $avatar_url = ParseAvatar($count['mail'], 1);
                                             if ($count['authorId'] == '0') {
-                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><a href="' . $this->options->siteUrl . '" target="_blank" >
+                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><a href="' . $this->options->siteUrl . '" target="_blank" rel="noopener" >
                                                                 <div class="product-image">
                                                                     <img class="lazyload" data-src="' . $avatar_url . '" src="' . $default_avatar . '">
                                                                 </div>
                                                                 <div class="product-content">
                                                                     <div class="product-title">' . $count['author'] . '</div>';
                                             } else {
-                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><a href="'. getUserPermalink($count['authorId']) . '" target="_blank" >
+                                                $c_url = '<li class="mod-list-item col-md-3 col-xs-6 col-sm-6 col-6"><a href="'. getUserPermalink($count['authorId']) . '" target="_blank" rel="noopener" >
                                                                 <div class="product-image">
                                                                     <img class="lazyload" data-src="' . $avatar_url . '" src="' . $default_avatar . '">
                                                                 </div>

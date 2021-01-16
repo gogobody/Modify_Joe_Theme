@@ -35,8 +35,8 @@
                 <?php $this->options->JBanQuanLinks() ?>
             <?php else : ?>
                 <a href="//ae.js.cn">JOE</a>
-                <a target="_blank" href="<?php $this->options->feedUrl(); ?>">RSS</a>
-                <a target="_blank" href="<?php echo $this->options->index . "/sitemap.xml" ?>">MAP</a>
+                <a target="_blank" rel="noopener" href="<?php $this->options->feedUrl(); ?>">RSS</a>
+                <a target="_blank" rel="noopener" href="<?php echo $this->options->index . "/sitemap.xml" ?>">MAP</a>
             <?php endif; ?>
         </section>
     </section>

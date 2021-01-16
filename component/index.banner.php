@@ -16,7 +16,7 @@
                         $title = explode("||", $string_arr[$i])[2];
                     ?>
                     <div class="lb-item <?php if($i == 0) _e('active');?>">
-                        <a class="lazyload" href="<?php echo $url ?>" target="_blank" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php echo $img ?>">
+                        <a class="lazyload" href="<?php echo $url ?>" target="_blank" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php echo $img ?>" rel="noopener">
                             <i class="mask"></i>
                             <div>
                                 <h1><?php echo $title ?></h1>

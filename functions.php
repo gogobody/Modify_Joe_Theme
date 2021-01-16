@@ -506,7 +506,7 @@ function themeConfig($form)
         '网站 favicon 设置（非必填）',
         '介绍：用于设置网站 favicon，一个好的 favicon 可以给用户一种很专业的观感 <br />
          格式：图片 URL地址 或 图片 Base64 地址 <br />
-         其他：免费转换 favicon 网站 <a target="_blank" href="//tool.lu/favicon">tool.lu/favicon</a>'
+         其他：免费转换 favicon 网站 <a target="_blank" rel="noopener" href="//tool.lu/favicon">tool.lu/favicon</a>'
     );
     $JFavicon->setAttribute('class', 'j-setting-content j-setting-image');
     $form->addInput($JFavicon);
@@ -518,7 +518,7 @@ function themeConfig($form)
         '网站 logo 设置（非必填）',
         '介绍：用于设置网站 logo，一个好的 logo 能为网站带来有效的流量 <br />
          格式：图片 URL地址 或 图片 Base64 地址 <br />
-         其他：免费制作 logo 网站 <a target="_blank" href="//www.uugai.com">www.uugai.com</a>'
+         其他：免费制作 logo 网站 <a target="_blank" rel="noopener" href="//www.uugai.com">www.uugai.com</a>'
     );
     $JLogo->setAttribute('class', 'j-setting-content j-setting-image');
     $form->addInput($JLogo);
@@ -751,7 +751,7 @@ function themeConfig($form)
         '3合一收款码（非必填）',
         '介绍：填写则显示文章页与自定义页面的赞赏功能 <br />
          格式：图片地址<br />
-         其他：免费生成网址：<a href="http://qrcode.xiaod8.cn" target="_blank">http://qrcode.xiaod8.cn</a>'
+         其他：免费生成网址：<a href="http://qrcode.xiaod8.cn" target="_blank" rel="noopener">http://qrcode.xiaod8.cn</a>'
     );
     $JAdmire->setAttribute('class', 'j-setting-content j-setting-post');
     $form->addInput($JAdmire);
@@ -1289,7 +1289,7 @@ function themeConfig($form)
          格式：严格的文字阴影色彩格式，例如：0 0 10px #ff6800 <br />
          默认：0 1px 2px rgba(0, 0, 0, 0.25) <br />
          格式：严格的文字阴影色彩格式，例如：0 1px 2px rgba(0, 0, 0, 0.25) <br />
-         其他：在线调试阴影网站：<a href="//www.w3cschool.cn/tools/index?name=css3_textshadow" target="_blank">//www.w3cschool.cn/tools/index?name=css3_textshadow</a>
+         其他：在线调试阴影网站：<a href="//www.w3cschool.cn/tools/index?name=css3_textshadow" target="_blank" rel="noopener">//www.w3cschool.cn/tools/index?name=css3_textshadow</a>
          '
     );
     $JTextShadow->setAttribute('class', 'j-setting-content j-setting-color');
@@ -1303,7 +1303,7 @@ function themeConfig($form)
         '介绍：用于修改盒子的阴影。<br />
          格式：严格的盒子阴影色彩格式，例如：0 0 10px #ff6800 <br />
          默认：0px 0px 20px -5px rgba(158, 158, 158, 0.22) <br />
-         其他：在线调试阴影网站：<a href="//www.w3cschool.cn/tools/index?name=css3_boxshadow" target="_blank">//www.w3cschool.cn/tools/index?name=css3_boxshadow</a>
+         其他：在线调试阴影网站：<a href="//www.w3cschool.cn/tools/index?name=css3_boxshadow" target="_blank" rel="noopener">//www.w3cschool.cn/tools/index?name=css3_boxshadow</a>
          '
     );
     $JBoxShadow->setAttribute('class', 'j-setting-content j-setting-color');
@@ -1677,7 +1677,7 @@ function themeConfig($form)
         NULL,
         '',
         '栏目推荐底部链接 ',
-        '介绍：格式 链接完整格式 &lt;a href=""  target="_blank"&gt;我是链接&lt;/a&gt; '
+        '介绍：格式 链接完整格式 &lt;a href=""  target="_blank" rel="noopener"&gt;我是链接&lt;/a&gt; '
     );
     $JFooternavs->setAttribute('class', 'j-setting-content j-setting-other');
     $form->addInput($JFooternavs);

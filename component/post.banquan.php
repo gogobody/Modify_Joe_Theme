@@ -27,7 +27,7 @@
                 <path d="M349.052928 488.452096l252.854272 182.10816-28.725248 39.886848-252.874752-182.10816z" fill="#FFFFFF"></path>
             </svg>
             <span>作品采用：</span>
-            <p>《<a target="_blank" href="//creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a>》许可协议授权</p>
+            <p>《<a target="_blank" rel="noopener" href="//creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a>》许可协议授权</p>
         </div>
     </div>
 </div>

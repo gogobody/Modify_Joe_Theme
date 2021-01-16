@@ -23,8 +23,8 @@
                 <span>分享</span>
             </section>
             <section class="j-dropdown">
-                <a target="_blank" href="//connect.qq.com/widget/shareqq/index.html?url=<?php $this->permalink() ?>&title=<?php $this->title() ?>&pics=<?php GetRandomThumbnail($this) ?>">分享到QQ</a>
-                <a target="_blank" href="//service.weibo.com/share/share.php?title=分享：<?php $this->title() ?>，原文链接：<?php $this->permalink() ?>">分享到微博</a>
+                <a target="_blank" rel="noopener" href="//connect.qq.com/widget/shareqq/index.html?url=<?php $this->permalink() ?>&title=<?php $this->title() ?>&pics=<?php GetRandomThumbnail($this) ?>">分享到QQ</a>
+                <a target="_blank" rel="noopener" href="//service.weibo.com/share/share.php?title=分享：<?php $this->title() ?>，原文链接：<?php $this->permalink() ?>">分享到微博</a>
                 <div id="j-share-code"></div>
             </section>
         </section>

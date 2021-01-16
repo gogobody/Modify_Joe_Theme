@@ -153,7 +153,7 @@
     <?php $this->options->JCustomScript() ?>
 
     const pjax = new Pjax({
-        elements:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank"]):not([no-pjax]):not(form):not([data-fancybox]):not([rel="nofollow"]),form[data-pjax]',
+        elements:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank" rel="noopener"]):not([no-pjax]):not(form):not([data-fancybox]):not([rel="nofollow"]),form[data-pjax]',
         selectors: ["head title","head meta[name='description']","head link[rel='alternate']","#joe_config","#post_top_title","#pjax-container"],
     });
     function pjax_send(){

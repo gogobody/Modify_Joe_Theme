@@ -80,7 +80,7 @@
                                         $title = explode("||", $string_arr[$i])[0];
                                         $url = explode("||", $string_arr[$i])[1];
                                         ?>
-                                        <a target="_blank" href="<?php echo $url ?>"><?php echo $title ?></a>
+                                        <a target="_blank" rel="noopener" href="<?php echo $url ?>"><?php echo $title ?></a>
                                     <?php } ?>
                                 </nav>
                             </div>
@@ -435,7 +435,7 @@
                                 $title = explode("||", $string_arr[$i])[0];
                                 $url = explode("||", $string_arr[$i])[1];
                                 ?>
-                                <a target="_blank" href="<?php echo $url ?>"><?php echo $title ?></a>
+                                <a target="_blank" rel="noopener" href="<?php echo $url ?>"><?php echo $title ?></a>
                             <?php } ?>
                         </nav>
                     </section>
@@ -676,7 +676,7 @@
                             $url = explode("||", $string_arr[$i])[1];
                             ?>
                             <li>
-                                <a target="_blank" href="<?php echo $url ?>"><svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <a target="_blank" rel="noopener" href="<?php echo $url ?>"><svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M325.31499999 764.323l1e-8-508.83099999c0-28.16 22.598-50.934 50.757-50.93400001 13.09300001 0 24.932 5.024 33.901 13.092l335.755 251.633c22.24 16.859 26.905 48.607 10.044 71.024-2.87099999 3.947-6.281 7.355-10.045 10.045l-339.338 254.51c-22.241 16.676-54.16 12.193-70.844-10.225-6.996-9.15-10.225-19.73-10.225-30.31v0z" p-id="6117"></path>
                                     </svg><?php echo $title ?>
                                 </a>
