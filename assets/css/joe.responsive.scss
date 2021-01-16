@@ -38,10 +38,10 @@
 }
 @media (max-width: 1200px) {
     .OwO .OwO-body .OwO-items .OwO-item {
-        width: calc(100% / 10);
+        width: calc(100% / 10)!important;
     }
     .OwO .OwO-body .OwO-items.OwO-items-emoticon .OwO-item {
-        width: calc(100% / 4);
+        width: calc(100% / 4) !important;
     }
     .j-index {
         .main {
@@ -1153,10 +1153,10 @@
         }
     }
     .OwO .OwO-body .OwO-items .OwO-item {
-        width: calc(100% / 6);
+        width: calc(100% / 6)!important;
     }
     .OwO .OwO-body .OwO-items.OwO-items-emoticon .OwO-item {
-        width: calc(100% / 2);
+        width: calc(100% / 2)!important;
     }
     .j-admire-modal {
         .content {
