@@ -62,7 +62,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.barrager/joe.barrager.min.js"></script>
 <?php endif; ?>
 <!-- 3dtag -->
-<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js" defer></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js" defer></script>-->
 <!-- 目录树(合并到了主函数) -->
 <!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/jfloor.min.js"></script>-->
 <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
@@ -153,7 +153,7 @@
     <?php $this->options->JCustomScript() ?>
 
     const pjax = new Pjax({
-        elements:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank" rel="noopener"]):not([no-pjax]):not(form):not([data-fancybox]):not([rel="nofollow"]),form[data-pjax]',
+        elements:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank"]):not([no-pjax]):not(form):not([data-fancybox]):not([rel="nofollow"]),form[data-pjax]',
         selectors: ["head title","head meta[name='description']","head link[rel='alternate']","#joe_config","#post_top_title","#pjax-container"],
     });
     function pjax_send(){
