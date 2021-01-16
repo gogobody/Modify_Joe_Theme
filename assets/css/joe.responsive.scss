@@ -670,9 +670,7 @@
                             width: 14px;
                             height: 14px;
                         }
-                        .xs-title{
-                            display: none;
-                        }
+
                     }
                 }
                 .article-list.sticky{
@@ -687,7 +685,7 @@
                     display: flex;
                     background: var(--backgroundA);
                     height: 110px;
-                    padding: 0;
+                    padding: 5px 0;
                     .entry-box{
                         padding: 10px 12px;
                         .summary{
@@ -699,7 +697,7 @@
                         }
                     }
                     .picture-box{
-                        width: 28%;
+                        width: 34%;
                         height: 100%;
                         min-height: 80px;
                         svg{
@@ -707,9 +705,7 @@
                             width: 14px;
                             height: 14px;
                         }
-                        .xs-title{
-                            display: none;
-                        }
+
                     }
                 }
                 .article-list.bthumb{
@@ -1281,9 +1277,11 @@
                 }
                 .article-list.shuobg {
                     .entry-box {
-                        padding: 6px 12px;
+                        padding: 10px 12px;
                         .summary {
-                            display: none!important;
+                            display: block!important;
+                            margin-bottom: -10px;
+                            margin-right: 0;
                         }
                     }
                     .picture-box{

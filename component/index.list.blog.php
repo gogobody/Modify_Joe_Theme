@@ -1,5 +1,5 @@
 <?php /* 说说 */
-if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
+if ($this->fields->thumbStyle == 'shuos'): ?>
     <article class="article-list shuobg sticky <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
         <section class="entry-box">
             <div class="meta">
@@ -18,9 +18,6 @@ if (($this->fields->thumb) && ($this->fields->thumbStyle == 'shuos')): ?>
             <img alt="" class="lazyload" src="<?php echo GetLazyLoad() ?>" data-src="<?php GetRandomThumbnail($this); ?>" width="300" height="200">
             <span><?php $this->date('Y-m-d'); ?></span>
             <svg t="1608364969286" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1025" width="200" height="200"><path d="M544 661.333a32 32 0 0 1-64 0V362.667a32 32 0 0 1 64 0v298.666z m160 0a32 32 0 0 1-64 0V490.667a32 32 0 0 1 64 0v170.666z m-320 0a32 32 0 0 1-64 0V448a32 32 0 0 1 64 0v213.333zM202.667 138.667h618.666c64.8 0 117.334 52.533 117.334 117.333v512c0 64.8-52.534 117.333-117.334 117.333H202.667c-64.8 0-117.334-52.533-117.334-117.333V256c0-64.8 52.534-117.333 117.334-117.333z m0 64A53.333 53.333 0 0 0 149.333 256v512a53.333 53.333 0 0 0 53.334 53.333h618.666A53.333 53.333 0 0 0 874.667 768V256a53.333 53.333 0 0 0-53.334-53.333H202.667z" p-id="1026"></path></svg>
-            <div class="xs-title">
-                <p><?php $this->title() ?></p>
-            </div>
         </a>
     </article>
 <?php /* 三图 */ elseif (($this->fields->thumbStyle == 'MultiThumb')): ?>

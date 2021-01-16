@@ -2667,7 +2667,6 @@ table {
             }
             .article-list.shuobg {
                 background: var(--background);
-                border-bottom: 0;
                 padding: 20px 10px;
                 .entry-box{
                     .meta{
@@ -2676,7 +2675,7 @@ table {
                     .title{
                         margin: 5px 10px 5px 0;
                         a {
-                            font-size: 20px;
+                            font-size: 16px;
                             display: flex;
                         }
                     }
