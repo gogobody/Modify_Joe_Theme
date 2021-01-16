@@ -232,6 +232,7 @@ class Lb {
             this.wallpaper_cid = '';
             this.global_item = {
                 Jheader: query("header.j-header"),
+                body: $('body'),
                 above: $("header .above"),
                 above_nav : $(".above .above-nav"),
                 below : $("header .below"),
@@ -422,6 +423,7 @@ class Lb {
             let post_title = $("#post_top_title")
             post_title.addClass("post_no")
             this.global_item.above.stop(true).show()
+            this.global_item.above.css("height","auto")
             this.global_item.above_nav.stop(true).removeClass("post_no")
             this.global_item.below.stop(true).show()
         }
@@ -1649,22 +1651,23 @@ class Lb {
 
         /* 初始化移动端侧边栏点击事件 */
         init_wap_sidebar() {
+            let that = this
             $('.j-slide').unbind('click').bind('click', function (e) {
                 $('.j-search-down-xs').removeClass('active');
-                $('body').css('overflow', '');
+                that.global_item.body.css('overflow', '');
                 $('.j-header').css('box-shadow', '');
                 $(this).toggleClass('active');
                 $('.j-sidebar-xs').toggleClass('active');
                 if ($(this).hasClass('active')) {
-                    $('body').css('overflow', 'hidden');
+                    that.global_item.body.css('overflow', 'hidden');
                 } else {
-                    $('body').css('overflow', '');
+                    that.global_item.body.css('overflow', '');
                 }
             });
             $('.j-sidebar-xs .mask').unbind('click').bind('click', function () {
                 $('.j-slide').removeClass('active');
                 $('.j-sidebar-xs').removeClass('active');
-                $('body').css('overflow', '');
+                that.global_item.body.css('overflow', '');
             });
 
             $('.j-sidebar-xs .item ul li a').unbind('click').bind('click',function (ev) {
@@ -1676,7 +1679,7 @@ class Lb {
                 }else {
                     $('.j-slide').removeClass('active');
                     $('.j-sidebar-xs').removeClass('active');
-                    $('body').css('overflow', '');
+                    that.global_item.body.css('overflow', '');
                 }
             })
         }
