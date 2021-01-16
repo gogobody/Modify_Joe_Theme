@@ -87,7 +87,7 @@ if (isset($_POST['agree'])) {
                                                 $likes = $count['agree'];
                                                 $created = date('m-d', $ji->created);
                                                 $avatar_url = ParseAvatar($ji->author->mail, 1);
-                                                $img_url = stcdn(GetRandomThumbnail($ji,1));
+                                                $img_url = GetRandomThumbnail($ji,1);
                                                 if ($ji->fields->video) {
                                                     $stico = '<i class="icon iconfont icon-bofang"></i>';
                                                 } else {
@@ -128,7 +128,7 @@ if (isset($_POST['agree'])) {
 
                                             $created = date('m-d', $ji->created);
                                             $avatar_url = ParseAvatar($ji->author->mail, 1);
-                                            $img_url = stcdn(GetRandomThumbnail($ji,1));
+                                            $img_url = GetRandomThumbnail($ji,1);
                                             if ($ji->fields->video) {
                                                 $stico = '<i class="icon iconfont icon-bofang"></i>';
                                             } else {
@@ -169,7 +169,7 @@ if (isset($_POST['agree'])) {
                                             $this->widget('Widget_Archive@hotss' . $count['cid'], 'pageSize=1&type=post', 'cid=' . $count['cid'])->to($jis);
                                             $views = $count['views'];
                                             $created = date('m-d', $jis->created);
-                                            $img_url = stcdn(GetRandomThumbnail($jis,1));
+                                            $img_url = GetRandomThumbnail($jis,1);
                                             if ($jis->fields->video) {
                                                 $stico = '<i class="icon iconfont icon-bofang"></i>';
                                             } else {

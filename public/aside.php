@@ -138,7 +138,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             ->limit('4')
                         );
                         $mostactive = '';
-                        $viphonor = Helper::options()->themeUrl('assets/img/authen.svg','Typecho-Joe-Theme');
+                        $viphonor = stcdn(Helper::options()->themeUrl('assets/img/authen.svg','Typecho-Joe-Theme'));
                         foreach ($counts as $count) {
                             $imgUrl = ParseAvatar($count['mail'],1);
                             if ($count['authorId'] == '0') {

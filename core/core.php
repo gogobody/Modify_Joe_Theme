@@ -1690,16 +1690,16 @@ function getUserPermalink($uid){
 
 /**
  * 是否开启加速更换CDN域名功能
+ * @param $i
+ * @return string|string[]
  */
 function stcdn($i) {
-    $cdnopen = Helper::options()->cdnopen;
-    $cdnurla = Helper::options()->cdnurla;
-    $cdnurlb = Helper::options()->cdnurlb;
-    if ($cdnopen == '0'){
-        $i = $i;
+    global $options;
+    $cdnurl = explode("||", $options->JPic2cdn)[0];
+    if (empty($cdnurl)){
         return $i;
     }else {
-        $i = str_replace($cdnurla,$cdnurlb,$i);
+        $i = str_replace($options->index,$cdnurl,$i);
         return $i;
     }
 }

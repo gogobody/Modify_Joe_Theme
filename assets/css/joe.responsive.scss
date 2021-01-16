@@ -54,7 +54,7 @@
                     margin-left: 0;
                     flex-direction: row;
                     padding-top: 20px;
-                    a {
+                    .r-item {
                         margin-bottom: 0;
                         &:first-child {
                             margin-right: 7.5px;
@@ -503,7 +503,7 @@
                 .recommend {
                     padding-top: 0;
                     margin-bottom: 15px;
-                    a {
+                    .r-item {
                         height: 110px;
                         border-radius: var(--radius-wap);
                         &:first-child {
