@@ -165,7 +165,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         ?>
     <div class="aside Ad">
         <h3><i class="icon iconfont icon-ad"></i><span><?php echo $adContent1Counts[0] ?></span></h3>
-        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent1Counts[2] ?>">
+        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent1Counts[2]?$adContent1Counts[2]:'#' ?>">
             <img class="lazyload" src="<?php echo $adContent1Counts[1] ?>" width="250" height="250" alt="">
         </a>
     </div>
@@ -330,7 +330,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             echo
                                 "<li title=" . $res['data'][$i]['title'] . ">
                                     <span>" . ($i + 1) . "</span>
-                                    <a target='_blank' href=" . $res['data'][$i]['url'] . ">" . $res['data'][$i]['title'] . "</a>
+                                    <a target='_blank' rel='noopener' href=" . $res['data'][$i]['url'] . ">" . $res['data'][$i]['title'] . "</a>
                                 </li>";
                         }
                     }
@@ -350,7 +350,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         ?>
     <div class="aside Ad">
         <h3><i class="icon iconfont icon-ad"></i><span><?php echo $adContent1Counts[0] ?></span></h3>
-        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent2Counts[2] ?>" title="广告">
+        <a class="aside aside-ad" rel="external nofollow" href="<?php echo $adContent2Counts[2]?$adContent1Counts[2]:'#' ?>" title="广告">
             <img src="<?php echo $adContent2Counts[1] ?>" width="250" height="250" alt="">
             <div class="j-ad">广告</div>
         </a>
