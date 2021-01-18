@@ -789,12 +789,21 @@ class Lb {
                     success: data => {
                         $(this).removeAttr('disabled');
                         $(this).html('查看更多');
-                        let list = $(data).find('.article-list:not(.sticky)');
-                        $('.j-index-article.article').append(list);
-                        window.scroll({
-                            top: $(list).first().offset().top - ($('.j-header').height() + 20),
-                            behavior: 'smooth'
-                        });
+                        let list
+                        if(window.JOE_CONFIG.ARCHIVE === "resources"){
+                            list = $(data).find('.article .posts-wrapper>.post');
+                            $('.article .posts-wrapper').append(list);
+                        }else{
+                            list = $(data).find('.article-list:not(.sticky)');
+                            $('.j-index-article.article').append(list);
+                        }
+                        if (list.length > 0){
+                            window.scroll({
+                                top: $(list).first().offset().top - ($('.j-header').height() + 20),
+                                behavior: 'smooth'
+                            });
+                        }
+
                         let newURL = $(data).find('.j-loadmore a').attr('href');
                         if (newURL) {
                             $(this).attr('data-href', newURL);
@@ -1023,7 +1032,7 @@ class Lb {
                         comment.appendChild(response);
                     }
                     this.dom('cancel-comment-reply-link').style.display = '';
-                    if (null != textarea && 'text' == textarea.name) {
+                    if (null != textarea && 'text' === textarea.name) {
                         window.scroll({
                             top: $('#li-' + cid).offset().top - ($('.j-header').height() + 20),
                             behavior: 'smooth'

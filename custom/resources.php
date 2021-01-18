@@ -109,7 +109,7 @@ if ($resource_category){
                                     <main class="row posts-wrapper">
                                         <?php if ($this->have()):?>
                                         <?php while ($this->next()): ?>
-                                        <div class="col-lg-1-5 col-6 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="post col-lg-1-5 col-6 col-sm-6 col-md-4 col-lg-3">
                                             <article class="post post-grid">
                                                 <div class="entry-media">
                                                     <div class="placeholder">
