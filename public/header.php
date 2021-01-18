@@ -43,12 +43,11 @@
                         <a class="link" href="<?php _e($this->options->index.'/resources') ?>">资源专区</a>
                         <a class="link" style="color: #f64444" href="/contribute.html"><i style="margin-right: 3px" class="icon iconfont icon-chaoji"></i>成为投稿者</a>
                         <?php endif;?>
-
                         <!-- 超过4个则显示更多 -->
                         <?php if ($i > $this->options->JNavMaxNum) : ?>
                             <div class="link drops">
                                 <div class="j-drop">
-                                    <span>更多</span>
+                                    <span>本站</span>
                                     <i class="icon iconfont icon-show_more"></i>
                                 </div>
                                 <nav class="j-dropdown">
@@ -62,14 +61,11 @@
                                 </nav>
                             </div>
                         <?php endif; ?>
-
                         <?php if ($this->options->JCustomNavs) : ?>
                             <div class="link drops">
                                 <div class="j-drop">
-                                    <span>其他</span>
-                                    <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M825.728 390.144L521.056 702.336 217.152 390.144c-16.576-16.576-43.744-16.576-60.32 0s-16.576 43.744 0 60.32L483.36 778.496c10.56 9.056 23.392 19.616 36.96 17.344 13.568 3.008 27.904-6.784 38.464-17.344L886.08 450.464a42.816 42.816 0 0 0 0-60.32 42.784 42.784 0 0 0-60.352 0z"></path>
-                                    </svg>
+                                    <span>推荐</span>
+                                    <i class="icon iconfont icon-show_more"></i>
                                 </div>
                                 <nav class="j-dropdown">
                                     <?php
@@ -85,6 +81,7 @@
                                 </nav>
                             </div>
                         <?php endif; ?>
+
                     </nav>
                 </div>
                 <!-- 搜索 -->
