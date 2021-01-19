@@ -2332,6 +2332,7 @@ table {
                             overflow: hidden;
                             text-overflow: ellipsis;
                             white-space: nowrap;
+                            background-image: linear-gradient(to right, #ff9569 0%, #e92758 100%);
                         }
                     }
                 }
@@ -2857,57 +2858,7 @@ table {
     border-radius: 2px;
     color: #fff;
 }
-/**
-等级相关s
- */
-.autlv {
-    font-size: 10px;
-    color: #fff;
-    display: inline-block;
-    font-weight: normal;
-    border-radius: 2px;
-    line-height: 1.4;
-    padding: 0 4px;
-    margin-left: 5px;
-    letter-spacing: 0px;
-}
-.aut-0 {
-    background: #d1d5dc;
-}
-.aut-1 {
-    background: #448EF6;
-}
-.aut-2 {
-    background: #f6b044;
-}
-.aut-3 {
-    background: #c444f6;
-}
-.aut-4 {
-    background: #f69644;
-}
-.aut-5 {
-    background-image: -webkit-linear-gradient(0deg, #3ca5f6 0%, #a86af9 100%);
-}
-.aut-6 {
-    background: #f64444;
-}
-/**
-等级相关e
- */
-.arc_v1 { background: #d1d5dc; color: #fff; }
 
-.arc_v2 { background: #54b5db; color: #fff; }
-
-.arc_v3 { background: #f6b044; color: #fff; }
-
-.arc_v4 { background: #c444f6; color: #fff; }
-
-.arc_v5 { background: #f64444; color: #fff; }
-
-.arc_v6 { color: #fff; background-image: -webkit-linear-gradient(0deg, #3ca5f6 0%, #a86af9 100%); }
-
-.arc_v7 { background: #000; color: #fff; }
 
 .j-aside {
     transition: width 0.35s;
@@ -7526,7 +7477,7 @@ author page
                         display: inline-block;
                         content: " ";
                         width: 10px;
-                        height: 10px;
+                        height: 9px;
                         line-height: 10px;
                         border: 1px solid #FF9800;
                         border-radius: 10px;
@@ -7536,7 +7487,7 @@ author page
                         cursor: default;
                         position: absolute;
                         left: 3px;
-                        bottom: 3px;
+                        bottom: 4px;
                     }
                 }
             }
@@ -7905,5 +7856,58 @@ author page
     }
 
 }
+/* nav end*/
 
+/**
+等级相关s
+ */
+.autlv {
+    font-size: 10px;
+    color: #fff;
+    display: inline-block;
+    font-weight: normal;
+    border-radius: 2px;
+    line-height: 1.4;
+    padding: 0 4px;
+    margin-left: 5px;
+    letter-spacing: 0px;
+}
+.aut-0 {
+    background: #d1d5dc;
+}
+.aut-1 {
+    background: #448EF6;
+}
+.aut-2 {
+    background: #f6b044;
+}
+.aut-3 {
+    background: #c444f6;
+}
+.aut-4 {
+    background: #f69644;
+}
+.aut-5 {
+    background-image: -webkit-linear-gradient(0deg, #3ca5f6 0%, #a86af9 100%);
+}
+.aut-6 {
+    background: #f64444;
+}
+
+.arc_v1 { background: #d1d5dc!important;; color: #fff; }
+
+.arc_v2 { background: #54b5db!important; color: #fff; }
+
+.arc_v3 { background: #f6b044!important;; color: #fff; }
+
+.arc_v4 { background: #c444f6!important;; color: #fff; }
+
+.arc_v5 { background: #f64444!important;; color: #fff; }
+
+.arc_v6 { color: #fff; background-image: -webkit-linear-gradient(0deg, #3ca5f6 0%, #a86af9 100%)!important;; }
+
+.arc_v7 { background: #000!important;; color: #fff; }
+/**
+等级相关e
+ */
 
