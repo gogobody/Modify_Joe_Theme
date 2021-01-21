@@ -18,17 +18,6 @@
 <script src="https://cdn.jsdelivr.net/npm/draggabilly@2.3.0/dist/draggabilly.pkgd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script>
 
-<!-- live2d -->
-<?php if ($this->options->JLive2D !== 'off' && !isMobile()) : ?>
-    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
-<?php endif; ?>
-
-
-<!-- 颜色选择器 -->
-<?php if ($this->options->JGlobalThemeStatus === 'on') : ?>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-colpick@3.1.0/js/colpick.min.js"></script>
-<?php endif; ?>
-
 <!-- 代码高亮 -->
 <?php if ($this->options->JCodeColor !== 'off') : ?>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
@@ -57,10 +46,7 @@
 <?php if ($this->options->JFishStatus !== "off") : ?>
     <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/assets/js/fish.min.js"></script>
 <?php endif; ?>
-    <!-- 弹幕 -->
-<?php if ($this->options->JBarragerStatus === 'on') : ?>
-    <script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/joe.barrager/joe.barrager.min.js"></script>
-<?php endif; ?>
+
 <!-- 3dtag -->
 <!--<script src="https://cdn.jsdelivr.net/npm/typecho_joe_theme@4.3.5/library/3DTag/3DTag.min.js" defer></script>-->
 <!-- 目录树(合并到了主函数) -->

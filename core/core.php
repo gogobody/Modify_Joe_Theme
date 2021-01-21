@@ -724,16 +724,6 @@ function GetPostViews($archive,$ret=0)
     echo number_format($exist);
 }
 
-/* 随机一言 */
-function GetRandomMotto()
-{
-    if (Helper::options()->JMotto) {
-        $JMottoRandom = explode("\r\n", Helper::options()->JMotto);
-        $random = $JMottoRandom[array_rand($JMottoRandom, 1)];
-        echo $random;
-    }
-}
-
 
 /* 点赞数 */
 function agreeNum($cid)

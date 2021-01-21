@@ -264,28 +264,21 @@ class Lb {
             this.init_url_hash();
             /* 初始化标题 */
             this.init_document_title();
-            /* 初始化弹幕 */
-            this.init_document_barrager();
             /* 初始化进度条 */
             this.init_document_progress();
             /* 初始化懒加载 */
             this.init_lazy_load();
-            /* 初始化live2d */
-            this.init_document_live2d();
             /* 鼠标右键 */
             this.init_document_contextmenu();
             /* 初始化主题色 */
             this.init_document_theme();
-            /* 初始化鼠标移入音效 */
-            this.init_hover_music();
+
             /* 初始化返回顶部 */
             this.init_back_top();
             /* 初始化代码防偷 */
             this.init_document_console();
             /* 初始化天气 */
             this.init_document_weather();
-            /* 初始化3d云标签 */
-            this.init_3d_tag();
             /* 初始化加载更多 */
             this.init_load_more();
             /* 初始化轮播图 */
@@ -318,8 +311,7 @@ class Lb {
             this.init_j_tabs();
             /* 初始化collapse */
             this.init_j_collapse();
-            /* 初始化侧边栏一言 */
-            this.init_aside_motto();
+
             /* 初始化底部 mobinav */
             this.init_mobinav()
         }
@@ -486,39 +478,6 @@ class Lb {
             });
         }
 
-        /* 初始化弹幕 */
-        init_document_barrager() {
-            if (window.JOE_CONFIG.DOCUMENT_BARRAGER === 'off') return;
-            let barrager = $('#barrager')
-            if (localStorage.getItem('barragerStatus') === 'on') {
-                barrager.attr('checked', true);
-                $('.j-barrager').css({
-                    opacity: 1,
-                    visibility: 'visible'
-                });
-            } else {
-                barrager.attr('checked', false);
-                $('.j-barrager').css({
-                    opacity: 0,
-                    visibility: 'hidden'
-                });
-            }
-            barrager.on('change', function () {
-                localStorage.setItem('barragerStatus', $(this).prop('checked') ? 'on' : 'off');
-                if (barrager.prop('checked')) {
-                    $('.j-barrager').css({
-                        opacity: 1,
-                        visibility: 'visible'
-                    });
-                } else {
-                    $('.j-barrager').css({
-                        opacity: 0,
-                        visibility: 'hidden'
-                    });
-                }
-            });
-        }
-
         /* 初始化进度条 */
         init_document_progress() {
             if (window.JOE_CONFIG.DOCUMENT_PROGRESS === 'off') return;
@@ -535,27 +494,6 @@ class Lb {
             $(window).on('scroll', () => calcProgress());
         }
 
-        /* 初始化live2d */
-        init_document_live2d() {
-            if (window.JOE_CONFIG.DOCUMENT_LIVE2D === 'off' || window.JOE_CONFIG.IS_MOBILE === 'on') return;
-            L2Dwidget.init({
-                model: {
-                    jsonPath: window.JOE_CONFIG.DOCUMENT_LIVE2D,
-                    scale: 1
-                },
-                mobile: {
-                    show: false
-                },
-                display: {
-                    position: 'right',
-                    width: 160,
-                    height: 200,
-                    hOffset: 70,
-                    vOffset: 0
-                }
-            });
-        }
-
         /* 鼠标右键 */
         init_document_contextmenu() {
             if (window.JOE_CONFIG.DOCUMENT_CONTEXTMENU === 'off' || window.JOE_CONFIG.IS_MOBILE === 'on') return;
@@ -565,60 +503,11 @@ class Lb {
         /* 初始化主题色 */
         init_document_theme() {
             let themeColor = "#4770db"
-            if (window.JOE_CONFIG.DOCUMENT_THEME_STATUS === 'on') {
-                let colorPick = $('#colorPick')
-                if (!window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME) {
-                    $('body').css('--theme', localStorage.getItem('--theme') || themeColor);
-                } else {
-                    $('body').css('--theme', localStorage.getItem('--theme') || window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME);
-                }
-                let color = null;
-                if (localStorage.getItem('--theme')) {
-                    color = localStorage.getItem('--theme');
-                } else {
-                    if (!window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME) {
-                        color = themeColor;
-                    } else {
-                        color = window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME;
-                    }
-                }
-                colorPick.colpick({
-                    flat: true,
-                    layout: 'hex',
-                    submit: false,
-                    color,
-                    colorScheme: 'dark',
-                    onChange(a, b, c) {
-                        $('body').css('--theme', '#' + b);
-                        localStorage.setItem('--theme', '#' + b);
-                    }
-                });
-                $('#openColorPick').unbind('click').bind('click', function (e) {
-                    e.stopPropagation();
-                    colorPick.toggleClass('active');
-                });
-                colorPick.unbind('click').bind('click', function (e) {
-                    e.stopPropagation();
-                });
-                $(document).bind('click', function (e) {
-                    colorPick.removeClass('active');
-                });
+            if (window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME === '') {
+                $('body').css('--theme', themeColor);
             } else {
-                if (window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME === '') {
-                    $('body').css('--theme', themeColor);
-                } else {
-                    $('body').css('--theme', window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME);
-                }
+                $('body').css('--theme', window.JOE_CONFIG.DOCUMENT_GLOBAL_THEME);
             }
-        }
-
-        /* 初始化鼠标移入音效 */
-        init_hover_music() {
-            if (window.JOE_CONFIG.DOCUMENT_HOVER_MUSIC === 'off' || window.JOE_CONFIG.IS_MOBILE === 'on') return;
-            let random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-            $('.j-hover-music').on('mouseover', function () {
-                $('#j-hover-music').attr('src', window.JOE_CONFIG.THEME_URL + '/assets/audio/' + random(1, 8) + '.ogv');
-            });
         }
 
         /* 初始化返回顶部 */
@@ -735,39 +624,6 @@ class Lb {
                 $('.aside-wether .loading').addClass('active');
                 clearTimeout(timer);
             }, 1000);
-        }
-
-        /* 初始化3d云标签 */
-        init_3d_tag() {
-            if (window.JOE_CONFIG.DOCUMENT_3D_TAG === 'off') return;
-            let cloudList = [];
-            $('#cloudList li').each(function (i, item) {
-                cloudList.push({
-                    label: $(item).attr('data-label'),
-                    url: $(item).attr('data-url'),
-                    target: '_blank'
-                });
-            });
-            $('#cloud').svg3DTagCloud({
-                entries: cloudList,
-                width: 220,
-                height: 230,
-                radius: '65%',
-                radiusMin: 75,
-                bgDraw: !0,
-                bgColor: '#000',
-                opacityOver: 1,
-                opacityOut: 0.05,
-                opacitySpeed: 6,
-                fov: 800,
-                speed: 0.5,
-                fontSize: 13,
-                fontColor: '#fff',
-                fontWeight: '500',
-                fontStyle: 'normal',
-                fontStretch: 'normal',
-                fontToUpperCase: !0
-            });
         }
 
         /* 初始化加载更多 */
@@ -1965,28 +1821,6 @@ class Lb {
                 next.slideToggle(200);
                 $('.j-collapse .collapse-body').not(next).slideUp();
             });
-        }
-
-        /* 初始化侧边栏一言 */
-        init_aside_motto() {
-            let j_motto = $('.j-aside-motto')
-            if (window.JOE_CONFIG.DOCUMENT_ASIDE_MOTTO === 'on') {
-                j_motto.show();
-            } else {
-                $.ajax({
-                    url: window.JOE_CONFIG.DOCUMENT_MOTTO_API,
-                    method: 'get',
-                    dataType: 'text',
-                    success: res => {
-                        $('.j-aside-motto').html(res)
-                        $('.j-aside-motto').show()
-                    },
-                    error: err => {
-                        $('.j-aside-motto').html('人生之路，难免坎坷，但我执着')
-                        $('.j-aside-motto').show()
-                    }
-                })
-            }
         }
 
         /* 初始化评论点赞 */

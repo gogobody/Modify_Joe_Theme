@@ -15,6 +15,6 @@
     <?php $this->need('public/header.php'); ?>
     <section id="pjax-container">
     <!-- 面包屑 -->
-    <?php if ($this->options->JBreadStatus === 'on' && $this->is('post')) : ?>
+    <?php if($this->is('post')): ?>
         <?php $this->need('component/post.bread.php'); ?>
     <?php endif; ?>

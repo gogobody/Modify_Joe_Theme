@@ -49,11 +49,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <a href="<?php echo getUserPermalink($this->author->uid); ?>"><?php $this->author->screenName();autvip($this->author->mail); ?></a>
                     <?php endif; ?>
                     <!-- 座右铭 -->
-                    <?php if ($this->options->JMotto) : ?>
-                        <div class="p j-aside-motto"><?php GetRandomMotto(); ?></div>
-                    <?php else : ?>
-                        <div class="p j-aside-motto"></div>
-                    <?php endif; ?>
+                    <div class="p j-aside-motto">秦皇小小喵</div>
                 </div>
                 <?php global $stat; ?>
                 <div class="webinfo">
@@ -355,23 +351,5 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <div class="j-ad">广告</div>
         </a>
     </div>
-    <?php endif; ?>
-
-    <!-- 云标签 -->
-    <?php if ($this->options->J3DTagStatus === 'on') : ?>
-        <div class="aside aside-cloud">
-            <h3><i class="icon iconfont icon-Tag"></i><span>标签云</span></h3>
-            <?php $this->widget('Widget_Metas_Tag_Cloud', array('sort' => 'count', 'ignoreZeroCount' => true, 'desc' => true, 'limit' => 50))->to($tags); ?>
-            <?php if ($tags->have()) : ?>
-                <div class="cloud" id="cloud"></div>
-                <ul id="cloudList">
-                    <?php while ($tags->next()) : ?>
-                        <li data-url="<?php $tags->permalink(); ?>" data-label="<?php $tags->name(); ?>"></li>
-                    <?php endwhile; ?>
-                </ul>
-            <?php else : ?>
-                <p class="empty">暂无标签</p>
-            <?php endif; ?>
-        </div>
     <?php endif; ?>
 </div>

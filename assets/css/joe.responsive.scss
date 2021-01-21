@@ -25,9 +25,6 @@
 }
 
 @media (max-width: 1600px) {
-    #live2d-widget {
-        display: none;
-    }
 }
 @media (max-width: 1570px) {
     .j-post {
@@ -233,39 +230,7 @@
                 .logged {
                     margin-left: 15px;
                 }
-                .barrager {
-                    margin-left: 15px;
-                }
             }
-        }
-    }
-    .j-header-fluid {
-        .logo {
-            margin-right: 15px;
-        }
-        .search {
-            display: none;
-        }
-        .search-toggle {
-            display: block;
-        }
-        .left {
-            .nav {
-                .link {
-                    margin-right: 15px;
-                }
-                .drop {
-                    margin-right: 15px;
-                }
-            }
-        }
-        .nav {
-            .drop-census {
-                display: none;
-            }
-        }
-        .right {
-            margin-left: auto;
         }
     }
     .j-post {
@@ -462,35 +427,6 @@
         }
         .below {
             display: none!important;
-        }
-    }
-    .j-header-fluid {
-        height: auto;
-        align-items: center;
-        .left {
-            display: none;
-        }
-        .right {
-            display: none;
-        }
-        .logo {
-            margin-right: 0;
-            padding-right: 0;
-            height: 55px;
-            &::after {
-                display: none;
-            }
-            a {
-                img {
-                    max-height: 45px;
-                }
-            }
-        }
-        .slide {
-            display: block;
-        }
-        .search-toggle-xs {
-            display: block;
         }
     }
     .j-index {

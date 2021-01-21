@@ -14,7 +14,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <section class="container j-index">
         <section class="j-adaption">
             <section class="main <?php $this->options->JListType() ?>">
-
                 <?php if ($this->is('index')) : ?>
                     <?php $this->need('component/index.banner.php'); ?>
                     <?php $this->need('component/index.hot.php'); ?>

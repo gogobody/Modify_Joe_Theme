@@ -82,16 +82,6 @@ function themeConfig($form)
     $JPrevent->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JPrevent->multiMode());
 
-    $JHeaderStyle = new Typecho_Widget_Helper_Form_Element_Select(
-        'JHeaderStyle',
-        array('default' => '居中（默认）', 'fluid' => '全屏'),
-        'default',
-        '选择一款您喜欢的头部风格',
-        '介绍：根据您的个人爱好选择一款您喜爱的风格'
-    );
-    $JHeaderStyle->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JHeaderStyle->multiMode());
-
     $JCustomNavs = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomNavs',
         NULL,
@@ -126,17 +116,6 @@ function themeConfig($form)
     $JNavMaxNum->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JNavMaxNum->multiMode());
 
-    $JHorseStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JHorseStatus',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启页面顶部跑马灯',
-        '介绍：开启后页面顶部将显示跑马灯特效 <br />
-         注意：此项只会在当头部为居中风格下生效'
-    );
-    $JHorseStatus->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JHorseStatus->multiMode());
-
     $JCensusStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JCensusStatus',
         array('off' => '关闭（默认）', 'on' => '开启'),
@@ -158,15 +137,6 @@ function themeConfig($form)
     $JNavigation->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JNavigation);
 
-    $JBarragerStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JBarragerStatus',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启弹幕功能（仅限PC）',
-        '介绍：开启后，网站将会显示评论弹幕功能，该功能采用CSS动画引擎，并非传统JS操作DOM，无任何性能消耗。'
-    );
-    $JBarragerStatus->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JBarragerStatus->multiMode());
 
     $JSignStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JSignStatus',
@@ -275,15 +245,6 @@ function themeConfig($form)
     $JConsoleStatus->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JConsoleStatus->multiMode());
 
-    $JCustomCSS = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JCustomCSS',
-        NULL,
-        NULL,
-        '自定义CSS（非必填）',
-        '介绍：请填写自定义CSS内容，填写时无需填写style标签。'
-    );
-    $JCustomCSS->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JCustomCSS);
 
     $JCustomScript = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomScript',
@@ -327,60 +288,6 @@ function themeConfig($form)
     $form->addInput($JCustomBodyEnd);
 
 
-
-
-    $JLive2D = new Typecho_Widget_Helper_Form_Element_Select(
-        'JLive2D',
-        array(
-            'off' => '关闭（默认）',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json' => 'shizuku',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-izumi@1.0.5/assets/izumi.model.json' => 'izumi',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/01/assets/haru01.model.json' => 'haru01',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-haru@1.0.5/02/assets/haru02.model.json' => 'haru02',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json' => 'wanko',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json' => 'hijiki',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json' => 'koharu',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-z16@1.0.5/assets/z16.model.json' => 'z16',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json' => 'haruto',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-tororo@1.0.5/assets/tororo.model.json' => 'tororo',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json' => 'chitose',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-miku@1.0.5/assets/miku.model.json' => 'miku',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-epsilon2_1@1.0.5/assets/Epsilon2.1.model.json' => 'Epsilon2.1',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-unitychan@1.0.5/assets/unitychan.model.json' => 'unitychan',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nico@1.0.5/assets/nico.model.json' => 'nico',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-rem@1.0.1/assets/rem.model.json' => 'rem',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nito@1.0.5/assets/nito.model.json' => 'nito',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nipsilon@1.0.5/assets/nipsilon.model.json' => 'nipsilon',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-ni-j@1.0.5/assets/ni-j.model.json' => 'ni-j',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-nietzsche@1.0.5/assets/nietzche.model.json' => 'nietzche',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-platelet@1.1.0/assets/platelet.model.json' => 'platelet',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-isuzu@1.0.4/assets/model.json' => 'isuzu',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-jth@1.0.0/assets/model/katou_01/katou_01.model.json' => 'katou_01',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-mikoto@1.0.0/assets/mikoto.model.json' => 'mikoto',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-mashiro-seifuku@1.0.1/assets/seifuku.model.json' => 'seifuku',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-ichigo@1.0.1/assets/ichigo.model.json' => 'ichigo',
-            'https://cdn.jsdelivr.net/npm/live2d-widget-model-hk_fos@1.0.0/assets/hk416.model.json' => 'hk416'
-
-        ),
-        'off',
-        '选择一款喜爱的Live2D人物模型（仅限PC并且屏幕大于1600像素才会显示）',
-        '介绍：开启后会在右下角显示一个小人，该功能采用远程调用不会消耗性能'
-    );
-    $JLive2D->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JLive2D->multiMode());
-
-
-    $JBackTopStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JBackTopStatus',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启返回顶部',
-        '介绍：开启后将在屏幕右下方显示返回顶部按钮 <br />
-         注意：页面滚动到一定的高度才会显示返回顶部按钮，并不会一直显示'
-    );
-    $JBackTopStatus->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JBackTopStatus->multiMode());
-
     $JGlobalThemeColor = new Typecho_Widget_Helper_Form_Element_Text(
         'JGlobalThemeColor',
         NULL,
@@ -391,17 +298,6 @@ function themeConfig($form)
     );
     $JGlobalThemeColor->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JGlobalThemeColor);
-
-    $JGlobalThemeStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JGlobalThemeStatus',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '请选择是否开启自定义主题',
-        '介绍：本模板的特色，采用最新CSS var语法，无任何性能消耗，极其推荐开启 <br />
-         注意：不兼容垃圾IE'
-    );
-    $JGlobalThemeStatus->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JGlobalThemeStatus->multiMode());
 
     $JCountTime = new Typecho_Widget_Helper_Form_Element_Select(
         'JCountTime',
@@ -451,17 +347,6 @@ function themeConfig($form)
     );
     $JGravatars->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JGravatars->multiMode());
-
-    $JHoverMusicStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JHoverMusicStatus',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启鼠标划入音效（仅限PC）',
-        '介绍：开启后，当鼠标划入到带有 j-hover-music 的类名上时，页面将会播放钢琴音效 <br />
-         例如：网站头部的 logo 。如果您想自定义地方，请在需要添加的元素加上 j-hover-music 类名即可。'
-    );
-    $JHoverMusicStatus->setAttribute('class', 'j-setting-content j-setting-global');
-    $form->addInput($JHoverMusicStatus->multiMode());
 
     $JFishStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JFishStatus',
@@ -577,16 +462,6 @@ function themeConfig($form)
     );
     $JBaiDuPushToken->setAttribute('class', 'j-setting-content j-setting-post');
     $form->addInput($JBaiDuPushToken);
-
-    $JBreadStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'JBreadStatus',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启面包屑导航',
-        '介绍：开启后，文章页面顶部将会显示面包屑导航。'
-    );
-    $JBreadStatus->setAttribute('class', 'j-setting-content j-setting-post');
-    $form->addInput($JBreadStatus->multiMode());
 
     $JPostCountingStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JPostCountingStatus',
@@ -861,16 +736,6 @@ function themeConfig($form)
     $JWetherType->setAttribute('class', 'j-setting-content j-setting-aside');
     $form->addInput($JWetherType->multiMode());
 
-    $J3DTagStatus = new Typecho_Widget_Helper_Form_Element_Select(
-        'J3DTagStatus',
-        array('off' => '关闭（默认）', 'on' => '开启'),
-        'off',
-        '是否开启3D云标签',
-        '介绍：开启后侧边栏将显示3D云标签'
-    );
-    $J3DTagStatus->setAttribute('class', 'j-setting-content j-setting-aside');
-    $form->addInput($J3DTagStatus->multiMode());
-
     $JAsideReplyStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JAsideReplyStatus',
         array(
@@ -954,31 +819,6 @@ function themeConfig($form)
     );
     $JAuthorLink->setAttribute('class', 'j-setting-content j-setting-aside');
     $form->addInput($JAuthorLink);
-
-    $JMotto = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JMotto',
-        NULL,
-        NULL,
-        '作者信息 —— 座右铭（非必填）',
-        '介绍：用于显示在侧边栏作者信息的座右铭。<br />
-         格式：可以填写多行也可以填写一行，填写多行时，每次随机显示其中的某一条'
-    );
-    $JMotto->setAttribute('class', 'j-setting-content j-setting-aside');
-    $form->addInput($JMotto);
-
-    $JMottoAPI = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JMottoAPI',
-        NULL,
-        NULL,
-        '作者信息 —— 座右铭默认API（非必填，不填写时采用默认API）',
-        '介绍：用于填写默认的一言API。<br />
-         格式：API格式有严格的要求，必须返回内容为纯文本，无其他内容，例如以下的API的返回格式！！！<br />
-         默认API：https://api.vvhan.com/api/ian <br />
-         注意：此项只会在上面座右铭未填写时才会生效
-         '
-    );
-    $JMottoAPI->setAttribute('class', 'j-setting-content j-setting-aside');
-    $form->addInput($JMottoAPI);
 
     $JCountDownStatus = new Typecho_Widget_Helper_Form_Element_Select(
         'JCountDownStatus',
@@ -1090,152 +930,6 @@ function themeConfig($form)
     $form->addInput($JRanking->multiMode());
 
     /* 色彩设置 */
-
-    $JCardBackground = new Typecho_Widget_Helper_Form_Element_Text(
-        'JCardBackground',
-        NULL,
-        NULL,
-        '卡片背景色（非必填，不会写请勿填写！）',
-        '介绍：用于修改卡片背景色，默认纯白色。<br />
-         例如：您想使用自定义图片背景，但是卡片背景为纯白色，想增加点透明度。那么您可以填写 rgba(255,255,255,0.85) <br/>
-         其他：rgba() 前3个数字为色彩，最后一个数字为0-1代表着透明度，不透明1，纯透明0 <br/>
-         格式：严格的色彩格式，例如：rgba(255, 255, 255, 0.85)'
-    );
-    $JCardBackground->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JCardBackground);
-//
-//    $JClassA = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JClassA',
-//        NULL,
-//        NULL,
-//        '一级色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局一级色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JClassA->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JClassA);
-//
-//    $JClassB = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JClassB',
-//        NULL,
-//        NULL,
-//        '二级色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局二级色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JClassB->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JClassB);
-//
-//    $JClassC = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JClassC',
-//        NULL,
-//        NULL,
-//        '三级色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局三级色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JClassC->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JClassC);
-//
-//    $JClassD = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JClassD',
-//        NULL,
-//        NULL,
-//        '四级色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局四级色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JClassD->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JClassD);
-
-//    $JMainColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JMainColor',
-//        NULL,
-//        NULL,
-//        '主要文字色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局主要文字色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JMainColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JMainColor);
-
-//    $JRoutineColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JRoutineColor',
-//        NULL,
-//        NULL,
-//        '常规文字色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局常规文字色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JRoutineColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JRoutineColor);
-//
-//    $JMinorColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JMinorColor',
-//        NULL,
-//        NULL,
-//        '次要文字色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局次要文字色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JMinorColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JMinorColor);
-//
-//    $JSeatColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JSeatColor',
-//        NULL,
-//        NULL,
-//        '占位文字色彩（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局占位文字色彩。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JSeatColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JSeatColor);
-
-//    $JSuccessColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JSuccessColor',
-//        NULL,
-//        NULL,
-//        '成功色（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局成功色。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JSuccessColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JSuccessColor);
-//
-//    $JWarningColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JWarningColor',
-//        NULL,
-//        NULL,
-//        '警告色（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局警告色。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JWarningColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JWarningColor);
-//
-//    $JDangerColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JDangerColor',
-//        NULL,
-//        NULL,
-//        '危险色（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局危险色。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JDangerColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JDangerColor);
-//
-//    $JInfoColor = new Typecho_Widget_Helper_Form_Element_Text(
-//        'JInfoColor',
-//        NULL,
-//        NULL,
-//        '信息色（非必填，不会写请勿填写！）',
-//        '介绍：用于修改全局信息色。<br />
-//         格式：严格的色彩格式，例如：#ff6800'
-//    );
-//    $JInfoColor->setAttribute('class', 'j-setting-content j-setting-color');
-//    $form->addInput($JInfoColor);
-
     $JRadiusPC = new Typecho_Widget_Helper_Form_Element_Select(
         'JRadiusPC',
         array(
@@ -1279,35 +973,6 @@ function themeConfig($form)
     );
     $JRadiusWap->setAttribute('class', 'j-setting-content j-setting-color');
     $form->addInput($JRadiusWap->multiMode());
-
-    $JTextShadow = new Typecho_Widget_Helper_Form_Element_Text(
-        'JTextShadow',
-        NULL,
-        NULL,
-        '标题阴影（非必填，不会写请勿填写！）',
-        '介绍：用于修改大标题阴影。<br />
-         格式：严格的文字阴影色彩格式，例如：0 0 10px #ff6800 <br />
-         默认：0 1px 2px rgba(0, 0, 0, 0.25) <br />
-         格式：严格的文字阴影色彩格式，例如：0 1px 2px rgba(0, 0, 0, 0.25) <br />
-         其他：在线调试阴影网站：<a href="//www.w3cschool.cn/tools/index?name=css3_textshadow" target="_blank" rel="noopener">//www.w3cschool.cn/tools/index?name=css3_textshadow</a>
-         '
-    );
-    $JTextShadow->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JTextShadow);
-
-    $JBoxShadow = new Typecho_Widget_Helper_Form_Element_Text(
-        'JBoxShadow',
-        NULL,
-        NULL,
-        '盒子阴影（非必填，不会写请勿填写！）',
-        '介绍：用于修改盒子的阴影。<br />
-         格式：严格的盒子阴影色彩格式，例如：0 0 10px #ff6800 <br />
-         默认：0px 0px 20px -5px rgba(158, 158, 158, 0.22) <br />
-         其他：在线调试阴影网站：<a href="//www.w3cschool.cn/tools/index?name=css3_boxshadow" target="_blank" rel="noopener">//www.w3cschool.cn/tools/index?name=css3_boxshadow</a>
-         '
-    );
-    $JBoxShadow->setAttribute('class', 'j-setting-content j-setting-color');
-    $form->addInput($JBoxShadow);
 
     /* 首页设置 */
     $JHotRecommend = new Typecho_Widget_Helper_Form_Element_Textarea(
@@ -1655,7 +1320,7 @@ function themeConfig($form)
     $JFootRecommend = new Typecho_Widget_Helper_Form_Element_Select(
         'JFootRecommend',
         array(0 => '关闭（默认）', 1 => '开启'),
-        0,
+        1,
         '是否开启底部栏目推荐',
         '介绍：开启底部将会显示栏目推荐页面'
     );
