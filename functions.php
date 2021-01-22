@@ -2,7 +2,7 @@
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once("core/core.php");
-require_once 'component/Widget/Widget_Contents_Post_Recent_User.php';
+require_once 'component/widget/Widget_Contents_Post_Recent_User.php';
 require_once 'component/widget/Widget_Footer_Recommend_Posts.php';
 
 function themeConfig($form)
