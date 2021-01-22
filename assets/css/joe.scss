@@ -671,7 +671,9 @@ textarea:focus {
 }
 @font-face {
     font-family: 'Roman-55';
-    src: url('https://cdn.jsdelivr.net/gh/zwying0814/Cuteen@4.1/static/font/NeueHaasGrotTextRound-55Roman.woff2');
+    src:url(../fonts/blockdole.woff2) format("woff2"),
+        url(../fonts/blockdole.woff) format("woff"),
+        url(../fonts/blockdole.eot) format("embedded-opentype");
     font-display: swap;
 }
 
