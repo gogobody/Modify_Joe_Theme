@@ -41,7 +41,7 @@ function fileget2($url, $timeout = 5)
 /* 获取模板版本号 */
 function JoeVersion()
 {
-    return "4.7.6";
+    return "4.7.7";
 }
 
 /* 获取懒加载图片 */
