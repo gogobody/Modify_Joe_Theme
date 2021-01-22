@@ -1148,6 +1148,7 @@
                 margin-bottom:0;
                 .notice {
                     padding: 0;
+                    border-radius: 5px;
                 }
 
             }
@@ -1164,6 +1165,7 @@
                     padding: 15px 0;
                     border-bottom: 1px solid rgba(0, 0, 0, .05);
                     display: flex;
+                    overflow: visible;
                     .entry-box{
                         overflow: initial;
                         .summary{

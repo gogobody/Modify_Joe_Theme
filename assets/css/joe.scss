@@ -92,7 +92,10 @@ pre code::-webkit-scrollbar {
     border-radius: 3.5px;
     background-color: rgba(50, 50, 50, 0.1);
 }
-
+:root{
+    --box-shadow-heavy:0 8px 15px rgba(0,0,0,.4);
+    --transform-heavy:translateX(0) scaleX(1) rotateY(0) translateZ(0) scaleY(1);
+}
 /* 暗夜模式 */
 :root,[data-color-mode=light] {
     color-scheme: light;
@@ -136,7 +139,9 @@ pre code::-webkit-scrollbar {
 [data-color-mode=dark] {
     color:#c9d1d9;
     background-color: var(--color-bg-canvas);
-
+    body{
+        background: var(--background)!important;
+    }
     .j-dropdown{
         background: var(--classD)!important;
         a{
@@ -677,6 +682,7 @@ body {
     font-family: 'Roman-55', PingFang SC, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    background: url(/usr/themes/Typecho-Joe-Theme/assets/img/bl.png) no-repeat fixed bottom left, url(/usr/themes/Typecho-Joe-Theme/assets/img/tr.png) no-repeat fixed top right, #f0f2f7;
 }
 
 h1,
@@ -1575,6 +1581,10 @@ table {
                     .item-thumb {
                         border-radius: 5px;
                         overflow: hidden;
+                        box-shadow: var(--box-shadow-heavy);
+                        -webkit-box-shadow: var(--box-shadow-heavy);
+                        transform: var(--transform-heavy);
+                        -webkit-transform: var(--transform-heavy);
                         .thumb {
                             display: block;
                             width: 100%;
@@ -1757,11 +1767,15 @@ table {
                 position: relative;
                 display: block;
                 transition: opacity 0.35s;
+                border-radius: calc(var(--radius-pc) / 2);
+                box-shadow: var(--box-shadow-heavy);
+                -webkit-box-shadow:var(--box-shadow-heavy);
+                transform: var(--transform-heavy);
+                -webkit-transform: var(--transform-heavy);
                 img {
                     width: 100%;
                     height: 200px;
                     object-fit: cover;
-                    border-radius: calc(var(--radius-pc) / 2);
                 }
                 &:hover {
                     opacity: 0.85;
@@ -1797,6 +1811,7 @@ table {
                         overflow: hidden;
                         height: 100%;
                         padding-top: 66.7%;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0, rgba(0, 0, 0, 0.06) 0 1px 2px 0;
                         &:hover {
                             opacity: 0.85;
                             p {
@@ -1860,6 +1875,7 @@ table {
                     background-repeat: no-repeat;
                     background-position: 50% 50%;
                     background-color: rgba(120, 120, 120, 0.1);
+                    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
                     &:hover {
                         opacity: 0.85;
                     }
@@ -1958,6 +1974,10 @@ table {
                     margin-right: 15px;
                     border-radius: calc(var(--radius-pc) / 2);
                     overflow: hidden;
+                    box-shadow: var(--box-shadow-heavy);
+                    -webkit-box-shadow: var(--box-shadow-heavy);
+                    transform: var(--transform-heavy);
+                    -webkit-transform: var(--transform-heavy);
                     img {
                         width: 100%;
                         height: 100%;
@@ -2130,6 +2150,7 @@ table {
                         }
                         .feaimg{
                             position: relative;
+                            max-height: 18rem;
                             svg{
                                 width: 22px;
                                 height: 22px;
@@ -2217,6 +2238,8 @@ table {
                         .feaimg{
                             flex: 1;
                             overflow: hidden;
+                            max-height: 10rem;
+                            max-width: 18rem;
                         }
                         .feaimg:nth-child(2){
                             margin: 0 2px;
@@ -2273,6 +2296,7 @@ table {
                                     width: 100%;
                                     height: 100%;
                                     display: block;
+                                    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
                                 }
                             }
                         }
@@ -2579,6 +2603,7 @@ table {
                     display: block;
                     border-radius: calc(var(--radius-pc) / 2);
                     overflow: hidden;
+                    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
                     &:hover {
                         img {
                             transform: scale(1.2);
@@ -3610,6 +3635,8 @@ table {
                 margin: 0 auto;
                 border-radius: 4px;
                 object-fit: cover;
+                -webkit-box-shadow: 0 13px 15px rgba(31,45,62,.2);
+                box-shadow: 0 13px 15px rgba(31,45,62,.2);
             }
             .owo {
                 width: 24px;

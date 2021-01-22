@@ -3,7 +3,6 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once("core/core.php");
 require_once 'component/widget/Widget_Contents_Post_Recent_User.php';
-require_once 'component/widget/Widget_Footer_Recommend_Posts.php';
 
 function themeConfig($form)
 {
@@ -408,49 +407,6 @@ function themeConfig($form)
     );
     $JLogo->setAttribute('class', 'j-setting-content j-setting-image');
     $form->addInput($JLogo);
-
-    $JDocumentCanvasBG = new Typecho_Widget_Helper_Form_Element_Select(
-        'JDocumentCanvasBG',
-        array(
-            'off' => '关闭（默认）',
-            'background1.min.js' => '效果1',
-            'background2.min.js' => '效果2',
-            'background3.min.js' => '效果3',
-            'background4.min.js' => '效果4',
-            'background5.min.js' => '效果5',
-            'background6.min.js' => '效果6',
-        ),
-        'off',
-        '是否开启动态背景图（仅限PC）',
-        '介绍：开启后下方您所设置的PC端自定义背景图将会失效，以动态背景优先，并且手机端是不支持此项的。<br />
-         注意：此项由于是canvas生成，所以开启这项是影响性能的！'
-    );
-    $JDocumentCanvasBG->setAttribute('class', 'j-setting-content j-setting-image');
-    $form->addInput($JDocumentCanvasBG->multiMode());
-
-    $JDocumentPCBG = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JDocumentPCBG',
-        NULL,
-        NULL,
-        'PC端网站背景图片（非必填）',
-        '介绍：PC端网站的背景图片，不填写时显示默认的灰色。<br />
-         格式：图片URL地址 或 随机图片api 例如：http://api.btstu.cn/sjbz/?lx=dongman <br />
-         注意：若您想使用自定义图片，请先关闭上方的动态背景，否则该项不会起作用。'
-    );
-    $JDocumentPCBG->setAttribute('class', 'j-setting-content j-setting-image');
-    $form->addInput($JDocumentPCBG);
-
-    $JDocumentWAPBG = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'JDocumentWAPBG',
-        NULL,
-        NULL,
-        'WAP端网站背景图片（非必填）',
-        '介绍：WAP端网站的背景图片，不填写时显示默认的灰色。<br />
-         格式：图片URL地址 或 随机图片api 例如：http://api.btstu.cn/sjbz/?lx=m_dongman'
-    );
-    $JDocumentWAPBG->setAttribute('class', 'j-setting-content j-setting-image');
-    $form->addInput($JDocumentWAPBG);
-
 
     /* 文章设置 */
 
