@@ -670,18 +670,19 @@ textarea:focus {
     outline: none;
 }
 @font-face {
-    font-family: 'Roman-55';
+    font-family: 'Microsoft YaHei';
     src:url(../fonts/blockdole.woff2) format("woff2"),
         url(../fonts/blockdole.woff) format("woff"),
         url(../fonts/blockdole.eot) format("embedded-opentype");
     font-display: swap;
 }
 
+
 body {
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
     font-size: 14px;
-    font-family: 'Roman-55', PingFang SC, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
+    font-family: 'Microsoft YaHei', PingFang SC, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     background: url(/usr/themes/Typecho-Joe-Theme/assets/img/bl.png) no-repeat fixed bottom left, url(/usr/themes/Typecho-Joe-Theme/assets/img/tr.png) no-repeat fixed top right, #f0f2f7;
