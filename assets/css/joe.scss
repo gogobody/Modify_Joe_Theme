@@ -2848,6 +2848,11 @@ table {
     }
     .aside-ranking {
         background: var(--backgroundA);
+        h3{
+            &:before{
+                display: none;
+            }
+        }
         .list {
             padding: 10px 0;
             li {

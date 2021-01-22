@@ -654,19 +654,26 @@ function GetRandomThumbnail($widget,$ret = 0)
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
     $patternMD = '/\!\[.*?\]\((http(s)?:\/\/.*?(jpg|jpeg|gif|png|webp))/i';
     $patternMDfoot = '/\[.*?\]:\s*(http(s)?:\/\/.*?(jpg|jpeg|gif|png|webp))/i';
-    $t = preg_match_all($pattern, $widget->content, $thumbUrl);
     $img = $random;
     if ($widget->fields->thumb) {
         $img = $widget->fields->thumb;
-    } elseif ($t) {
+        if ($ret) return $img;
+        else echo $img;
+        return;
+    }
+
+    $t = preg_match_all($pattern, $widget->content, $thumbUrl);
+    if ($t) {
         $img = $thumbUrl[1][0];
     } elseif (preg_match_all($patternMD, $widget->content, $thumbUrl)) {
         $img = $thumbUrl[1][0];
     } elseif (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) {
         $img = $thumbUrl[1][0];
     }
+    if ($widget->cid) $widget->setField('thumb','str',$img,$widget->cid); // 将查询到的图片字段保存下来以备下一次使用
     if ($ret) return $img;
     else echo $img;
+    return;
 }
 /** 输出文章缩略图 */
 function showThumbnail($widget,$imgnum){ //获取两个参数，文章的ID和需要显示的图片数量

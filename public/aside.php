@@ -308,32 +308,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
     <?php endif; ?>
 
-    <!-- 微博热搜 -->
+    <!-- 热榜 -->
     <?php if ($this->options->JRanking !== 'off') : ?>
-        <?php
-        $ranking = $this->options->JRanking;
-        $rankingStr = explode("$", $ranking);
-        ?>
         <div class="aside aside-ranking">
-            <h3><i class="icon iconfont icon-paihangbang"></i><span><?php echo $rankingStr[0] ?></span></h3>
+            <h3><i class="icon iconfont icon-paihangbang"></i><span>loading...</span></h3>
             <ul class="list">
-                <?php
-                $result = GetRequest("https://the.top/v1/" . $rankingStr[1] . "/1/20", "get");
-                $res = json_decode($result, true);
-                if ($res['code'] === 0) {
-                    for ($i = 0; $i < count($res['data']); $i++) {
-                        if ($i < 9) {
-                            echo
-                                "<li title=" . $res['data'][$i]['title'] . ">
-                                    <span>" . ($i + 1) . "</span>
-                                    <a target='_blank' rel='noopener' href=" . $res['data'][$i]['url'] . ">" . $res['data'][$i]['title'] . "</a>
-                                </li>";
-                        }
-                    }
-                } else {
-                    echo "<li>获取失败！</li>";
-                }
-                ?>
+                <li>加载中...</li>
             </ul>
         </div>
     <?php endif; ?>

@@ -19,11 +19,19 @@
 			if (option.position === 'up') {
 				this.container.classList.add('OwO-up')
 			}
+			/* 减少数据交互 */
+			let odata = localStorage.getItem("owo-data")
+			if (odata){
+				this.odata = JSON.parse(odata)
+				this.init(option)
+				return
+			}
 			const xhr = new XMLHttpRequest()
 			xhr.onreadystatechange = () => {
 				if (xhr.readyState === 4) {
 					if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
 						this.odata = JSON.parse(xhr.responseText)
+						localStorage.setItem("owo-data",JSON.stringify(this.odata))
 						this.init(option)
 					} else {
 						console.log('OwO data request was unsuccessful: ' + xhr.status)

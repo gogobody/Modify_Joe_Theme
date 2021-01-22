@@ -219,12 +219,85 @@ class Lb {
     }
 }
 
+/**
+ * localStorage 包装
+ */
+class JStorage {
+    constructor(name){
+        this.name = 'storage';
+    }
+    //设置缓存
+    setItem(params){
+        let obj = {
+            name:'',
+            value:'',
+            expires:"",
+            startTime:new Date().getTime().toString().substr(0,10) //记录何时将值存入缓存，秒级
+        }
+        let options = {};
+        //将obj和传进来的params合并
+        Object.assign(options,obj,params);
+        if(options.expires){
+            //如果options.expires设置了的话
+            //以options.name为key，options为值放进去
+            localStorage.setItem(options.name,JSON.stringify(options));
+        }else{
+            //如果options.expires没有设置，就判断一下value的类型
+            let type = Object.prototype.toString.call(options.value);
+            //如果value是对象或者数组对象的类型，就先用JSON.stringify转一下，再存进去
+            if(type === '[object Object]'){
+                options.value = JSON.stringify(options.value);
+            }
+            else if(type === '[object Array]'){
+                options.value = JSON.stringify(options.value);
+            }
+            localStorage.setItem(options.name,options.value);
+        }
+    }
+    //拿到缓存
+    getItem(name){
+        let item = localStorage.getItem(name);
+        //先将拿到的试着进行json转为对象的形式
+        try{
+            item = JSON.parse(item);
+        }catch(error){
+            //如果不行就不是json的字符串，就直接返回
+            return item;
+        }
+        //如果有startTime的值，说明设置了失效时间
+        if(item.startTime){
+            let date = new Date().getTime().toString().substr(0,10);
+            //何时将值取出减去刚存入的时间，与item.expires比较，如果大于就是过期了，如果小于或等于就还没过期
+            if(date - item.startTime > item.expires){
+                //缓存过期，清除缓存，返回false
+                localStorage.removeItem(name);
+                return false;
+            }else{
+                //缓存未过期，返回值
+                return item.value;
+            }
+        }else{
+            //如果没有设置失效时间，直接返回值
+            return item;
+        }
+    }
+    //移出缓存
+    removeItem(name){
+        localStorage.removeItem(name);
+    }
+    //移出全部缓存
+    clear(){
+        localStorage.clear();
+    }
+}
+
 (() => {
     class Joe {
         constructor(options) {
             options = {
                 reloadTime: options.reloadTime || 1500
             };
+            this.base_url = '/whosurdaddy';
             this.options = options;
             this.video_page = 0;
             this.video_canLoad = true;
@@ -311,7 +384,6 @@ class Lb {
             this.init_j_tabs();
             /* 初始化collapse */
             this.init_j_collapse();
-
             /* 初始化底部 mobinav */
             this.init_mobinav()
         }
@@ -441,6 +513,24 @@ class Lb {
                 $(this).addClass('active')
             })
 
+        }
+        /* 初始化侧栏 */
+        init_aside(){
+            // load ranking
+            if (document.querySelector('.aside.aside-ranking')){
+                $.getJSON(`https://the.top/v1/${window.JOE_CONFIG.RANKING_API}/1/9`,{},function (res) {
+                    if (res.code === 0){
+                        let data = res.data
+                        let rank_ele = $('.aside.aside-ranking')
+                        rank_ele.find('h3 span').text(window.JOE_CONFIG.RANKING_TITLE)
+                        let html_str = ''
+                        data.forEach((ele,index)=>{
+                            html_str += `<li title="${ele.title}"><span>${index + 1}</span><a target='_blank' rel='noopener' href="${ele.url}">${ele.title}</a></li>`
+                        })
+                        rank_ele.children('ul.list').html(html_str)
+                    }
+                })
+            }
         }
         /* 打赏btn初始化 */
         reward_init(){
@@ -1144,6 +1234,7 @@ class Lb {
                 }
                 $("#commentType button[data-type='text']").click();
             });
+            this.init_aside()
         }
 
         /* 初始化登录注册验证 */

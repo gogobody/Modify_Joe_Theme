@@ -120,21 +120,30 @@
 <?php endif; ?>
 
 <script>
-    <?php
-    $p = Typecho_Cookie::getPrefix();
-    $q = $p . '__typecho_notice';
-    $y = $p . '__typecho_notice_type';
-    if (isset($_COOKIE[$y]) && ($_COOKIE[$y] == 'success' || $_COOKIE[$y] == 'notice' || $_COOKIE[$y] == 'error')) {
-        if (isset($_COOKIE[$q])) { ?>
-            $.toast({
-                type: "warning",
-                message: '<?php echo preg_replace('#\[\"(.*?)\"\]#', '$1', $_COOKIE[$q]); ?>！'
-            })
-    <?php
-            Typecho_Cookie::delete('__typecho_notice');
-            Typecho_Cookie::delete('__typecho_notice_type');
+    /* 刷新 评论 cookie */
+    <?php if(!$this->user->hasLogin()){ ?>
+    function getCookie(name){
+        const strcookie = document.cookie;//获取cookie字符串
+        const arrcookie = strcookie.split("; ");//分割
+        //遍历匹配
+        for (let i = 0; i < arrcookie.length; i++) {
+            const arr = arrcookie[i].split("=");
+            if (arr[0] === name){
+                return unescape(decodeURI(arr[1]));
+            }
         }
-    } ?>
+        return "";
+    }
+    function adduser(){
+        let nick = document.getElementById('comment-nick')
+        let mail = document.getElementById('comment-mail')
+        let url = document.getElementById('comment-url')
+        if (nick) nick.value = getCookie(window.JOE_CONFIG.COOKIE_PREFIX+'__typecho_remember_author');
+        if (mail) mail.value = getCookie(window.JOE_CONFIG.COOKIE_PREFIX+'__typecho_remember_mail');
+        if (url) url.value = getCookie(window.JOE_CONFIG.COOKIE_PREFIX+'__typecho_remember_url');
+    }
+    adduser();
+    <?php } ?>
     /* 自定义JS */
     <?php $this->options->JCustomScript() ?>
 
@@ -144,6 +153,7 @@
     });
     function pjax_send(){
         NProgress.start()
+        typeof adduser != 'undefined' && adduser()
     }
     function pjax_init(){
         window.JoeInstance.pjax_complete()

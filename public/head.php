@@ -71,13 +71,17 @@
 </style>
 
 <?php global $stat;Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
+<!-- pjax 替换全局配置 -->
 <script id="joe_config">
     window.JOE_CONFIG = {
+        COOKIE_PREFIX: '<?php echo Typecho_Cookie::getPrefix()?>',
         ARCHIVE:'<?php _e($this->getArchiveType()) ?>',
         ARCHIVE_SLUG:'<?php _e($this->getArchiveSlug());?>',
         STATIC_PATH: '<?php _e(STATIC_PATH);?>',
         INDEX:'<?php echo $this->options->index ?>',
         THEME_URL: '<?php echo THEME_URL ?>',
+        RANKING_TITLE:'<?php $ranking_txt = $this->options->JRanking;$ranking_arr = explode("$", $ranking_txt);_e($ranking_arr[0]);?>',
+        RANKING_API:'<?php _e($ranking_arr[1]);?>',
         PIC2CDN:'<?php $cdnArray = explode("||", $this->options->JPic2cdn);$cdnUrl = trim($cdnArray[0], " \t\n\r\0\x0B\2F");echo $cdnUrl ? $cdnUrl.'/usr/themes/Typecho-Joe-Theme': THEME_URL ?>',
         /* 网站切换标题 */
         DOCUMENT_TITLE: '<?php $this->options->JDocumentTitle ? $this->options->JDocumentTitle() : null ?>',

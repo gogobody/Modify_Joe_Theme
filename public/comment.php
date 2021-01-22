@@ -58,21 +58,21 @@ function threadedComments($comments, $options)
                 <div class="head">
                     <?php if ($this->user->hasLogin()) : ?>
                         <div class="head-item">
-                            <input id="comment-nick" type="text" value="<?php $this->user->screenName(); ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称：请输入昵称（必填）" />
+                            <input id="comment-nick" type="text" value="<?php $this->user->screenName(); ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称（必填）" />
                         </div>
                         <div class="head-item">
-                            <input id="comment-mail" type="text" value="<?php $this->user->mail(); ?>" autocomplete="off" name="mail" placeholder="邮箱：请输入邮箱（必填）" />
+                            <input id="comment-mail" type="text" value="<?php $this->user->mail(); ?>" autocomplete="off" name="mail" placeholder="邮箱（必填）" />
                         </div>
                     <?php else : ?>
                         <div class="head-item">
-                            <input id="comment-nick" type="text" value="<?php $this->remember('author'); ?>" autocomplete="off" name="author" maxlength="16" placeholder="昵称：请输入昵称（必填）" />
+                            <input id="comment-nick" type="text" value="" autocomplete="off" name="author" maxlength="16" placeholder="昵称（必填）" />
                         </div>
                         <div class="head-item">
-                            <input id="comment-mail" type="text" value="<?php $this->remember('mail'); ?>" autocomplete="off" name="mail" placeholder="邮箱：请输入邮箱（必填）" />
+                            <input id="comment-mail" type="text" value="" autocomplete="off" name="mail" placeholder="邮箱（必填）" />
                         </div>
                     <?php endif; ?>
                     <div class="head-item d-none d-sm-block">
-                        <input id="comment-url" type="text" value="<?php $this->remember('url'); ?>" autocomplete="off" name="url" placeholder="网址：请输入网址（选填）" />
+                        <input id="comment-url" type="text" value="" autocomplete="off" name="url" placeholder="网址（选填）" />
                     </div>
                 </div>
                 <div class="content" id="commentTypeContent">

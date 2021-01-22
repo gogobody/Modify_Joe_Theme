@@ -59,9 +59,9 @@ function threadedComments($comments, $options)
             <form no-pjax class="reply j-dynamic-reply">
                 <input type="hidden" name="parent" value="<?php $comments->coid(); ?>">
                 <div class="head">
-                    <input autocomplete="off" placeholder="昵称：请输入昵称（必填）" type="text" name="author">
-                    <input autocomplete="off" placeholder="邮箱：请输入邮箱（必填）" type="text" name="mail">
-                    <input autocomplete="off" placeholder="网址：请输入网址（选填）" type="text" name="url">
+                    <input autocomplete="off" placeholder="昵称（必填）" type="text" name="author">
+                    <input autocomplete="off" placeholder="邮箱（必填）" type="text" name="mail">
+                    <input autocomplete="off" placeholder="网址（选填）" type="text" name="url">
                 </div>
                 <textarea name="text" placeholder="请输入评论内容..."></textarea>
                 <div class="foot">

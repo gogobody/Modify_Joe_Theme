@@ -5,7 +5,7 @@
                 <h2 class="section-title">栏目推荐</h2>
                 <div class="section-content">
                     <?php
-                    $this->widget('Widget_Archive@indextuis', 'pageSize=5&type=category', 'mid=' . $this->options->JFootRecommendMid . '')->to($categoryPosts); ?>
+                    $this->widget('Widget_Footer_Recommend_Posts')->to($categoryPosts); ?>
                     <?php while ($categoryPosts->next()): ?>
                         <div class="item">
                             <a href="<?php $categoryPosts->permalink(); ?>" class="thumb">
