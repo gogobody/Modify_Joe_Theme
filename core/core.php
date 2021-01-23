@@ -479,9 +479,15 @@ function themeInit($archive)
         $archive->content = Load2Cdn($archive->content);
         $archive->content = ParseCode($archive->content);
     }
-    if ($archive->request->isPost() && $archive->request->likeup) {
-        commentLike($archive->request->likeup);
-        exit;
+    if ($archive->request->isPost()){
+        if($archive->request->likeup) {
+            commentLike($archive->request->likeup);
+            exit;
+        }
+        if ($archive->request->postview){
+            addPostView($archive,$archive->request->postview);
+            exit;
+        }
     }
 
 }
@@ -803,7 +809,33 @@ function commentLike($likeup)
     $likes = $db->fetchRow($db->select('table.comments.likes')->from('table.comments')->where('coid = ?', $likeup));
     echo $likes['likes'];
 }
+/* js版本阅读统计 */
+function addPostView($obj,$post_id){
+    $db = Typecho_Db::get();
+    if (!$post_id) $obj->response->throwJson([
+            'code'=> 0,
+            'msg' => '缺少参数',
+    ]);
 
+    $cid = intval($post_id);
+    $exist = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid))['views'];
+    $cookie = Typecho_Cookie::get('contents_views');
+    $cookie = $cookie ? explode(',', $cookie) : array();
+    if (!in_array($cid, $cookie)) {
+        $db->query($db->update('table.contents')
+            ->rows(array('views' => (int)$exist + 1))
+            ->where('cid = ?', $cid));
+        $exist = (int)$exist + 1;
+        array_push($cookie, $cid);
+        $cookie = implode(',', $cookie);
+        Typecho_Cookie::set('contents_views', $cookie);
+    }
+    $obj->response->throwJson([
+        'code'=> 1,
+        'msg' => '获取成功',
+        'data' => number_format($exist)
+    ]);
+}
 
 /* 获取浏览器信息 */
 function GetBrowser($agent)

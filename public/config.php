@@ -106,4 +106,6 @@
 </script>
 
 <?php $this->options->JCustomBodyEnd() ?>
-
+<?php try{$tpOptions = Helper::options()->plugin('TpCache');}catch (Typecho_Plugin_Exception $e){$tpOptions=NULL;};if ($this->is('post') and $tpOptions->enable_gcache =='1'){?>
+    <script>$(function(){if (PCID) $.post('/',{postview:PCID},function (res) {})})</script>
+<?php } ?>

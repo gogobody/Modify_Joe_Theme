@@ -2169,6 +2169,7 @@ class JStorage {
                 if (e === "dark") document.cookie = "night=1;path=/";
                 else document.cookie = "night=0;path=/"
                 t && t.setAttribute("data-color-mode", e)
+                return true
             }
             // 获取当前模式
             function get_user_scheme_mode() {
@@ -2203,7 +2204,7 @@ class JStorage {
                         return;
                     return e.getAttribute("data-color-mode")
                 }()) {
-                    "dark" === get_user_scheme_mode() && e.setAttribute("aria-checked", "true")
+                    "dark" === get_user_scheme_mode() && change_mode('dark') && e.setAttribute("aria-checked", "true")
                 }
             }()
             !async function() {

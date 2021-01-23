@@ -1,7 +1,8 @@
 <?php $this->need('public/prevent.php'); ?>
 <?php $this->need('public/defend.php'); ?>
+<?php try{$tpOptions = Helper::options()->plugin('TpCache');}catch (Typecho_Plugin_Exception $e){$tpOptions=NULL;};?>
 <!DOCTYPE html>
-<html lang="en" data-color-mode="<?php if($_COOKIE['night']=='1')echo 'dark';else echo 'light'; ?>">
+<html lang="en" data-color-mode="<?php if ($tpOptions->enable_gcache){_e('{colorMode}');}else{if($_COOKIE['night']=='1')echo 'dark';else echo 'light';} ?>">
 
     <head>
         <?php $this->need('public/head.php'); ?>

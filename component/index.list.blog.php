@@ -1,6 +1,6 @@
 <?php /* 说说 */
 if ($this->fields->thumbStyle == 'shuos'): ?>
-    <article class="article-list shuobg sticky <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
+    <article class="article-list shuobg <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
         <section class="entry-box">
             <div class="meta">
                 <section class="item">
@@ -21,7 +21,7 @@ if ($this->fields->thumbStyle == 'shuos'): ?>
         </a>
     </article>
 <?php /* 三图 */ elseif (($this->fields->thumbStyle == 'MultiThumb')): ?>
-    <article class="article-list mthumb sticky <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
+    <article class="article-list mthumb <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
         <section class="entry-box">
             <header class="tlr-header header">
                 <span class="title">
@@ -79,7 +79,7 @@ if ($this->fields->thumbStyle == 'shuos'): ?>
         </section>
     </article>
 <?php /* 大图 */ elseif (($this->fields->thumbStyle == 'bigThumb')): ?>
-    <article class="article-list bthumb sticky <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
+    <article class="article-list bthumb <?php echo isMobile() ? ($this->options->JWapAnimation ? 'wow ' . $this->options->JWapAnimation : '') : ($this->options->JPCAnimation ? 'wow ' . $this->options->JPCAnimation : ''); ?>">
         <section class="entry-box">
             <header class="header tlr-header">
                 <span class="title">

@@ -133,5 +133,5 @@ if (isset($_POST['agree'])) {
             <?php $this->need('public/aside.php'); ?>
         <?php endif; ?>
     </section>
-
+    <script>PCID=<?php $this->is('post')?_e($this->cid):_e('');?></script>
 <?php $this->need('common/common.footer.php'); ?>
