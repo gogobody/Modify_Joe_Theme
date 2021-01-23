@@ -60,7 +60,9 @@
 <?php if ($this->options->JCursorEffects !== 'off') : ?>
     <script src="<?php $this->options->themeUrl('assets/cursor/' . $this->options->JCursorEffects); ?>"></script>
 <?php endif; ?>
-
+<?php try{$tpOptions = Helper::options()->plugin('TpCache');}catch (Typecho_Plugin_Exception $e){$tpOptions=NULL;};if ($tpOptions->enable_gcache =='1'){?>
+    <script>function addPostView(){if (typeof PCID != 'undefined' && PCID) $.post('/',{postview:PCID},function (res) {})}$(function(){addPostView()})</script>
+<?php } ?>
 <script>
     /* 刷新 评论 cookie */
     <?php if(!$this->user->hasLogin()){ ?>
@@ -96,6 +98,7 @@
     function pjax_send(){
         NProgress.start()
         typeof adduser != 'undefined' && adduser()
+        addPostView()
     }
     function pjax_init(){
         window.JoeInstance.pjax_complete()
@@ -106,6 +109,4 @@
 </script>
 
 <?php $this->options->JCustomBodyEnd() ?>
-<?php try{$tpOptions = Helper::options()->plugin('TpCache');}catch (Typecho_Plugin_Exception $e){$tpOptions=NULL;};if ($tpOptions->enable_gcache =='1'){?>
-    <script>$(function(){if (PCID) $.post('/',{postview:PCID},function (res) {})})</script>
-<?php } ?>
+
