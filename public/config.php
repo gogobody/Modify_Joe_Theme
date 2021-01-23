@@ -61,7 +61,7 @@
     <script src="<?php $this->options->themeUrl('assets/cursor/' . $this->options->JCursorEffects); ?>"></script>
 <?php endif; ?>
 <?php try{$tpOptions = Helper::options()->plugin('TpCache');}catch (Typecho_Plugin_Exception $e){$tpOptions=NULL;};if ($tpOptions->enable_gcache =='1'){?>
-    <script>function addPostView(){if (typeof PCID != 'undefined' && PCID) $.post('/',{postview:PCID},function (res) {})}$(function(){addPostView()})</script>
+    <script>function addPostView(){if (typeof PCID != 'undefined' && PCID) $.post('/',{postview:PCID},function (res) {PCID=''})}$(function(){addPostView()})</script>
 <?php } ?>
 <script>
     /* 刷新 评论 cookie */
@@ -98,11 +98,11 @@
     function pjax_send(){
         NProgress.start()
         typeof adduser != 'undefined' && adduser()
-        addPostView()
     }
     function pjax_init(){
         window.JoeInstance.pjax_complete()
         NProgress.done()
+        addPostView()
     }
     document.addEventListener('pjax:send', pjax_send)
     document.addEventListener("pjax:complete", pjax_init)
