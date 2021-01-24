@@ -523,7 +523,7 @@ class JStorage {
                 p.siblings().removeClass('active')
                 p.addClass('active')
                 let article_container = $('.j-index-article.article')
-                article_container.html('<div style="text-align: center"><img alt="loading" width="50px" height="auto" src="https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/img/loading.svg"></div>')
+                article_container.html('<div style="text-align: center"><img alt="loading" width="50px" height="auto" src="https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.2/assets/img/loading.svg"></div>')
                 let href = $(this).attr('href')
                 if(href){
                     $.get(href,{},function (res) {
