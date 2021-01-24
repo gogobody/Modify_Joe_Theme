@@ -227,6 +227,9 @@ pre code::-webkit-scrollbar {
                         }
                     }
                 }
+                .article-list.shuobg{
+                    background: var(--backgroundA)!important;
+                }
             }
             .index-title{
                 h2{
@@ -669,20 +672,20 @@ textarea:focus {
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
-@font-face {
-    font-family: 'Microsoft YaHei';
-    src:url(https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.woff2) format("woff2"),
-        url(https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.woff) format("woff"),
-        url(https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.eot) format("embedded-opentype");
-    font-display: swap;
-}
+//@font-face {
+//    font-family: 'Microsoft YaHei';
+//    src:url(https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.woff2) format("woff2"),
+//        url(https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.woff) format("woff"),
+//        url(https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.eot) format("embedded-opentype");
+//    font-display: swap;
+//}
 
 
 body {
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
     font-size: 14px;
-    font-family: 'Microsoft YaHei', PingFang SC, Hiragino Sans GB, Microsoft YaHei, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
+    font-family:  Microsoft YaHei, PingFang SC, Hiragino Sans GB, STHeiti, WenQuanYi Micro Hei, Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     background: url(/usr/themes/Typecho-Joe-Theme/assets/img/bl.png) no-repeat fixed bottom left, url(/usr/themes/Typecho-Joe-Theme/assets/img/tr.png) no-repeat fixed top right, #f0f2f7;
@@ -1712,11 +1715,14 @@ table {
             align-items: center;
             user-select: none;
             border-bottom: 1px solid var(--classC);
+            .titles{
+                display: flex;
+            }
             h2 {
                 position: relative;
                 margin-right: 15px;
                 a{
-                    color: var(--theme);
+                    color: var(--main);
                     font-size: 14px;
                     font-weight: 500;
                     height: 40px;
@@ -1726,6 +1732,9 @@ table {
                 }
             }
             h2.active{
+                a{
+                    color: var(--theme);
+                }
                 &::after {
                     content: '';
                     position: absolute;
@@ -1754,7 +1763,7 @@ table {
                     color: var(--minor);
                     font-size: 14px;
                     line-height: 20px;
-                    max-width: 300px;
+                    max-width: 350px;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
@@ -1791,7 +1800,8 @@ table {
             }
             .hot {
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-between;
+                flex-wrap: wrap;
                 li {
                     width: 25%;
                     padding: 0 7.5px;
@@ -4799,7 +4809,7 @@ table {
 
 code {
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
     min-height: 26px;
     line-height: 26px;
     border-radius: 4px;
@@ -5856,6 +5866,23 @@ pre code {
                 height: 22px;
                 fill: var(--routine);
                 margin-right: 5px;
+            }
+        }
+        .cloud{
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 15px;
+            li{
+                padding: 5px;
+                a{
+                    display: block;
+                    padding: 0 10px;
+                    height: 24px;
+                    line-height: 24px;
+                    border-radius: 2px;
+                    font-size: 12px;
+                    color: #fff;
+                }
             }
         }
     }

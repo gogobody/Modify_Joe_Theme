@@ -331,6 +331,7 @@ class JStorage {
             /* 关闭FancyBox的hash模式 */
             $.fancybox.defaults.hash = false;
             this.init_header();
+            this.init_index_titles()
             /* 暗夜模式 */
             this.init_prefer_color_scheme();
             /* 初始化页面的hash值跳转 */
@@ -345,7 +346,6 @@ class JStorage {
             this.init_document_contextmenu();
             /* 初始化主题色 */
             this.init_document_theme();
-
             /* 初始化返回顶部 */
             this.init_back_top();
             /* 初始化代码防偷 */
@@ -512,7 +512,28 @@ class JStorage {
                 $(this).siblings().removeClass('active')
                 $(this).addClass('active')
             })
-
+        }
+        init_index_titles(){
+            let titles = $('.index-title .titles h2 a')
+            if (titles.length === 0 ) return
+            titles.unbind('click').bind('click',function (e) {
+                e.preventDefault()
+                e.stopPropagation()
+                let p = $(this).parent()
+                p.siblings().removeClass('active')
+                p.addClass('active')
+                let article_container = $('.j-index-article.article')
+                article_container.html('<div style="text-align: center"><img alt="loading" width="50px" height="auto" src="https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/img/loading.svg"></div>')
+                let href = $(this).attr('href')
+                if(href){
+                    $.get(href,{},function (res) {
+                        let posts_list = $('.j-index-article.article',res)
+                        if (posts_list.length > 0){
+                            article_container.html(posts_list)
+                        }
+                    })
+                }
+            })
         }
         /* 初始化侧栏 */
         init_aside(){

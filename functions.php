@@ -940,13 +940,6 @@ function themeConfig($form)
     $JHotRecommend->setAttribute('class', 'j-setting-content j-setting-index');
     $form->addInput($JHotRecommend);
 
-    $JIndexTitles = new Typecho_Widget_Helper_Form_Element_Textarea('JIndexTitles',
-        null,
-        '','中间自定义链接[最新文章旁边]','格式：文字||url,一行一个'
-    );
-    $JIndexTitles->setAttribute('class', 'j-setting-content j-setting-index');
-    $form->addInput($JIndexTitles);
-
     $JPCAnimation = new Typecho_Widget_Helper_Form_Element_Select(
         'JPCAnimation',
         array(

@@ -1,17 +1,7 @@
 <div class="index-title">
     <div class="titles">
         <h2 class="active"><a href="<?php _e($this->options->index);?>">最新文章</a></h2>
-        <?php
-            $titles = $this->options->JIndexTitles;
-            if ($titles){
-                $title_arr = explode('\r\n',$titles);
-                foreach ($title_arr as $title){
-                    $arr = explode('||',trim($title));
-                    echo '<h2 class="active"><a href="'.$arr[1].'">'.$arr[0].'</a></h2>';
-                }
-            }
-        ?>
-
+        <h2><a href="<?php _e($this->options->index.'/hot/posts');?>">热门文章</a></h2>
     </div>
     <?php if ($this->options->JIndexNotice) : ?>
         <?php

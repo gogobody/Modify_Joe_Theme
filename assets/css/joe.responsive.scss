@@ -438,7 +438,7 @@
             .index-banner {
                 .recommend {
                     padding-top: 0;
-                    margin-bottom: 15px;
+                    margin-bottom: 10px;
                     .r-item {
                         height: 110px;
                         border-radius: var(--radius-wap);
@@ -452,11 +452,24 @@
                 }
             }
             .index-hot {
-                display: none;
+                padding-top: 0;
+                ul.hot{
+                    li{
+                        width: 33%;
+                        padding: 5px;
+                    }
+                    li:nth-child(3){
+                        padding-right: 0;
+                    }
+                    li:last-child{
+                        display: none;
+                    }
+                }
             }
             .index-ad {
                 padding-top: 0;
                 margin-bottom: 15px;
+                margin-top: 10px;
                 a {
                     img {
                         height: 130px;
@@ -1152,6 +1165,28 @@
                 }
 
             }
+            .index-hot{
+                display: block;
+                padding-top: 0;
+                ul.hot{
+                    li{
+                        padding: 5px;
+                        width: 50%;
+                    }
+                    li:last-child{
+                        display: block;
+                    }
+                    li:nth-child(3){
+                        padding-right: 5px;
+                    }
+                    li:nth-child(odd){
+                        padding-left: 0;
+                    }
+                    li:nth-child(even){
+                        padding-right: 0;
+                    }
+                }
+            }
             .article {
                 .tlr-header{
                     padding: 0;
@@ -1214,6 +1249,7 @@
                     }
                 }
                 .article-list.shuobg {
+                    background: #ecf1f5;
                     .entry-box {
                         padding: 10px 12px;
                         .summary {

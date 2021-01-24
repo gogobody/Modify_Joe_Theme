@@ -31,9 +31,6 @@
     ); ?>
     <?php $this->options->title(); ?>
 </title>
-<link rel="preload" href="https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.woff" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="https://cdn.jsdelivr.net/gh/gogobody/Modify_Joe_Theme@4.8.1/assets/fonts/blockdole.eot" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap-grid.min.css" media="all"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css" media="all">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/<?php echo $this->options->JCodeColor ?>.min.css" media="all">
