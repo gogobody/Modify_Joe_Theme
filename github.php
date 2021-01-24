@@ -81,14 +81,79 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         fragment = null;
                         node = null;
                     }
-
+                    function setCookie(name, value, seconds) {
+                        seconds = seconds || 0;   //seconds有值就直接赋值，没有为0
+                        let expires = "";
+                        if (seconds !== 0) {      //设置cookie生存时间
+                            let date = new Date();
+                            date.setTime(date.getTime() + (seconds * 1000));
+                            expires = "; expires=" + date.toGMTString();
+                        }
+                        document.cookie = name + "=" + escape(value) + expires + "; path=/";   //转码并赋值
+                    }
+                    function setInof(key, value) {
+                        localStorage.setItem(key, value);
+                        setCookie(key,value)//存储localStorage的同时，也存储一个cookie来监听
+                    }
+                    function getCookie(name) {
+                        let nameEQ = name + "=";
+                        let ca = document.cookie.split(';'); //把cookie分割成组
+                        for (let i = 0; i < ca.length; i++) {
+                            let c = ca[i]; //取得字符串
+                            while (c.charAt(0) === ' ') { //判断一下字符串有没有前导空格
+                                c = c.substring(1, c.length); //有的话，从第二位开始取
+                            }
+                            if (c.indexOf(nameEQ) === 0) { //如果含有我们要的name
+                                return unescape(c.substring(nameEQ.length, c.length)); //解码并截取我们要值
+                            }
+                        }
+                        return false;
+                    }
+                    if(!getCookie('github')){
+                        //清除
+                        localStorage.clear();
+                    }
+                    let repoContainer = document.querySelector('.github_page')
+                    let loadingContainer = document.querySelector(".github_page .loading-nav");
+                    let errorContainer = document.querySelector(".github_page .error-nav");
+                    let countContainer = document.querySelector(".github_tips");
+                    let colors = ["light", "info", "dark", "success", "black", "warning", "primary", "danger"];
+                    function parseGithub(json) {
+                        loadingContainer.classList.add("hide")
+                        let ul = "<div class='raw'><div class='col-md-12'><div class=\"row row-sm text-center " +
+                            "github_contain" +
+                            "\"></div></div></div>";
+                        appendHtml(repoContainer,ul)
+                        let contentContainer = document.querySelector(".github_contain");
+                        json.sort(function (a,b) {
+                            return b.stargazers_count - a.stargazers_count
+                        })
+                        let show_len = json.length > 33?33:json.length
+                        for(let i = 0;i<show_len;i++){
+                            let repo = json[i]
+                            repo.updated_at = repo.updated_at.substring(0, repo.updated_at.lastIndexOf("T"));
+                            if (repo.language == null) {
+                                repo.language = "未知";
+                            }
+                            //匹配替换
+                            let item = githubItemTemple.replace("{REPO_NAME}", repo.name)
+                                .replace("{REPO_URL}", repo.html_url)
+                                .replace("{REPO_STARS}", repo.stargazers_count)
+                                .replace("{REPO_FORKS}", repo.forks_count)
+                                .replace("{REPO_DESC}", repo.description)
+                                .replace("{BG_COLOR}", "bg-" + colors[i % 8])
+                                .replace("{BUTTON_COLOR}", colors[(i) % 8])
+                                .replace("{PROJECT_LANGUAGE}", repo.language);
+                            appendHtml(contentContainer,item)
+                        }
+                    }
                     const open = function () {
                         const handleGithub = function () {
-                            var repoContainer = document.querySelector('.github_page')//$('.github_page');
-                            var loadingContainer = document.querySelector(".github_page .loading-nav");
-                            var errorContainer = document.querySelector(".github_page .error-nav");
-                            var countContainer = document.querySelector(".github_tips");
-                            var colors = ["light", "info", "dark", "success", "black", "warning", "primary", "danger"];
+                            let json_ = localStorage.getItem('github')
+                            if (json_){
+                                parseGithub(JSON.parse(json_))
+                                return
+                            }
                             let httpRequest = new XMLHttpRequest();
                             httpRequest.open('GET',"https://api.github.com/users/<?php echo $githubUser; ?>/repos?accept=application/vnd.github.v3+json&sort=updated&direction=desc&per_page=100", true);
                             httpRequest.send();
@@ -96,33 +161,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                                     let json = JSON.parse(httpRequest.responseText);
                                     if (json){
-                                        loadingContainer.classList.add("hide")
-                                        let ul = "<div class='raw'><div class='col-md-12'><div class=\"row row-sm text-center " +
-                                            "github_contain" +
-                                            "\"></div></div></div>";
-                                        appendHtml(repoContainer,ul)
-                                        let contentContainer = document.querySelector(".github_contain");
-                                        json.sort(function (a,b) {
-                                            return b.stargazers_count - a.stargazers_count
-                                        })
-                                        let show_len = json.length > 33?33:json.length
-                                        for(let i = 0;i<show_len;i++){
-                                            let repo = json[i]
-                                            repo.updated_at = repo.updated_at.substring(0, repo.updated_at.lastIndexOf("T"));
-                                            if (repo.language == null) {
-                                                repo.language = "未知";
-                                            }
-                                            //匹配替换
-                                            let item = githubItemTemple.replace("{REPO_NAME}", repo.name)
-                                                .replace("{REPO_URL}", repo.html_url)
-                                                .replace("{REPO_STARS}", repo.stargazers_count)
-                                                .replace("{REPO_FORKS}", repo.forks_count)
-                                                .replace("{REPO_DESC}", repo.description)
-                                                .replace("{BG_COLOR}", "bg-" + colors[i % 8])
-                                                .replace("{BUTTON_COLOR}", colors[(i) % 8])
-                                                .replace("{PROJECT_LANGUAGE}", repo.language);
-                                            appendHtml(contentContainer,item)
-                                        }
+                                        setInof('github',JSON.stringify(json))
+                                        parseGithub(json)
                                     }else {
                                         errorContainer.classList.remove("hide");
                                     }
