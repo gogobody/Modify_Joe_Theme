@@ -93,7 +93,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     }
                     function setInof(key, value) {
                         localStorage.setItem(key, value);
-                        setCookie(key,value)//存储localStorage的同时，也存储一个cookie来监听
+                        setCookie(key,'_')// cookie 在这里只需要key就行了
                     }
                     function getCookie(name) {
                         let nameEQ = name + "=";
