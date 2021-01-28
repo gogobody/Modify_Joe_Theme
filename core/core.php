@@ -1068,8 +1068,9 @@ function check_in($words_str, $str)
 Typecho_Plugin::factory('Widget_Feedback')->comment = array('plgl', 'one');
 class plgl
 {
-    public static function one($comment, $post)
+    public static function one($comment, $post ,$newComment)
     {
+        $comment = empty($newComment) ? $comment : $newComment;
         $options = Helper::options();
         $action = "";
         $msg = "";

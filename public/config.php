@@ -97,12 +97,13 @@
     });
     function pjax_send(){
         NProgress.start()
-        typeof adduser != 'undefined' && adduser()
+
     }
     function pjax_init(){
         window.JoeInstance.pjax_complete()
         NProgress.done()
-        addPostView()
+        typeof adduser != 'undefined' && adduser()
+        typeof addPostView != 'undefined' && addPostView()
     }
     document.addEventListener('pjax:send', pjax_send)
     document.addEventListener("pjax:complete", pjax_init)
