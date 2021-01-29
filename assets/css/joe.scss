@@ -2238,6 +2238,12 @@ table {
                             font-size: 18px;
                             display: flex;
                         }
+                        .inner-title{
+                            min-width: 0;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
                     }
                     img{
                         width: 100%;
@@ -2253,6 +2259,7 @@ table {
                             overflow: hidden;
                             max-height: 10rem;
                             max-width: 18rem;
+                            box-shadow: rgba(60,64,67,0.3) 0 1px 2px 0, rgba(60,64,67,0.15) 0 1px 3px 1px;
                         }
                         .feaimg:nth-child(2){
                             margin: 0 2px;

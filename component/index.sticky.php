@@ -36,7 +36,7 @@
                     <header class="tlr-header header">
                 <span class="title">
                     <a href="<?php $item->permalink(); ?>"><span class="badge">置顶</span><?php listdeng($item); ?><?php if (timeZone($item->date->timeStamp)) echo '<span class="badge arc_v2">最新</span>'; ?>
-                        <?php $item->title() ?>
+                        <div class="inner-title"><?php $item->title() ?></div>
                     </a>
                 </span>
                     </header>

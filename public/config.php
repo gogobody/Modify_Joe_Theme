@@ -94,10 +94,10 @@
     const pjax = new Pjax({
         elements:'a[href^="<?php Helper::options()->siteUrl()?>"]:not([target="_blank"]):not([no-pjax]):not(form):not([data-fancybox]):not([rel="nofollow"]),form[data-pjax]',
         selectors: ["head title","head meta[name='description']","head link[rel='alternate']","#joe_config","#post_top_title","#pjax-container"],
+        cacheBust: false
     });
     function pjax_send(){
         NProgress.start()
-
     }
     function pjax_init(){
         window.JoeInstance.pjax_complete()

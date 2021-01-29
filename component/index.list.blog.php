@@ -26,7 +26,7 @@ if ($this->fields->thumbStyle == 'shuos'): ?>
             <header class="tlr-header header">
                 <span class="title">
                     <a href="<?php $this->permalink(); ?>"><?php listdeng($this); ?><?php if (timeZone($this->date->timeStamp)) echo '<span class="badge arc_v2">最新</span>'; ?>
-                        <?php $this->title() ?>
+                        <div class="inner-title"><?php $this->title() ?></div>
                     </a>
                 </span>
             </header>
