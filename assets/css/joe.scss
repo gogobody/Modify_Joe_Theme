@@ -2251,14 +2251,12 @@ table {
                         object-fit: cover;
                     }
                     .imgrow {
-                        width: 100%;
-                        display: flex;
-                        margin: 10px 0;
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-template-rows: 180px;
+                        gap: 15px;
+                        margin-bottom: 15px;
                         .feaimg{
-                            flex: 1;
-                            overflow: hidden;
-                            max-height: 10rem;
-                            max-width: 18rem;
                             box-shadow: rgba(60,64,67,0.3) 0 1px 2px 0, rgba(60,64,67,0.15) 0 1px 3px 1px;
                         }
                         .feaimg:nth-child(2){

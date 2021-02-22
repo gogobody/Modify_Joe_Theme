@@ -32,6 +32,20 @@
             display: none;
         }
     }
+    .j-index{
+        .main{
+            .article{
+                .article-list.mthumb{
+                    .entry-box{
+                        .imgrow{
+                            grid-template-rows: 150px;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 @media (max-width: 1200px) {
     .OwO .OwO-body .OwO-items .OwO-item {
@@ -69,6 +83,13 @@
                             .item:nth-child(2) p {
                                 max-width: 100px;
                             }
+                        }
+                    }
+                }
+                .article-list.mthumb{
+                    .entry-box{
+                        .imgrow{
+                            grid-template-rows: 125px;
                         }
                     }
                 }
@@ -666,7 +687,10 @@
                 .article-list.mthumb{
                     .entry-box{
                         padding: 0;
-
+                        .imgrow{
+                            grid-template-rows: 70px;
+                            gap: 10px;
+                        }
                     }
                 }
 
@@ -1308,6 +1332,8 @@
                             }
                         }
                         .imgrow{
+                            margin-bottom: 0;
+                            margin-top: 10px;
                             a{
                                 overflow: hidden;
                                 img{
