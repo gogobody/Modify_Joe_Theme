@@ -32,7 +32,7 @@ class Widget_CustomHandler extends Widget_Archive
 
         /** 第一步：构造自定义 sql 得到初步筛选结果 */
         $select = $db->select("id","post_id","post_uid","post_see_type","post_islogin","post_price","post_sold_num",
-        "table.contents.cid","title","slug","created","modified","text","authorId","template","type","status","password","commentsNum","views","likes",
+        "table.contents.cid","title","slug","created","modified","text","authorId","template","type","status","password","commentsNum","views",
         "MAX(mid)")->from('table.tepass_posts')->join('table.contents','table.tepass_posts.post_id = table.contents.cid')
             ->where('table.contents.status = ?','publish');
 
@@ -83,7 +83,7 @@ class Widget_CustomHandler extends Widget_Archive
                 $select->where('table.tepass_posts.post_see_type = ?',$price);
             }
         }
-        $allow_order = ['created','modified','commentsNum','likes','views'];
+        $allow_order = ['created','modified','commentsNum','views'];
         $default_order = 'created';
         if (in_array($order,$allow_order)){
             $default_order = $order;
