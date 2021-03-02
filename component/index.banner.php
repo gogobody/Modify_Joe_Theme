@@ -47,13 +47,13 @@
                 <?php for ($i = 0; $i < $number; $i++) {
                 ?>
                     <?php $this->widget('Widget_Archive@recommend' . $i, 'pageSize=1&type=post', 'cid=' . $recommendCounts[$i])->to($item); ?>
-                    <div class="r-item lazyload" title="<?php $item->title(); ?>" href="<?php $item->permalink() ?>" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php GetRandomThumbnail($item) ?>">
+                    <a class="r-item lazyload" title="<?php $item->title(); ?>" href="<?php $item->permalink() ?>" style="background-image: url('<?php echo GetLazyLoad() ?>')" data-bg="<?php GetRandomThumbnail($item) ?>">
                         <i class="mask"></i>
                         <div class="desc">
                             <span class="type">推荐</span>
                             <p><?php $item->title(); ?></p>
                         </div>
-                    </div>
+                    </a>
 
                 <?php } ?>
             </div>
