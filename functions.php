@@ -245,6 +245,15 @@ function themeConfig($form)
     $JConsoleStatus->setAttribute('class', 'j-setting-content j-setting-global');
     $form->addInput($JConsoleStatus->multiMode());
 
+    $JCustomeCss = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'JCustomeCss',
+        NULL,
+        NULL,
+        '自定义css',
+        '自定义css'
+    );
+    $JCustomeCss->setAttribute('class', 'j-setting-content j-setting-global');
+    $form->addInput($JCustomeCss);
 
     $JCustomScript = new Typecho_Widget_Helper_Form_Element_Textarea(
         'JCustomScript',
